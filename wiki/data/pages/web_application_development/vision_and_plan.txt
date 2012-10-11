@@ -1,0 +1,174 @@
+====== Vision & Plan ======
+
+To start a project, we must first have an idea. We can start by brainstorming ideas or selecting from [[Course Examples]]. Once we have the idea, we then expand on the idea's feature set. These features are turned into a logical workflow of components. Then we can figure out what standards and technologies we will use in order to create it. This will give us an idea of the timing and deployment of the project.
+
+===== Brainstorming =====
+
+Creative brainstorming relies often relies on three aspects:
+
+  * Individual reflection on //identifying problems//.
+  * Inspiration, debate and constructive criticism from //different complex fields//.
+  * Physical space that allows //interaction with diverse people//.
+
+Scientific studies have shown that groups don't necessarily produce more ideas than individuals. While brainstorming sessions in groups were meant to sustain a no criticism rule, group dynamics stifle creative thought and some people are simply uncomfortable in groups. The individual needs to first reflect on problems. There is no point in thinking about solutions or the ideal product or service, if the problem isn't tackled first. People also find it easier to identify problems than ideal products. However don't let this stop you about dreaming about ideas that have no specific or defined problem. Henry Ford once said that if he asked what consumers want, they would have said a faster horse.
+
+In this course, you may already arrive with a problem and solution set. If you don't have any specific ideas, this is when getting into groups is the most fun. After a problem has been identified by you or one of your group members, let people react to your the problem and the proposed solution. Constructive criticism is a good thing in creative brainstorming as it allows people to reformulate the problem to take into account complex factors that the original definition did not attend to. Reformulating the problem or solution works best when it is inspired and debated from different perspectives and fields. The Medici effect is the phenomenon that breakthrough insights comes from an intersection of ideas, concepts and cultures. Allow the group to connect the dots between disparate fields. Remember too little familiarity between group members stifles interaction, but too much familiarity increases group think. 
+
+The third points follows on from the second point. Get out there and talk to people you would normally never talk too! Innovative companies such as Vitra are designing workplaces that enhance serendipitous conversations by removing the cubicles and creating a balance between relaxed solitude and easy going sociability. Diverse people bring diverse backgrounds and cultures. In the modern day, there has been a greater focus on convergence and cross-disciplinary studies as modern complex problems are finding parallels in diverse academic fields.
+
+Brainstorming doesn't stop after the problem has been defined and appropriate solution proposed. There is a cycle of brainstorming as the development of the solution meets unexpected threats and opportunities. So don't be afraid of going back to the drawing board, but make sure to keep in sight a constant theme and that is your vision.
+
+Note that if your web application is content focused such as a web magazine, then you need to brainstorm on your content as well.
+
+Some tips for the brainstorming cycle:
+
+  * Do use the internet, there is a wealth of information. In the realm of web development, check out websites like FastCompany, NetTuts, Smashing Magazine, UXMag, Kickstarter, Youtube, Lifehacker, Internet Forums (stackoverflow)
+  * Take an existing problem or maybe an existing solution and improve it. This could be in the packaging, usability, marketing, deployment, licensing, obscurity, complexity or distribution.
+  * Use mindmaps to keep track of how your idea progresses. Check out xmind.
+  * Different market segments will have different problems, but sometimes they will have the same. Think about taking a problem solution set from one market context to another. This could be geographical or abstract.
+  * Check out the patent literature. This is free.
+  * Think about using open source developments for inspiration. Sometimes it's as easy as taking a corporate solution and turning it open source.
+  * Attach yourself onto an existing product or service. Examples include plugins for internet browsers, plugins for various software, utilising APIs of existing web services.
+  * Think foreign languages, Facebook is big in the Western World, but what about China?
+===== Feature Set =====
+
+Once you have a problem and solution defined. It is time to turn that into a feature set of the final product or service. If the web application is content focused, then your feature set should involve categories of content. Each category of content solves a particular problem for your customer. If you were a comedy site, you could have lists, stand up videos, jokes and reviews. We will use the concept of [[wp>Minimum Viable Product]] to create feature set.
+
+This means to develop your product to have only features that allow it to be deployed and no more. MVP is defined in two ways. The first is as a smoke test of a whole product or a set of features. The MVP approach deploys a website or mock up of the service but has no real functionality. This is to test customer response. The second way is to deploy a minimum product which is viable to be used with satisfaction to its primary purpose. At this point, the second aspect of MVP is useful. However, we will also be considering the first aspect of MVP during the deployment stage. 
+
+In order to create a MVP, we take all the ideas from the brainstorming stage and categorise the features into "core", "value adding", "optional" and "extraneous". There are a lot of cool features we would want in our ideal solution, but we have limited time and budget.
+
+  - Core features relate to features that must exist for the product or service to actually do what it has to do. Imagine Gmail without an emailing feature, that would make Gmail completely useless. These features are necessary for your product to become minimum.
+  - Value adding features are features that differentiate yourself from the competition. What makes this product or service unique and more valuable to your customer segment? These features are necessary for your product to become viable.
+  - Optional features are features that can be value adding but are not necessary because either very few people will find it useful or you already have enough features that are value adding that make it unique and useful for your niche. These features are only useful for extreme use cases.
+  - Extraneous features are features that are not needed or wanted because they either are useless or are not feasible with your resources and time.
+
+It is possible for value adding features to become core, optional features to become value adding and extraneous to become optional. This is based how you scale up your product or service in the future. But for development purposes, we will only focus on the core and value adding.
+
+Once you have your features separated in core or value adding. Development will focus first on the core, then layer on the value adding.
+===== Components =====
+
+Taking the features from core and value adding, we then have to conceptualise them as components with inputs, logical processes and outputs. If your web application is content focused, then your components would not only be the functional features but also categories of content.
+
+Let's use an example:
+
+Simple Search Engine Product for customers looking at websites
+
+Core Features:
+
+  * Search Form
+  * Database that can be searched
+  * Ranking algorithm
+  * Advertising for income
+
+Value Adding Features:
+
+  * Search criteria form
+  * AJAX loaded results
+  * Picture search
+  * Search Spider that aggregates more results into the database
+
+Optional Features:
+
+  * Accessibility for disabled people (this depends on your target market)
+  * Social search (depends on your target market liking search results)
+  * Statistics of search results
+
+Extraneous Features:
+
+  * Weather results
+  * Time
+  * Being able to draw your search query
+  * Having virtual assistant with your search (remember clip from Microsoft Word?)
+
+Taking the core and value adding features, we now to have construct components from them.
+
+=== Core Components ===
+
+**Search Form**
+
+  * Input: Text data
+  * Logical Process: Process text into query form
+  * Output: Query string
+
+**Database**
+
+  * Input: Query strings
+  * Logical Process: Look for relevance
+  * Output: List of relevant matches
+
+**Ranking Algorithm**
+
+  * Input: Database matches + query string
+  * Logical Process: Ranking according to algorithm and query string
+  * Output: List of ranked matches
+
+**Advertising for Income**
+
+  * Input: Advertisers
+  * Logical Process: Matching relevant advertisement to search query
+  * Output: Display advertisement next to list of ranked matches
+
+=== Value Adding Components ===
+
+**Search Criteria Form**
+
+  * Input: search conditions form
+  * Logical Process: Turning form conditions into booleans
+  * Output: Conditional Query string
+
+**AJAX Loaded Results**
+
+  * Input: live user changes to query string
+  * Logical Process: Hook into json/xml data and retrieve it via javascript get/post
+  * Output: Javascript DOM changes
+
+**Picture Search**
+
+  * Input: Conditional query string with picture condition
+  * Logical Process: Search database for picture data only
+  * Output: List of relevant pictures
+
+**Search Spider**
+
+  * Input: External websites to look at
+  * Logical Process: Go to website and parse data and enter into full text search engine
+  * Output: Add to database
+
+Each component can be further separated into more specific components. Once you have your list of components, try to map your components into a flow diagram. There may be components inside components. One component's output may lead to another component's input. There is not just one logical flow, but many different flows.
+
+This gives you an idea of how your overall project will work. This is your project road map which you will refer back to in order to complete the project and you can also add time estimates to the completion of each component.
+
+Here is an example of the component map based on the above product:
+
+===== Standards & Technologies =====
+
+Once you have your component map. You can then figure out what kind of technologies are appropriate to your project. Considering the above example, we can see that we require some form technology, a database technology, text parsing technology, advertising platform... etc. We will also need to consider some development tools, and the stack that this product/service will be delivered from.
+
+Thankfully, web application development has many of these tools already, and these tools are widely available and are free. For the user input stage, we can use HTML. For the database, we can use MySQL or the many other SQL databases. For the text parsing we can use PHP. For the advertising platform we can use Google Adsense. For development tools we can use Notepad++. For the stack, we can use a standard LAMP stack on the many web hosts.
+
+Here is a basic explanation of these technologies (we'll get into them in more detail later):
+
+  * [[wp>HTML]] - Hyper Text Markup Language is a markup language that displays content in web browsers.
+  * [[wp>CSS]] - Cascading Style Sheets is a language that is used to style the HTML such as colours and displacement.
+  * [[wp>PHP]] - PHP: Hypertext Preprocessor  is a general purpose programming language that the primary server side scripting language for manipulating data on the web.
+  * [[wp>MySQL]] - My Standard Query Language is the most used open source relational database management system on the web.
+  * [[wp>Javascript]] - Javascript (not Java) is a client side scripting language that runs in a web browser to provide users with more dynamic user interfaces. It is however more advanced now and is used in many different applications.
+  * [[wp>Apache HTTP Server]] - Is a web server software that serves as a platform to run server side scripts, such as PHP. It then allows data to be accessed externally through the HTTP protocol.
+  * [[wp>Hypertext Transfer Protocol]] - Is the HTTP protocol which serves as the foundation of data communication on the web.
+  * [[wp>File Transfer Protocol]] - (FTP) is a protocol which allows files to be transferred between servers. We will be using this to upload files to a remote server so that other people can access them.
+  * [[wp>Integrated Development Environment]] - This is a set of software applications that allow computer programmers write source code in a manageable environment. Examples include Notepad++ and Dreamweaver.
+  * [[wp>Web Browser]] - Is a software application that retrieves HTTP web data and displays it to the user. Examples include Firefox, Internet Explorer, Safari.
+  * [[wp>JSON]] - Javascript Object Notation is a text based open standard for human readable data interchange. It represents simple data structures and associative arrays. We will be using this in place of XML.
+  * [[wp>Photoshop]] - Photoshop is an Adobe graphics editing program. We'll be using this to prototype our websites.
+  * [[wp>Caching (Computing)]] - Is the process where dynamic data is stored so future requests can be served quicker.
+===== Timing & Deployment =====
+
+Through considering the component map, you can adding durations to each component. This can give you an idea of how long the project will take. Your teacher will help you with this. Here are some questions to ask:
+
+  * How long is everything going to take?
+  * What are the milestones?
+  * When are we releasing the alpha?
+  * When are we releasing the beta?
+  * When are we releasing the 1.0?
+  * What will be the future releases?

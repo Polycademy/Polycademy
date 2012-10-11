@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- generator="FeedCreator 1.7.2-ppt DokuWiki" -->
+<?xml-stylesheet href="http://aiesecanu.org/polycademy/wiki/lib/exe/css.php?s=feed" type="text/css"?>
+<rss version="2.0">
+    <channel>
+        <title>Codex @ Polycademy</title>
+        <description></description>
+        <link>http://aiesecanu.org/polycademy/wiki/</link>
+        <lastBuildDate>Tue, 04 Sep 2012 08:20:13 -0700</lastBuildDate>
+        <generator>FeedCreator 1.7.2-ppt DokuWiki</generator>
+        <image>
+            <url>http://aiesecanu.org/polycademy/wiki/lib/tpl/default/images/favicon.ico</url>
+            <title>Codex @ Polycademy</title>
+            <link>http://aiesecanu.org/polycademy/wiki/</link>
+        </image>
+        <item>
+            <title>Web Design - created</title>
+            <link>http://aiesecanu.org/polycademy/wiki/doku.php?id=web_application_development:web_design&amp;rev=1346770381&amp;do=diff</link>
+            <description>Intro to web design
+
+Aesthetic Foundations
+
+Design
+
+HTML 5
+
+CSS
+
+Browser Testing
+
+Mobile Responsive Design</description>
+            <author>cmcdragonkai</author>
+        <category>web_application_development</category>
+            <pubDate>Tue, 04 Sep 2012 07:53:01 -0700</pubDate>
+        </item>
+        <item>
+            <title>Web Programming</title>
+            <link>http://aiesecanu.org/polycademy/wiki/doku.php?id=web_application_development:web_programming&amp;rev=1346770221&amp;do=diff</link>
+            <description>Intro to web programming
+
+Software Development Process
+
+Frameworks &amp; Content Management
+
+Understanding the Application Stack
+
+Coding
+
+Database
+
+Code Libraries (DRY)
+
+Bug Testing</description>
+            <author>cmcdragonkai</author>
+        <category>web_application_development</category>
+            <pubDate>Tue, 04 Sep 2012 07:50:21 -0700</pubDate>
+        </item>
+        <item>
+            <title>Codex - [Outline of Web Application Development] </title>
+            <link>http://aiesecanu.org/polycademy/wiki/doku.php?id=start&amp;rev=1346769790&amp;do=diff</link>
+            <description>Welcome to Polycademy's Codex. This is part of our Knowledge Management System. It will replace the standard textbook you get from your everyday school. This system is a Wiki. A wiki is a website software which allows its users to collaboratively create content. This means you, as a student, get to contribute to the course material and thus improve the content for future users. It is a like a never-ending book!</description>
+            <author>cmcdragonkai</author>
+            <pubDate>Tue, 04 Sep 2012 07:43:10 -0700</pubDate>
+        </item>
+        <item>
+            <title>Solution Stack - [GitHub] </title>
+            <link>http://aiesecanu.org/polycademy/wiki/doku.php?id=web_application_development:solution_stack&amp;rev=1346698744&amp;do=diff</link>
+            <description>Solution stack are a set of software solutions that are needed to deliver a fully functional solution. For a web application the stack requires an operating system, a web server, a database, and programming language. For the development of the web application, you require an integrated development environment (IDE). Understanding how these solution stacks are set up is important part of web application development. This section provides an introduction to the various stacks we will use, how to u…</description>
+            <author>cmcdragonkai</author>
+        <category>web_application_development</category>
+            <pubDate>Mon, 03 Sep 2012 11:59:04 -0700</pubDate>
+        </item>
+        <item>
+            <title>Solution Stack - created</title>
+            <link>http://aiesecanu.org/polycademy/wiki/doku.php?image=web_application_development%3Auncommitted_changes.jpg&amp;ns=web_application_development&amp;rev=1346678843&amp;tab_details=history&amp;mediado=diff&amp;do=media</link>
+            <description>&lt;img src=&quot;/polycademy/wiki/lib/exe/fetch.php?w=500&amp;h=292t=1346678843&amp;amp;media=web_application_development:uncommitted_changes.jpg&quot; alt=&quot;web_application_development:uncommitted_changes.jpg&quot; /&gt;</description>
+            <author>cmcdragonkai</author>
+        <category>web_application_development</category>
+            <pubDate>Mon, 03 Sep 2012 06:27:23 -0700</pubDate>
+        </item>
+        <item>
+            <title>Solution Stack - created</title>
+            <link>http://aiesecanu.org/polycademy/wiki/doku.php?image=web_application_development%3Acreate_branch_github.jpg&amp;ns=web_application_development&amp;rev=1346677831&amp;tab_details=history&amp;mediado=diff&amp;do=media</link>
+            <description>&lt;img src=&quot;/polycademy/wiki/lib/exe/fetch.php?w=500&amp;h=292t=1346677831&amp;amp;media=web_application_development:create_branch_github.jpg&quot; alt=&quot;web_application_development:create_branch_github.jpg&quot; /&gt;</description>
+            <author>cmcdragonkai</author>
+        <category>web_application_development</category>
+            <pubDate>Mon, 03 Sep 2012 06:10:31 -0700</pubDate>
+        </item>
+        <item>
+            <title>Solution Stack - created</title>
+            <link>http://aiesecanu.org/polycademy/wiki/doku.php?image=web_application_development%3Agithub_development_workflow.png&amp;ns=web_application_development&amp;rev=1346673573&amp;tab_details=history&amp;mediado=diff&amp;do=media</link>
+            <description>&lt;img src=&quot;/polycademy/wiki/lib/exe/fetch.php?w=500&amp;h=314t=1346673573&amp;amp;media=web_application_development:github_development_workflow.png&quot; alt=&quot;web_application_development:github_development_workflow.png&quot; /&gt;</description>
+            <author>cmcdragonkai</author>
+        <category>web_application_development</category>
+            <pubDate>Mon, 03 Sep 2012 04:59:33 -0700</pubDate>
+        </item>
+        <item>
+            <title>Solution Stack - created</title>
+            <link>http://aiesecanu.org/polycademy/wiki/doku.php?image=web_application_development%3Agithub_for_windows-screenshot.jpg&amp;ns=web_application_development&amp;rev=1345906336&amp;tab_details=history&amp;mediado=diff&amp;do=media</link>
+            <description>&lt;img src=&quot;/polycademy/wiki/lib/exe/fetch.php?w=500&amp;h=275t=1345906336&amp;amp;media=web_application_development:github_for_windows-screenshot.jpg&quot; alt=&quot;web_application_development:github_for_windows-screenshot.jpg&quot; /&gt;</description>
+            <author>cmcdragonkai</author>
+        <category>web_application_development</category>
+            <pubDate>Sat, 25 Aug 2012 07:52:16 -0700</pubDate>
+        </item>
+        <item>
+            <title>Solution Stack - created</title>
+            <link>http://aiesecanu.org/polycademy/wiki/doku.php?image=notepad_-screenshot.jpg&amp;ns=&amp;rev=1345833733&amp;tab_details=history&amp;mediado=diff&amp;do=media</link>
+            <description>&lt;img src=&quot;/polycademy/wiki/lib/exe/fetch.php?w=500&amp;h=302t=1345833733&amp;amp;media=notepad_-screenshot.jpg&quot; alt=&quot;notepad_-screenshot.jpg&quot; /&gt;</description>
+            <author>cmcdragonkai</author>
+            <pubDate>Fri, 24 Aug 2012 11:42:13 -0700</pubDate>
+        </item>
+    </channel>
+</rss>

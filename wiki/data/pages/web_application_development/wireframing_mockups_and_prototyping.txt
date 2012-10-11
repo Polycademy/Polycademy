@@ -1,0 +1,11 @@
+====== Wireframes, Mockups and Prototyping ======
+
+Use this: www.pencil.evolus.vn
+
+Pen and paper for wireframing (or you can use the above software like Pencil)
+
+Photoshop for Mockups
+
+HTML and CSS for prototyping
+
+This is some practice for the students + theory on why do this in the first place? For web apps or content based sites, and as freelancers working for clients.

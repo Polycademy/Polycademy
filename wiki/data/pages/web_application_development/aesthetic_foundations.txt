@@ -1,0 +1,45 @@
+====== Aesthetic Foundations ======
+
+[{{ :web_application_development:icon_design_process_сс.png?200|Icon Design Process Infographic ((By Andaja (Own work) [CC-BY-SA-3.0 (http://creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons))}}]
+
+Intro to aesthetic foundations, what is aesthetics use this: http://webdesign.tutsplus.com/sessions/web-design-theory/
+
+===== Inspiration =====
+
+First go look at these websites: Inspiration from other websites: Dribble (http://dribbble.com/), http://unmatchedstyle.com/ http://www.webcreme.com/
+Try to think why these websites are considered good designs.
+
+===== Brand & Theme =====
+
+Then ask what is the website's brand or theme? What is the context of the application? Who are the target audience? What do people expect of similar websites or similar contexts? What is the message you are trying to communicate? Who do you represent? What is the point of the application and does that have a theme?
+
+Consider MailChimp (emailing with a chimp?), Basecamp..
+
+http://en.wikipedia.org/wiki/Brand
+
+===== Colour Theory =====
+
+Emotions and colour wheels
+Remember that context is important. Different cultures result in different conceptions of colour.
+http://webdesign.tutsplus.com/articles/design-theory/the-web-designers-theory-of-relativity/
+http://blog.hostdime.com/2012/03/color-theory-in-website-design/
+http://sixrevisions.com/web_design/a-look-into-color-theory-in-web-design/
+
+===== Composition =====
+
+Visual Hierarchy
+Alignment
+Proximity
+Density & Whitespace
+Repetition
+Symmetry
+Typography - link to other page!
+
+http://en.wikipedia.org/wiki/Design_principles_and_elements
+http://psd.tutsplus.com/articles/web/50-totally-free-lessons-in-graphic-design-theory/
+http://webdesign.tutsplus.com/articles/design-theory/understanding-visual-hierarchy-in-web-design/
+
+===== Trends =====
+
+Trends - minimalism, epicenter design, single page designs, portfolio designs, cms based designs
+Keep up to date with Design websites such as NetTuts, Smashing Magazine, UXMag

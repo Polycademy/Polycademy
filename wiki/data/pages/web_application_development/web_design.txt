@@ -1,0 +1,43 @@
+====== Web Design ======
+
+Web design is a cross-disciplinary field involving many methodologies, areas of study and technology. Web design deals with the front-end client side of any web application. This is basically everything that the customer sees and feels about the product. It involves graphic design, user interface design, mark up such as HTML and CSS, client side scripts such as Javascript, content authoring, user experience design, search engine optimisation, disabled accessibility, internet browser quirks, and mobile responsive design. Some aspects of web design does cross over into web development so there are many grey areas. However web professionals can specialise in either web design or web programming.
+
+We start with web design before web programming because at Polycademy we like to make the function follow the form.(([[http://gettingreal.37signals.com/ch09_Interface_First.php|Interface First]])) By working on the visual elements, the user experience, and interfacing methods first, we get a better idea of what the product will look and feel to the end user. The customer will not see, nor understand the plumbing (programming) of the application, so they won't care. Therefore we need to first plot out the design of the web application before we get to the programming. You can also think of web design as the prototype that you can test out, to see flaws that otherwise would not be noticed if you went straight ahead to programming. It also allows you to pitch it to potential investors and partners so they can see the vision.
+
+===== Design Theory =====
+
+Before we head into the practical stage of design with Photoshop and markup, we must first get acquainted with design theory. Design can be defined as a strategic approach for someone to achieve a unique specification of an object, which is intended to accomplish goals and satisfy requirements in a particular environment, while under constraints. It is important to understand that while design can be art, art cannot be design. Art is a means of self-expression, whereas design is a means of selling a product or service. Therefore art inspires emotion whereas design motivates actions. Art is interpreted so a different message is sent to different people, whereas design is understood so it is the same message to everyone. You can find out more about the differences from John O'Nolan's article at the [[http://www.webdesignerdepot.com|Web Designer Depot]].((http://www.webdesignerdepot.com/2009/09/the-difference-between-art-and-design/))
+
+In this section, we'll examine theories and concepts in design that is relevant to the modern day web industry. We'll first go through the philosophies in [[Aesthetic Foundations|aesthetics]] to lay down our foundations. As this course is intended to teach how to design the actual web application itself, then understanding the [[User Experience Design|user experience]] of the product will be integral to design. Then we'll get get more practical by examining the theory of [[User Interface|user interfaces]] which is the main thing that your customers will interact with. Then we'll practice the industry standard of [[Wireframing, Mockups and Prototyping|wireframing, mockups and prototyping]].
+
+===== Photoshop =====
+
+At this point students should have already completed a wireframe of their product, understood their brand and theme, designed their user interface and user experience, and are ready to apply their design theory to an actual mockup.
+
+Introduction the why and what is photoshop.
+
+Then how to use certain relevant tools along with examples or case studies. Go through all the needed tools in Photoshop!! (Layers and crap!)
+Also understanding the grid structure
+
+Also possibly string along an actual website mockup method, and then teach the slicing method such as psd2html...
+Video demonstration of the photoshop mockup with stateofwar and aiesecanus one. You'll need to go back and recreate alot of some of your custom graphics? Or you can just give a list of resources to follow (that might be faster!)
+
+GRID is here: http://psd.tutsplus.com/articles/web/50-totally-free-lessons-in-graphic-design-theory/
+
+Web slicing: http://designshack.net/articles/graphics/how-to-make-slicing-suck-less-tips-and-tricks-for-slicing-a-psd/
+
+List of websites created in photoshop: http://vandelaydesign.com/blog/design/photoshop-layout-tutorials/ (are you going to go through your own creation?? Maybe you could use stateofwar?? and aiesecanu!!)
+===== HTML =====
+
+Intro to HTML 5 (students should learn this with the CSS section. So every class will focus on a few tags and tools, but allow the students to mix and match what's needed to actually create a prototype for their photoshop mockup. The slicing will be important here)
+
+Using HTML 5 boilerplate
+
+Understanding all the elements in HTML 5 with case studies and examples. Code examples will be used here along with html demonstrations with no styling of CSS!
+
+Validation
+
+Favicon
+===== CSS =====
+===== Browser Testing =====
+===== Mobile Design =====
