@@ -29,6 +29,11 @@ $(function(){
 		hashTitleSelector: "h3.slide_title", //specifies the name of the hash which corresponds to the specific slide
 	});
 	
+	/*twitter popovers*/
+	$('.team_popovers').popover({
+		trigger: "click",
+	});
+	
 	/* Anchor Slider by Cedric Dugas Http://www.position-absolute.com */
 	/*
 	$(document).ready(function() {
