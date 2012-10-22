@@ -1,18 +1,18 @@
 $(function(){
 
-	//Equal column height for the rows!
-	function resetHeight() {
+	// Equalise column height for any plurality of rows, just make sure to give a selector that has multiple elements
+	function equalise_height(selector){
 		var maxHeight = 0;
-		$(".grid_box").height("auto").each(function(){ 
+		$(selector).height("auto").each(function(){ 
 			maxHeight = $(this).height() > maxHeight ? $(this).height() : maxHeight; 
 		}).height(maxHeight);
 	}
 	
-	resetHeight();
-	
-	// reset height on resize of the window:
+	equalise_height(".grid_box");
+	equalise_height(".logistics_grid > section > p");
 	$(window).resize(function() { 
-		resetHeight();
+		equalise_height(".grid_box");
+		equalise_height(".logistics_grid > section > p");
 	});
 	
 	/* Liquid Slider (http://liquidslider.kevinbatdorf.com/) */
