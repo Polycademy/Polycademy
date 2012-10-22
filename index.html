@@ -6,20 +6,15 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title></title>
-        <meta name="description" content="">
+        <title>Polycademy - an academy for web application entrepreneurship</title>
+        <meta name="description" content="Polycademy is a brick & mortar school in Canberra that teaches web application development from a top-down framework. Its customers will be entrepreneurial highschool students or adults who want to reskill. Students are placed in teams and are taught web tech by starting with envisioning their own project to coding and deployment. Students finish the course not with a shiny paper, but an actual us
+able application. The development experience integrates industry practices such as using revision control systems and agile development methodologies, and also includes workshops in deploying it to the market.">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <link rel="stylesheet" href="css/bootstrap.min.css">
-        <style>
-            body {
-                padding-top: 60px;
-                padding-bottom: 40px;
-            }
-        </style>
-        <link rel="stylesheet" href="css/bootstrap-responsive.min.css">
         <!-- This is compiled main.css, will require moving the less to this in production code <link rel="stylesheet" href="css/main.css"> -->
 		<link rel="stylesheet/less" href="css/main.less">
+        <link rel="stylesheet" href="css/bootstrap-responsive.min.css">
 		
 		<script src="js/vendor/less-1.3.0.min.js"></script>
         <script src="js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
@@ -28,86 +23,324 @@
         <!--[if lt IE 7]>
             <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
         <![endif]-->
-
-        <!-- This code is taken from http://twitter.github.com/bootstrap/examples/hero.html -->
-
-        <div class="navbar navbar-inverse navbar-fixed-top">
+		
+        <header class="navbar navbar-static-top">
             <div class="navbar-inner">
-                <div class="container">
-                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </a>
-                    <a class="brand" href="#">Project name</a>
-                    <div class="nav-collapse collapse">
-                        <ul class="nav">
-                            <li class="active"><a href="#">Home</a></li>
-                            <li><a href="#about">About</a></li>
-                            <li><a href="#contact">Contact</a></li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Action</a></li>
-                                    <li><a href="#">Another action</a></li>
-                                    <li><a href="#">Something else here</a></li>
-                                    <li class="divider"></li>
-                                    <li class="nav-header">Nav header</li>
-                                    <li><a href="#">Separated link</a></li>
-                                    <li><a href="#">One more separated link</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <form class="navbar-form pull-right">
-                            <input class="span2" type="text" placeholder="Email">
-                            <input class="span2" type="password" placeholder="Password">
-                            <button type="submit" class="btn">Sign in</button>
-                        </form>
-                    </div><!--/.nav-collapse -->
-                </div>
-            </div>
-        </div>
-
-        <div class="container">
-
-            <!-- Main hero unit for a primary marketing message or call to action -->
-            <div class="hero-unit">
-                <h1>Hello, world!</h1>
-                <p>This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-                <p><a class="btn btn-primary btn-large">Learn more &raquo;</a></p>
-            </div>
-
-            <!-- Example row of columns -->
-            <div class="row">
-                <div class="span4">
-                    <h2>Heading</h2>
-                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                    <p><a class="btn" href="#">View details &raquo;</a></p>
-                </div>
-                <div class="span4">
-                    <h2>Heading</h2>
-                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                    <p><a class="btn" href="#">View details &raquo;</a></p>
-               </div>
-                <div class="span4">
-                    <h2>Heading</h2>
-                    <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-                    <p><a class="btn" href="#">View details &raquo;</a></p>
-                </div>
-            </div>
-
-            <hr>
-
-            <footer>
-                <p>&copy; Polycademy & Code for Australia 2012</p>
-            </footer>
-
-        </div> <!-- /container -->
+				<div class="container">
+					<a href="/"><img class="logo" src="img/logo.png" /></a>
+					<p class="slogan">academy for web application entrepreneurship</p>
+					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</a>
+					<div class="nav-collapse collapse">
+						<ul class="nav">
+							<li><a href="#">home</a></li>
+							<li class="divider-vertical"></li>
+							<li><a href="#">courses</a></li>
+							<li class="divider-vertical"></li>
+							<li><a href="#">alumni</a></li>
+							<li class="divider-vertical"></li>
+							<li><a href="#">blog</a></li>
+							<li class="divider-vertical"></li>
+							<li><a href="#">get involved</a></li>
+							<li class="divider-vertical"></li>
+							<li><a href="#">about</a></li>
+							<li class="divider-vertical"></li>
+							<li><a href="#">devhub</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+        </header>
+		
+		<div class="article_slider_container">
+			<div class="container">
+				<article class="main_article">
+					<h2>Got an idea for an application that will change the world?</h2>
+					<h4>let’s build it together</h4>
+					<div class="row action_grid">
+						<section class="envision_panel span4">
+							<div class="grid_box">
+								<h3><a href="#envision" data-liquidslider-ref="mid_slider_template">Envision</a></h3>
+								<div class="row-fluid">
+									<div class="span4">
+										<img src="img/action_grid_hex_envision.png" alt="" />
+									</div>
+									<div class="span8">
+										<p>Envision your idea. Setup a team with potential cofounders. Learn about the nature of web application development, agile methodologies, and the MVP philosophy.</p>
+									</div>
+								</div>
+							</div>
+						</section>
+						<section class="build_panel span4">
+							<div class="grid_box">
+								<h3><a href="#build" data-liquidslider-ref="mid_slider_template">Build</a></h3>
+								<div class="row-fluid">
+									<div class="span4">
+										<img src="img/action_grid_hex_build.png" alt="" />
+									</div>
+									<div class="span8">
+										<p>From web design to programming & databases to front  end scripting. It’s a full stack workout. You learn while you build, it will be practical and intensive.</p>
+									</div>
+								</div>
+							</div>
+						</section>
+						<section class="deploy_panel span4">
+							<div class="grid_box">
+								<h3><a href="#deploy" data-liquidslider-ref="mid_slider_template">Deploy</a></h3>
+								<div class="row-fluid">
+									<div class="span4">
+										<img src="img/action_grid_hex_deploy.png" alt="" />
+									</div>
+									<div class="span8">
+										<p>Bootstrap your idea and test it live. Polycademy helps you with hosting, entrepreneurship, acquiring mentorship, potential employers and investors.</p>
+									</div>
+								</div>
+							</div>
+						</section>
+					</div>
+					<h2>At Polycademy we turn noobs into web developers in 3 or 6 months.</h2>
+				</article>
+				<article class="action_slider">
+					<div class="liquid-slider" id="mid_slider_template">
+						<section class="envision_slide">
+							<h3 class="slide_title">Envision</h3>
+							<div class="slide_grid">
+								<div class="row-fluid">
+									<section class="slide_details span4">
+										<div class="row-fluid">
+											<div class="span4">
+												<img src="img/detailed_hex_network.png" alt="" />
+											</div>
+											<div class="span8">
+												<h5>Inspiration</h5>
+												<p>Students come with different backgrounds and locations, which allows a cross pollination of ideas.</p>
+											</div>
+										</div>
+									</section>
+									<section class="slide_details span4">
+										<div class="row-fluid">
+											<div class="span4">
+												<img src="img/detailed_hex_team.png" alt="" />
+											</div>
+											<div class="span8">
+												<h5>Teamwork</h5>
+												<p>Develop your soft skills in communication, delegation, collaboration and team building.</p>
+											</div>
+										</div>
+									</section>
+									<section class="slide_details span4">
+										<div class="row-fluid">
+											<div class="span4">
+												<img src="img/detailed_hex_mvp.png" alt="" />
+											</div>
+											<div class="span8">
+												<h5>MVP</h5>
+												<p>Design based on minimum viable product so you can test your idea’s commercial potential quickly.</p>
+											</div>
+										</div>
+									</section>
+								</div>
+								<div class="row-fluid">
+									<section class="slide_details span4">
+										<div class="row-fluid">
+											<div class="span4">
+												<img src="img/detailed_hex_copyleft.png" alt="" />
+											</div>
+											<div class="span8">
+												<h5>Intellectual Property</h5>
+												<p>Everything you build is yours. We’ll use Github to host your open source code for free.</p>
+											</div>
+										</div>
+									</section>
+									<section class="slide_details span4">
+										<div class="row-fluid">
+											<div class="span4">
+												<img src="img/detailed_hex_stack.png" alt="" />
+											</div>
+											<div class="span8">
+												<h5>Solution Stack</h5>
+												<p>Learn how to setup the development environment and the solution stack to run your app.</p>
+											</div>
+										</div>
+									</section>
+									<section class="slide_details span4">
+										<div class="row-fluid">
+											<div class="span4">
+												<img src="img/detailed_hex_australia.png" alt="" />
+											</div>
+											<div class="span8">
+												<h5>Code for Australia</h5>
+												<p>Get involved in building applications for open gov and community organisations.</p>
+											</div>
+										</div>
+									</section>
+								</div>
+							</div>
+						</section>
+						<section class="build_slide">
+							<h3 class="slide_title">Build</h3>
+							<div class="slide_grid">
+								<div class="row-fluid">
+									<section class="slide_details span4">
+										<div class="row-fluid">
+											<div class="span4">
+												<img src="img/detailed_hex_html.png" alt="" />
+											</div>
+											<div class="span8">
+												<h5>HTML5 & CSS3</h5>
+												<p>Make use of the semantic web and bend this ubiquitous web platform to your will.</p>
+											</div>
+										</div>
+									</section>
+									<section class="slide_details span4">
+										<div class="row-fluid">
+											<div class="span4">
+												<img src="img/detailed_hex_js.png" alt="" />
+											</div>
+											<div class="span8">
+												<h5>Javascript</h5>
+												<p>Go interactive with Javascript, jQuery, and CoffeeScript to make your web app come to life.</p>
+											</div>
+										</div>
+									</section>
+									<section class="slide_details span4">
+										<div class="row-fluid">
+											<div class="span4">
+												<img src="img/detailed_hex_php.png" alt="" />
+											</div>
+											<div class="span8">
+												<h5>Codeigniter PHP</h5>
+												<p>Use PHP & the Codeigniter framework to write industry standard MVC applications.</p>
+											</div>
+										</div>
+									</section>
+								</div>
+								<div class="row-fluid">
+									<section class="slide_details span4">
+										<div class="row-fluid">
+											<div class="span4">
+												<img src="img/detailed_hex_performance.png" alt="" />
+											</div>
+											<div class="span8">
+												<h5>Performance</h5>
+												<p>Compress, cache, refactor and use CDNs to make your app zoom!</p>
+											</div>
+										</div>
+									</section>
+									<section class="slide_details span4">
+										<div class="row-fluid">
+											<div class="span4">
+												<img src="img/detailed_hex_security.png" alt="" />
+											</div>
+											<div class="span8">
+												<h5>Security</h5>
+												<p>Learn how to authenticate requests, secure passwords, and protect against common attacks.</p>
+											</div>
+										</div>
+									</section>
+									<section class="slide_details span4">
+										<div class="row-fluid">
+											<div class="span4">
+												<img src="img/detailed_hex_github.png" alt="" />
+											</div>
+											<div class="span8">
+												<h5>Git Source Control</h5>
+												<p>Use Git to collaborate and version control code, and get developer cred through social coding at Github.</p>
+											</div>
+										</div>
+									</section>
+								</div>
+						</section>
+						<section class="deploy_slide">
+							<h3 class="slide_title">Deploy</h3>
+							<div class="slide_grid">
+								<div class="row-fluid">
+									<section class="slide_details span6">
+										<div class="row-fluid">
+											<div class="span4">
+												<img src="img/detailed_hex_server.png" alt="" />
+											</div>
+											<div class="span8">
+												<h5>Live Testing</h5>
+												<p>Go live with your newly built MVP prototype and gain market traction.</p>
+											</div>
+										</div>
+									</section>
+									<section class="slide_details span6">
+										<div class="row-fluid">
+											<div class="span4">
+												<img src="img/detailed_hex_entrepreneur.png" alt="" />
+											</div>
+											<div class="span8">
+												<h5>Entrepreneurship</h5>
+												<p>Learn the strategies of entrepreneurship and the opportunities to turn your project into a business.</p>
+											</div>
+										</div>
+									</section>
+								</div>
+								<div class="row-fluid">
+									<section class="slide_details span6">
+										<div class="row-fluid">
+											<div class="span4">
+												<img src="img/detailed_hex_mentor.png" alt="" />
+											</div>
+											<div class="span8">
+												<h5>Mentorship</h5>
+												<p>Established entrepreneurs, developers & designers volunteer their time to help with your personal development.</p>
+											</div>
+										</div>
+									</section>
+									<section class="slide_details span6">
+										<div class="row-fluid">
+											<div class="span4">
+												<img src="img/detailed_hex_money.png" alt="" />
+											</div>
+											<div class="span8">
+												<h5>Investors & Employers</h5>
+												<p>Finally a careers/pitching fair will get you and your work noticed by employers and investors.</p>
+											</div>
+										</div>
+									</section>
+								</div>
+							</div>
+						</section>
+					</div>
+				</article>
+			</div>
+		</div>
+		
+		<div class="team_location_container">
+			<div class="container">
+				<article class="row">
+					<section class="span4">
+						<h3>Eon</h3>
+						<p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+					</section>
+					<section class="span4">
+						<h3>Envision</h3>
+						<p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+					</section>
+					<section class="span4">
+						<h3>Envision</h3>
+						<p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+					</section>
+				</article>
+			</div>
+		</div>
+		
+		<footer>
+			<p>&copy; Polycademy & Code for Australia 2012</p>
+		</footer>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.8.2.min.js"><\/script>')</script>
 
         <script src="js/vendor/bootstrap.min.js"></script>
+		<script src="js/vendor/jquery-ui-1.8.20.custom.min.js"></script>
+		<script src="js/vendor/jquery.liquid-slider-0.1.min.js"></script>
 
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
