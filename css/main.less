@@ -1,4 +1,4 @@
-@import url("bootstrap.less");
+@import url("bootstrap.less"); /* Watch out for pathing issues, this is relative from this file because it is being compiled by Simpless */
 @import url("bootstrap-responsive.less");
 
 /* ==========================================================================
@@ -642,13 +642,34 @@ header.navbar{
 	color: #3e3c3c;
 }
 
-.location_panel > p, .space_panel > p{
-	background: url('../img/team_location_panel_bg.png');
-	padding: 25px;
+.location_panel > p{
+	padding: 20px;
+}
+
+/* This is using modernizr */
+.multiplebgs section.location_panel > p{
+	background: url('../img/location_mapbg.png') no-repeat bottom right, url('../img/team_location_panel_bg.png') repeat;
+}
+
+.no-multiplebgs section.location_panel > p{
+	background: url('../img/team_location_panel_bg.png') repeat;
+}
+
+.multiplebgs section.space_panel > p{
+	background: url('../img/space_teachbg.png') no-repeat bottom right, url('../img/team_location_panel_bg.png') repeat;
+}
+
+.no-multiplebgs section.space_panel > p{
+	background: url('../img/team_location_panel_bg.png') repeat;
 }
 
 #call_to_action{
 	margin-bottom: 36px;
+}
+
+footer{
+	background: url('../img/header_footer_bg.jpg') repeat;
+	border-top: 1px solid #c87173;
 }
 
 .copyright{
