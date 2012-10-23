@@ -5,14 +5,8 @@
    Author's custom styles
    ========================================================================== */
    
-/* For Removing Skype's Styles */
-span.skype_pnh_container{
-	display: none !important;
-}
-
-span.skype_pnh_print_container{
-	display: inline !important;
-}
+/* Variables */
+@responsive_slider_max_width: 1100px;
 
 /* Fonts */
 @font-face {
@@ -58,6 +52,7 @@ span.skype_pnh_print_container{
     font-weight: normal;
     font-style: normal;
 }
+
 
 /* h styles */
 .article_slider_container h2, .team_location_container h2{
@@ -288,11 +283,11 @@ header.navbar{
 * Additional media queries are at the bottom of this document
 ******************************************************************/
 .liquid-slider-wrapper {
-  margin:0 auto;
-  /* Do not edit below this line */
-  clear: both;
-  overflow: auto;
-  position: relative;
+	margin:0 auto;
+	/* Do not edit below this line */
+	clear: both;
+	overflow: auto;
+	position: relative;
 }
 
 /******************************************************
@@ -307,7 +302,7 @@ header.navbar{
 *******************************************************/
 .liquid-slider-wrapper .liquid-slider {
   background: transparent;
-  width: 1100px;
+  width: @responsive_slider_max_width;
   /* Do not edit below this line */
   float: left;
   overflow: hidden;
@@ -316,7 +311,6 @@ header.navbar{
 .liquid-slider-wrapper .panel-container {
   /* Do not edit below this line */
   position: relative;
-
 }
 .liquid-slider-wrapper .liquid-slider .panel-container .fadeClass {
   /* Do not edit below this line */
@@ -333,7 +327,7 @@ header.navbar{
 * for the entire slider.
 *******************************************************/
 .liquid-slider-wrapper .liquid-slider .panel {  
-  width: 1100px;
+  width: @responsive_slider_max_width;
   /* Do not edit below this line */
   display: block;
   float: left;
