@@ -3,13 +3,13 @@
 
 # TEAM
 
-    <name> -- <role> -- <twitter>
+    Roger Qiu -- Founder -- @Polycademy and @CodeforAus
 
 # THANKS
 
-    <name>
+    Maria Foo
 
 # TECHNOLOGY COLOPHON
 
     HTML5, CSS3
-    jQuery, Modernizr
+    jQuery, Modernizr and whole lot else!
