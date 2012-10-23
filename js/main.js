@@ -10,9 +10,11 @@ $(function(){
 	
 	equalise_height(".grid_box");
 	equalise_height(".logistics_grid > section > p");
+	equalise_height(".footer_grid > section > p");
 	$(window).resize(function() { 
 		equalise_height(".grid_box");
 		equalise_height(".logistics_grid > section > p");
+		equalise_height(".footer_grid > section > p");
 	});
 	
 	/* Liquid Slider (http://liquidslider.kevinbatdorf.com/) */
