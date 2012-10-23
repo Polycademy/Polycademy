@@ -1,5 +1,6 @@
 @import url("bootstrap.less"); /* Watch out for pathing issues, this is relative from this file because it is being compiled by Simpless */
 @import url("bootstrap-responsive.less");
+@import url("responsive.less");
 
 /* ==========================================================================
    Author's custom styles
@@ -106,7 +107,7 @@ body{
 }
 
 .container{
-	padding: 0 20px;
+	padding: 0 9px !important;
 }
 
 /* Header */
@@ -116,13 +117,16 @@ header.navbar{
 	margin: 0;
 }
 
-.navbar-inner{
+header.navbar div.navbar-inner{
 	background: transparent;
+	border: none;
+	box-shadow: none;
+	padding: 0;
 }
 
 .logo{
     float: left;
-    margin: 35px 25px 34px 10px;
+    margin: 35px 0 34px;
 }
 
 .slogan{
@@ -130,7 +134,7 @@ header.navbar{
 	color: #e31e24;
 	font-size: 15px;
 	float: right;
-	margin: 30px 0 12px 0;
+	margin: 30px 12px 12px 0;
 }
 
 .navbar .btn-navbar{
@@ -138,11 +142,7 @@ header.navbar{
 	height: 13px;
 	float: right;
 	clear: right;
-	margin: 6px 6px 0 0;
-}
-
-.nav-collapse.in > .nav{
-	float: none;
+	margin: 6px 12px 0 0;
 }
 
 .navbar .nav{
