@@ -6589,12 +6589,9 @@ footer {
 .no-multiplebgs section.notices_panel > p {
   background: url('../img/footer_panel_bg.png') repeat;
 }
-<<<<<<< HEAD
-=======
 .footer_dates {
   font-size: 12px;
 }
->>>>>>> origin/develop
 .copyright {
   float: right;
   font-size: 10px;
