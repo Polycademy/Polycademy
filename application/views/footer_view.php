@@ -2,15 +2,23 @@
 			<div class="container">
 				<article class="row footer_grid">
 					<section class="blog_panel span4">
-						<h3>Blog</h3>
-						<p>• 24th Dec - Title - Blah blah blah blah blah more...</p>
+						<h3><a href="<?php echo base_url() ?>blog">Blog</a></h3>
+						<p>• No blog post yet</p>
 					</section>
 					<section class="fbtwitter_panel span4">
-						<h3>FB/Twitter</h3>
-						<p>Placeholder</p>
+						<h3><a href="<?=$facebook_page?>">FB</a>/<a href="<?=$twitter_page?>">Twitter</a></h3>
+						<p>
+						<?php
+							foreach($feeds as $feed){
+						?>
+								• <em class="footer_dates">(<?=$feed['date']?>)</em> - <a href="<?=$feed['link']?>"><?=$feed['title']?></a><br /><br />
+						<?php
+							}
+						?>
+						</p>
 					</section>
 					<section class="notices_panel span4">
-						<h3>Notices</h3>
+						<h3><a href="<?php echo base_url() ?>blog/notices">Notices</a></h3>
 						<p>We’re hiring teachers who would specialise in web design & web development.<br /><br />We’re interested in acquiring mentors, investors and employers who are interested to get involved.<br /><br />We’re also looking for a good location for the classroom.<br /><br />Find out more at <a href='http://www.google.com/recaptcha/mailhide/d?k=01q-bJV3WQrMYWD2quLJ7VPA==&c=FsmnfqaQraWCMzZB6tsagBZd557LPBLlxh80gaenMSo='>@polycademy.com</a></p>
 					</section>
 				</article>

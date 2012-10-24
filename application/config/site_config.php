@@ -15,6 +15,8 @@ able application. The development experience integrates industry practices such 
 	'copyright'					=> '&copy; Polycademy & Code for Australia 2012',
 	'google_analytics_key'		=> 'UA-35507004-1',
 	'recaptcha_personal_email'	=> '<a href=\'http://www.google.com/recaptcha/mailhide/d?k=01q-bJV3WQrMYWD2quLJ7VPA==&c=FsmnfqaQraWCMzZB6tsagBZd557LPBLlxh80gaenMSo=\'>@polycademy.com</a>',
+	'twitter_page'				=> 'https://twitter.com/Polycademy',
+	'facebook_page'				=> 'https://www.facebook.com/Polycademy',
 );
 
 $config['codeforaustralia'] = array();
