@@ -79,7 +79,7 @@
 $active_group = 'default';
 $query_builder = TRUE;
 
-if(isset($_SERVER['CI_ENV']) AND $_SERVER['CI_ENV'] == 'production'){
+if(ENVIRONMENT == 'production'){
 	
 	$services = getenv("VCAP_SERVICES");
 	$services_json = json_decode($services, true);
