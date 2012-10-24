@@ -1,6 +1,13 @@
 ====== Solution Stack ======
 
 Solution stack are a set of software solutions that are needed to deliver a fully functional solution. For a web application the stack requires an operating system, a web server, a database, and programming language. For the development of the web application, you require an integrated development environment (IDE). Understanding how these solution stacks are set up is important part of web application development. This section provides an introduction to the various stacks we will use, how to use them and how to install them on your computer.
+
+===== UPDATES =====
+
+Github remote fetching from clones
+Github for MAC
+Geany...
+
 ===== AMP =====
 === What is AMP ===
 
