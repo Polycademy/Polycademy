@@ -81,15 +81,15 @@ $query_builder = TRUE;
 
 if(ENVIRONMENT == 'production'){
 	
-	$services = getenv("VCAP_SERVICES");
+	$services = getenv('VCAP_SERVICES');
 	$services_json = json_decode($services, true);
-	$mysql_config = $services_json["mysql-5.1"][0]["credentials"];
+	$mysql_config = $services_json['mysql-5.1'][0]['credentials'];
 	$db['default'] = array(
 		'dsn'		=> '',
-		'hostname'	=> $mysql_config["hostname"],
-		'username'	=> $mysql_config["user"],
-		'password'	=> $mysql_config["password"],
-		'database'	=> $mysql_config["name"],
+		'hostname'	=> $mysql_config['hostname'],
+		'username'	=> $mysql_config['user'],
+		'password'	=> $mysql_config['password'],
+		'database'	=> $mysql_config['name'],
 		'dbdriver'	=> 'mysqli',
 		'dbprefix'	=> 'ci_',
 		'pconnect'	=> TRUE,
@@ -104,7 +104,7 @@ if(ENVIRONMENT == 'production'){
 		'compress'	=> FALSE,
 		'stricton'	=> FALSE,
 		'failover'	=> array(),
-		'port'		=> $mysql_config["port"],
+		'port'		=> $mysql_config['port'],
 	);
 	
 }else{
