@@ -79,27 +79,59 @@
 $active_group = 'default';
 $query_builder = TRUE;
 
-$db['default'] = array(
-	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => '',
-	'database' => 'polycademy',
-	'dbdriver' => 'mysqli',
-	'dbprefix' => 'ci_',
-	'pconnect' => TRUE,
-	'db_debug' => TRUE,
-	'cache_on' => FALSE,
-	'cachedir' => '',
-	'char_set' => 'utf8',
-	'dbcollat' => 'utf8_general_ci',
-	'swap_pre' => '',
-	'autoinit' => TRUE,
-	'encrypt' => FALSE,
-	'compress' => FALSE,
-	'stricton' => FALSE,
-	'failover' => array()
-);
+if(ENVIRONMENT == 'production'){
+	
+	$services = getenv('VCAP_SERVICES');
+	$services_json = json_decode($services, true);
+	$mysql_config = $services_json['mysql-5.1'][0]['credentials'];
+	$db['default'] = array(
+		'dsn'		=> '',
+		'hostname'	=> $mysql_config['hostname'],
+		'username'	=> $mysql_config['user'],
+		'password'	=> $mysql_config['password'],
+		'database'	=> $mysql_config['name'],
+		'dbdriver'	=> 'mysqli',
+		'dbprefix'	=> 'ci_',
+		'pconnect'	=> TRUE,
+		'db_debug'	=> TRUE,
+		'cache_on'	=> FALSE,
+		'cachedir'	=> '',
+		'char_set'	=> 'utf8',
+		'dbcollat'	=> 'utf8_general_ci',
+		'swap_pre'	=> '',
+		'autoinit'	=> TRUE,
+		'encrypt'	=> FALSE,
+		'compress'	=> FALSE,
+		'stricton'	=> FALSE,
+		'failover'	=> array(),
+		'port'		=> $mysql_config['port'],
+	);
+	
+}else{
+
+	$db['default'] = array(
+		'dsn'	=> '',
+		'hostname' => 'localhost',
+		'username' => 'root',
+		'password' => '',
+		'database' => 'polycademy',
+		'dbdriver' => 'mysqli',
+		'dbprefix' => 'ci_',
+		'pconnect' => TRUE,
+		'db_debug' => TRUE,
+		'cache_on' => FALSE,
+		'cachedir' => '',
+		'char_set' => 'utf8',
+		'dbcollat' => 'utf8_general_ci',
+		'swap_pre' => '',
+		'autoinit' => TRUE,
+		'encrypt' => FALSE,
+		'compress' => FALSE,
+		'stricton' => FALSE,
+		'failover' => array()
+	);
+
+}
 
 /* End of file database.php */
 /* Location: ./application/config/database.php */
