@@ -24,5 +24,3 @@ function rss_process($feed_url){
 	return false;
 	
 }
-
-?>

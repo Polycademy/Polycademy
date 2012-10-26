@@ -17,6 +17,27 @@ able application. The development experience integrates industry practices such 
 	'recaptcha_personal_email'	=> '<a href=\'http://www.google.com/recaptcha/mailhide/d?k=01q-bJV3WQrMYWD2quLJ7VPA==&c=FsmnfqaQraWCMzZB6tsagBZd557LPBLlxh80gaenMSo=\'>@polycademy.com</a>',
 	'twitter_page'				=> 'https://twitter.com/Polycademy',
 	'facebook_page'				=> 'https://www.facebook.com/Polycademy',
+	'links'						=> array( #this is in order of navigation from left to right 'name of link' => directory/controller name/method name
+		#header links
+		'navigation'	=> array(
+			'home'			=> 'home',
+			'courses'		=> 'courses',
+			'alumni'		=> 'alumni',
+			'blog'			=> 'blog',
+			'get involved'	=> 'get_involved',
+			'about'			=> 'about',
+			'devhub'		=> 'devhub',
+		),
+		#other links
+		'notices'		=> 'blog/notices',
+		'codex'			=> 'wiki',
+		'forum'			=> 'forum',
+		#resources for base_url()
+		'js_assets'		=> 'js',
+		'css_assets'	=> 'css',
+		'img_assets'	=> 'img',
+		'font_assets'	=> 'fonts',
+	),
 );
 
 $config['codeforaustralia'] = array();

@@ -51,7 +51,7 @@ $config['base_url']	= '';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = 'index.php';
+$config['index_page'] = ''; #it is blank because I have removed the "index.php" in .htaccess
 
 /*
 |--------------------------------------------------------------------------

@@ -11,8 +11,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="shortcut icon" href="<?php echo base_url() ?>favicon.ico">
 		<link rel="apple-touch-icon" href="<?php echo base_url() ?>apple-touch-icon.png">
-		<link rel="stylesheet" href="<?php echo base_url() ?>css/main.css">
-        <script src="<?php echo base_url() ?>js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
+		<link rel="stylesheet" href="<?php echo base_url($links['css_assets']) ?>/main.css">
+        <script src="<?php echo base_url($links['js_assets']) ?>/modernizr-2.6.1-respond-1.1.0.min.js"></script>
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -22,7 +22,7 @@
         <header class="navbar navbar-static-top">
 			<div class="container">
 				<div class="navbar-inner">
-						<a href="<?php echo base_url() ?>"><img class="logo" src="<?php echo base_url() ?>img/logo.png" /></a>
+						<a href="<?php echo site_url() ?>"><img class="logo" src="<?php echo base_url($links['img_assets']) ?>/logo.png" /></a>
 						<p class="slogan"><?=$site_desc?></p>
 						<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
 							<span class="icon-bar"></span>
@@ -31,19 +31,15 @@
 						</a>
 						<div class="nav-collapse collapse">
 							<ul class="nav">
-								<li><a href="<?php echo base_url() ?>">home</a></li>
-								<li class="divider-vertical"></li>
-								<li><a href="<?php echo base_url() ?>courses">courses</a></li>
-								<li class="divider-vertical"></li>
-								<li><a href="<?php echo base_url() ?>alumni">alumni</a></li>
-								<li class="divider-vertical"></li>
-								<li><a href="<?php echo base_url() ?>blog">blog</a></li>
-								<li class="divider-vertical"></li>
-								<li><a href="<?php echo base_url() ?>get_involved">get involved</a></li>
-								<li class="divider-vertical"></li>
-								<li><a href="<?php echo base_url() ?>about">about</a></li>
-								<li class="divider-vertical"></li>
-								<li><a href="<?php echo base_url() ?>devhub">devhub</a></li>
+								<?php
+									foreach($links['navigation'] as $name => $link){
+										echo '<li>' . anchor($link, $name) . '</li>';
+										end($links['navigation']);
+										if($name !== key($links['navigation'])){
+											echo '<li class="divider-vertical"></li>';
+										}
+									}
+								?>
 							</ul>
 						</div>
 				</div>
