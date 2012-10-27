@@ -33,6 +33,7 @@ $(function(){
 	/*twitter popovers*/
 	$('.team_popovers').popover({
 		trigger: "click",
+		placement: "bottom",
 	});
 	
 	/* Anchor Slider by Cedric Dugas Http://www.position-absolute.com

@@ -1,257 +1,253 @@
 		<div class="blue_container">
 			<div class="container">
-				<article class="main_article">
-					<h2>Got an idea for an application that will change the world?</h2>
-					<h4>let’s build it together</h4>
-					<div class="row action_grid">
-						<section class="envision_panel span4">
-							<div class="grid_box">
-								<h3><a class="jump_slider" href="#1" data-liquidslider-ref="mid_slider">Envision</a></h3>
-								<div class="row-fluid">
-									<div class="span4">
-										<img src="<?php echo base_url($links['img_assets']) ?>/action_grid_hex_envision.png" alt="" />
-									</div>
-									<div class="span8">
-										<p>Envision your idea. Setup a team with potential cofounders. Learn about the nature of web application development, agile methodologies, and the MVP philosophy.</p>
-									</div>
+				<h2>Got an idea for an application that will change the world?</h2>
+				<h4>let’s build it together</h4>
+				<article class="row action_grid">
+					<section class="envision_panel span4">
+						<div class="grid_box">
+							<h3><a class="jump_slider" href="#1" data-liquidslider-ref="mid_slider">Envision</a></h3>
+							<div class="row-fluid">
+								<div class="span4">
+									<img src="<?php echo base_url($links['img_assets']) ?>/action_grid_hex_envision.png" alt="" />
+								</div>
+								<div class="span8">
+									<p>Envision your idea. Setup a team with potential cofounders. Learn about the nature of web application development, agile methodologies, and the MVP philosophy.</p>
 								</div>
 							</div>
-						</section>
-						<section class="build_panel span4">
-							<div class="grid_box">
-								<h3><a class="jump_slider" href="#2" data-liquidslider-ref="mid_slider">Build</a></h3>
-								<div class="row-fluid">
-									<div class="span4">
-										<img src="<?php echo base_url($links['img_assets']) ?>/action_grid_hex_build.png" alt="" />
-									</div>
-									<div class="span8">
-										<p>From web design to programming & databases to front  end scripting. It’s a full stack workout. You learn while you build, it will be practical and intensive.</p>
-									</div>
+						</div>
+					</section>
+					<section class="build_panel span4">
+						<div class="grid_box">
+							<h3><a class="jump_slider" href="#2" data-liquidslider-ref="mid_slider">Build</a></h3>
+							<div class="row-fluid">
+								<div class="span4">
+									<img src="<?php echo base_url($links['img_assets']) ?>/action_grid_hex_build.png" alt="" />
+								</div>
+								<div class="span8">
+									<p>From web design to programming & databases to front  end scripting. It’s a full stack workout. You learn while you build, it will be practical and intensive.</p>
 								</div>
 							</div>
-						</section>
-						<section class="deploy_panel span4">
-							<div class="grid_box">
-								<h3><a class="jump_slider" href="#3" data-liquidslider-ref="mid_slider">Deploy</a></h3>
-								<div class="row-fluid">
-									<div class="span4">
-										<img src="<?php echo base_url($links['img_assets']) ?>/action_grid_hex_deploy.png" alt="" />
-									</div>
-									<div class="span8">
-										<p>Bootstrap your idea and test it live. Polycademy helps you with hosting, entrepreneurship, acquiring mentorship, potential employers and investors.</p>
-									</div>
+						</div>
+					</section>
+					<section class="deploy_panel span4">
+						<div class="grid_box">
+							<h3><a class="jump_slider" href="#3" data-liquidslider-ref="mid_slider">Deploy</a></h3>
+							<div class="row-fluid">
+								<div class="span4">
+									<img src="<?php echo base_url($links['img_assets']) ?>/action_grid_hex_deploy.png" alt="" />
+								</div>
+								<div class="span8">
+									<p>Bootstrap your idea and test it live. Polycademy helps you with hosting, entrepreneurship, acquiring mentorship, potential employers and investors.</p>
 								</div>
 							</div>
-						</section>
-					</div>
-					<h2>At Polycademy we turn noobs into web developers in 3 or 6 months.</h2>
+						</div>
+					</section>
 				</article>
-				<article class="action_slider">
-					<div class="liquid-slider" id="mid_slider">
-						<section class="envision_slide">
-							<h3 class="slide_title">Envision</h3>
-							<div class="slide_grid">
-								<div class="row-fluid">
-									<section class="slide_details span4">
-										<div class="row-fluid">
-											<div class="span4">
-												<img src="<?php echo base_url($links['img_assets']) ?>/detailed_hex_network.png" alt="" />
-											</div>
-											<div class="span8">
-												<h5>Inspiration</h5>
-												<p>Students come with different backgrounds and locations, which allows a cross pollination of ideas.</p>
-											</div>
+				<h2>At Polycademy we turn noobs into web developers in 3 or 6 months.</h2>
+				<article class="liquid-slider" id="mid_slider">
+					<section class="envision_slide">
+						<h3 class="slide_title">Envision</h3>
+						<div class="slide_grid">
+							<div class="row-fluid">
+								<section class="slide_details span4">
+									<div class="row-fluid">
+										<div class="span4">
+											<img src="<?php echo base_url($links['img_assets']) ?>/detailed_hex_network.png" alt="" />
 										</div>
-									</section>
-									<section class="slide_details span4">
-										<div class="row-fluid">
-											<div class="span4">
-												<img src="<?php echo base_url($links['img_assets']) ?>/detailed_hex_team.png" alt="" />
-											</div>
-											<div class="span8">
-												<h5>Teamwork</h5>
-												<p>Develop your soft skills in communication, delegation, collaboration and team building.</p>
-											</div>
+										<div class="span8">
+											<h5>Inspiration</h5>
+											<p>Students come with different backgrounds and locations, which allows a cross pollination of ideas.</p>
 										</div>
-									</section>
-									<section class="slide_details span4">
-										<div class="row-fluid">
-											<div class="span4">
-												<img src="<?php echo base_url($links['img_assets']) ?>/detailed_hex_mvp.png" alt="" />
-											</div>
-											<div class="span8">
-												<h5>MVP</h5>
-												<p>Design based on minimum viable product so you can test your idea’s commercial potential quickly.</p>
-											</div>
+									</div>
+								</section>
+								<section class="slide_details span4">
+									<div class="row-fluid">
+										<div class="span4">
+											<img src="<?php echo base_url($links['img_assets']) ?>/detailed_hex_team.png" alt="" />
 										</div>
-									</section>
-								</div>
-								<div class="row-fluid">
-									<section class="slide_details span4">
-										<div class="row-fluid">
-											<div class="span4">
-												<img src="<?php echo base_url($links['img_assets']) ?>/detailed_hex_copyleft.png" alt="" />
-											</div>
-											<div class="span8">
-												<h5>Intellectual Property</h5>
-												<p>Everything you build is yours. We’ll use Github to host your open source code for free.</p>
-											</div>
+										<div class="span8">
+											<h5>Teamwork</h5>
+											<p>Develop your soft skills in communication, delegation, collaboration and team building.</p>
 										</div>
-									</section>
-									<section class="slide_details span4">
-										<div class="row-fluid">
-											<div class="span4">
-												<img src="<?php echo base_url($links['img_assets']) ?>/detailed_hex_stack.png" alt="" />
-											</div>
-											<div class="span8">
-												<h5>Solution Stack</h5>
-												<p>Learn how to setup the development environment and the solution stack to run your app.</p>
-											</div>
+									</div>
+								</section>
+								<section class="slide_details span4">
+									<div class="row-fluid">
+										<div class="span4">
+											<img src="<?php echo base_url($links['img_assets']) ?>/detailed_hex_mvp.png" alt="" />
 										</div>
-									</section>
-									<section class="slide_details span4">
-										<div class="row-fluid">
-											<div class="span4">
-												<img src="<?php echo base_url($links['img_assets']) ?>/detailed_hex_australia.png" alt="" />
-											</div>
-											<div class="span8">
-												<h5>Code for Australia</h5>
-												<p>Get involved in building applications for open gov and community organisations.</p>
-											</div>
+										<div class="span8">
+											<h5>MVP</h5>
+											<p>Design based on minimum viable product so you can test your idea’s commercial potential quickly.</p>
 										</div>
-									</section>
-								</div>
+									</div>
+								</section>
 							</div>
-						</section>
-						<section class="build_slide">
-							<h3 class="slide_title">Build</h3>
-							<div class="slide_grid">
-								<div class="row-fluid">
-									<section class="slide_details span4">
-										<div class="row-fluid">
-											<div class="span4">
-												<img src="<?php echo base_url($links['img_assets']) ?>/detailed_hex_html.png" alt="" />
-											</div>
-											<div class="span8">
-												<h5>HTML5 & CSS3</h5>
-												<p>Make use of the semantic web and bend this ubiquitous web platform to your will.</p>
-											</div>
+							<div class="row-fluid">
+								<section class="slide_details span4">
+									<div class="row-fluid">
+										<div class="span4">
+											<img src="<?php echo base_url($links['img_assets']) ?>/detailed_hex_copyleft.png" alt="" />
 										</div>
-									</section>
-									<section class="slide_details span4">
-										<div class="row-fluid">
-											<div class="span4">
-												<img src="<?php echo base_url($links['img_assets']) ?>/detailed_hex_js.png" alt="" />
-											</div>
-											<div class="span8">
-												<h5>Javascript</h5>
-												<p>Go interactive with Javascript, jQuery, and CoffeeScript to make your web app come to life.</p>
-											</div>
+										<div class="span8">
+											<h5>Intellectual Property</h5>
+											<p>Everything you build is yours. We’ll use Github to host your open source code for free.</p>
 										</div>
-									</section>
-									<section class="slide_details span4">
-										<div class="row-fluid">
-											<div class="span4">
-												<img src="<?php echo base_url($links['img_assets']) ?>/detailed_hex_php.png" alt="" />
-											</div>
-											<div class="span8">
-												<h5>Codeigniter PHP</h5>
-												<p>Use PHP & the Codeigniter framework to write industry standard MVC applications.</p>
-											</div>
+									</div>
+								</section>
+								<section class="slide_details span4">
+									<div class="row-fluid">
+										<div class="span4">
+											<img src="<?php echo base_url($links['img_assets']) ?>/detailed_hex_stack.png" alt="" />
 										</div>
-									</section>
-								</div>
-								<div class="row-fluid">
-									<section class="slide_details span4">
-										<div class="row-fluid">
-											<div class="span4">
-												<img src="<?php echo base_url($links['img_assets']) ?>/detailed_hex_performance.png" alt="" />
-											</div>
-											<div class="span8">
-												<h5>Performance</h5>
-												<p>Compress, cache, refactor and use CDNs to make your app zoom!</p>
-											</div>
+										<div class="span8">
+											<h5>Solution Stack</h5>
+											<p>Learn how to setup the development environment and the solution stack to run your app.</p>
 										</div>
-									</section>
-									<section class="slide_details span4">
-										<div class="row-fluid">
-											<div class="span4">
-												<img src="<?php echo base_url($links['img_assets']) ?>/detailed_hex_security.png" alt="" />
-											</div>
-											<div class="span8">
-												<h5>Security</h5>
-												<p>Learn how to authenticate requests, secure passwords, and protect against common attacks.</p>
-											</div>
+									</div>
+								</section>
+								<section class="slide_details span4">
+									<div class="row-fluid">
+										<div class="span4">
+											<img src="<?php echo base_url($links['img_assets']) ?>/detailed_hex_australia.png" alt="" />
 										</div>
-									</section>
-									<section class="slide_details span4">
-										<div class="row-fluid">
-											<div class="span4">
-												<img src="<?php echo base_url($links['img_assets']) ?>/detailed_hex_github.png" alt="" />
-											</div>
-											<div class="span8">
-												<h5>Git Source Control</h5>
-												<p>Use Git to collaborate and version control code, and get developer cred through social coding at Github.</p>
-											</div>
+										<div class="span8">
+											<h5>Code for Australia</h5>
+											<p>Get involved in building applications for open gov and community organisations.</p>
 										</div>
-									</section>
-								</div>
+									</div>
+								</section>
 							</div>
-						</section>
-						<section class="deploy_slide">
-							<h3 class="slide_title">Deploy</h3>
-							<div class="slide_grid">
-								<div class="row-fluid">
-									<section class="slide_details span6">
-										<div class="row-fluid">
-											<div class="span4">
-												<img src="<?php echo base_url($links['img_assets']) ?>/detailed_hex_server.png" alt="" />
-											</div>
-											<div class="span8">
-												<h5>Live Testing</h5>
-												<p>Go live with your newly built MVP prototype and gain market traction.</p>
-											</div>
+						</div>
+					</section>
+					<section class="build_slide">
+						<h3 class="slide_title">Build</h3>
+						<div class="slide_grid">
+							<div class="row-fluid">
+								<section class="slide_details span4">
+									<div class="row-fluid">
+										<div class="span4">
+											<img src="<?php echo base_url($links['img_assets']) ?>/detailed_hex_html.png" alt="" />
 										</div>
-									</section>
-									<section class="slide_details span6">
-										<div class="row-fluid">
-											<div class="span4">
-												<img src="<?php echo base_url($links['img_assets']) ?>/detailed_hex_entrepreneur.png" alt="" />
-											</div>
-											<div class="span8">
-												<h5>Entrepreneurship</h5>
-												<p>Learn the strategies of entrepreneurship and the opportunities to turn your project into a business.</p>
-											</div>
+										<div class="span8">
+											<h5>HTML5 & CSS3</h5>
+											<p>Make use of the semantic web and bend this ubiquitous web platform to your will.</p>
 										</div>
-									</section>
-								</div>
-								<div class="row-fluid">
-									<section class="slide_details span6">
-										<div class="row-fluid">
-											<div class="span4">
-												<img src="<?php echo base_url($links['img_assets']) ?>/detailed_hex_mentor.png" alt="" />
-											</div>
-											<div class="span8">
-												<h5>Mentorship</h5>
-												<p>Established entrepreneurs, developers & designers volunteer their time to help with your personal development.</p>
-											</div>
+									</div>
+								</section>
+								<section class="slide_details span4">
+									<div class="row-fluid">
+										<div class="span4">
+											<img src="<?php echo base_url($links['img_assets']) ?>/detailed_hex_js.png" alt="" />
 										</div>
-									</section>
-									<section class="slide_details span6">
-										<div class="row-fluid">
-											<div class="span4">
-												<img src="<?php echo base_url($links['img_assets']) ?>/detailed_hex_money.png" alt="" />
-											</div>
-											<div class="span8">
-												<h5>Investors & Employers</h5>
-												<p>Finally a careers/pitching fair will get you and your work noticed by employers and investors.</p>
-											</div>
+										<div class="span8">
+											<h5>Javascript</h5>
+											<p>Go interactive with Javascript, jQuery, and CoffeeScript to make your web app come to life.</p>
 										</div>
-									</section>
-								</div>
+									</div>
+								</section>
+								<section class="slide_details span4">
+									<div class="row-fluid">
+										<div class="span4">
+											<img src="<?php echo base_url($links['img_assets']) ?>/detailed_hex_php.png" alt="" />
+										</div>
+										<div class="span8">
+											<h5>Codeigniter PHP</h5>
+											<p>Use PHP & the Codeigniter framework to write industry standard MVC applications.</p>
+										</div>
+									</div>
+								</section>
 							</div>
-						</section>
-					</div>
+							<div class="row-fluid">
+								<section class="slide_details span4">
+									<div class="row-fluid">
+										<div class="span4">
+											<img src="<?php echo base_url($links['img_assets']) ?>/detailed_hex_performance.png" alt="" />
+										</div>
+										<div class="span8">
+											<h5>Performance</h5>
+											<p>Compress, cache, refactor and use CDNs to make your app zoom!</p>
+										</div>
+									</div>
+								</section>
+								<section class="slide_details span4">
+									<div class="row-fluid">
+										<div class="span4">
+											<img src="<?php echo base_url($links['img_assets']) ?>/detailed_hex_security.png" alt="" />
+										</div>
+										<div class="span8">
+											<h5>Security</h5>
+											<p>Learn how to authenticate requests, secure passwords, and protect against common attacks.</p>
+										</div>
+									</div>
+								</section>
+								<section class="slide_details span4">
+									<div class="row-fluid">
+										<div class="span4">
+											<img src="<?php echo base_url($links['img_assets']) ?>/detailed_hex_github.png" alt="" />
+										</div>
+										<div class="span8">
+											<h5>Git Source Control</h5>
+											<p>Use Git to collaborate and version control code, and get developer cred through social coding at Github.</p>
+										</div>
+									</div>
+								</section>
+							</div>
+						</div>
+					</section>
+					<section class="deploy_slide">
+						<h3 class="slide_title">Deploy</h3>
+						<div class="slide_grid">
+							<div class="row-fluid">
+								<section class="slide_details span6">
+									<div class="row-fluid">
+										<div class="span4">
+											<img src="<?php echo base_url($links['img_assets']) ?>/detailed_hex_server.png" alt="" />
+										</div>
+										<div class="span8">
+											<h5>Live Testing</h5>
+											<p>Go live with your newly built MVP prototype and gain market traction.</p>
+										</div>
+									</div>
+								</section>
+								<section class="slide_details span6">
+									<div class="row-fluid">
+										<div class="span4">
+											<img src="<?php echo base_url($links['img_assets']) ?>/detailed_hex_entrepreneur.png" alt="" />
+										</div>
+										<div class="span8">
+											<h5>Entrepreneurship</h5>
+											<p>Learn the strategies of entrepreneurship and the opportunities to turn your project into a business.</p>
+										</div>
+									</div>
+								</section>
+							</div>
+							<div class="row-fluid">
+								<section class="slide_details span6">
+									<div class="row-fluid">
+										<div class="span4">
+											<img src="<?php echo base_url($links['img_assets']) ?>/detailed_hex_mentor.png" alt="" />
+										</div>
+										<div class="span8">
+											<h5>Mentorship</h5>
+											<p>Established entrepreneurs, developers & designers volunteer their time to help with your personal development.</p>
+										</div>
+									</div>
+								</section>
+								<section class="slide_details span6">
+									<div class="row-fluid">
+										<div class="span4">
+											<img src="<?php echo base_url($links['img_assets']) ?>/detailed_hex_money.png" alt="" />
+										</div>
+										<div class="span8">
+											<h5>Investors & Employers</h5>
+											<p>Finally a careers/pitching fair will get you and your work noticed by employers and investors.</p>
+										</div>
+									</div>
+								</section>
+							</div>
+						</div>
+					</section>
 				</article>
 			</div>
 		</div>
@@ -291,6 +287,6 @@
 						<p>The classroom space will include 15 - 16 workstations. There will be whiteboards, projectors, tables, and  chairs to help students collaborate. A function room will be used for events and catering. We’ll even try to get a vending machine.<br /><br />After class, the classroom will be open day & night for coders and designers to chill out and discuss.<br /><br />If you know a place please contact us at <?=$recaptcha_personal_email?></p>
 					</section>
 				</article>
-				<h2 id="call_to_action">Class starts in 2013 Jan/Feb, <?php echo anchor($links['navigation']['courses'], 'register your interest now!'); ?></h2>
+				<h2>Class starts in 2013 Jan/Feb, <?php echo anchor($links['navigation']['courses'], 'register your interest now!'); ?></h2>
 			</div>
 		</div>

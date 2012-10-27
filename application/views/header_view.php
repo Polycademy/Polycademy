@@ -22,7 +22,7 @@
         <header class="navbar navbar-static-top">
 			<div class="container">
 				<div class="navbar-inner">
-						<a href="<?php echo site_url() ?>"><img class="logo" src="<?php echo base_url($links['img_assets']) ?>/logo.png" /></a>
+						<a class="logo" href="<?php echo site_url() ?>"><img src="<?php echo base_url($links['img_assets']) ?>/logo.png" /></a>
 						<p class="slogan"><?=$site_desc?></p>
 						<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
 							<span class="icon-bar"></span>

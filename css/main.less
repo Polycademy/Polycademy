@@ -2,14 +2,15 @@
 @import url("bootstrap-responsive.less");
 @import url("responsive.less");
 
-/* ==========================================================================
-   Author's custom styles
-   ========================================================================== */
-   
-/* Variables */
-@responsive_slider_max_width: 1100px;
+/*!
+ * Polycademy CSS
+ *
+ * Designed and built with all the love in the world by ROGER!.
+ */
 
-/* Fonts */
+/* ==========================================================================
+   FONTS
+   ========================================================================== */
 @font-face {
     font-family: 'avantgarde_bk_btdemi';
     src: url('../fonts/avantgarde_bk_bt_demi/avgardd-webfont.eot');
@@ -54,18 +55,30 @@
     font-style: normal;
 }
 
+/* ==========================================================================
+   VARIABLES
+   ========================================================================== */
+@container_padding: 1.2%;
+@grid_margins: 2.4%;
+@heading_margins: 1.9%;
+@responsive_slider_max_width: 1200px;
+@slider_arrow_margin: 2%;
 
-/* h styles */
-.blue_container h2, .red_container h2{
+/* ==========================================================================
+   H STYLES
+   ========================================================================== */
+/* For large section headers */
+h2{
 	font-family: 'avantgarde_bk_btdemi';
 	font-size: 28px;
 	text-align: center;
-	margin: 38px auto auto auto;
 	line-height: normal;
 	font-weight: lighter;
+	margin: @heading_margins auto;
 }
 
-.blue_container h3{
+/* For Panel or Box Headers */
+h3{
 	font-family: 'code_pro_demoregular';
 	font-size: 40px;
 	text-align: center;
@@ -74,25 +87,18 @@
 	margin: 0;
 }
 
-.red_container h3, .footer_grid h3{
-	font-family: 'code_pro_demoregular';
-	font-size: 36px;
-	text-align: center;
-	font-weight: lighter;
-	line-height: normal;
-	margin: 0;
-}
-
-.blue_container h4{
+/* For slogans after the h2 */
+h4{
 	font-family: 'avantgarde_bk_btbook_oblique';
 	font-size: 25px;
 	text-align: center;
 	font-weight: lighter;
 	line-height: normal;
-	margin: 14px auto auto auto;
+	margin: @heading_margins auto;
 }
 
-.blue_container h5{
+/* For headers on small details */
+h5{
 	font-family: 'avantgarde_bk_btdemi';
 	font-size: 18px;
 	text-align: center;
@@ -101,622 +107,369 @@
 	margin: 14px auto auto auto;
 }
 
-/* Setting Body and Container styles to remove padding from bootsrap */
+/* ==========================================================================
+   CONTAINERS
+   ========================================================================== */
 body{
 	padding: 0;
 }
 
 .container{
-	padding: 0 9px !important;
+	padding: @container_padding;
 }
 
-/* Header */
+.blue_container{
+	background: url('../img/main_article_bg.png');
+	border-bottom: 1px solid #02223a;
+	color: #fff;
+}
+
+.red_container{
+	background: url('../img/team_location_bg.png');
+	border-top: 1px solid #02223a;
+	color: #fff;
+}
+
+/* ==========================================================================
+   HEADER
+   ========================================================================== */
 header.navbar{
 	background-image: url('../img/header_footer_bg.jpg');
 	border-bottom: 1px solid #074e64;
 	margin: 0;
+	div.navbar-inner{
+		background: transparent;
+		filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+		border: none;
+		box-shadow: none;
+		padding: auto;
+	}
+	.logo{
+		float: left;
+		margin: 35px 0 34px;
+	}
+	.slogan{
+		font-family: "avantgarde_bk_btbook";
+		color: #e31e24;
+		font-size: 15px;
+		float: right;
+		margin: 30px 12px 12px 0;
+	}
+	.btn-navbar{
+		width: 18px;
+		height: 13px;
+		float: right;
+		clear: right;
+		margin: 6px 12px 0 0;
+	}
+	.nav{
+		font-family: arial;
+		font-size: 18px;
+		float: right;
+		li > a{
+			color: #6c6c6c;
+			text-shadow: none;
+			padding: 10px 2px;
+		}
+	}
+	.divider-vertical{
+		border-left: 1px solid #6c6c6c;
+		border-right: none;
+		height: 18px;
+		margin: 12px 6px;
+	}
 }
 
-header.navbar div.navbar-inner{
-	background: transparent;
-	filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
-	border: none;
-	box-shadow: none;
-	padding: 0;
-}
-
-.logo{
-    float: left;
-    margin: 35px 0 34px;
-}
-
-.slogan{
-	font-family: "avantgarde_bk_btbook";
-	color: #e31e24;
-	font-size: 15px;
-	float: right;
-	margin: 30px 12px 12px 0;
-}
-
-.navbar .btn-navbar{
-	width: 18px;
-	height: 13px;
-	float: right;
-	clear: right;
-	margin: 6px 12px 0 0;
-}
-
-.navbar .nav{
-	font-family: arial;
-	font-size: 18px;
-	float: right;
-}
-
-.navbar .nav > li > a{
-	color: #6c6c6c;
-	text-shadow: none;
-	padding: 10px 2px;
-}
-
-.navbar .divider-vertical{
-    border-left: 1px solid #6c6c6c;
-    border-right: none;
-    height: 18px;
-    margin: 12px 6px;
-}
-
-/* Main Article */
-.blue_container{
-	background: url('../img/main_article_bg.png');
-	border-bottom: 2px solid #02223a;
-	color: #fff;
-}
-
+/* Action grid */
 .action_grid{
-	margin-top: 20px;
+	margin-top: @grid_margins;
+	margin-bottom: @grid_margins;
+	section > div.grid_box{
+		border: 2px solid #09405d;
+	}
+	.grid_box > div.row-fluid{
+		margin: 0 0 24px 0;
+	}
+	h3{
+		margin: 24px 0px 6px 0px;
+		a{
+			color: #fff;
+			font-weight: lighter;
+			&hover{
+				color: #d4d4d4;
+				text-decoration: none;
+			}
+		}
+	}
+	img{
+		margin: 26px auto;
+		display: block;
+		padding: 0 10px;
+	}
+	p{
+		font-family: "avantgarde_bk_btbook";
+		font-size: 17px;
+		line-height: 19px;
+		font-weight: normal;
+		margin: 8px 14px 14px 7px;
+	}
+	.envision_panel{
+		background: #c41f2c ;
+	}
+
+	.build_panel{
+		background: #0f68a8;
+	}
+
+	.deploy_panel{
+		background: #848b12;
+	}
 }
 
-.action_grid > section > div.grid_box{
-	border: 2px solid #09405d;
-}
-
-.action_grid .grid_box > div.row-fluid{
-	margin: 0 0 24px 0;
-}
-
-.action_grid h3{
-	margin: 24px 0px 6px 0px;
-}
-
-.action_grid h3 > a{
-	color: #fff;
-	font-weight: lighter;
-}
-
-.action_grid h3 > a:hover{
-	color: #d4d4d4;
-	text-decoration: none;
-}
-
-.action_grid img{
-	margin: 26px auto;
-	display: block;
-	padding: 0 10px;
-}
-
-.action_grid p{
-	font-family: "avantgarde_bk_btbook";
-	font-size: 17px;
-	line-height: 19px;
-	font-weight: normal;
-	margin: 8px 14px 14px 7px;
-}
-
-.envision_panel{
-	background: #c41f2c ;
-}
-
-.build_panel{
-	background: #0f68a8;
-}
-
-.deploy_panel{
-	background: #848b12;
-}
-
-/* Action Slider (Liquid Slider Styles) */
-.action_slider{
-	margin: 42px auto;
-	border: 2px solid #0c436d;
-	background: url('../img/slider_bg.png');
-	max-width: 1166px;
-}
-
-.action_slider h3{
-	text-decoration: underline;
-}
-
-.slide_grid > div.row-fluid{
-	margin-top: 18px;
-}
-
-.slide_details h5{
-	text-align: left;
-}
-
-.slide_details img{
-	margin: 20px auto;
-	display: block;
-}
-
-.slide_details p{
-	font-size: 15px;
-}
-
-/******************************************************
-* No JavaScript
-* Use this to apply styles when Javascript is disabled,
-* and be sure to include the ".no-js" class in your html 
-* markup.
-*******************************************************/
+/* ==========================================================================
+   LIQUID SLIDER (some of the settings will be overwritten by the responsive settings below
+   ========================================================================== */
 .no-js .liquid-slider {
-	height:350px;
-	overflow:scroll;
-}
-
-/******************************************************
-* Preloader
-* Use this to apply styles when Javascript is disabled,
-* and be sure to include the ".no-js" class in your html 
-* markup.
-*******************************************************/
-.liquid-slider-wrapper .liquid-slider-preloader {
-	background: url('../img/loading.gif') transparent no-repeat center 75px;
-	opacity:.90;
-	/* Do not edit below this line */
-	width:100%;
-	height:200%;
-	position:absolute;
-	top:0;
-	left:0;
-}
-
-/******************************************************************
-* Base Styles 
-* The styles here will apply to everything. I recommend you keep
-* the styles in here specific to mobile defices, then use
-* the media queries at the bottom to define further styles for larger
-* screen-sizes. Think Mobile First. But be cautious of how
-* your site will look in older IE browsers.
-*
-* Additional media queries are at the bottom of this document
-******************************************************************/
-.liquid-slider-wrapper {
-	margin:0 auto;
-	/* Do not edit below this line */
-	clear: both;
-	overflow: auto;
-	position: relative;
-}
-
-/******************************************************
-* Main Container
-* This is the main container (minus the navigation).
-* Be sure to match the width with the .panel class, 
-* or it won't work properly. Also, width only applies
-* if you are not using the responsive setting.
-*
-* The responsive slider will interpret the width as the
-* max width instead
-*******************************************************/
-.liquid-slider-wrapper .liquid-slider {
-	background: transparent;
-	width: @responsive_slider_max_width;
-	/* Do not edit below this line */
-	float: left;
-	overflow: hidden;
-	position: relative;
-}
-.liquid-slider-wrapper .panel-container {
-  /* Do not edit below this line */
-  position: relative;
-}
-.liquid-slider-wrapper .liquid-slider .panel-container .fadeClass {
-  /* Do not edit below this line */
-  position: absolute;
-  top: 0; 
-  left: 0;
-  display: none;
-}
-
-/******************************************************
-* Panels
-* This is for the panels. If you are using the 
-* responsive setting, this will act as the max-width
-* for the entire slider.
-*******************************************************/
-.liquid-slider-wrapper .liquid-slider .panel {  
-  width: @responsive_slider_max_width;
-  /* Do not edit below this line */
-  display: block;
-  float: left;
-}
-
-/******************************************************
-* These provide a base starting point for images and
-* video. However, you will have to add more rules
-* based on the content you use. Use the @media queries 
-* at the bottom of this file.
-*******************************************************/
-.liquid-slider-wrapper .liquid-slider .panel img{
-  /*
-  width:100%;
-  height:auto;  
-  margin:0 5px;
-  */
-}
-
-.liquid-slider-wrapper .liquid-slider .panel video {
-  /*
-  width:100%;  
-  height:auto;
-  */
-}
-
-/******************************************************
-* This is mainly used to adjust the padding inside each 
-* panel. If you are using the responsive setting, you
-* need to use the settings below as this will not apply.
-*******************************************************/
-.liquid-slider-wrapper .liquid-slider .panel-wrapper {  
-  padding: 20px;
-  /* Do not edit below this line */
-  position:relative;
-}
-
-/*****************************************************
-* This will adjust styles for all navigation tabs
-* less of course the select box used for mobile 
-* navigation. The .current styles will apply only to 
-* the current tab.
-*
-* You may use this section to create navigation for
-* mobile devices if you set mobileNavigation: false
-* Be sure to edit media queries for larger devices below
-* I have included an example below in comments.
-*
-* .currentCrossLink refers to external crosslinking.
-*******************************************************/
-.liquid-slider-wrapper .liquid-nav a {
-  background: #d8d8d8;
-  color: #333333;
-  margin-right: 1px;
-  padding: 3px 6px;  
-}
-.liquid-slider-wrapper .liquid-nav a:hover {
-  background: #f2f2f2;
-  color: #333333;
-  text-shadow: none;
-}
-.liquid-slider-wrapper .liquid-nav .current {
-  background: #f2f2f2;
-}
-.currentCrossLink {
-  font-weight: bold;
-}
-.liquid-slider-wrapper .liquid-nav ul {  
-  padding:0;
-  /* Do not edit below this line */
-  clear: both;
-  display: block;
-  margin: auto;
-  overflow: hidden;
-}
-.liquid-slider-wrapper .liquid-nav ul li {
-  /* Do not edit below this line */
-  display: inline;
-}
-.liquid-slider-wrapper .liquid-nav ul li a {
- 
-  /* Do not edit below this line */
-  display: block;
-  float: left;
-  text-decoration: none;
-}
-/*****************************************************
-* Mobile Menu
-* This will adjust styles for selectbox styles. I have
-* included a simple example to create a custom select
-* box.
-*******************************************************/
-.liquid-slider-wrapper .liquid-nav {
-  overflow:hidden;
-  clear:both;
-}
-.liquid-slider-wrapper .liquid-slider-select-box {  
-  /* Delete these if you want the standard select box.
-     Also delete the rules below */
-
-  width: 100%;
-  height: 35px;
-  overflow: hidden;
-  background: url(../img/down_arrow.png) no-repeat right #ddd;
-  
-}
-.liquid-slider-wrapper .liquid-slider-select-box select {  
-  /* If you want the standard select box, use 
-  width:100%
-  And delete the rest of the styling here */
-
-  width: 150%;
-  -webkit-appearance: none;
-  -mox-appearance: none;
-  appearance:none;
-  background: transparent;
-  padding: 5px;
-  font-size: 110%;
-  border: 1px solid #bbb;
-  height: 35px;
-  cursor:pointer;
-}
-
-/******************************************************
-* Arrows
-* Some settings will be overwritten when using the 
-* responsive setting.
-*******************************************************/
-.liquid-slider-wrapper .liquid-nav-left, .liquid-slider-wrapper .liquid-nav-right {
-  /* Do not edit below this line */
-  float: left;
-}
-
-.liquid-slider-wrapper .liquid-nav-left a, .liquid-slider-wrapper .liquid-nav-right a {
-  /* non-graphical arrows */
-  background: #000;
-  color: #fff;
-  padding: 5px;
-  width: 100px;
-  /* Do not edit below this line */
-  display: block;
-  text-align: center;
-  text-decoration: none;
-}
-
-.liquid-slider-wrapper .liquid-nav-left-arrow, .liquid-slider-wrapper .liquid-nav-right-arrow {
-  cursor: pointer;
-  /* Do not edit below this line */
-  float: left;
-}
-
-.liquid-slider-wrapper .liquid-nav-left-arrow a, .liquid-slider-wrapper .liquid-nav-right-arrow a {
-  /* Do not edit below this line */
-  display: block;
-}
-
-.liquid-slider-wrapper .liquid-nav-left, .liquid-slider-wrapper .liquid-nav-left-arrow {
-  /* Do not edit below this line */
-  clear: both;
-}
-
-.liquid-slider-wrapper .liquid-nav-right-arrow {
-  width: 40px;
-  height: 40px;
-  background: url(../img/arrows.png) no-repeat top right;
-  margin-top: 26px;
-  margin-right: 2px;
-  /* Do not edit below this line */
-  position:relative;
-}
-
-.liquid-slider-wrapper .liquid-nav-left-arrow {
-  width: 40px;
-  height: 40px;
-  background: url(../img/arrows.png) no-repeat top left;
-  margin-top: 26px;
-  margin-left: 2px;
-  /* Do not edit below this line */
-  position:relative;
-}
-
-.liquid-slider-wrapper .liquid-nav-left-arrow:hover {
-  /* Left graphical arrows hover */
-  background: url(../img/arrows.png) no-repeat bottom left;
-}
-
-.liquid-slider-wrapper .liquid-nav-right-arrow:hover {
-  /* Right graphical arrows hover */
-  background: url(../img/arrows.png) no-repeat bottom right;
+	height: 350px;
+	overflow: scroll;
 }
 
 .arrows .liquid-slider {
-  /* Margin between slider and arrows */
-  margin: 0 10px;
+	margin: 0 10px;
 }
 
-/******************************************************
-* Responsive Styles
-* Here are the main responsive styles. This mostly 
-* covers the arrows, and most of the settings can be
-* applied above.
-*******************************************************/
-.liquid-responsive .liquid-slider {
-  /* Do not edit below this line */
-  width: 100%;
-  margin: 0;
-}
-.liquid-responsive .liquid-slider .panel .panel-wrapper {
-  padding: 10px;
-}
-.liquid-responsive .liquid-nav-left {
-  /* Left non-graphical arrows */
-  /* Do not edit below this line */
-  position: absolute;
-  left: 0;
-  z-index: 1;
-}
-.liquid-responsive .liquid-nav-left a {
-  /* Left non-graphical arrows */
-  background: #9A9A9A;
-  width: 80px;
-}
-.liquid-responsive .liquid-nav-left a:hover {
-  /* Left non-graphical hover */
-  background: #747474;
-}
-.liquid-responsive .liquid-nav-right {
-  /* Right non-graphical arrows */
-  /* Do not edit below this line */
-  position: absolute;
-  right: 0;
-  z-index: 1;
-}
-.liquid-responsive .liquid-nav-right a {
-  /* Right non-graphical arrows */
-  background: #9A9A9A;
-  width: 80px;
-}
-.liquid-responsive .liquid-nav-right a:hover {
-  /* Right non-graphical arrows hover */
-  background: #747474;
-}
-.liquid-responsive .liquid-nav-left-arrow {
-  /* Do not edit below this line */
-  position: absolute;
-  left: 0;
-  z-index: 1;
-}
-.liquid-responsive .liquid-nav-right-arrow {
-  /* Do not edit below this line */
-  position: absolute;
-  right: 0;
-  z-index: 1;
+.liquid-slider-wrapper {
+	margin: @grid_margins auto;
+	border: 2px solid #0c436d;
+	clear: both;
+	overflow: auto;
+	position: relative;
+	.liquid-slider-preloader {
+		background: url('../img/loading.gif') transparent no-repeat center 75px;
+		opacity: .90;
+		width:100%;
+		height:200%;
+		position:absolute;
+		top:0;
+		left:0;
+	}
+	/* The responsive slider will interpret the width as the max width instead */
+	.liquid-slider {
+		background: url('../img/slider_bg.png');
+		width: @responsive_slider_max_width;
+		float: left;
+		overflow: hidden;
+		position: relative;
+	}
+	/* Panels (panels of the sections) */
+	.panel-container {
+		position: relative;
+		.fadeClass {
+			position: absolute;
+			top: 0; 
+			left: 0;
+			display: none;
+		}
+	}
+	.panel{
+		width: @responsive_slider_max_width;
+		display: block;
+		float: left;
+	}
+	/* Each panel has a panel wrapper */
+	.panel-wrapper{
+		padding: 20px;
+		position:relative;
+	}
+	/* Graphical Arrows */
+	.liquid-nav-left-arrow, .liquid-nav-right-arrow {
+		cursor: pointer;
+		float: left;
+		a{
+			display: block;
+		}
+	}
+	.liquid-nav-left, .liquid-nav-left-arrow {
+		clear: both;
+	}
+	.liquid-nav-right-arrow {
+		width: 40px;
+		height: 40px;
+		background: url(../img/arrows.png) no-repeat top right;
+		margin: @slider_arrow_margin;
+		position:relative;
+		&:hover{
+			background: url(../img/arrows.png) no-repeat bottom right;
+		}
+	}
+	.liquid-nav-left-arrow {
+		width: 40px;
+		height: 40px;
+		background: url(../img/arrows.png) no-repeat top left;
+		margin: @slider_arrow_margin;
+		position:relative;
+		&:hover{
+			background: url(../img/arrows.png) no-repeat bottom left;
+		}
+	}
+	/* Details inside the slides */
+	.slide_grid > div.row-fluid{
+		margin-top: 18px;
+	}
+	.slide_details{
+		h5{
+			text-align: left;
+		}
+		img{
+			margin: 20px auto;
+			display: block;
+		}
+		p{
+			font-size: 15px;
+		}
+	}
 }
 
-/******************************************************************
-* Tablet & Smaller Laptops
-* This will include tablets and some netbooks.
-******************************************************************/
-@media only screen and (min-width: 768px) {
-  .liquid-responsive .liquid-slider .panel .panel-wrapper {
-    padding: 20px 35px;
-  }
+/* ==========================================================================
+   RESPONSIVE LIQUID SLIDER
+   ========================================================================== */
+.liquid-responsive{
+	.liquid-slider {
+		width: 100%;
+		margin: 0;
+		.panel .panel-wrapper {
+			padding: 10px;
+		}
+	}
+	.liquid-nav-left {
+		position: absolute;
+		left: 0;
+		z-index: 1;
+		a{
+			background: #9A9A9A;
+			width: 80px;
+			&:hover{
+				background: #747474;
+			}
+		}
+	}
+	.liquid-nav-right {
+		position: absolute;
+		right: 0;
+		z-index: 1;
+		a{
+			background: #9A9A9A;
+			width: 80px;
+			&:hover{
+				background: #747474;
+			}
+		}
+	}
+	.liquid-nav-left-arrow {
+		position: absolute;
+		left: 0;
+		z-index: 1;
+	}
+	.liquid-nav-right-arrow {
+		position: absolute;
+		right: 0;
+		z-index: 1;
+	}
 }
 
-/* Team Location and Space */
-.red_container{
-	background: url('../img/team_location_bg.png');
-	color: #fff;
-}
-
+/* ==========================================================================
+   LOGISTICS SECTION
+   ========================================================================== */
 .logistics_grid{
-	margin-top: 32px;
-}
-
-.logistics_grid > section > h3{
-	margin-bottom: 8px;
-}
-
-.logistics_grid img{
-	border: 1px solid #760f13;
-	margin: 8px auto 0 auto;
-	display: block;
-	cursor:pointer;
-}
-
-.logistics_grid img:hover{
-	border: 1px solid #dfdfdf;
+	margin-top: @grid_margins;
+	margin-bottom: @grid_margins;
+	section > h3{
+		margin-bottom: 8px;
+	}
+	img{
+		border: 1px solid #760f13;
+		margin: 8px auto 0 auto;
+		display: block;
+		cursor:pointer;
+		&:hover{
+			border: 1px solid #dfdfdf;
+		}
+	}
+	section > p{
+		padding: 20px;
+	}
 }
 
 .popover, .popover-title{
 	background: rgb(2, 160, 176);
-	background: rgba(2, 160, 176, 0.98); 
+	background: rgba(2, 160, 176, 0.90); 
 	color: #fff;
 }
 
 .popover a{
 	color: #5a5656;
+	&:hover{
+		color: #3e3c3c;
+	}
 }
 
-.popover a:hover{
-	color: #3e3c3c;
+.multiplebgs{
+	section.location_panel > p{
+		background: url('../img/location_mapbg.png') no-repeat bottom right, url('../img/team_location_panel_bg.png') repeat;
+	}
+	section.space_panel > p{
+		background: url('../img/space_teachbg.png') no-repeat bottom right, url('../img/team_location_panel_bg.png') repeat;
+	}
 }
 
-.location_panel > p, .space_panel > p{
-	padding: 20px;
-}
-
-/* This is using modernizr */
-.multiplebgs section.location_panel > p{
-	background: url('../img/location_mapbg.png') no-repeat bottom right, url('../img/team_location_panel_bg.png') repeat;
-}
-
-.no-multiplebgs section.location_panel > p{
+.no-multiplebgs section > p{
 	background: url('../img/team_location_panel_bg.png') repeat;
 }
 
-.multiplebgs section.space_panel > p{
-	background: url('../img/space_teachbg.png') no-repeat bottom right, url('../img/team_location_panel_bg.png') repeat;
-}
-
-.no-multiplebgs section.space_panel > p{
-	background: url('../img/team_location_panel_bg.png') repeat;
-}
-
-#call_to_action{
-	margin-bottom: 36px;
-}
-
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
 footer{
 	background: url('../img/header_footer_bg.jpg') repeat;
 	border-top: 1px solid #c87173;
+	.copyright{
+		float: right;
+		font-size: 10px;
+		color: #373737;
+		font-style: italic;
+	}
+	.footer_grid{
+		margin-top: @grid_margins;
+		margin-bottom: @grid_margins;
+	}
+	.footer_grid section{
+		h3{
+			margin-bottom: 8px;
+			color: #6c6c6c;
+		}
+		p{
+			padding: 20px;
+			border: 1px solid #b0b0b0;
+			color: #373737;
+		}
+		em.footer_dates{
+			font-size: 12px;
+		}
+	}
 }
 
-.footer_grid{
-	margin-top: 38px;
+.multiplebgs{
+	section.blog_panel > p{
+		background: url('../img/blog_commentbg.png') no-repeat bottom right, url('../img/footer_panel_bg.png') repeat;
+	}
+	section.fbtwitter_panel > p{
+		background: url('../img/social_mediabg.png') no-repeat bottom right, url('../img/footer_panel_bg.png') repeat;
+	}
+	section.notices_panel > p{
+		background: url('../img/notices_exclaimbg.png') no-repeat bottom right, url('../img/footer_panel_bg.png') repeat;
+	}
 }
 
-.footer_grid section > h3{
-	margin-bottom: 8px;
-	color: #6c6c6c;
-}
-
-.footer_grid  section > p{
-	padding: 20px;
-	border: 1px solid #b0b0b0;
-	color: #373737;
-}
-
-.multiplebgs section.blog_panel > p{
-	background: url('../img/blog_commentbg.png') no-repeat bottom right, url('../img/footer_panel_bg.png') repeat;
-}
-
-.no-multiplebgs section.blog_panel > p{
+.no-multiplebgs section > p{
 	background: url('../img/footer_panel_bg.png') repeat;
-}
-
-.multiplebgs section.fbtwitter_panel > p{
-	background: url('../img/social_mediabg.png') no-repeat bottom right, url('../img/footer_panel_bg.png') repeat;
-}
-
-.no-multiplebgs section.fbtwitter_panel > p{
-	background: url('../img/footer_panel_bg.png') repeat;
-}
-
-.multiplebgs section.notices_panel > p{
-	background: url('../img/notices_exclaimbg.png') no-repeat bottom right, url('../img/footer_panel_bg.png') repeat;
-}
-
-.no-multiplebgs section.notices_panel > p{
-	background: url('../img/footer_panel_bg.png') repeat;
-}
-
-.footer_dates{
-	font-size: 12px;
-}
-
-.copyright{
-	float: right;
-	font-size: 10px;
-	color: #373737;
-	font-style: italic;
 }
