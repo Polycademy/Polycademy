@@ -6,7 +6,7 @@
 					<div class="row action_grid">
 						<section class="envision_panel span4">
 							<div class="grid_box">
-								<h3><a href="#envision" data-liquidslider-ref="mid_slider_template">Envision</a></h3>
+								<h3><a class="jump_slider" href="#1" data-liquidslider-ref="mid_slider">Envision</a></h3>
 								<div class="row-fluid">
 									<div class="span4">
 										<img src="<?php echo base_url($links['img_assets']) ?>/action_grid_hex_envision.png" alt="" />
@@ -19,7 +19,7 @@
 						</section>
 						<section class="build_panel span4">
 							<div class="grid_box">
-								<h3><a href="#build" data-liquidslider-ref="mid_slider_template">Build</a></h3>
+								<h3><a class="jump_slider" href="#2" data-liquidslider-ref="mid_slider">Build</a></h3>
 								<div class="row-fluid">
 									<div class="span4">
 										<img src="<?php echo base_url($links['img_assets']) ?>/action_grid_hex_build.png" alt="" />
@@ -32,7 +32,7 @@
 						</section>
 						<section class="deploy_panel span4">
 							<div class="grid_box">
-								<h3><a href="#deploy" data-liquidslider-ref="mid_slider_template">Deploy</a></h3>
+								<h3><a class="jump_slider" href="#3" data-liquidslider-ref="mid_slider">Deploy</a></h3>
 								<div class="row-fluid">
 									<div class="span4">
 										<img src="<?php echo base_url($links['img_assets']) ?>/action_grid_hex_deploy.png" alt="" />
@@ -47,7 +47,7 @@
 					<h2>At Polycademy we turn noobs into web developers in 3 or 6 months.</h2>
 				</article>
 				<article class="action_slider">
-					<div class="liquid-slider" id="mid_slider_template">
+					<div class="liquid-slider" id="mid_slider">
 						<section class="envision_slide">
 							<h3 class="slide_title">Envision</h3>
 							<div class="slide_grid">

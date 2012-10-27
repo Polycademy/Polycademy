@@ -18,17 +18,15 @@ $(function(){
 	});
 	
 	/* Liquid Slider (http://liquidslider.kevinbatdorf.com/) */
-	$('#mid_slider_template').liquidSlider({
+	$('#mid_slider').liquidSlider({
 		dynamicTabs: false, //remove the tabs from the slider
 		panelTitleSelector: "h3.slide_title", //use the h3 class=slide_title as the title of the slide
-		topScrolling:true, //automatically scroll to the slide when triggered by a relevant anchor
-		topScrollingExtraPixels: 25, //add 25 pixels to the top when scrolled to the relevant slide panel
 		keyboardNavigation: true, //allow left and right keys to scroll the slider
 		crossLinks: true, //allow external anchors (not inside the slider) to push or pull to the relevant slide (anchors tags require: data-liquidslider-ref="SLIDER-ID")
-		hashLinking: true, //allows for us to use hashes (#) as a link to push or pull slides
-		hashCrossLinks: true, //allows us to use cross link's hashes as links to go to specific slides
-		hashNames: true, //allows us to use names rather than numbers for the hashes
-		hashTitleSelector: "h3.slide_title", //specifies the name of the hash which corresponds to the specific slide
+		//hashLinking: true, //allows for us to use hashes (#) as a link to push or pull slides
+		//hashCrossLinks: true, //allows us to use cross link's hashes as links to go to specific slides
+		//hashNames: true, //allows us to use names rather than numbers for the hashes
+		//hashTitleSelector: "h3.slide_title", //specifies the name of the hash which corresponds to the specific slide
 	});
 	
 	/*twitter popovers*/
@@ -37,9 +35,8 @@ $(function(){
 	});
 	
 	/* Anchor Slider by Cedric Dugas Http://www.position-absolute.com */
-	/*
 	$(document).ready(function() {
-		$(".jump_to_slider_template").anchorAnimate()
+		$(".jump_slider").anchorAnimate()
 	});
 
 	jQuery.fn.anchorAnimate = function(settings) {
@@ -48,7 +45,7 @@ $(function(){
 			var caller = this
 			$(caller).click(function (event) {
 				event.preventDefault()
-				var elementClick = "#slider_template";
+				var elementClick = "#mid_slider";
 				var destination = $(elementClick).offset().top;
 				$("html:not(:animated),body:not(:animated)").animate({ scrollTop: destination}, settings.speed, function() {
 					window.location.hash = elementClick
@@ -57,6 +54,5 @@ $(function(){
 			})
 		})
 	}
-	*/
 	
 });
