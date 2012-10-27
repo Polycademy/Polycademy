@@ -17,23 +17,13 @@ $(function(){
 		equalise_height(".footer_grid > section > p");
 	});
 	
-	/* Liquid Slider (http://liquidslider.kevinbatdorf.com/) */
+	/* Homepage mid_slider(http://liquidslider.kevinbatdorf.com/) */
 	$('#mid_slider').liquidSlider({
 		dynamicTabs: false, //remove the tabs from the slider
 		panelTitleSelector: "h3.slide_title", //use the h3 class=slide_title as the title of the slide
 		keyboardNavigation: true, //allow left and right keys to scroll the slider
 		crossLinks: true, //allow external anchors (not inside the slider) to push or pull to the relevant slide (anchors tags require: data-liquidslider-ref="SLIDER-ID")
 		hoverArrows: false,
-		//hashLinking: true, //allows for us to use hashes (#) as a link to push or pull slides
-		//hashCrossLinks: true, //allows us to use cross link's hashes as links to go to specific slides
-		//hashNames: true, //allows us to use names rather than numbers for the hashes
-		//hashTitleSelector: "h3.slide_title", //specifies the name of the hash which corresponds to the specific slide
-	});
-	
-	/*twitter popovers*/
-	$('.team_popovers').popover({
-		trigger: "click",
-		placement: "bottom",
 	});
 	
 	/* Anchor Slider by Cedric Dugas Http://www.position-absolute.com
@@ -58,5 +48,20 @@ $(function(){
 			})
 		})
 	}
+	
+	/*twitter popovers*/
+	$('.team_popovers').popover({
+		trigger: "click",
+		placement: "bottom",
+	});
+	
+	/* Course slider) */
+	$('#course_slider').liquidSlider({
+		dynamicTabs: false, //remove the tabs from the slider
+		panelTitleSelector: "h3.slide_title", //use the h3 class=slide_title as the title of the slide
+		keyboardNavigation: true, //allow left and right keys to scroll the slider
+		continuous: false,
+		hideSideArrows: true,
+	});
 	
 });
