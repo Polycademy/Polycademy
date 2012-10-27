@@ -20,7 +20,7 @@ able application. The development experience integrates industry practices such 
 	'links'						=> array( #this is in order of navigation from left to right 'name of link' => directory/controller name/method name
 		#header links
 		'navigation'	=> array(
-			'home'			=> 'home',
+			'home'			=> '',
 			'courses'		=> 'courses',
 			'alumni'		=> 'alumni',
 			'blog'			=> 'blog',
