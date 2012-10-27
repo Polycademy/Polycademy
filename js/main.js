@@ -23,6 +23,7 @@ $(function(){
 		panelTitleSelector: "h3.slide_title", //use the h3 class=slide_title as the title of the slide
 		keyboardNavigation: true, //allow left and right keys to scroll the slider
 		crossLinks: true, //allow external anchors (not inside the slider) to push or pull to the relevant slide (anchors tags require: data-liquidslider-ref="SLIDER-ID")
+		hideArrowsWhenMobile: false,
 		//hashLinking: true, //allows for us to use hashes (#) as a link to push or pull slides
 		//hashCrossLinks: true, //allows us to use cross link's hashes as links to go to specific slides
 		//hashNames: true, //allows us to use names rather than numbers for the hashes
