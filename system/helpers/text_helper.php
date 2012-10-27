@@ -118,18 +118,15 @@ if ( ! function_exists('ascii_to_entities'))
 	/**
 	 * High ASCII to Entities
 	 *
-	 * Converts High ascii text and MS Word special characters to character entities
+	 * Converts high ASCII text and MS Word special characters to character entities
 	 *
-	 * @param	string
+	 * @param	string	$str
 	 * @return	string
 	 */
 	function ascii_to_entities($str)
 	{
-		$count	= 1;
-		$out	= '';
-		$temp	= array();
-
-		for ($i = 0, $s = strlen($str); $i < $s; $i++)
+		$out = '';
+		for ($i = 0, $s = strlen($str), $count = 1, $temp = array(); $i < $s; $i++)
 		{
 			$ordinal = ord($str[$i]);
 
@@ -390,19 +387,19 @@ if ( ! function_exists('convert_accented_characters'))
 
 // ------------------------------------------------------------------------
 
-/**
- * Word Wrap
- *
- * Wraps text at the specified character. Maintains the integrity of words.
- * Anything placed between {unwrap}{/unwrap} will not be word wrapped, nor
- * will URLs.
- *
- * @param	string	the text string
- * @param	int	the number of characters to wrap at
- * @return	string
- */
 if ( ! function_exists('word_wrap'))
 {
+	/**
+	 * Word Wrap
+	 *
+	 * Wraps text at the specified character. Maintains the integrity of words.
+	 * Anything placed between {unwrap}{/unwrap} will not be word wrapped, nor
+	 * will URLs.
+	 *
+	 * @param	string	$str		the text string
+	 * @param	int	$charlim = 76	the number of characters to wrap at
+	 * @return	string
+	 */
 	function word_wrap($str, $charlim = 76)
 	{
 		// Set the character limit

@@ -219,7 +219,7 @@ class CI_URI {
 			$_GET = array();
 		}
 
-		if ($uri === '/' OR empty($uri))
+		if ($uri === '/' OR $uri === '')
 		{
 			return '/';
 		}
@@ -433,9 +433,9 @@ class CI_URI {
 	/**
 	 * Generate a key value pair from the URI string or Re-routed URI string
 	 *
-	 * @param	int	the starting segment number
-	 * @param	array	an array of default values
-	 * @param	string	which array we should use
+	 * @param	int	$n = 3			the starting segment number
+	 * @param	array	$default = array()	an array of default values
+	 * @param	string	$which = 'segment'	which array we should use
 	 * @return	array
 	 */
 	protected function _uri_to_assoc($n = 3, $default = array(), $which = 'segment')
@@ -445,9 +445,11 @@ class CI_URI {
 			return $default;
 		}
 
-		if (isset($this->keyval[$n]))
+		in_array($which, array('segment', 'rsegment'), TRUE) OR $which = 'segment';
+
+		if (isset($this->keyval[$which], $this->keyval[$which][$n]))
 		{
-			return $this->keyval[$n];
+			return $this->keyval[$which][$n];
 		}
 
 		if ($which === 'segment')
@@ -471,7 +473,7 @@ class CI_URI {
 		$segments = array_slice($this->$segment_array(), ($n - 1));
 		$i = 0;
 		$lastval = '';
-		$retval  = array();
+		$retval = array();
 		foreach ($segments as $seg)
 		{
 			if ($i % 2)
@@ -499,7 +501,8 @@ class CI_URI {
 		}
 
 		// Cache the array for reuse
-		$this->keyval[$n] = $retval;
+		isset($this->keyval[$which]) OR $this->keyval[$which] = array();
+		$this->keyval[$which][$n] = $retval;
 		return $retval;
 	}
 
@@ -636,7 +639,6 @@ class CI_URI {
 	{
 		return $this->uri_string;
 	}
-
 
 	// --------------------------------------------------------------------
 

@@ -182,15 +182,17 @@ abstract class CI_DB_query_builder extends CI_DB_driver {
 	// --------------------------------------------------------------------
 
 	/**
-	 * Processing Function for the four functions above:
+	 * Processing Function for the following functions:
 	 *
 	 *	select_max()
 	 *	select_min()
 	 *	select_avg()
 	 *	select_sum()
 	 *
-	 * @param	string	the field
-	 * @param	string	an alias
+	 *
+	 * @param	string	$select = ''	field name
+	 * @param	string	$alias = ''
+	 * @param	string	$type = 'MAX'
 	 * @return	object
 	 */
 	protected function _max_min_avg_sum($select = '', $alias = '', $type = 'MAX')
@@ -504,11 +506,12 @@ abstract class CI_DB_query_builder extends CI_DB_driver {
 	/**
 	 * Where_in
 	 *
-	 * Generates a WHERE field IN ('item', 'item') SQL query joined with
+	 * Generates a WHERE field IN('item', 'item') SQL query joined with
 	 * AND if appropriate
 	 *
-	 * @param	string	The field to search
-	 * @param	array	The values searched on
+	 * @param	string	$key = NULL	The field to search
+	 * @param	array	$values = NULL	The values searched on
+	 * @param	bool	$escape = NULL
 	 * @return	object
 	 */
 	public function where_in($key = NULL, $values = NULL, $escape = NULL)
@@ -519,13 +522,14 @@ abstract class CI_DB_query_builder extends CI_DB_driver {
 	// --------------------------------------------------------------------
 
 	/**
-	 * Where_in_or
+	 * Or_where_in
 	 *
-	 * Generates a WHERE field IN ('item', 'item') SQL query joined with
+	 * Generates a WHERE field IN('item', 'item') SQL query joined with
 	 * OR if appropriate
 	 *
-	 * @param	string	The field to search
-	 * @param	array	The values searched on
+	 * @param	string	$key = NULL	The field to search
+	 * @param	array	$values = NULL	The values searched on
+	 * @param	bool	$escape = NULL
 	 * @return	object
 	 */
 	public function or_where_in($key = NULL, $values = NULL, $escape = NULL)
@@ -538,11 +542,12 @@ abstract class CI_DB_query_builder extends CI_DB_driver {
 	/**
 	 * Where_not_in
 	 *
-	 * Generates a WHERE field NOT IN ('item', 'item') SQL query joined
+	 * Generates a WHERE field NOT IN('item', 'item') SQL query joined
 	 * with AND if appropriate
 	 *
-	 * @param	string	The field to search
-	 * @param	array	The values searched on
+	 * @param	string	$key = NULL	The field to search
+	 * @param	array	$values = NULL	The values searched on
+	 * @param	bool	$escape = NULL
 	 * @return	object
 	 */
 	public function where_not_in($key = NULL, $values = NULL, $escape = NULL)
@@ -553,13 +558,14 @@ abstract class CI_DB_query_builder extends CI_DB_driver {
 	// --------------------------------------------------------------------
 
 	/**
-	 * Where_not_in_or
+	 * Or_where_not_in
 	 *
-	 * Generates a WHERE field NOT IN ('item', 'item') SQL query joined
+	 * Generates a WHERE field NOT IN('item', 'item') SQL query joined
 	 * with OR if appropriate
 	 *
-	 * @param	string	The field to search
-	 * @param	array	The values searched on
+	 * @param	string	$key = NULL	The field to search
+	 * @param	array	$values = NULL	The values searched on
+	 * @param	bool	$escape = NULL
 	 * @return	object
 	 */
 	public function or_where_not_in($key = NULL, $values = NULL, $escape = NULL)
@@ -572,12 +578,13 @@ abstract class CI_DB_query_builder extends CI_DB_driver {
 	/**
 	 * Where_in
 	 *
-	 * Called by where_in, where_in_or, where_not_in, where_not_in_or
+	 * Called by where_in(), or_where_in(), where_not_in(), or_where_not_in()
 	 *
-	 * @param	string	The field to search
-	 * @param	array	The values searched on
-	 * @param	bool	If the statement would be IN or NOT IN
-	 * @param	string
+	 * @param	string	$key = NULL	The field to search
+	 * @param	array	$values = NULL	The values searched on
+	 * @param	bool	$not = FALSE	If the statement would be IN or NOT IN
+	 * @param	string	$type = 'AND '
+	 * @param	bool	$escape = NULL
 	 * @return	object
 	 */
 	protected function _where_in($key = NULL, $values = NULL, $not = FALSE, $type = 'AND ', $escape = NULL)
@@ -975,7 +982,7 @@ abstract class CI_DB_query_builder extends CI_DB_driver {
 
 		if ($escape === FALSE)
 		{
-			$qb_orderby[] = array(array('field' => $orderby, 'direction' => $direction, $escape => FALSE));
+			$qb_orderby[] = array('field' => $orderby, 'direction' => $direction, 'escape' => FALSE);
 		}
 		else
 		{
@@ -1155,7 +1162,9 @@ abstract class CI_DB_query_builder extends CI_DB_driver {
 			$this->from($table);
 		}
 
-		$result = $this->query($this->_compile_select($this->_count_string.$this->protect_identifiers('numrows')));
+		$result = ($this->qb_distinct === TRUE)
+			? $this->query($this->_count_string.$this->protect_identifiers('numrows')."\nFROM (\n".$this->_compile_select()."\n) CI_count_all_results")
+			: $this->query($this->_compile_select($this->_count_string.$this->protect_identifiers('numrows')));
 		$this->_reset_select();
 
 		if ($result->num_rows() === 0)
@@ -1174,9 +1183,10 @@ abstract class CI_DB_query_builder extends CI_DB_driver {
 	 *
 	 * Allows the where clause, limit and offset to be added directly
 	 *
-	 * @param	string	the where clause
-	 * @param	string	the limit clause
-	 * @param	string	the offset clause
+	 * @param	string	$table = ''
+	 * @param	string	$where = NULL
+	 * @param	int	$limit = NULL
+	 * @param	int	$offset = NULL
 	 * @return	object
 	 */
 	public function get_where($table = '', $where = NULL, $limit = NULL, $offset = NULL)
@@ -1208,9 +1218,9 @@ abstract class CI_DB_query_builder extends CI_DB_driver {
 	 *
 	 * Compiles batch insert strings and runs the queries
 	 *
-	 * @param	string	the table to retrieve the results from
-	 * @param	array	an associative array of insert values
-	 * @return	object
+	 * @param	string	$table = ''	table to insert into
+	 * @param	array	$set 		an associative array of insert values
+	 * @return	int	number of rows inserted or FALSE on failure
 	 */
 	public function insert_batch($table = '', $set = NULL)
 	{
@@ -1221,12 +1231,8 @@ abstract class CI_DB_query_builder extends CI_DB_driver {
 
 		if (count($this->qb_set) === 0)
 		{
-			if ($this->db_debug)
-			{
-				// No valid data array. Folds in cases where keys and values did not match up
-				return $this->display_error('db_must_use_set');
-			}
-			return FALSE;
+			// No valid data array. Folds in cases where keys and values did not match up
+			return ($this->db_debug) ? $this->display_error('db_must_use_set') : FALSE;
 		}
 
 		if ($table === '')
@@ -1240,13 +1246,15 @@ abstract class CI_DB_query_builder extends CI_DB_driver {
 		}
 
 		// Batch this baby
+		$affected_rows = 0;
 		for ($i = 0, $total = count($this->qb_set); $i < $total; $i += 100)
 		{
 			$this->query($this->_insert_batch($this->protect_identifiers($table, TRUE, NULL, FALSE), $this->qb_keys, array_slice($this->qb_set, $i, 100)));
+			$affected_rows += $this->affected_rows();
 		}
 
 		$this->_reset_write();
-		return TRUE;
+		return $affected_rows;
 	}
 
 	// --------------------------------------------------------------------
@@ -1535,9 +1543,10 @@ abstract class CI_DB_query_builder extends CI_DB_driver {
 	 *
 	 * Compiles an update string and runs the query
 	 *
-	 * @param	string	the table to retrieve the results from
-	 * @param	array	an associative array of update values
-	 * @param	mixed	the where clause
+	 * @param	string	$table = ''
+	 * @param	array	$set = NULL	an associative array of update values
+	 * @param	mixed	$where = NULL
+	 * @param	int	$limit = NULL
 	 * @return	object
 	 */
 	public function update($table = '', $set = NULL, $where = NULL, $limit = NULL)
@@ -1612,7 +1621,7 @@ abstract class CI_DB_query_builder extends CI_DB_driver {
 	 * @param	string	the table to retrieve the results from
 	 * @param	array	an associative array of update values
 	 * @param	string	the where key
-	 * @return	bool
+	 * @return	int	number of rows affected or FALSE on failure
 	 */
 	public function update_batch($table = '', $set = NULL, $index = NULL)
 	{
@@ -1645,13 +1654,15 @@ abstract class CI_DB_query_builder extends CI_DB_driver {
 		}
 
 		// Batch this baby
+		$affected_rows = 0;
 		for ($i = 0, $total = count($this->qb_set); $i < $total; $i += 100)
 		{
 			$this->query($this->_update_batch($this->protect_identifiers($table, TRUE, NULL, FALSE), array_slice($this->qb_set, $i, 100), $this->protect_identifiers($index)));
+			$affected_rows += $this->affected_rows();
 		}
 
 		$this->_reset_write();
-		return TRUE;
+		return $affected_rows;
 	}
 
 	// --------------------------------------------------------------------
@@ -1967,8 +1978,9 @@ abstract class CI_DB_query_builder extends CI_DB_driver {
 	 * Compile the SELECT statement
 	 *
 	 * Generates a query string based on which functions were used.
-	 * Should not be called directly.  The get() function calls it.
+	 * Should not be called directly.
 	 *
+	 * @param	bool	$select_override = FALSE
 	 * @return	string
 	 */
 	protected function _compile_select($select_override = FALSE)
@@ -2067,7 +2079,7 @@ abstract class CI_DB_query_builder extends CI_DB_driver {
 				for ($ci = 0, $cc = count($conditions); $ci < $cc; $ci++)
 				{
 					if (($op = $this->_get_operator($conditions[$ci])) === FALSE
-						OR ! preg_match('/^(\(?)(.*)('.preg_quote($op).')\s*(.*(?<!\)))?(\)?)$/i', $conditions[$ci], $matches))
+						OR ! preg_match('/^(\(?)(.*)('.preg_quote($op, '/').')\s*(.*(?<!\)))?(\)?)$/i', $conditions[$ci], $matches))
 					{
 						continue;
 					}

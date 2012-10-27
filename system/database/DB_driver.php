@@ -310,8 +310,9 @@ abstract class CI_DB_driver {
 	 * FALSE upon failure, and if the $db_debug variable is set to TRUE
 	 * will raise an error.
 	 *
-	 * @param	string	An SQL query string
-	 * @param	array	An array of binding data
+	 * @param	string	$sql
+	 * @param	array	$binds = FALSE		An array of binding data
+	 * @param	bool	$return_object = NULL
 	 * @return	mixed
 	 */
 	public function query($sql, $binds = FALSE, $return_object = NULL)
@@ -514,6 +515,7 @@ abstract class CI_DB_driver {
 	 * If strict mode is disabled, each group is treated autonomously, meaning
 	 * a failure of one group will not affect any others
 	 *
+	 * @param	bool	$mode = TRUE
 	 * @return	void
 	 */
 	public function trans_strict($mode = TRUE)
@@ -526,6 +528,7 @@ abstract class CI_DB_driver {
 	/**
 	 * Start Transaction
 	 *
+	 * @param	bool	$test_mode = FALSE
 	 * @return	void
 	 */
 	public function trans_start($test_mode = FALSE)
@@ -637,7 +640,7 @@ abstract class CI_DB_driver {
 		// Make sure not to replace a chunk inside a string that happens to match the bind marker
 		if ($c = preg_match_all("/'[^']*'/i", $sql, $matches))
 		{
-			$c = preg_match_all('/'.preg_quote($this->bind_marker).'/i',
+			$c = preg_match_all('/'.preg_quote($this->bind_marker, '/').'/i',
 				str_replace($matches[0],
 					str_replace($this->bind_marker, str_repeat(' ', $ml), $matches[0]),
 					$sql, $c),
@@ -649,7 +652,7 @@ abstract class CI_DB_driver {
 				return $sql;
 			}
 		}
-		elseif (($c = preg_match_all('/'.preg_quote($this->bind_marker).'/i', $sql, $matches, PREG_OFFSET_CAPTURE)) !== $bind_count)
+		elseif (($c = preg_match_all('/'.preg_quote($this->bind_marker, '/').'/i', $sql, $matches, PREG_OFFSET_CAPTURE)) !== $bind_count)
 		{
 			return $sql;
 		}
@@ -810,6 +813,7 @@ abstract class CI_DB_driver {
 	/**
 	 * Returns an array of table names
 	 *
+	 * @param	string	$constrain_by_prefix = FALSE
 	 * @return	array
 	 */
 	public function list_tables($constrain_by_prefix = FALSE)
@@ -864,6 +868,7 @@ abstract class CI_DB_driver {
 	/**
 	 * Determine if a particular table exists
 	 *
+	 * @param	string	$table_name
 	 * @return	bool
 	 */
 	public function table_exists($table_name)
@@ -1002,13 +1007,13 @@ abstract class CI_DB_driver {
 			if (is_array($this->_escape_char))
 			{
 				$preg_ec = array(
-						preg_quote($this->_escape_char[0]), preg_quote($this->_escape_char[1]),
+						preg_quote($this->_escape_char[0], '/'), preg_quote($this->_escape_char[1], '/'),
 						$this->_escape_char[0], $this->_escape_char[1]
 						);
 			}
 			else
 			{
-				$preg_ec[0] = $preg_ec[1] = preg_quote($this->_escape_char);
+				$preg_ec[0] = $preg_ec[1] = preg_quote($this->_escape_char, '/');
 				$preg_ec[2] = $preg_ec[3] = $this->_escape_char;
 			}
 		}
@@ -1167,7 +1172,7 @@ abstract class CI_DB_driver {
 		if (empty($_operators))
 		{
 			$_les = ($this->_like_escape_str !== '')
-				? '\s+'.preg_quote(trim(sprintf($this->_like_escape_str, $this->_like_escape_chr)))
+				? '\s+'.preg_quote(trim(sprintf($this->_like_escape_str, $this->_like_escape_chr)), '/')
 				: '';
 			$_operators = array(
 				'\s*(?:<|>|!)?=\s*',		// =, <=, >=, !=
@@ -1193,8 +1198,8 @@ abstract class CI_DB_driver {
 	/**
 	 * Enables a native PHP function to be run, using a platform agnostic wrapper.
 	 *
-	 * @param	string	the function name
-	 * @param	mixed	any parameters needed by the function
+	 * @param	string	$function	the function name
+	 * @param	mixed	$param,...	optional parameters needed by the function
 	 * @return	mixed
 	 */
 	public function call_function($function)
@@ -1258,6 +1263,8 @@ abstract class CI_DB_driver {
 	/**
 	 * Delete the cache files associated with a particular URI
 	 *
+	 * @param	string	$segment_one = ''
+	 * @param	string	$segment_two = ''
 	 * @return	bool
 	 */
 	public function cache_delete($segment_one = '', $segment_two = '')
