@@ -1,4 +1,4 @@
-		<div class="article_slider_container">
+		<div class="blue_container">
 			<div class="container">
 				<article class="main_article">
 					<h2>Got an idea for an application that will change the world?</h2>
@@ -256,7 +256,7 @@
 			</div>
 		</div>
 		
-		<div class="team_location_container">
+		<div class="red_container">
 			<div class="container">
 				<h2>We started up in Canberra, the nation's capital.</h2>
 				<article class="row logistics_grid">
