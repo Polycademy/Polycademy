@@ -34,7 +34,9 @@ $(function(){
 		trigger: "click",
 	});
 	
-	/* Anchor Slider by Cedric Dugas Http://www.position-absolute.com */
+	/* Anchor Slider by Cedric Dugas Http://www.position-absolute.com
+	This is jumping to the slider!
+	*/
 	$(document).ready(function() {
 		$(".jump_slider").anchorAnimate()
 	});
