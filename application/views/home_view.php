@@ -196,6 +196,7 @@
 										</div>
 									</section>
 								</div>
+							</div>
 						</section>
 						<section class="deploy_slide">
 							<h3 class="slide_title">Deploy</h3>
