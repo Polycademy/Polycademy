@@ -2,20 +2,20 @@
 			<div class="container">
 				<article class="liquid-slider" id="course_slider">
 					<section class="six_months_slide">
-						<h1 class="slide_title">6 Months Standard</h1>
+						<h1 class="slide_title">21 Weeks Standard</h1>
 						<div class="slide_grid">
 							<div class="row-fluid">
 								<section class="slide_details span6">
 									<h4>What is it?</h4>
-									<p>The 6 months standard involves 7 hours per week instruction time plus 3 hours per week free time. The class size is limited to 15 students and we recommend you to get into a team of 2 or 3. During after hours, the classroom will be open for you to chill out and meet the other students.</p>
+									<p>The 21 weeks standard involves of 8 hours per week instruction time plus 3 hours per week free time. The class size is limited to 15 students and we recommend you to get into a team of 2 or 3. During after hours, the classroom will be open for you to chill out and meet the other students.</p>
 									<p>Our three philosophies at Polycademy is <strong>Minimum Viable Product (MVP)</strong>, <strong>Agile Development</strong> and <strong>Flipped Classroom</strong>.</p>
 									<ul>
 										<li><strong>MVP</strong> means designing your product so it is minimum enough to launch quickly to get market testing, and viable enough to make your product distinct from competitors.</li>
-										<li><strong>Agile Development</strong> is about rapid and flexible incremental iteration to code. Rather than memorising the whole corpus of programming in 6 months, each week is a milestone in which parts of your product will be deployed.</li>
+										<li><strong>Agile Development</strong> is about rapid and flexible incremental iteration to code. Rather than memorising the whole corpus of programming in 21 weeks, each week is a milestone in which parts of your product will be deployed.</li>
 										<li><strong>Flipped Classroom</strong> means that before class an online ecosystem of materials will be provided to you. During class we'll keep it practical by spending time discussing models, cutting code, and deploying applications to the cloud.</li>
 									</ul>
 									<p>We'll be arranging your team with a mentor who will volunteer their time to coach your team on the entrepenurial or development process.</p>
-									<p>At the end of 24 weeks, a careers/pitching fair will be opened. Tech employers and investors will be invited to check out your work.</p>
+									<p>At the end of 21 weeks, a careers/pitching fair will be opened. Tech employers and investors will be invited to check out your work.</p>
 								</section>
 								<section class="slide_details span6">
 									<h4>What will you learn?</h4>
@@ -27,8 +27,9 @@
 										<li>Object Oriented Programming</li>
 									</ul>
 									<ul class="detailed_list">
-										<li>Development Environment</li>
+										<li>Environment</li>
 										<li>Firebug</li>
+										<li>Browsers</li>
 										<li>Git & Github</li>
 										<li>System Ops</li>
 										<li>FTP</li>
@@ -71,9 +72,36 @@
 							<div class="row-fluid">
 								<section class="slide_details span6">
 									<h4>When will you start?</h4>
+									<p>The are 2 cohorts running with the 21 weeks standard. The following dates & times may be adjusted after launch.</p>
+									<div class="date_times row-fluid">
+										<ul class="date_list span6">
+											<li>Cohort 1</li>
+											<li>From <strong><?php echo $course_dates['first_standard_cohort1'] ?></strong> to <strong><?php echo $course_dates['first_standard_cohort1_end']; ?></strong>.</li>
+											<li>It will run between <strong><?php echo $course_times['standard_cohort1'] ?></strong>.</li>
+										</ul>
+										<ul class="date_list span6">
+											<li>Cohort 2</li>
+											<li>From <strong><?php echo $course_dates['first_standard_cohort2'] ?></strong> to <strong><?php echo $course_dates['first_standard_cohort2_end']; ?></strong>.</li>
+											<li>It will run between <strong><?php echo $course_times['standard_cohort2'] ?></strong>.</li>
+										</ul>
+									</div>
 								</section>
 								<section class="slide_details span6">
-									<h4>Ready?</h4>
+									<h4>Ready to go?</h4>
+									<p>Tuition (AUD) can be paid with 2 options. If you are applying to the Code for Australia program, your tuition may be seriously discounted or be completely free.</p>
+									<div class="prices row-fluid">
+										<ul class="price_list span6">
+											<li>Upfront</li>
+											<li>$5499</li>
+											<li><strong>-$1000 (Special for Early Applications until January 15th 2013)</strong></li>
+											<li>$4499</li>
+										</ul>
+										<ul class="price_list span6">
+											<li>Weekly</li>
+											<li>$299 per week</li>
+										</ul>
+									</div>
+									<p>If 21 weeks is too long for you, or you're on a tourist visa, check out the the 11 week express program on the next slide.</p>
 								</section>
 							</div>
 						</div>

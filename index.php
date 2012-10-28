@@ -53,9 +53,7 @@
 | none is set on the server.
 |
 */
-	if(!ini_get('date.timezone') ){
-	   date_default_timezone_set('Australia/ACT');
-	}
+	date_default_timezone_set('Australia/ACT');
 	
 /*
  *---------------------------------------------------------------

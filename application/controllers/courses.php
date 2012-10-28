@@ -8,9 +8,6 @@ class Courses extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->_settings = $this->config->item('polycademy');
-		$this->load->library('firephp');
-		#construct for Home class set some default values, or run a default process when your class is instantiated
-		#this stuff is executed regardless of what page is loaded, good for when index()is not launched
 	}
 	
 	public function index(){
@@ -24,6 +21,8 @@ class Courses extends CI_Controller {
 		$this->_view_data += array(
 			'page_title'			=> 'Courses',
 			'page_desc'				=> $this->_settings['site_desc'],
+			'course_dates'			=> $this->_course_dates(),
+			'course_times'			=> $this->_course_times(),
 			'feeds'					=> $rss_feeds,
 		);
 		
@@ -31,6 +30,74 @@ class Courses extends CI_Controller {
 		$this->load->view('courses_view', $this->_view_data);
 		$this->load->view('footer_view', $this->_view_data);
 		
+	}
+	
+	protected function _course_dates(){
+	
+		#THIS NEEDS TO BE CHANGED EACH YEAR, start each on a MONDAY!, remember cohort 2 starts a little bit later
+		$course_dates = array(
+			#standard means the 21 week course (1-2 weeks break in between)
+			'first_standard_cohort1'			=> '4th Feb 2013',
+			'first_standard_cohort2'			=> '7th Feb 2013',
+			'second_standard_cohort1'			=> '15th Jul 2013',
+			'second_standard_cohort2'			=> '18th Jul 2013',
+			#express means the 11 week course (1-2 weeks break in between)
+			'first_express'		=> '4th Feb 2013',
+			'second_express'	=> '6th May 2013',
+			'third_express'		=> '5th August 2013',
+		);
+		
+		foreach($course_dates as $course => $start_date){
+		
+			$course_dates[$course] = date('F jS l Y', strtotime($start_date));
+			
+			#if six_months are at the start, it will return 0, we need to make sure 0 is not false
+			if(strpos($course, 'standard') !== false){
+			
+				$course_dates[$course . '_end'] = $this->_course_end_date($start_date, 147, 'F jS l Y');
+				
+			}elseif(strpos($course, 'express') !== false){
+			
+				$course_dates[$course . '_end'] = $this->_course_end_date($start_date, 77, 'F jS l Y');
+				
+			}
+		}
+		
+		return $course_dates;
+		
+	}
+	
+	/**
+	* Given a date in d m Y, add on the length in days, then return it (default is
+	*
+	* @param string $start_date			Start Date of Course (format of Day Month year
+	* @param string $length_in_days		Length of Course in Days
+	* @param string $format				Format of the end date, defaults to 'February 1st Mon 2000'
+	*
+	* @return string					Formatted End Date
+	*/
+	protected function _course_end_date($start_date, $length_in_days, $format = 'F jS D Y'){
+		
+		$date = new DateTime($start_date);
+		#P is an ISO8601 notation for "PERIOD" meaning duration.
+		$date->add(new DateInterval('P'. $length_in_days .'D'));
+		$end_date = $date->format($format);
+		
+		return $end_date;
+		
+	}
+	
+	protected function _course_times(){
+	
+		#standard => 8 hours & expess => 15hours
+		$course_times = array(
+			'standard_cohort1' => '6pm - 9pm on Monday & Tuesday and 6pm - 8pm on Wednesday',
+			'standard_cohort2' => '6pm - 9pm on Thursday & Friday and 6pm - 8pm on Saturday',
+			'express' => '9am - 12pm & 2pm - 4pm on Monday, Tuesday and Thursday',
+		);
+		
+		return $course_times;
+	
 	}
 	
 }
