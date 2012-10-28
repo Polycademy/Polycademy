@@ -1,7 +1,7 @@
 		<div class="blue_container">
 			<div class="container">
 				<article class="liquid-slider" id="course_slider">
-					<section class="six_months_slide">
+					<section class="standard_slide">
 						<h1 class="slide_title">21 Weeks Standard</h1>
 						<div class="slide_grid">
 							<div class="row-fluid">
@@ -101,49 +101,49 @@
 											<li>$299 per week</li>
 										</ul>
 									</div>
-									<p>If 21 weeks is too long for you, or you're on a tourist visa, check out the the 11 week express program on the next slide.</p>
+									<p>If 21 weeks is too long for you, or you're on a tourist visa, check out the the <a href="#right" data-liquidslider-ref="course_slider">11 week express program</a> on the next slide.</p>
 								</section>
 							</div>
 						</div>
 					</section>
-					<section class="three_months_slide">
-						<h1 class="slide_title">3 Months Express</h1>
+					<section class="express_slide">
+						<h1 class="slide_title">11 Weeks Express</h1>
 						<div class="slide_grid">
 							<div class="row-fluid">
 								<section class="slide_details span6">
-									<h4>Description</h4>
+									<h4>What is it?</h4>
+									<p>The 11 weeks express is the same as the 21 weeks standard except that it involves of <strong>15 hours per week instruction time plus 6 hours per week free time</strong>. The class size is limited to 15 students and we recommend you to get into a team of 2 or 3. During after hours, the classroom will be open for you to chill out and meet the other students.</p>
+									<p>If you are from overseas, an Australian tourist visa will give you enough time to stay in Canberra to complete the 11 week course.</p>
 								</section>
 								<section class="slide_details span6">
-									<h4>Details</h4>
-								</section>
-							</div>
-							<div class="row-fluid">
-								<section class="slide_details span6">
-									<h4>Timeline</h4>
-								</section>
-								<section class="slide_details span6">
-									<h4>Ready?</h4>
-								</section>
-							</div>
-						</div>
-					</section>
-					<section class="codeforaustralia_slide">
-						<h1 class="slide_title">Code for Australia</h1>
-						<div class="slide_grid">
-							<div class="row-fluid">
-								<section class="slide_details span6">
-									<h4>Description</h4>
-								</section>
-								<section class="slide_details span6">
-									<h4>Details</h4>
+									<h4>When will you start?</h4>
+									<p>The is only 1 cohort running with the 11 week express. The following dates & times may be adjusted after launch.</p>
+									<div class="date_times">
+										<ul class="date_list">
+											<li>Cohort 1</li>
+											<li>From <strong><?php echo $course_dates['first_express'] ?></strong> to <strong><?php echo $course_dates['first_express_end']; ?></strong>.</li>
+											<li>It will run between <strong><?php echo $course_times['express'] ?></strong>.</li>
+										</ul>
+									</div>
 								</section>
 							</div>
 							<div class="row-fluid">
-								<section class="slide_details span6">
-									<h4>Timeline</h4>
-								</section>
-								<section class="slide_details span6">
-									<h4>Ready?</h4>
+								<section class="slide_details span12">
+									<h4>Ready to go?</h4>
+									<p>Tuition (AUD) can be paid with 2 options. If you are applying to the Code for Australia program, your tuition may be seriously discounted or be completely free.</p>
+									<div class="prices row-fluid">
+										<ul class="price_list span6">
+											<li>Upfront</li>
+											<li>$5399</li>
+											<li><strong>-$1000 (Special for Early Applications until January 15th 2013)</strong></li>
+											<li>$4399</li>
+										</ul>
+										<ul class="price_list span6">
+											<li>Weekly</li>
+											<li>$559 per week</li>
+										</ul>
+									</div>
+									<p>If 11 weeks is too intensive for you, and you need to go to work or school, check out the the <a href="#left" data-liquidslider-ref="course_slider">21 week standard program</a> on the previous slide.</p>
 								</section>
 							</div>
 						</div>
@@ -156,7 +156,7 @@
 				<article class="course_application">
 					<h2>Application Form</h2>
 					<h4>Becoming a web application entrepeneur is not easy. You need to be truly passionate and committed to developing your idea into reality.</h4>
-					<h2>GO!</h2>
+					<h2>Application form will open soon!</h2>
 				</article>
 			</div>
 		</div>

@@ -39,7 +39,7 @@ $(function(){
 	/* Homepage mid_slider(http://liquidslider.kevinbatdorf.com/) */
 	$('#mid_slider').liquidSlider({
 		dynamicTabs: false, //remove the tabs from the slider
-		panelTitleSelector: "h3.slide_title", //use the h3 class=slide_title as the title of the slide
+		panelTitleSelector: ".slide_title", //use the h3 class=slide_title as the title of the slide
 		keyboardNavigation: true, //allow left and right keys to scroll the slider
 		crossLinks: true, //allow external anchors (not inside the slider) to push or pull to the relevant slide (anchors tags require: data-liquidslider-ref="SLIDER-ID")
 		hoverArrows: false,
@@ -77,10 +77,11 @@ $(function(){
 	/* Course slider) */
 	$('#course_slider').liquidSlider({
 		dynamicTabs: false, //remove the tabs from the slider
-		panelTitleSelector: "h3.slide_title", //use the h3 class=slide_title as the title of the slide
+		panelTitleSelector: ".slide_title",
 		keyboardNavigation: true, //allow left and right keys to scroll the slider
 		continuous: false,
 		hideSideArrows: true,
+		crossLinks: true,
 	});
 	
 });
