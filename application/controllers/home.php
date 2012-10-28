@@ -9,7 +9,6 @@ class Home extends CI_Controller {
 		parent::__construct();
 		$this->_settings = $this->config->item('polycademy');
 		$this->_view_data = $this->_settings;
-		$this->load->library('firephp');
 		#construct for Home class set some default values, or run a default process when your class is instantiated
 		#this stuff is executed regardless of what page is loaded, good for when index()is not launched
 	}
