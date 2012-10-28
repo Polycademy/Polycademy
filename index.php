@@ -45,6 +45,19 @@
 	define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
 
 /*
+|---------------------------------------------------------------
+| DEFAULT TIMEZONE
+|---------------------------------------------------------------
+|
+| Set the default timezone for date/time functions to use if
+| none is set on the server.
+|
+*/
+	if(!ini_get('date.timezone') ){
+	   date_default_timezone_set('Australia/ACT');
+	}
+	
+/*
  *---------------------------------------------------------------
  * ERROR REPORTING
  *---------------------------------------------------------------
@@ -52,23 +65,23 @@
  * Different environments will require different levels of error reporting.
  * By default development will show errors but testing and live will hide them.
  */
-switch (ENVIRONMENT)
-{
-	case 'development':
-		error_reporting(-1);
-		ini_set('display_errors', 1);
-	break;
+	switch (ENVIRONMENT)
+	{
+		case 'development':
+			error_reporting(-1);
+			ini_set('display_errors', 1);
+		break;
 
-	case 'testing':
-	case 'production':
-		error_reporting(E_ALL ^ E_NOTICE ^ E_DEPRECATED ^ E_STRICT);
-		ini_set('display_errors', 0);
-	break;
+		case 'testing':
+		case 'production':
+			error_reporting(E_ALL ^ E_NOTICE ^ E_DEPRECATED ^ E_STRICT);
+			ini_set('display_errors', 0);
+		break;
 
-	default:
-		header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
-		exit('The application environment is not set correctly.');
-}
+		default:
+			header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
+			exit('The application environment is not set correctly.');
+	}
 
 /*
  *---------------------------------------------------------------
