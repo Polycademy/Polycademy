@@ -19,6 +19,53 @@
 								</section>
 								<section class="slide_details span6">
 									<h4>What will you learn?</h4>
+									<ul class="detailed_list">
+										<li>Theory</li>
+										<li>Agile Development Method</li>
+										<li>MVP Design</li>
+										<li>MoSCoW Features</li>
+										<li>Object Oriented Programming</li>
+									</ul>
+									<ul class="detailed_list">
+										<li>Development Environment</li>
+										<li>Firebug</li>
+										<li>Git & Github</li>
+										<li>System Ops</li>
+										<li>FTP</li>
+										<li>AMP Stack</li>
+									</ul>
+									<ul class="detailed_list">
+										<li>Design</li>
+										<li>User Experience Design</li>
+										<li>Adobe Photoshop Mockups</li>
+										<li>HTML with H5BP and Bootstrap</li>
+										<li>CSS with LESS.css</li>
+									</ul>
+									<ul class="detailed_list">
+										<li>Programming</li>
+										<li>PHP with Codeigniter</li>
+										<li>Filtering & Validation</li>
+										<li>Database CRUD with MySQL</li>
+										<li>Javascript with Coffeescript</li>
+										<li>AJAX with JSON</li>
+									</ul>
+									<ul class="detailed_list">
+										<li>Performance</li>
+										<li>Browser Caching</li>
+										<li>File Caching</li>
+										<li>Memcached</li>
+										<li>Opcode Caching</li>
+										<li>CDN & Reverse Proxy Caching</li>
+										<li>Compression</li>
+									</ul>
+									<ul class="detailed_list">
+										<li>Deployment</li>
+										<li>Domain Operations</li>
+										<li>Cloud Hosting</li>
+										<li>Search Engine Optimisation</li>
+										<li>Web Analytics</li>
+										<li>Entrepreneurship</li>
+									</ul>
 								</section>
 							</div>
 							<div class="row-fluid">
@@ -52,12 +99,33 @@
 							</div>
 						</div>
 					</section>
+					<section class="codeforaustralia_slide">
+						<h1 class="slide_title">Code for Australia</h1>
+						<div class="slide_grid">
+							<div class="row-fluid">
+								<section class="slide_details span6">
+									<h4>Description</h4>
+								</section>
+								<section class="slide_details span6">
+									<h4>Details</h4>
+								</section>
+							</div>
+							<div class="row-fluid">
+								<section class="slide_details span6">
+									<h4>Timeline</h4>
+								</section>
+								<section class="slide_details span6">
+									<h4>Ready?</h4>
+								</section>
+							</div>
+						</div>
+					</section>
 				</article>
 			</div>
 		</div>
 		<div class="red_container">
 			<div class="container">
-				<article>
+				<article class="course_application">
 					<h2>Application Form</h2>
 					<h4>Becoming a web application entrepeneur is not easy. You need to be truly passionate and committed to developing your idea into reality.</h4>
 					<h2>GO!</h2>
