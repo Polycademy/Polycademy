@@ -67,6 +67,16 @@
 /* ==========================================================================
    H STYLES
    ========================================================================== */
+h1{
+	font-size: 42px;
+	text-align: center;
+	margin: @heading_margins auto;
+    -webkit-font-smoothing: antialiased;
+	a:hover{
+		text-decoration: none;
+	}
+}
+
 /* For large section headers */
 h2{
 	font-family: 'avantgarde_bk_btdemi';
@@ -353,6 +363,19 @@ header.navbar{
 	border: none;
 	.liquid-slider{
 		background: transparent;
+	}
+	.slide_title{
+		margin: 0 auto;
+	}
+	.slide_details{
+		h4{
+			text-align: left;
+		}
+		ul{
+			li{
+				margin: 10px 0;
+			}
+		}
 	}
 }
 
