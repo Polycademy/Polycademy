@@ -3,7 +3,7 @@
 				<article class="row footer_grid">
 					<section class="blog_panel span4">
 						<h3>
-							<?php echo anchor($links['navigation']['blog'], array_search($links['navigation']['blog'], $links['navigation'])) ?>
+							<?php echo anchor($links['navigation']['blog'], 'Blog') ?>
 						</h3>
 						<p>• No blog post yet</p>
 					</section>
@@ -26,6 +26,10 @@
 						<p>We’re hiring teachers who would specialise in web design & web development.<br /><br />We’re interested in acquiring mentors, investors and employers who are interested to get involved.<br /><br />We’re also looking for a good location for the classroom.<br /><br />Find out more at <a href='http://www.google.com/recaptcha/mailhide/d?k=01q-bJV3WQrMYWD2quLJ7VPA==&c=FsmnfqaQraWCMzZB6tsagBZd557LPBLlxh80gaenMSo='>@polycademy.com</a></p>
 					</section>
 				</article>
+				<ul class="footer_links">
+					<li><?php echo anchor($links['terms_of_service'], 'Terms of Service & Privacy Policy') ?></li>
+					<li><?php echo anchor($links['refund_policy'], 'Refund Policy') ?></li>
+				</ul>
 				<p class="copyright"><?=$copyright?></p>
 			</div>
 		</footer>

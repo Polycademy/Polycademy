@@ -20,18 +20,20 @@ able application. The development experience integrates industry practices such 
 	'links'						=> array( #this is in order of navigation from left to right 'name of link' => directory/controller name/method name
 		#header links
 		'navigation'	=> array(
-			'home'			=> '',
-			'courses'		=> 'courses',
-			'alumni'		=> 'alumni',
-			'blog'			=> 'blog',
-			'get involved'	=> 'get_involved',
-			'about'			=> 'about',
-			'devhub'		=> 'devhub',
+			'home'				=> '',
+			'courses'			=> 'courses',
+			'alumni'			=> 'alumni',
+			'blog'				=> 'blog',
+			'get involved'		=> 'get_involved',
+			'about'				=> 'about',
+			'devhub'			=> 'devhub',
 		),
 		#other links
 		'notices'		=> 'blog/notices',
 		'codex'			=> 'wiki',
 		'forum'			=> 'forum',
+		'terms_of_service'	=> 'terms_of_service',
+		'refund_policy'		=> 'refund_policy',
 		#resources for base_url()
 		'js_assets'		=> 'js',
 		'css_assets'	=> 'css',
