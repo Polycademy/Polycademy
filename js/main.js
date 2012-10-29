@@ -47,18 +47,20 @@ $(function(){
 	
 	/* Anchor Slider by Cedric Dugas Http://www.position-absolute.com
 	This is jumping to the slider!
+	First is the id/class that activates the jump, the next is the destination!
 	*/
 	$(document).ready(function() {
-		$(".jump_slider").anchorAnimate()
+		$(".jump_slider").anchorAnimate("#mid_slider");
+		$(".jump_course").anchorAnimate("#course_slider");
 	});
 
-	jQuery.fn.anchorAnimate = function(settings) {
+	jQuery.fn.anchorAnimate = function(next_place, settings) {
 		settings = jQuery.extend({speed : 1100}, settings);
 		return this.each(function(){
 			var caller = this
 			$(caller).click(function (event) {
 				event.preventDefault()
-				var elementClick = "#mid_slider";
+				var elementClick = next_place;
 				var destination = $(elementClick).offset().top;
 				$("html:not(:animated),body:not(:animated)").animate({ scrollTop: destination}, settings.speed, function() {
 					window.location.hash = elementClick
@@ -81,6 +83,7 @@ $(function(){
 		keyboardNavigation: true, //allow left and right keys to scroll the slider
 		continuous: false,
 		hideSideArrows: true,
+		hoverArrows: false,
 		crossLinks: true,
 	});
 	
