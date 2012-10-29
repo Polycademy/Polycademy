@@ -13,7 +13,7 @@
 						<?php
 							foreach($feeds as $feed){
 						?>
-								• <em class="footer_dates">(<?=$feed['date']?>)</em> - <a href="<?=$feed['link']?>"><?=$feed['title']?></a><br /><br />
+								• <em class="footer_dates">(<?=$feed['date']?>)</em> - <?php echo anchor($feed['link'], $feed['title']) ?><br /><br />
 						<?php
 							}
 						?>

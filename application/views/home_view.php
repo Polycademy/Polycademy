@@ -43,7 +43,7 @@
 						</div>
 					</section>
 				</article>
-				<h2>At Polycademy we turn noobs into web developers in 11 or 21 weeks.</h2>
+				<h2>At Polycademy we turn people into web developers in <?php echo anchor($links['navigation']['courses'], '11 or 21 weeks') ?>.</h2>
 				<article class="liquid-slider" id="mid_slider">
 					<section class="envision_slide">
 						<h3 class="slide_title">Envision</h3>
