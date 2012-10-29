@@ -63,6 +63,8 @@ class Courses extends CI_Controller {
 			}
 		}
 		
+		$this->firephp->log($course_dates);
+		
 		return $course_dates;
 		
 	}

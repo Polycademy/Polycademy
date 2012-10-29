@@ -559,15 +559,35 @@ header.navbar{
 }
 
 /* ==========================================================================
+   TOS & Privacy Policy & Refund Policy
+   ========================================================================== */
+.terms_of_service, .privacy_policy, .refund_policy{
+	padding: 20px;
+}
+
+.terms_of_service, .refund_policy{
+	border: 1px solid #08497a;
+	background: url('../img/another_bg.png') repeat;
+}
+
+.privacy_policy{
+	border: 1px solid #b62b2f;
+	background: url('../img/team_location_panel_bg.png') repeat;
+}
+
+/* ==========================================================================
    FOOTER
    ========================================================================== */
 footer{
 	background: url('../img/header_footer_bg.jpg') repeat;
 	border-top: 1px solid #c87173;
 	.footer_links{
+		margin: 0;
 		li{
 			float: left;
-			font-size: 10px;
+			font-size: 12px;
+			list-style-type: none;
+			margin: 0 10px;
 		}
 	}
 	.copyright{
