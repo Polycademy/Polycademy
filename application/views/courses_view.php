@@ -19,6 +19,7 @@
 								</section>
 								<section class="slide_details span6">
 									<h4>What will you learn?</h4>
+									<p>The following details may be adjusted after launch.</p>
 									<ul class="detailed_list">
 										<li>Theory</li>
 										<li>Agile Development Method</li>
@@ -113,7 +114,7 @@
 								<section class="slide_details span6">
 									<h4>What is it?</h4>
 									<p>The 11 weeks express is the same as the 21 weeks standard except that it involves of <strong>15 hours per week instruction time plus 6 hours per week free time</strong>. The class size is limited to 15 students and we recommend you to get into a team of 2 or 3. During after hours, the classroom will be open for you to chill out and meet the other students.</p>
-									<p>If you are from overseas, an Australian tourist visa will give you enough time to stay in Canberra to complete the 11 week course.</p>
+									<p>If you are from overseas, an <?php echo anchor('http://www.immi.gov.au/visitors/tourist/', 'Australian tourist visa') ?> will give you enough time to stay in Canberra to complete the 11 week course. The student visa is not suitable for Polycademy.</p>
 								</section>
 								<section class="slide_details span6">
 									<h4>When will you start?</h4>
