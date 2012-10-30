@@ -8,6 +8,9 @@ class Courses extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->_settings = $this->config->item('polycademy');
+		$this->_view_data = $this->_settings;
+		$this->load->helper('form');
+		$this->load->library('form_validation');
 	}
 	
 	public function index(){
@@ -17,19 +20,36 @@ class Courses extends CI_Controller {
 			$rss_feeds = array_slice($rss_feeds, 0, 4);
 		}
 		
-		$this->_view_data = $this->_settings;
 		$this->_view_data += array(
 			'page_title'			=> 'Courses',
 			'page_desc'				=> $this->_settings['site_desc'],
+			'feeds'					=> $rss_feeds,
 			'course_dates'			=> $this->_course_dates(),
 			'course_times'			=> $this->_course_times(),
-			'feeds'					=> $rss_feeds,
+			'form_destination'		=> $this->router->fetch_class(),
 		);
+		
+		if ($this->form_validation->run() == true){
+			#this means the form has been ran and suceeded through validation!
+			$this->_form_success();
+		}else{
+			$this->_form_failure();
+		}
+		
 		
 		$this->load->view('header_view', $this->_view_data);
 		$this->load->view('courses_view', $this->_view_data);
 		$this->load->view('footer_view', $this->_view_data);
 		
+	}
+	
+	protected function _form_success(){
+		#need some function to say they succeeded
+		#preferably a message and some details + call to action
+	}
+	
+	protected function _form_failure(){
+		#if they fail, add in some validation error messages and make sure to anchor jump to it.
 	}
 	
 	protected function _course_dates(){
@@ -63,7 +83,7 @@ class Courses extends CI_Controller {
 			}
 		}
 		
-		$this->firephp->log($course_dates);
+		#$this->firephp->log($course_dates);
 		
 		return $course_dates;
 		
