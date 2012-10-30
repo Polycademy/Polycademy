@@ -17,8 +17,6 @@ class Courses extends CI_Controller {
 			$rss_feeds = array_slice($rss_feeds, 0, 4);
 		}
 		
-		echo unix_to_human(now());
-		
 		$this->_view_data = $this->_settings;
 		$this->_view_data += array(
 			'page_title'			=> 'Courses',
