@@ -45,17 +45,6 @@
 	define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
 
 /*
-|---------------------------------------------------------------
-| DEFAULT TIMEZONE
-|---------------------------------------------------------------
-|
-| Set the default timezone for date/time functions to use if
-| none is set on the server.
-|
-*/
-	date_default_timezone_set('Australia/ACT');
-	
-/*
  *---------------------------------------------------------------
  * ERROR REPORTING
  *---------------------------------------------------------------
