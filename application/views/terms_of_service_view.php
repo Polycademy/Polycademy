@@ -1,6 +1,6 @@
 		<div class="blue_container">
 			<div class="container">
-				<article class="terms_of_service">
+				<article class="terms_of_service blue_text_container">
 					<h2>Terms of Service</h2>
 					<h4>1. Terms</h4>
 					<p>By accessing this web site, you are agreeing to be bound by these web site Terms and Conditions of Use, all applicable laws and regulations, and agree that you are responsible for compliance with any applicable local laws. If you do not agree with any of these terms, you are prohibited from using or accessing this site. The materials contained in this web site are protected by applicable copyright and trade mark law.</p>
@@ -39,7 +39,7 @@
 		</div>
 		<div class="red_container">
 			<div class="container">
-				<article class="privacy_policy">
+				<article class="privacy_policy red_text_container">
 					<h2>Privacy Policy</h2>
 					<p>Your privacy is very important to us. Accordingly, we have developed this Policy in order for you to understand how we collect, use, communicate and disclose and make use of personal information. The following outlines our privacy policy.</p>
 					<ul>

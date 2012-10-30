@@ -1,6 +1,6 @@
 		<div class="blue_container">
 			<div class="container">
-				<article class="refund_policy">
+				<article class="refund_policy blue_text_container">
 					<h2>Refund Policy</h2>
 					<p>To participate in Polycademy's program you need to agree to this refund policy.</p>
 					<h4>The Agreement</h4>
