@@ -19,6 +19,10 @@ class Errors extends CI_Controller {
 	}
 	
 	/* Remapped from the routes.php (need to expand to include other errors) */
+	#error_general -> index
+	#error_404
+	#error_php
+	#error_db
 	public function _remap($method){
 		if($method == 'error_404'){
 			$this->$method();
