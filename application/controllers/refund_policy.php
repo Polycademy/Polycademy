@@ -18,8 +18,6 @@ class Refund_policy extends CI_Controller {
 			$rss_feeds = array_slice($rss_feeds, 0, 4);
 		}
 		
-		#$this->firephp->log(site_url());
-		
 		$this->_view_data += array(
 			'page_title'			=> 'Refund Policy',
 			'page_desc'				=> $this->_settings['site_desc'],
