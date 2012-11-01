@@ -589,7 +589,58 @@ header.navbar{
 		text-align: center;
 	}
 	.course_application_form{
-		margin: 1.9% auto;
+		margin: 2% auto;
+		width: 95%;
+		.control-group{
+			width: 100%;
+			margin: 15px auto;
+			.outline_transition (#277094, 250ms, linear, 1px, dashed, #b8e8ff, 5px);
+			.control-label{
+				width: 28%;
+				padding-top: 10px;
+				font-weight: bold;
+			}
+			.controls{
+				margin-top: 5px;
+				margin-bottom: 5px;
+				margin-left: 30%;
+				width: 70%;
+				textarea{
+					height: 120px;
+				}
+				> div{
+					margin-right: 10px;
+					margin-top: 5px;
+					margin-bottom: 5px;
+				}
+				table{
+					.course_row_input{
+						width: 25px;
+					}
+					th{
+						font-weight: normal;
+						&:hover{
+							background-color: #7E1216;
+						}
+					}
+					tr:hover{
+						background-color: #7E1216;
+					}
+					td:hover{
+						background-color: #7E1216;
+					}
+				}
+			}
+		}
+		small, .help-block, .help-inline{
+			color: #D4D01E;
+			font-size: 12px;
+		}
+		.form-actions{
+			background: transparent;
+			padding-left: 30%;
+			border: none;
+		}
 	}
 }
 
