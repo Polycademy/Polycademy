@@ -20,11 +20,43 @@ class Courses extends CI_Controller {
 			$rss_feeds = array_slice($rss_feeds, 0, 4);
 		}
 		
+		#THIS NEEDS TO BE CHANGED EACH YEAR, start each on a MONDAY!, remember cohort 2 starts a little bit later
+		$course_dates = array(
+			#standard means the 21 week course (1-2 weeks break in between)
+			'st_s1_c1'	=> '4th Feb 2013',
+			'st_s1_c2'	=> '7th Feb 2013',
+			'st_s2_c1'	=> '15th Jul 2013',
+			'st_s2_c2'	=> '18th Jul 2013',
+			#express means the 11 week course (1-2 weeks break in between)
+			'ex_t1'		=> '4th Feb 2013',
+			'ex_t2'		=> '6th May 2013',
+			'ex_t3'		=> '5th August 2013',
+		);
+		
+		$duration = array(
+			'st'	=> 147,
+			'ex'	=> 77,
+		);
+		
+		$format = array(
+			'start'	=> 'F jS l Y',
+			'end'	=> 'F jS l Y',
+		);
+		
+		$format_for_table = array(
+			'start'	=> 'D jS F',
+			'end'	=> 'D jS F',
+		);
+		
+		$course_dates = $this->_course_dates($course_dates, $duration, $format);
+		$course_dates_table = $this->_course_dates($course_dates, $duration, $format_for_table);
+		
 		$this->_view_data += array(
 			'page_title'			=> 'Courses',
 			'page_desc'				=> $this->_settings['site_desc'],
 			'feeds'					=> $rss_feeds,
-			'course_dates'			=> $this->_course_dates(),
+			'course_dates'			=> $course_dates,
+			'course_dates_table'	=> $course_dates_table,
 			'course_times'			=> $this->_course_times(),
 			'form_destination'		=> $this->router->fetch_class(),
 		);
@@ -52,35 +84,26 @@ class Courses extends CI_Controller {
 		#if they fail, add in some validation error messages and make sure to anchor jump to it.
 	}
 	
-	protected function _course_dates(){
-	
-		#THIS NEEDS TO BE CHANGED EACH YEAR, start each on a MONDAY!, remember cohort 2 starts a little bit later
-		$course_dates = array(
-			#standard means the 21 week course (1-2 weeks break in between)
-			'first_standard_cohort1'			=> '4th Feb 2013',
-			'first_standard_cohort2'			=> '7th Feb 2013',
-			'second_standard_cohort1'			=> '15th Jul 2013',
-			'second_standard_cohort2'			=> '18th Jul 2013',
-			#express means the 11 week course (1-2 weeks break in between)
-			'first_express'		=> '4th Feb 2013',
-			'second_express'	=> '6th May 2013',
-			'third_express'		=> '5th August 2013',
-		);
+	#$course_dates are passed as an associative array (only including the start
+	#$duration is an array with standard and express
+	#$format is an array with start and end
+	protected function _course_dates($course_dates, $duration, $format){
 		
 		foreach($course_dates as $course => $start_date){
 		
-			$course_dates[$course] = date('F jS l Y', strtotime($start_date));
+			$course_dates[$course] = date($format['start'], strtotime($start_date));
 			
 			#if six_months are at the start, it will return 0, we need to make sure 0 is not false
-			if(strpos($course, 'standard') !== false){
+			if(strpos($course, 'st') !== false){
 			
-				$course_dates[$course . '_end'] = $this->_course_end_date($start_date, 147, 'F jS l Y');
+				$course_dates[$course . '_end'] = $this->_course_end_date($start_date, $duration['st'], $format['end']);
 				
-			}elseif(strpos($course, 'express') !== false){
+			}elseif(strpos($course, 'ex') !== false){
 			
-				$course_dates[$course . '_end'] = $this->_course_end_date($start_date, 77, 'F jS l Y');
+				$course_dates[$course . '_end'] = $this->_course_end_date($start_date, $duration['ex'], $format['end']);
 				
 			}
+			
 		}
 		
 		#$this->firephp->log($course_dates);
