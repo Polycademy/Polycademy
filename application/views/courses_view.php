@@ -223,6 +223,7 @@
 										<?= form_radio(array('name' => 'cfa', 'id' => 'form_cfa_no', 'value' => 'no')) ?>
 										No
 									</label>
+									<span class="help-block"><?= anchor('http://codeforaustralia.com.au', 'What is Code for Australia? (It isn\'t up yet!)', array('title' => 'CFA is a social enterprise program @ Polycademy which gets students to build applications that deal with open government, open data and civic/community issues.')) ?></span>
 								</div>
 							</div>
 							<div class="control-group">
