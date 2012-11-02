@@ -159,8 +159,15 @@
 					<h2>Application Form</h2>
 					<h4>Becoming a web application entrepeneur is not easy. You need to be truly passionate and committed to developing your idea into reality.</h4>
 					<p>Please note that this is an application form, there is no obligation to pay until you have been accepted and have agreed to the contract.<br />Your information here will only be recorded for application purposes. If you are accepted into the course, we may offer your information to potential investors or employers.</p>
-					<?php echo validation_errors() ?>
-					<?php echo form_open($form_destination . '#course_application', array('class' => 'course_application_form form-horizontal')); ?>
+					<? if(!empty($error_messages)){	?>
+						<section class="form_errors">
+							<h5>There are form errors, please check below:</h5>
+							<ul>
+								<?= $error_messages ?>
+							</ul>
+						</section>
+					<? } ?>
+					<?= form_open($form_destination . '#course_application', array('class' => 'course_application_form form-horizontal')) ?>
 						<h3>Personal Details <small>&lang;REQUIRED&rang;</small></h3>
 						<div class="control-group">
 							<?= form_label('Full Name', 'form_full_name', array('class' => 'control-label required')) ?>
@@ -220,7 +227,7 @@
 									Yes
 								</label>
 								<label class="radio inline" for="form_cfa_no">
-									<?= form_radio(array('name' => 'cfa', 'id' => 'form_cfa_no', 'value' => 'no')) ?>
+									<?= form_radio(array('name' => 'cfa', 'id' => 'form_cfa_no', 'value' => 'no', 'checked' => 'checked')) ?>
 									No
 								</label>
 								<span class="help-block">What is <?= anchor('http://codeforaustralia.com.au', 'Code for Australia?', array('title' => 'CFA is a social enterprise program @ Polycademy which gets students to build applications that deal with open government, open data and civic/community issues.')) ?> (It isn't up yet!)</span>

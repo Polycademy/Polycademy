@@ -4,13 +4,22 @@ class Courses extends CI_Controller {
 
 	protected $_view_data; //only accessible in this class and any classes that extend home
 	protected $_settings;
+	protected $_error_messages;
 	
 	public function __construct(){
+		
 		parent::__construct();
+		
 		$this->_settings = $this->config->item('polycademy');
 		$this->_view_data = $this->_settings;
+		
 		$this->load->helper('form');
+		
 		$this->load->library('form_validation');
+		
+		#language files require MY_ or differentiator or else they overwrite the system ones.
+		$this->lang->load('MY_form_validation_lang');
+	
 	}
 	
 	public function index(){
@@ -20,7 +29,6 @@ class Courses extends CI_Controller {
 			$rss_feeds = array_slice($rss_feeds, 0, 4);
 		}
 		
-		#THIS NEEDS TO BE CHANGED EACH YEAR, start each on a MONDAY!, remember cohort 2 starts a little bit later
 		$course_dates = array(
 			#standard means the 21 week course (1-2 weeks break in between)
 			'st_s1_c1'	=> '4th Feb 2013',
@@ -61,11 +69,12 @@ class Courses extends CI_Controller {
 			'form_destination'		=> $this->router->fetch_class(),
 		);
 		
-		if ($this->form_validation->run() == true){
+		
+		if($this->form_validation->run('application_form') == false){
 			#this means the form has been ran and suceeded through validation!
-			$this->_form_success();
-		}else{
 			$this->_form_failure();
+		}else{
+			$this->_form_success();
 		}
 		
 		
@@ -81,7 +90,9 @@ class Courses extends CI_Controller {
 	}
 	
 	protected function _form_failure(){
-		#if they fail, add in some validation error messages and make sure to anchor jump to it.
+		$this->_view_data += array(
+			'error_messages'	=> validation_errors('<li>', '</li>'),
+		);
 	}
 	
 	#$course_dates are passed as an associative array (only including the start
