@@ -75,22 +75,22 @@ able application. The development experience integrates industry practices such 
 			array(
 				'field'		=> 'cfa',
 				'label'		=> 'CFA',
-				'rules'		=> '',
+				'rules'		=> 'trim|xss_clean',
 			),
 			array(
 				'field'		=> 'courses[]',
 				'label'		=> 'Courses',
-				'rules'		=> 'required',
+				'rules'		=> 'required|trim|xss_clean',
 			),
 			array(
 				'field'		=> 'payment_options',
 				'label'		=> 'Payment Options',
-				'rules'		=> 'required',
+				'rules'		=> 'required|trim|xss_clean',
 			),
 			array(
 				'field'		=> 'agreement',
 				'label'		=> 'Agreement to TOS, Privacy Policy and Refund Policy',
-				'rules'		=> 'required',
+				'rules'		=> 'required|trim|xss_clean',
 			),
 			array(
 				'field'		=> 'education_employment',
@@ -120,7 +120,7 @@ able application. The development experience integrates industry practices such 
 			array(
 				'field'		=> 'tech',
 				'label'		=> 'Tech',
-				'rules'		=> '',
+				'rules'		=> 'trim|xss_clean',
 			),
 			array(
 				'field'		=> 'feedback',
@@ -130,7 +130,7 @@ able application. The development experience integrates industry practices such 
 			array(
 				'field'		=> 'where',
 				'label'		=> 'Where',
-				'rules'		=> '',
+				'rules'		=> 'trim|xss_clean',
 			),
 		),
 	),
