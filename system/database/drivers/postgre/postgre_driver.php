@@ -1,4 +1,4 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
 /**
  * CodeIgniter
  *
@@ -24,6 +24,7 @@
  * @since		Version 1.0
  * @filesource
  */
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
  * Postgre Database Adapter Class
@@ -40,17 +41,37 @@
  */
 class CI_DB_postgre_driver extends CI_DB {
 
+	/**
+	 * Database driver
+	 *
+	 * @var	string
+	 */
 	public $dbdriver = 'postgre';
 
-	protected $_escape_char = '"';
+	/**
+	 * Database schema
+	 *
+	 * @var	string
+	 */
+	public $schema = 'public';
 
-	protected $_random_keyword = ' RANDOM()'; // database specific random keyword
+	// --------------------------------------------------------------------
 
 	/**
-	 * Constructor
+	 * ORDER BY random keyword
+	 *
+	 * @var	string
+	 */
+	protected $_random_keyword = ' RANDOM()'; // database specific random keyword
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Class constructor
 	 *
 	 * Creates a DSN string to be used for db_connect() and db_pconnect()
 	 *
+	 * @param	array	$params
 	 * @return	void
 	 */
 	public function __construct($params)
@@ -162,7 +183,7 @@ class CI_DB_postgre_driver extends CI_DB {
 	/**
 	 * Set client character set
 	 *
-	 * @param	string
+	 * @param	string	$charset
 	 * @return	bool
 	 */
 	protected function _db_set_charset($charset)
@@ -204,7 +225,7 @@ class CI_DB_postgre_driver extends CI_DB {
 	/**
 	 * Execute the query
 	 *
-	 * @param	string	an SQL query
+	 * @param	string	$sql	an SQL query
 	 * @return	resource
 	 */
 	protected function _execute($sql)
@@ -217,7 +238,7 @@ class CI_DB_postgre_driver extends CI_DB {
 	/**
 	 * Begin Transaction
 	 *
-	 * @param	bool
+	 * @param	bool	$test_mode
 	 * @return	bool
 	 */
 	public function trans_begin($test_mode = FALSE)
@@ -277,8 +298,8 @@ class CI_DB_postgre_driver extends CI_DB {
 	/**
 	 * Escape String
 	 *
-	 * @param	string
-	 * @param	bool	whether or not the string will be used in a LIKE condition
+	 * @param	string	$str
+	 * @param	bool	$like Whether or not the string will be used in a LIKE condition
 	 * @return	string
 	 */
 	public function escape_str($str, $like = FALSE)
@@ -314,7 +335,7 @@ class CI_DB_postgre_driver extends CI_DB {
 	 * Escapes data based on type
 	 * Sets boolean and null types
 	 *
-	 * @param	string
+	 * @param	string	$str
 	 * @return	mixed
 	 */
 	public function escape($str)
@@ -392,12 +413,12 @@ class CI_DB_postgre_driver extends CI_DB {
 	 *
 	 * Generates a platform-specific query string so that the table names can be fetched
 	 *
-	 * @param	bool
+	 * @param	bool	$prefix_limit
 	 * @return	string
 	 */
 	protected function _list_tables($prefix_limit = FALSE)
 	{
-		$sql = 'SELECT "table_name" FROM "information_schema"."tables" WHERE "table_schema" = \'public\'';
+		$sql = 'SELECT "table_name" FROM "information_schema"."tables" WHERE "table_schema" = \''.$this->schema."'";
 
 		if ($prefix_limit !== FALSE && $this->dbprefix !== '')
 		{
@@ -416,7 +437,7 @@ class CI_DB_postgre_driver extends CI_DB {
 	 *
 	 * Generates a platform-specific query string so that the column names can be fetched
 	 *
-	 * @param	string	the table name
+	 * @param	string	$table
 	 * @return	string
 	 */
 	protected function _list_columns($table = '')
@@ -431,7 +452,7 @@ class CI_DB_postgre_driver extends CI_DB {
 	 *
 	 * Generates a platform-specific query so that the column data can be retrieved
 	 *
-	 * @param	string	the table name
+	 * @param	string	$table
 	 * @return	string
 	 */
 	protected function _field_data($table)
@@ -461,8 +482,8 @@ class CI_DB_postgre_driver extends CI_DB {
 	 *
 	 * Generates a platform-specific update string from the supplied data
 	 *
-	 * @param	string	the table name
-	 * @param	array	the update data
+	 * @param	string	$table
+	 * @param	array	$values
 	 * @return	string
 	 */
 	protected function _update($table, $values)
@@ -479,9 +500,9 @@ class CI_DB_postgre_driver extends CI_DB {
 	 *
 	 * Generates a platform-specific batch update string from the supplied data
 	 *
-	 * @param	string	the table name
-	 * @param	array	the update data
-	 * @param	string	the where key
+	 * @param	string	$table	Table name
+	 * @param	array	$values	Update data
+	 * @param	string	$index	WHERE key
 	 * @return	string
 	 */
 	protected function _update_batch($table, $values, $index)
@@ -520,7 +541,7 @@ class CI_DB_postgre_driver extends CI_DB {
 	 *
 	 * Generates a platform-specific delete string from the supplied data
 	 *
-	 * @param	string	the table name
+	 * @param	string	$table
 	 * @return	string
 	 */
 	protected function _delete($table)
@@ -532,11 +553,11 @@ class CI_DB_postgre_driver extends CI_DB {
 	// --------------------------------------------------------------------
 
 	/**
-	 * Limit string
+	 * LIMIT
 	 *
 	 * Generates a platform-specific LIMIT clause
 	 *
-	 * @param	string	the sql query string
+	 * @param	string	$sql	SQL Query
 	 * @return	string
 	 */
 	protected function _limit($sql)

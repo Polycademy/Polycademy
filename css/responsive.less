@@ -1,6 +1,6 @@
-/* ==========================================================================
-   Responsive styles (progressive enhancement)
-   ========================================================================== */
+/*!
+ * Polycademy Responsive CSS
+ */
 
 /* Large desktop */
 /* @media (min-width: 1200px) {} */
@@ -27,7 +27,43 @@
 }
 
 /* Landscape phone to portrait tablet */
-/* @media (max-width: 767px) {} */
+@media (max-width: 767px){
+	.row > section{
+		margin-top: 16px;
+		margin-bottom: 16px;
+	}
+	.liquid-responsive .liquid-slider .panel .panel-wrapper{
+		padding: 20px 35px !important;
+	}
+}
 
 /* Landscape phones and down */
-/* @media (max-width: 480px) {} */
+@media (max-width: 512px) {
+	header .logo{
+		float: none !important;
+		margin: 35px auto 10px !important;
+		display: block !important;
+		img{
+			display: block !important;
+			margin: 0 auto !important;
+		}
+	}
+	header.navbar .btn-navbar {
+		margin: 10px auto !important;
+		float: none !important;
+		clear: both !important;
+	}
+	.course_application{
+		.course_application_form{
+			.control-group{
+				.control-label {
+					padding-top: 0 !important;
+					width: auto !important;
+				}
+				.controls{
+					margin-left: 0 !important;
+				}
+			}
+		}
+	}
+}

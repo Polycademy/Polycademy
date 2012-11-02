@@ -51,7 +51,7 @@ $config['base_url']	= '';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = 'index.php';
+$config['index_page'] = ''; #it is blank because I have removed the "index.php" in .htaccess
 
 /*
 |--------------------------------------------------------------------------
@@ -59,14 +59,14 @@ $config['index_page'] = 'index.php';
 |--------------------------------------------------------------------------
 |
 | This item determines which server global should be used to retrieve the
-| URI string.  The default setting of 'AUTO' works for most servers.
+| URI string. The default setting of 'AUTO' works for most servers.
 | If your links do not seem to work, try one of the other delicious flavors:
 |
-| 'AUTO'			Default - auto detects
-| 'PATH_INFO'		Uses the PATH_INFO
-| 'QUERY_STRING'	Uses the QUERY_STRING
-| 'REQUEST_URI'		Uses the REQUEST_URI
-| 'ORIG_PATH_INFO'	Uses the ORIG_PATH_INFO
+| 'AUTO' Default - auto detects
+| 'CLI' or 'argv' Uses $_SERVER['argv'] (for php-cli only)
+| 'PATH_INFO' Uses $_SERVER['PATH_INFO']
+| 'REQUEST_URI' Uses $_SERVER['REQUEST_URI']
+| 'QUERY_STRING' Uses $_SERVER['QUERY_STRING']
 |
 */
 $config['uri_protocol']	= 'AUTO';
@@ -283,12 +283,12 @@ $config['encryption_key'] = '.V=O*X&4}e}IPeSo~GeTp*_;To.SmGfs';
 */
 $config['sess_driver']			= 'cookie';
 $config['sess_valid_drivers']	= array();
-$config['sess_cookie_name']		= 'poly_session';
+$config['sess_cookie_name']		= 'session_polycademy';
 $config['sess_expiration']		= 7200;
 $config['sess_expire_on_close']	= FALSE;
-$config['sess_encrypt_cookie']	= FALSE;
+$config['sess_encrypt_cookie']	= TRUE;
 $config['sess_use_database']	= FALSE;
-$config['sess_table_name']		= 'poly_sessions';
+$config['sess_table_name']		= 'sessions_polycademy';
 $config['sess_match_ip']		= FALSE;
 $config['sess_match_useragent']	= TRUE;
 $config['sess_time_to_update']	= 300;
@@ -305,7 +305,7 @@ $config['sess_time_to_update']	= 300;
 | 'cookie_httponly' = Cookie will only be accessible via HTTP(S) (no javascript)
 |
 */
-$config['cookie_prefix']	= '';
+$config['cookie_prefix']	= 'cookie_polycademy_';
 $config['cookie_domain']	= '';
 $config['cookie_path']		= '/';
 $config['cookie_secure']	= FALSE;
@@ -336,12 +336,12 @@ $config['global_xss_filtering'] = FALSE;
 | 'csrf_regenerate' = Regenerate token on every submission
 | 'csrf_exclude_uris' = Array of URIs which ignore CSRF checks
 */
-$config['csrf_protection'] = FALSE;
-$config['csrf_token_name'] = 'csrf_test_name';
-$config['csrf_cookie_name'] = 'csrf_cookie_name';
+$config['csrf_protection'] = TRUE; #ajax requests require one to setup ajax to always pass the token!
+$config['csrf_token_name'] = 'csrf_token';
+$config['csrf_cookie_name'] = 'csrf_cookie';
 $config['csrf_expire'] = 7200;
-$config['csrf_regenerate'] = TRUE;
-$config['csrf_exclude_uris'] = array();
+$config['csrf_regenerate'] = FALSE; #this will make refreshing forms or ajax requests fail, because each submission generatesa a new server token, but the cookie token stays the same... (well, it could be the other way).
+$config['csrf_exclude_uris'] = array(); #if you integrate into payment gateways, this needs to be adjusted, API end points expecting POSTDATA (this is your own controller/method name)
 
 /*
 |--------------------------------------------------------------------------
@@ -360,7 +360,7 @@ $config['csrf_exclude_uris'] = array();
 | by the output class.  Do not 'echo' any values with compression enabled.
 |
 */
-$config['compress_output'] = FALSE;
+$config['compress_output'] = FALSE; #make this true in production
 
 /*
 |--------------------------------------------------------------------------
@@ -385,7 +385,7 @@ $config['minify_output'] = FALSE;
 | helper' page of the user guide for information regarding date handling.
 |
 */
-$config['time_reference'] = 'local';
+$config['time_reference'] = 'Australia/ACT';
 
 
 /*

@@ -1,4 +1,4 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
 /**
  * CodeIgniter
  *
@@ -24,6 +24,7 @@
  * @since		Version 1.0
  * @filesource
  */
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
  * Database Forge Class
@@ -34,17 +35,71 @@
  */
 abstract class CI_DB_forge {
 
+	/**
+	 * Fields data
+	 *
+	 * @var	array
+	 */
 	public $fields		= array();
-	public $keys		= array();
-	public $primary_keys	= array();
-	public $db_char_set	=	'';
 
-	// Platform specific SQL strings
+	/**
+	 * Keys data
+	 *
+	 * @var	array
+	 */
+	public $keys		= array();
+
+	/**
+	 * Primary Keys data
+	 *
+	 * @var	array
+	 */
+	public $primary_keys	= array();
+
+	/**
+	 * Database character set
+	 *
+	 * @var	string
+	 */
+	public $db_char_set	= '';
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * CREATE DATABASE statement
+	 *
+	 * @var	string
+	 */
 	protected $_create_database	= 'CREATE DATABASE %s';
+
+	/**
+	 * DROP DATABASE statement
+	 *
+	 * @var	string
+	 */
 	protected $_drop_database	= 'DROP DATABASE %s';
+
+	/**
+	 * DROP TABLE statement
+	 *
+	 * @var	string
+	 */
 	protected $_drop_table		= 'DROP TABLE IF EXISTS %s';
+
+	/**
+	 * RENAME TABLE statement
+	 *
+	 * @var	string
+	 */
 	protected $_rename_table	= 'ALTER TABLE %s RENAME TO %s';
 
+	// --------------------------------------------------------------------
+
+	/**
+	 * Constructor
+	 *
+	 * @return	void
+	 */
 	public function __construct()
 	{
 		// Assign the main database object to $this->db
@@ -206,7 +261,8 @@ abstract class CI_DB_forge {
 	/**
 	 * Create Table
 	 *
-	 * @param	string	the table name
+	 * @param	string	$table = ''
+	 * @param	bool	$if_not_exists = FALSE
 	 * @return	bool
 	 */
 	public function create_table($table = '', $if_not_exists = FALSE)
@@ -378,9 +434,8 @@ abstract class CI_DB_forge {
 	/**
 	 * Column Modify
 	 *
-	 * @param	string	the table name
-	 * @param	string	the column name
-	 * @param	string	the column definition
+	 * @param	string	$table = ''
+	 * @param	string	$field = array()	column definition
 	 * @return	bool
 	 */
 	public function modify_column($table = '', $field = array())

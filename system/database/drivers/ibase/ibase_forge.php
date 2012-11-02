@@ -1,4 +1,4 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
 /**
  * CodeIgniter
  *
@@ -24,6 +24,7 @@
  * @since		Version 3.0
  * @filesource
  */
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
  * Interbase/Firebird Forge Class
@@ -34,12 +35,19 @@
  */
 class CI_DB_ibase_forge extends CI_DB_forge {
 
+	/**
+	 * DROP TABLE statement
+	 *
+	 * @var	string
+	 */
 	protected $_drop_table	= 'DROP TABLE %s';
+
+	// --------------------------------------------------------------------
 
 	/**
 	 * Create database
 	 *
-	 * @param	string	the database name
+	 * @param	string	$db_name
 	 * @return	string
 	 */
 	public function create_database($db_name)

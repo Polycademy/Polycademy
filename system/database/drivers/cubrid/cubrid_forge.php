@@ -1,4 +1,4 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
 /**
  * CodeIgniter
  *
@@ -24,6 +24,7 @@
  * @since		Version 2.1
  * @filesource
  */
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
  * CUBRID Forge Class
@@ -34,13 +35,26 @@
  */
 class CI_DB_cubrid_forge extends CI_DB_forge {
 
+	/**
+	 * CREATE DATABASE statement
+	 *
+	 * @var	string
+	 */
 	protected $_create_database	= FALSE;
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * DROP DATABASE statement
+	 *
+	 * @var	string
+	 */
 	protected $_drop_database	= FALSE;
 
 	/**
 	 * Process Fields
 	 *
-	 * @param	mixed	the fields
+	 * @param	mixed	$fields
 	 * @return	string
 	 */
 	protected function _process_fields($fields)

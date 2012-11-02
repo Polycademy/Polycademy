@@ -59,13 +59,13 @@
 |
 |	$route['404_override'] = 'errors/page_missing';
 |
-| This route will tell the Router what URI segments to use if those provided
-| in the URL cannot be matched to a valid route.
+| This route will tell the Router which controller/method to use if those
+| provided in the URL cannot be matched to a valid route.
 |
 */
 
 $route['default_controller'] = 'home';
-$route['404_override'] = '';
+$route['404_override'] = 'errors/error_404';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

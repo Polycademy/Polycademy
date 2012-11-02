@@ -1,4 +1,4 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
 /**
  * CodeIgniter
  *
@@ -24,6 +24,7 @@
  * @since		Version 1.0
  * @filesource
  */
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
  * CodeIgniter URL Helpers
@@ -489,7 +490,7 @@ if ( ! function_exists('url_title'))
 			$separator = '_';
 		}
 
-		$q_separator = preg_quote($separator);
+		$q_separator = preg_quote($separator, '#');
 
 		$trans = array(
 				'&.+?;'			=> '',

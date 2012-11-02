@@ -1,4 +1,4 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
 /**
  * CodeIgniter
  *
@@ -24,6 +24,7 @@
  * @since		Version 1.0
  * @filesource
  */
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
  * Form Validation Class
@@ -957,15 +958,15 @@ class CI_Form_validation {
 	/**
 	 * Match one field to another
 	 *
-	 * @param	string
-	 * @param	string	field
+	 * @param	string	$str	string to compare against
+	 * @param	string	$field
 	 * @return	bool
 	 */
 	public function matches($str, $field)
 	{
-		$validation_array = empty($this->validation_data) ? $_POST : $this->validation_data;
-
-		return isset($validation_array[$field]) ? ($str === $validation_array[$field]) : FALSE;
+		return isset($this->_field_data[$field], $this->_field_data[$field]['postdata'])
+			? ($str === $this->_field_data[$field]['postdata'])
+			: FALSE;
 	}
 
 	// --------------------------------------------------------------------
@@ -1323,6 +1324,11 @@ class CI_Form_validation {
 	 */
 	public function prep_for_form($data = '')
 	{
+		if ($this->_safe_form_data === FALSE OR empty($data))
+		{
+			return $data;
+		}
+
 		if (is_array($data))
 		{
 			foreach ($data as $key => $val)
@@ -1330,11 +1336,6 @@ class CI_Form_validation {
 				$data[$key] = $this->prep_for_form($val);
 			}
 
-			return $data;
-		}
-
-		if ($this->_safe_form_data === FALSE OR $data === '')
-		{
 			return $data;
 		}
 

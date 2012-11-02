@@ -1,4 +1,4 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
 /**
  * CodeIgniter
  *
@@ -18,12 +18,13 @@
  *
  * @package		CodeIgniter
  * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2006 - 2012 EllisLab, Inc.
+ * @copyright	Copyright (c) 2008 - 2012, EllisLab, Inc. (http://ellislab.com/)
  * @license		http://opensource.org/licenses/OSL-3.0 Open Software License (OSL 3.0)
  * @link		http://codeigniter.com
  * @since		Version 2.0
  * @filesource
  */
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
  * CodeIgniter Session Class
@@ -51,9 +52,28 @@
  */
 class CI_Session extends CI_Driver_Library {
 
+	/**
+	 * Initialization parameters
+	 *
+	 * @var	array
+	 */
 	public $params = array();
+
+	/**
+	 * Current driver in use
+	 *
+	 * @var	string
+	 */
 	protected $current = NULL;
+
+	/**
+	 * User data
+	 *
+	 * @var	array
+	 */
 	protected $userdata = array();
+
+	// ------------------------------------------------------------------------
 
 	const FLASHDATA_KEY = 'flash';
 	const FLASHDATA_NEW = ':new:';
@@ -61,6 +81,8 @@ class CI_Session extends CI_Driver_Library {
 	const FLASHDATA_EXP = ':exp:';
 	const EXPIRATION_KEY = '__expirations';
 	const TEMP_EXP_DEF = 300;
+
+	// ------------------------------------------------------------------------
 
 	/**
 	 * CI_Session constructor
@@ -86,7 +108,7 @@ class CI_Session extends CI_Driver_Library {
 		// Get valid drivers list
 		$this->valid_drivers = array(
 			'Session_native',
-		   	'Session_cookie'
+			'Session_cookie'
 		);
 		$key = 'sess_valid_drivers';
 		$drivers = isset($params[$key]) ? $params[$key] : $CI->config->item($key);
@@ -243,7 +265,7 @@ class CI_Session extends CI_Driver_Library {
 	/**
 	 * Fetch all flashdata
 	 *
-	 * @return	array   Flash data array
+	 * @return	array	Flash data array
 	 */
 	public function all_flashdata()
 	{
@@ -595,7 +617,15 @@ class CI_Session extends CI_Driver_Library {
  */
 abstract class CI_Session_driver extends CI_Driver {
 
+	/**
+	 * CI Singleton
+	 *
+	 * @see	get_instance()
+	 * @var	object
+	 */
 	protected $CI;
+
+	// ------------------------------------------------------------------------
 
 	/**
 	 * Constructor

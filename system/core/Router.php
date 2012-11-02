@@ -1,4 +1,4 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
 /**
  * CodeIgniter
  *
@@ -24,6 +24,7 @@
  * @since		Version 1.0
  * @filesource
  */
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
  * Router Class
@@ -39,56 +40,49 @@
 class CI_Router {
 
 	/**
-	 * Config class
+	 * CI_Config class object
 	 *
-	 * @var object
+	 * @var	object
 	 */
 	public $config;
 
 	/**
 	 * List of routes
 	 *
-	 * @var array
+	 * @var	array
 	 */
 	public $routes =	array();
 
 	/**
-	 * List of error routes
-	 *
-	 * @var array
-	 */
-	public $error_routes =	array();
-
-	/**
 	 * Current class name
 	 *
-	 * @var string
+	 * @var	string
 	 */
 	public $class =		'';
 
 	/**
 	 * Current method name
 	 *
-	 * @var string
+	 * @var	string
 	 */
 	public $method =	'index';
 
 	/**
 	 * Sub-directory that contains the requested controller class
 	 *
-	 * @var string
+	 * @var	string
 	 */
 	public $directory =	'';
 
 	/**
 	 * Default controller (and method if specific)
 	 *
-	 * @var string
+	 * @var	string
 	 */
 	public $default_controller;
 
 	/**
-	 * Constructor
+	 * Class constructor
 	 *
 	 * Runs the route mapping function.
 	 *
@@ -104,9 +98,9 @@ class CI_Router {
 	// --------------------------------------------------------------------
 
 	/**
-	 * Set the route mapping
+	 * Set route mapping
 	 *
-	 * This function determines what should be served based on the URI request,
+	 * Determines what should be served based on the URI request,
 	 * as well as any "routes" that have been set in the routing config file.
 	 *
 	 * @return	void
@@ -179,7 +173,7 @@ class CI_Router {
 	// --------------------------------------------------------------------
 
 	/**
-	 * Set the default controller
+	 * Set default controller
 	 *
 	 * @return	void
 	 */
@@ -189,6 +183,7 @@ class CI_Router {
 		{
 			show_error('Unable to determine what should be displayed. A default route has not been specified in the routing file.');
 		}
+
 		// Is the method being specified?
 		if (strpos($this->default_controller, '/') !== FALSE)
 		{
@@ -213,12 +208,12 @@ class CI_Router {
 	// --------------------------------------------------------------------
 
 	/**
-	 * Set the Route
+	 * Set request route
 	 *
-	 * This function takes an array of URI segments as
-	 * input, and sets the current class/method
+	 * Takes an array of URI segments as input and sets the class/method
+	 * to be called.
 	 *
-	 * @param	array
+	 * @param	array	$segments	URI segments
 	 * @return	void
 	 */
 	protected function _set_request($segments = array())
@@ -253,11 +248,12 @@ class CI_Router {
 	// --------------------------------------------------------------------
 
 	/**
-	 * Validates the supplied segments.
-	 * Attempts to determine the path to the controller.
+	 * Validate request
 	 *
-	 * @param	array
-	 * @return	array
+	 * Attempts validate the URI request and determine the controller path.
+	 *
+	 * @param	array	$segments	URI segments
+	 * @return	array	URI segments
 	 */
 	protected function _validate_request($segments)
 	{
@@ -266,9 +262,13 @@ class CI_Router {
 			return $segments;
 		}
 
+		$temp = str_replace('-', '_', $segments[0]);
+
 		// Does the requested controller exist in the root folder?
-		if (file_exists(APPPATH.'controllers/'.$segments[0].'.php'))
+		if (file_exists(APPPATH.'controllers/'.$temp.'.php'))
 		{
+			$segments[0] = $temp;
+			empty($segments[1]) OR $segments[1] = str_replace('-', '_', $segments[1]);
 			return $segments;
 		}
 
@@ -281,6 +281,9 @@ class CI_Router {
 
 			if (count($segments) > 0)
 			{
+				$segments[0] = str_replace('-', '_', $segments[0]);
+				empty($segments[1]) OR $segments[1] = str_replace('-', '_', $segments[1]);
+
 				// Does the requested controller exist in the sub-folder?
 				if ( ! file_exists(APPPATH.'controllers/'.$this->fetch_directory().$segments[0].'.php'))
 				{
@@ -347,9 +350,8 @@ class CI_Router {
 	/**
 	 * Parse Routes
 	 *
-	 * This function matches any routes that may exist in
-	 * the config/routes.php file against the URI to
-	 * determine if the class/method need to be remapped.
+	 * Matches any routes that may exist in the config/routes.php file
+	 * against the URI to determine if the class/method need to be remapped.
 	 *
 	 * @return	void
 	 */
@@ -368,13 +370,51 @@ class CI_Router {
 		foreach ($this->routes as $key => $val)
 		{
 			// Convert wild-cards to RegEx
-			$key = str_replace(array(':any', ':num'), array('.+', '[0-9]+'), $key);
+			$key = str_replace(array(':any', ':num'), array('[^/]+', '[0-9]+'), $key);
 
 			// Does the RegEx match?
-			if (preg_match('#^'.$key.'$#', $uri))
+			if (preg_match('#^'.$key.'$#', $uri, $matches))
 			{
-				// Do we have a back-reference?
-				if (strpos($val, '$') !== FALSE && strpos($key, '(') !== FALSE)
+				// Are we using callbacks to process back-references?
+				if ( ! is_string($val) && is_callable($val))
+				{
+					// Remove the original string from the matches array.
+					array_shift($matches);
+
+					// Get the match count.
+					$match_count = count($matches);
+
+					// Determine how many parameters the callback has.
+					$reflection = new ReflectionFunction($val);
+					$param_count = $reflection->getNumberOfParameters();
+
+					// Are there more parameters than matches?
+					if ($param_count > $match_count)
+					{
+						// Any params without matches will be set to an empty string.
+						$matches = array_merge($matches, array_fill($match_count, $param_count - $match_count, ''));
+
+						$match_count = $param_count;
+					}
+
+					// Get the parameters so we can use their default values.
+					$params = $reflection->getParameters();
+
+					for ($m = 0; $m < $match_count; $m++)
+					{
+						// Is the match empty and does a default value exist?
+						if (empty($matches[$m]) && $params[$m]->isDefaultValueAvailable())
+						{
+							// Substitute the empty match for the default value.
+							$matches[$m] = $params[$m]->getDefaultValue();
+						}
+					}
+
+					// Execute the callback using the values in matches as its parameters.
+					$val = call_user_func_array($val, $matches);
+				}
+				// Are we using the default routing method for back-references?
+				elseif (strpos($val, '$') !== FALSE && strpos($key, '(') !== FALSE)
 				{
 					$val = preg_replace('#^'.$key.'$#', $val, $uri);
 				}
@@ -391,9 +431,9 @@ class CI_Router {
 	// --------------------------------------------------------------------
 
 	/**
-	 * Set the class name
+	 * Set class name
 	 *
-	 * @param	string
+	 * @param	string	$class	Class name
 	 * @return	void
 	 */
 	public function set_class($class)
@@ -416,9 +456,9 @@ class CI_Router {
 	// --------------------------------------------------------------------
 
 	/**
-	 * Set the method name
+	 * Set method name
 	 *
-	 * @param	string
+	 * @param	string	$method	Method name
 	 * @return	void
 	 */
 	public function set_method($method)
@@ -441,9 +481,9 @@ class CI_Router {
 	// --------------------------------------------------------------------
 
 	/**
-	 * Set the directory name
+	 * Set directory name
 	 *
-	 * @param	string
+	 * @param	string	$dir	Directory name
 	 * @return	void
 	 */
 	public function set_directory($dir)
@@ -454,7 +494,10 @@ class CI_Router {
 	// --------------------------------------------------------------------
 
 	/**
-	 * Fetch the sub-directory (if any) that contains the requested controller class
+	 * Fetch directory
+	 *
+	 * Feches the sub-directory (if any) that contains the requested
+	 * controller class.
 	 *
 	 * @return	string
 	 */
@@ -466,9 +509,9 @@ class CI_Router {
 	// --------------------------------------------------------------------
 
 	/**
-	 * Set the controller overrides
+	 * Set controller overrides
 	 *
-	 * @param	array
+	 * @param	array	$routing	Route overrides
 	 * @return	void
 	 */
 	public function _set_overrides($routing)

@@ -1,4 +1,4 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
 /**
  * CodeIgniter
  *
@@ -24,6 +24,7 @@
  * @since		Version 1.0
  * @filesource
  */
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
  * ODBC Forge Class
@@ -34,7 +35,14 @@
  */
 class CI_DB_odbc_forge extends CI_DB_forge {
 
+	/**
+	 * DROP TABLE statement
+	 *
+	 * @var	string
+	 */
 	protected $_drop_table		= 'DROP TABLE %s';
+
+	// --------------------------------------------------------------------
 
 	/**
 	 * Create Table

@@ -1,4 +1,4 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
 /**
  * CodeIgniter
  *
@@ -24,6 +24,7 @@
  * @since		Version 1.0
  * @filesource
  */
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
  * CodeIgniter String Helpers
@@ -276,8 +277,11 @@ if ( ! function_exists('repeater'))
 	/**
 	 * Repeater function
 	 *
-	 * @param	string
-	 * @param	int	number of repeats
+	 * @todo	Remove in version 3.1+.
+	 * @deprecated	3.0.0	This is just an alias for PHP's native str_repeat()
+	 *
+	 * @param	string	$data	String to repeat
+	 * @param	int	$num	Number of repeats
 	 * @return	string
 	 */
 	function repeater($data, $num = 1)

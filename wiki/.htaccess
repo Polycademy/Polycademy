@@ -1,15 +1,3 @@
-
-
-# ---------------------------------------------------------
-# ---	BANANA DANCE by Jon Belelieu
-# ---	http://www.bananadance.org/
-# ---	Copyright (C) 2011 Jon Belelieu
-# ---
-# ---	README INFORMATION:
-# ---	http://www.doyoubananadance.com/Tutorials/The-.htaccess-File
-
-
-
 # ---------------------------------------------------------
 # ---	Basics
 
@@ -17,9 +5,6 @@ Options -indexes
 Options +FollowSymlinks
 #php_flag magic_quotes_gpc off
 RewriteEngine On
-
-
-
 
 # ---------------------------------------------------------
 # ---	File Uploading
@@ -32,20 +17,7 @@ php_value upload_max_filesize 10M
 # ---------------------------------------------------------
 # ---	Rewrite Base
 
-#	RewriteBase /folder_name
-
-
-# ---------------------------------------------------------
-# ---	Force www or no-www in URL
-
-# ---	Option 1: "www.yoursite.com"
-# RewriteCond %{HTTP_HOST} ^yoursite\.com$
-# RewriteRule ^(.*)$ http://www.yoursite.com/$1 [R=301,L]
-# ---	Options 2: "yoursite.com"
-RewriteCond %{HTTP_HOST} ^www\.yoursite\.com$
-RewriteRule ^(.*)$ http://yoursite.com/$1 [R=301,L]
-
-
+# RewriteBase /
 
 # ---------------------------------------------------------
 # ---	Compress using gzip
@@ -70,17 +42,12 @@ RewriteRule ^(.*)$ index.php [F,L]
 # ---------------------------------------------------------
 # ---	Custom rules
 
-# next rule here
-
-
 # ---------------------------------------------------------
 # ---	Main rewrites
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ index.php?v=$1 [L,QSA]
-
-
 
 # ---------------------------------------------------------
 # ---	Errors Screens

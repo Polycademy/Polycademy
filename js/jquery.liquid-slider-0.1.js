@@ -9,9 +9,8 @@
 *
 ************************************************************************/
 
-/*jslint bitwise: true */
-/*jslint browser: true*/
-/*global $, jQuery, window, document*/
+/*jslint bitwise: true, browser: true */
+/*global $, jQuery */
 
 // Utility for creating objects in older browsers
 if (typeof Object.create !== 'function') {
@@ -89,7 +88,6 @@ if (typeof Object.create !== 'function') {
 				self.configureCSSTransitions();
 
 				self.readyToSlide = true;
-
 
 			});
 		},
@@ -234,7 +232,7 @@ if (typeof Object.create !== 'function') {
 							if (($this).toLowerCase() === self.hashValue.toLowerCase()) {
 								self.hashValue = parseInt(n + 1, 10);
 								// Adjust if continuous
-								if (self.panelCount && self.options.continuous && self.hashValue === 1) {self.hashValue = self.panelCount - 1;}
+								if (self.panelCount && self.options.continuous && self.hashValue === 1) { self.hashValue = self.panelCount - 1; }
 								return false;
 							}
 						}
@@ -460,8 +458,8 @@ if (typeof Object.create !== 'function') {
 					self.rightArrow = self.sliderId + '-wrapper [class^=liquid-nav-right]';
 					self.$leftArrow  = $(self.leftArrow);
 					self.$rightArrow = $(self.rightArrow);
-					(self.$leftArrow).css({visibility: "hidden"});
-					(self.$rightArrow).css({visibility: "hidden"});
+					(self.$leftArrow).css({visibility: "hidden", opacity: 0});
+					(self.$rightArrow).css({visibility: "hidden", opacity: 0});
 				}
 				// Add a margin to the top of responsive arrows
 				if (self.options.responsive && self.options.dynamicArrows && !self.options.dynamicArrowsGraphical && (self.options.dynamicTabsAlign !== 'center')) {
@@ -483,7 +481,7 @@ if (typeof Object.create !== 'function') {
 					$(this).show().css({visibility: "hidden"});
 				});
 				if ((self.$rightArrow).css('visibility') === 'hidden' && (!self.options.hoverArrows || self.hoverOn)) {
-					(self.$rightArrow).css({opacity: 0, visibility: "visible"}).animate({opacity: 1}, self.options.hideSideArrowsDuration * 3);
+					(self.$rightArrow).css({opacity: 1, visibility: "visible"});
 				}
 			} else if (self.currentTab === (self.panelCount - (~~(self.options.continuous) * 2) - 1) || self.currentTab === -1) {
 				// Fade out the right and make sure the left is faded in (used for on load)
@@ -491,7 +489,6 @@ if (typeof Object.create !== 'function') {
 					$(this).show().css({visibility: "hidden"});
 				});
 				if ((self.$leftArrow).css('visibility') === 'hidden' && (!self.options.hoverArrows || self.hoverOn)) {
-					(self.$leftArrow).css({opacity: 0, visibility: "visible"}).animate({opacity: 1}, self.options.hideSideArrowsDuration * 3);
 				}
 			} else if (!self.options.hoverArrows || self.hoverOn) {
 				// Fade in on all other tabs
@@ -544,12 +541,8 @@ if (typeof Object.create !== 'function') {
 
 			// Change navigation if the user resizes the screen.
 			if (self.options.responsive) {
-				$(window).bind('resize', function () {
-					//This way we know the window is being resized.
-					self.resizing = true;
+				$(window).bind('resize', function() {
 					self.responsiveEvents();
-
-			//if ((self.$sliderId).outerWidth() > self.options.useCSSMaxWidth && self.useCSS) {self.useCSS = false; }
 				});
 			}
 		},
@@ -595,11 +588,14 @@ if (typeof Object.create !== 'function') {
 
 				// Set the width to slide
 				self.slideWidth = $(self.sliderId).width();
-				// Send to adjust the height
-				self.adjustHeight();
-				self.transition();
-			}
 
+				clearTimeout(self.resizingTimeout);
+				self.resizingTimeout = setTimeout(function () {
+				// Send to adjust the height after resizing completes
+					self.adjustHeight();
+					self.transition();
+				}, 500);
+			}
 		},
 
 		registerArrows: function () {
@@ -609,14 +605,12 @@ if (typeof Object.create !== 'function') {
 				$((self.$sliderWrap).find('[class^=liquid-nav-]')).on('click', function (e) {
 
 					// These prevent clicking when in continuous mode, which would break it otherwise.
-					if (!self.clickable && self.options.continuous) { return false; }
+					if (!self.clickable) { return false; }
 					self.setCurrent($(this).attr('class').split('-')[2]);
-					if (self.options.continuous) { self.clickable = false; }
-					if (typeof self.options.callbackFunction === 'function') { self.animationCallback(); }
+					if (typeof self.options.callbackFunction === 'function') { self.animationCallback(true); }
 					return false;
 				});
 			}
-
 		},
 
 		registerCrossLinks: function () {
@@ -628,7 +622,7 @@ if (typeof Object.create !== 'function') {
 				(self.$crosslinks).on('click', function (e) {
 					self.readyToScroll = true; // For scrollTop()
 
-					if (!self.clickable && self.options.continuous) {return false; }
+					if (!self.clickable) {return false; }
 					// Stop and Play controls
 					if (self.options.autoSlideControls) {
 						if ($(this).attr('name') === 'stop') {
@@ -659,9 +653,8 @@ if (typeof Object.create !== 'function') {
 					} else {
 						self.setCurrent(parseInt(direction - 1, 10));
 					}
-					if (self.options.continuous) {self.clickable = false; }
 					self.checkAutoSlideStop();
-					if (typeof self.options.callbackFunction === 'function') { self.animationCallback(); }
+					if (typeof self.options.callbackFunction === 'function') { self.animationCallback(true); }
 					return false;
 				});
 			}
@@ -677,23 +670,21 @@ if (typeof Object.create !== 'function') {
 			if (self.options.dynamicTabs) {
 				(self.$sliderWrap).find('[class^=liquid-nav] li').on('click', function (e) {
 
-					if (!self.clickable && self.options.continuous) {return false; }
+					if (!self.clickable) {return false; }
 					self.setCurrent(parseInt($(this).attr('class').split('tab')[1], 10) - 1);
-					if (self.options.continuous) {self.clickable = false; }
-					if (typeof self.options.callbackFunction === 'function') { self.animationCallback(); }
+					if (typeof self.options.callbackFunction === 'function') { self.animationCallback(true); }
 					return false;
 				});
 			}
 
 			// Click to stop (or pause) autoslider
 			(self.$sliderWrap).find('*').on('click', function (e) {
+
 				self.readyToScroll = true; // For scrollTop()
 
 				// AutoSlide controls.
-				if (!self.clickable && self.options.continuous) {
-					self.checkAutoSlideStop();
-					return false;
-				}
+				self.checkAutoSlideStop();
+
 				if (self.options.autoSlide) {
 					if (!self.options.autoSlideStopWhenClicked) {
 						self.clickable = true;
@@ -701,31 +692,66 @@ if (typeof Object.create !== 'function') {
 				}
 				// Stops from speedy clicking for continuous sliding.
 				if (self.options.continuous) {clearTimeout(self.continuousTimeout); }
-
 			});
 
 			// Enable Hover Events
-			self.hover();
+			if (self.options.autoSlidePauseOnHover || (self.options.hoverArrows && self.options.dynamicArrows)) {
+				self.hoverable = true;
+				self.hover();
+			}
 
 			// Enable Touch Events
 			//if (self.options.swipe) {self.touch(); }
 
 			// Enable Keyboard Events
 			if (self.options.keyboardNavigation) {self.keyboard(); }
-
 		},
 
 		hover: function () {
 			var self = this;
 			// Hover events
 
-			// Pause on hover
-			if (self.options.autoSlidePauseOnHover && self.options.autoSlide) {
-				(self.$sliderWrap).hover(
-					function () {clearTimeout(self.autoslideTimeout); },
-					function () {
-						if (!self.autoSlideStopped) {
-							if (!self.autoSlideStopWhenClicked) {
+			(self.$sliderWrap).hover(
+				function () {
+					// Hover Arrows
+					if (self.options.hoverArrows && self.options.dynamicArrows) {
+						self.hoverOn = true;
+						(self.$leftArrow).stop(true);
+						(self.$rightArrow).stop(true);
+						if (self.options.hideSideArrows) {
+							self.hideArrows();
+						} else {
+							(self.$leftArrow).css({opacity: 0, visibility: "visible"}).animate({opacity: 1}, self.options.hideSideArrowsDurations);
+							(self.$rightArrow).css({opacity: 0, visibility: "visible"}).animate({opacity: 1}, self.options.hideSideArrowsDurations);
+						}
+					}
+					// Pause on Hover
+					if (self.options.autoSlidePauseOnHover && self.options.autoSlide) {
+						self.dontCallback = true;
+						clearTimeout(self.autoslideTimeout);
+					}
+				},
+
+
+
+				function () {
+					// Hover Arrows
+					if (self.options.hoverArrows && self.options.dynamicArrows) {
+						self.hoverOn = false;
+						(self.$leftArrow).fadeOut(self.options.hideSideArrowsDuration, function () {
+							$(this).show().css({visibility: "hidden"});
+						});
+						(self.$rightArrow).fadeOut(self.options.hideSideArrowsDuration, function () {
+							$(this).show().css({visibility: "hidden"});
+						});
+					}
+
+					// Pause on Hover
+					if (self.options.autoSlidePauseOnHover && self.options.autoSlide && self.clickable) {
+						self.dontCallback = false;
+						var isAnimating = $('.' + self.panelContainer.attr('class') + ':animated').hasClass(self.panelContainer.attr('class'));
+						if (!self.autoSlideStopped && !isAnimating) {
+							if (!self.options.autoSlideStopWhenClicked) {
 								self.hoverTimeout = setTimeout(function () {
 									self.setCurrent(self.options.autoSliderDirection);
 									self.autoSlide();
@@ -736,33 +762,8 @@ if (typeof Object.create !== 'function') {
 							}
 						}
 					}
-				);
-			}
-			// Hover Arrows
-			if (self.options.hoverArrows && self.options.dynamicArrows) {
-				(self.$sliderWrap).hover(
-					function () {
-						self.hoverOn = true;
-						(self.$leftArrow).stop(true);
-						(self.$rightArrow).stop(true);
-						if (self.options.hideSideArrows) {
-							self.hideArrows();
-						} else {
-							(self.$leftArrow).css({opacity: 0, visibility: "visible"}).animate({opacity: 1}, self.options.hideSideArrowsDurations);
-							(self.$rightArrow).css({opacity: 0, visibility: "visible"}).animate({opacity: 1}, self.options.hideSideArrowsDurations);
-						}
-					},
-					function () {
-						self.hoverOn = false;
-						(self.$leftArrow).fadeOut(self.options.hideSideArrowsDuration, function () {
-							$(this).show().css({visibility: "hidden"});
-						});
-						(self.$rightArrow).fadeOut(self.options.hideSideArrowsDuration, function () {
-							$(this).show().css({visibility: "hidden"});
-						});
-					}
-				);
-			}
+				}
+			);
 		},
 
 		touch: function () {
@@ -798,7 +799,7 @@ if (typeof Object.create !== 'function') {
 					}
 					
 					self.checkAutoSlideStop();
-					if (typeof self.options.callbackFunction === 'function') { self.animationCallback(); }
+					if (typeof self.options.callbackFunction === 'function') { self.animationCallback(true); }
 				});
 			*/
 		},
@@ -822,15 +823,16 @@ if (typeof Object.create !== 'function') {
 						}
 					});
 				}
-				if (self.options.continuous) { self.clickable = false; }
+				self.clickable = false;
 				self.checkAutoSlideStop();
-				if (typeof self.options.callbackFunction === 'function') { self.animationCallback(); }
+				if (typeof self.options.callbackFunction === 'function') { self.animationCallback(true); }
 			});
 		},
 
 		setCurrent: function (direction) {
 			var self = this;
 			if (self.clickable) {
+				self.clickable = false;
 				if (typeof direction === 'number') {
 					self.currentTab = direction;
 				} else {
@@ -866,7 +868,7 @@ if (typeof Object.create !== 'function') {
 				if (self.options.crossLinks) {
 					(self.$crosslinks).each(function () {
 						if (self.options.hashCrossLinks) {
-							if ( $(this).attr('href') === ('#' + $($(self.panelContainer).children()[(self.setTab + 1)]).find(self.options.panelTitleSelector).text().replace(/(\s)/g, '-').toLowerCase()) ) {
+							if ($(this).attr('href') === ('#' + $($(self.panelContainer).children()[(self.setTab + ~~(self.options.continuous))]).find(self.options.panelTitleSelector).text().replace(/(\s)/g, '-').toLowerCase())) {
 								$('.currentCrossLink').removeClass('currentCrossLink');
 								$(this).addClass('currentCrossLink');
 							}
@@ -891,7 +893,6 @@ if (typeof Object.create !== 'function') {
 					(self.$leftArrow).css({opacity: 0, visibility: "visible"}).animate({opacity: 1}, self.options.hideSideArrowsDuration * 3);
 					(self.$rightArrow).css({opacity: 0, visibility: "visible"}).animate({opacity: 1}, self.options.hideSideArrowsDuration * 3);
 				}
-
 
 				this.transition();
 			}
@@ -953,10 +954,10 @@ if (typeof Object.create !== 'function') {
 		transition: function () {
 			var self = this;
 			// Adjust the scroll distance
-			if (self.options.topScrolling && !self.resizing && !self.useCSS && (self.readyToScroll || self.options.topScrollingOnLoad)) { self.scrollToTheTop(); }
+			if (self.options.topScrolling && !self.useCSS && (self.readyToScroll || self.options.topScrollingOnLoad)) { self.scrollToTheTop(); }
 
 			// Adjust the height
-			if (self.options.autoHeight && !self.resizing) { self.adjustHeight(); }
+			if (self.options.autoHeight) { self.adjustHeight(); }
 
 
 			// Transition for fade option
@@ -978,7 +979,7 @@ if (typeof Object.create !== 'function') {
 				// user clicks before fully loaded
 				if ((self.marginLeft + self.pSign) !== (self.panelContainer).css('margin-left') || (self.marginLeft !== -100)) {
 					// Animate the slider
-					if (self.useCSS && self.loaded && !self.resizing) {
+					if (self.useCSS && self.loaded) {
 						(self.panelContainer).css({
 							'-webkit-transform': 'translate3d(' + self.marginLeft + self.pSign + ', 0, 0)',
 							'-moz-transform': 'translate3d(' + self.marginLeft + self.pSign + ', 0, 0)',
@@ -986,7 +987,9 @@ if (typeof Object.create !== 'function') {
 							'-o-transform': 'translate3d(' + self.marginLeft + self.pSign + ', 0, 0)',
 							'transform': 'translate3d(' + self.marginLeft + self.pSign + ', 0, 0)'
 						});
-					} else if (!self.resizing) {
+						// Timeout to replace callback function
+						setTimeout(function () { self.clickable = true; }, self.options.slideEaseDuration + 50);
+					} else {
 						(self.panelContainer).animate({
 							'margin-left': self.marginLeft + self.pSign
 						}, {
@@ -1004,12 +1007,6 @@ if (typeof Object.create !== 'function') {
 				// Match the slider margin with the width of the slider (better height transitions)
 				$(self.sliderId + '-wrapper').css('width', (self.$sliderId).outerWidth(true));
 			}
-			if (self.options.hideSideArrows && !self.options.hoverArrows) { self.hideArrows(); }
-			if (self.resizing) {
-				// Make sure the screen updates properly
-				self.resizing = false;
-				self.responsiveEvents();
-			}
 		},
 
 		scrollToTheTop: function () {
@@ -1022,9 +1019,11 @@ if (typeof Object.create !== 'function') {
 			} //else { $('html, body').animate({'scrollTop': self.setHeight}, self.options.topScrollingDuration); }
 		},
 
-		animationCallback: function () {
+		animationCallback: function (go) {
 			var self = this;
-			setTimeout(function () {self.options.callbackFunction.call(this); }, self.options.slideEaseDuration + 50);
+			if ((!self.dontCallback || go) && self.clickable) {
+				setTimeout(function () {self.options.callbackFunction.call(this); }, self.options.slideEaseDuration + 50);
+			}
 		},
 
 		autoSlide: function () {
@@ -1033,14 +1032,14 @@ if (typeof Object.create !== 'function') {
 			if (self.options.autoSlideInterval < self.options.slideEaseDuration) {
 				self.options.autoSlideInterval = (self.options.slideEaseDuration > self.options.autoHeightEaseDuration) ? self.options.slideEaseDuration : self.options.autoHeightEaseDuration;
 			}
-			if (self.options.continuous) {self.clickable = false; }
+			//self.clickable = false;
 			self.autoslideTimeout = setTimeout(function () {
 				// Slide left or right
 				self.setCurrent(self.options.autoSliderDirection);
 				self.autoSlide();
 
 			}, self.options.autoSlideInterval);
-			if (typeof self.options.callbackFunction === 'function') { self.animationCallback(); }
+			if (typeof self.options.callbackFunction === 'function' && self.loaded) { self.animationCallback(); }
 		},
 
 		checkAutoSlideStop: function () {
@@ -1065,12 +1064,11 @@ if (typeof Object.create !== 'function') {
 			var self = this;
 
 			if (self.options.continuous) {
-
 				// If on the last panel (the clone of panel 1), set the margin to the original.
-				if (self.currentTab === self.panelCount - 2) {
+				if (self.currentTab === self.panelCount - 2 || self.marginLeft === -((self.slideWidth * self.panelCount) - self.slideWidth)) {
 					$(self.panelContainer).css('margin-left', -self.slideWidth + self.pSign);
 					self.currentTab = 0;
-				} else if (self.currentTab === -1) {
+				} else if (self.currentTab === -1 || self.marginLeft === 0) {
 				// If on the first panel the clone of the last panel), set the margin to the original.
 					$(self.panelContainer).css('margin-left', -(((self.slideWidth * self.panelCount) - (self.slideWidth * 2))) + self.pSign);
 					self.currentTab = (self.panelCount - 3);

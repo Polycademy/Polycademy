@@ -1,4 +1,4 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
 /**
  * CodeIgniter
  *
@@ -24,6 +24,7 @@
  * @since		Version 3.0.0
  * @filesource
  */
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
  * PDO ODBC Database Adapter Class
@@ -40,22 +41,46 @@
  */
 class CI_DB_pdo_odbc_driver extends CI_DB_pdo_driver {
 
+	/**
+	 * Sub-driver
+	 *
+	 * @var	string
+	 */
 	public $subdriver = 'odbc';
 
-	// The character used for escaping - not used in ODBC
-	protected $_escape_char = '';
+	/**
+	 * Database schema
+	 *
+	 * @var	string
+	 */
+	public $schema = 'public';
 
-	// clause and character used for LIKE escape sequences
-	protected $_like_escape_str = " {escape '%s'} ";
-
-	protected $_random_keyword = ' RAND()';
+	// --------------------------------------------------------------------
 
 	/**
-	 * Constructor
+	 * Identifier escape character
+	 *
+	 * Must be empty for ODBC.
+	 *
+	 * @var	string
+	 */
+	protected $_escape_char = '';
+
+	/**
+	 * ESCAPE statement string
+	 *
+	 * @var	string
+	 */
+	protected $_like_escape_str = " {escape '%s'} ";
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Class constructor
 	 *
 	 * Builds the DSN if not already set.
 	 *
-	 * @param	array
+	 * @param	array	$params
 	 * @return	void
 	 */
 	public function __construct($params)
@@ -122,12 +147,12 @@ class CI_DB_pdo_odbc_driver extends CI_DB_pdo_driver {
 	 *
 	 * Generates a platform-specific query string so that the table names can be fetched
 	 *
-	 * @param	bool
+	 * @param	bool	$prefix_limit
 	 * @return	string
 	 */
 	protected function _list_tables($prefix_limit = FALSE)
 	{
-		$sql = "SELECT table_name FROM information_schema.tables WHERE table_schema = 'public'";
+		$sql = "SELECT table_name FROM information_schema.tables WHERE table_schema = '".$this->schema."'";
 
 		if ($prefix_limit !== FALSE && $this->dbprefix !== '')
 		{
@@ -145,7 +170,7 @@ class CI_DB_pdo_odbc_driver extends CI_DB_pdo_driver {
 	 *
 	 * Generates a platform-specific query string so that the column names can be fetched
 	 *
-	 * @param	string	the table name
+	 * @param	string	$table
 	 * @return	string
 	 */
 	protected function _list_columns($table = '')
@@ -160,8 +185,8 @@ class CI_DB_pdo_odbc_driver extends CI_DB_pdo_driver {
 	 *
 	 * Generates a platform-specific update string from the supplied data
 	 *
-	 * @param	string	the table name
-	 * @param	array	the update data
+	 * @param	string	$table
+	 * @param	array	$values
 	 * @return	string
          */
 	protected function _update($table, $values)
@@ -178,10 +203,10 @@ class CI_DB_pdo_odbc_driver extends CI_DB_pdo_driver {
 	 *
 	 * Generates a platform-specific truncate string from the supplied data
 	 *
-	 * If the database does not support the truncate() command,
+	 * If the database does not support the TRUNCATE statement,
 	 * then this method maps to 'DELETE FROM table'
 	 *
-	 * @param	string	the table name
+	 * @param	string	$table
 	 * @return	string
 	 */
 	protected function _truncate($table)
@@ -208,11 +233,11 @@ class CI_DB_pdo_odbc_driver extends CI_DB_pdo_driver {
 	// --------------------------------------------------------------------
 
 	/**
-	 * Limit string
+	 * LIMIT
 	 *
 	 * Generates a platform-specific LIMIT clause
 	 *
-	 * @param	string	the sql query string
+	 * @param	string	$sql	SQL Query
 	 * @return	string
 	 */
 	protected function _limit($sql)
