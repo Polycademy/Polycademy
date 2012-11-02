@@ -45,17 +45,17 @@ able application. The development experience integrates industry practices such 
 			array(
 				'field'		=> 'full_name[first]',
 				'label'		=> 'First Name',
-				'rules'		=> 'required|alpha|min_length[2]|max_length[16]|trim|xss_clean',
+				'rules'		=> 'required|alpha|min_length[2]|max_length[20]|trim|xss_clean',
 			),
 			array(
 				'field'		=> 'full_name[last]',
 				'label'		=> 'Last Name',
-				'rules'		=> 'required|alpha|min_length[2]|max_length[16]|trim|xss_clean',
+				'rules'		=> 'required|alpha|min_length[2]|max_length[20]|trim|xss_clean',
 			),
 			array(
 				'field'		=> 'email',
 				'label'		=> 'Email',
-				'rules'		=> 'required|valid_email|min_length[5]|max_length[30]|trim',
+				'rules'		=> 'required|valid_email|min_length[5]|max_length[40]|trim',
 			),
 			array(
 				'field'		=> 'birthday',
@@ -70,7 +70,7 @@ able application. The development experience integrates industry practices such 
 			array(
 				'field'		=> 'skype',
 				'label'		=> 'Skype ID',
-				'rules'		=> 'required|max_length[25]|trim|xss_clean',
+				'rules'		=> 'required|max_length[30]|trim|xss_clean',
 			),
 			array(
 				'field'		=> 'cfa',

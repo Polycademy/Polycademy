@@ -157,8 +157,6 @@
 			<div class="container">
 				<article class="course_application red_text_container" id="course_application">
 					<h2>Application Form</h2>
-					<h4>Becoming a web application entrepeneur is not easy. You need to be truly passionate and committed to developing your idea into reality.</h4>
-					<p>Please note that this is an application form, there is no obligation to pay until you have been accepted and have agreed to the contract.<br />Your information here will only be recorded for application purposes. If you are accepted into the course, we may offer your information to potential investors or employers.</p>
 					<? if(!empty($error_messages)){	?>
 						<section class="form_errors">
 							<h5>There are form errors, please check below:</h5>
@@ -166,6 +164,11 @@
 								<?= $error_messages ?>
 							</ul>
 						</section>
+					<? }elseif(!empty($success_message)){ ?>
+						<h1 class="form_success"><?= $success_message ?></h1>
+					<? }else{ ?>
+						<h4>Becoming a web application entrepeneur is not easy. You need to be truly passionate and committed to developing your idea into reality.</h4>
+						<p>Please note that this is an application form, there is no obligation to pay until you have been accepted and have agreed to the contract.<br />Your information here will only be recorded for application purposes. If you are accepted into the course, we may offer your information to potential investors or employers.</p>
 					<? } ?>
 					<?= form_open($form_destination . '#course_application', array('class' => 'course_application_form form-horizontal')) ?>
 						<h3>Personal Details <small>&lang;REQUIRED&rang;</small></h3>

@@ -4,7 +4,6 @@ class Courses extends CI_Controller {
 
 	protected $_view_data; //only accessible in this class and any classes that extend home
 	protected $_settings;
-	protected $_error_messages;
 	
 	public function __construct(){
 		
@@ -69,8 +68,12 @@ class Courses extends CI_Controller {
 			'form_destination'		=> $this->router->fetch_class(),
 		);
 		
+		$this->firephp->log($this->input->post('feedback'));
+
+		
 		$this->form_validation->set_rules($this->_settings['form_validation']['application_form']); 
 		if($this->form_validation->run() == true){
+			#all input post data will get xss_cleaned from the form_validation library
 			#this means the form has been ran and suceeded through validation!
 			$this->_form_success();
 		}else{
@@ -83,11 +86,56 @@ class Courses extends CI_Controller {
 		
 	}
 	
+	#should be moved to models
 	protected function _form_success(){
+		#make sure the processing from form validation is passed to here!
+		
 		#need some function to say they succeeded
 		#preferably a message and some details + call to action
 		#NEED MESSAGE, and hook to DB model to enter in data
 		#IF HAVE MESSAGE, try to prevent duplicate entries, by overwriting the old entry...? NOO COOKIE DATA? Or just BIG MESSAGE!
+		
+		$data = array(
+			'app_date'				=> date('Y-m-d H:i:s', now()),
+			'name'					=> implode(' ', $this->input->post('full_name')),
+			'email'					=> $this->input->post('email'),
+			'birthday'				=> $this->input->post('birthday'),
+			'location'				=> $this->input->post('location'),
+			'skype'					=> $this->input->post('skype'),
+			'cfa'					=> ($this->input->post('cfa') == 'yes') ? 1 : 0,
+			'courses'				=> implode(',', $this->input->post('courses')),
+			'payment_options'		=> $this->input->post('payment_options'),
+			'education_employment'	=> $this->input->post('education_employment'),
+			'work_study'			=> $this->input->post('work_study'),
+			'experience'			=> $this->input->post('experience'),
+			'build'					=> $this->input->post('build'),
+			'video'					=> $this->input->post('video'),
+			'tech'					=> $this->input->post('tech'),
+			'feedback'				=> $this->input->post('feedback'),
+			'where'					=> $this->input->post('where'),
+		);
+		
+		$query = $this->db->insert('application_form', $data); 
+		
+		if($query){
+			
+			#all of these messages need to be moved to the view template, and the controller should be only passing status codes/messages!
+			$this->_view_data += array(
+				'success_message'	=> 'Thanks for submitting your application! We\'ll be in touch shortly. In the meanwhile check out our blog.',
+			);
+			
+			return true;
+			
+		}else{
+		
+			$this->_view_data += array(
+				'error_messages'	=> '<li>We have experienced a database error in submitting your application, please try again later or contact us directly.</li>',
+			);
+			
+			return false;
+			
+		}
+		
 	}
 	
 	protected function _form_failure(){
