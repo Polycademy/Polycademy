@@ -336,12 +336,12 @@ $config['global_xss_filtering'] = FALSE;
 | 'csrf_regenerate' = Regenerate token on every submission
 | 'csrf_exclude_uris' = Array of URIs which ignore CSRF checks
 */
-$config['csrf_protection'] = TRUE;
-$config['csrf_token_name'] = 'csrf_token_polycademy';
-$config['csrf_cookie_name'] = 'csrf_cookie_polycademy';
+$config['csrf_protection'] = TRUE; #ajax requests require one to setup ajax to always pass the token!
+$config['csrf_token_name'] = 'csrf_token';
+$config['csrf_cookie_name'] = 'csrf_cookie';
 $config['csrf_expire'] = 7200;
-$config['csrf_regenerate'] = TRUE;
-$config['csrf_exclude_uris'] = array();
+$config['csrf_regenerate'] = FALSE; #this will make refreshing forms or ajax requests fail, because each submission generatesa a new server token, but the cookie token stays the same... (well, it could be the other way).
+$config['csrf_exclude_uris'] = array(); #if you integrate into payment gateways, this needs to be adjusted, API end points expecting POSTDATA (this is your own controller/method name)
 
 /*
 |--------------------------------------------------------------------------
