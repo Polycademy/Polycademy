@@ -1,3 +1,4 @@
+<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 		<div class="blue_container">
 			<div class="container">
 				<article class="refund_policy blue_text_container">

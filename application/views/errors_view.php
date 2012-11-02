@@ -1,4 +1,4 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed'); ?>
+<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 	<div class="blue_container">
 		<div class="container">
 			<article class="blue_text_container error_page">

@@ -1,4 +1,4 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
 /**
  * CodeIgniter
  *
@@ -24,6 +24,7 @@
  * @since		Version 1.0
  * @filesource
  */
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
  * URI Class
@@ -695,7 +696,14 @@ class CI_URI {
 	 */
 	public function ruri_string()
 	{
-		return implode('/', $this->rsegment_array());
+		global $RTR;
+
+		if (($dir = $RTR->fetch_directory()) === '/')
+		{
+			$dir = '';
+		}
+
+		return $dir.implode('/', $this->rsegment_array());
 	}
 
 }

@@ -1,3 +1,4 @@
+<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 		<div class="blue_container">
 			<div class="container">
 				<h2>Got an idea for an application that will change the world?</h2>

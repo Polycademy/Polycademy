@@ -1,3 +1,4 @@
+<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 		<div class="blue_container">
 			<div class="container">
 				<article class="terms_of_service blue_text_container">

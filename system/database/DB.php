@@ -1,4 +1,4 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
 /**
  * CodeIgniter
  *
@@ -24,6 +24,7 @@
  * @since		Version 1.0
  * @filesource
  */
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
  * Initialize the database
@@ -31,8 +32,10 @@
  * @category	Database
  * @author	EllisLab Dev Team
  * @link	http://codeigniter.com/user_guide/database/
- * @param 	string
- * @param 	bool	Determines if query builder should be used or not
+ *
+ * @param 	string|string[]	$params
+ * @param 	bool		$query_builder_override
+ *				Determines if query builder should be used or not
  */
 function &DB($params = '', $query_builder_override = NULL)
 {
@@ -148,11 +151,22 @@ function &DB($params = '', $query_builder_override = NULL)
 		require_once(BASEPATH.'database/DB_query_builder.php');
 		if ( ! class_exists('CI_DB'))
 		{
+			/**
+			 * CI_DB
+			 *
+			 * Acts as an alias for both CI_DB_driver and CI_DB_query_builder.
+			 *
+			 * @see	CI_DB_query_builder
+			 * @see	CI_DB_driver
+			 */
 			class CI_DB extends CI_DB_query_builder { }
 		}
 	}
 	elseif ( ! class_exists('CI_DB'))
 	{
+		/**
+	 	 * @ignore
+		 */
 		class CI_DB extends CI_DB_driver { }
 	}
 

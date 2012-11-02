@@ -1,4 +1,4 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
 /**
  * CodeIgniter
  *
@@ -24,6 +24,7 @@
  * @since		Version 2.0.3
  * @filesource
  */
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
  * SQLSRV Database Adapter Class
@@ -40,20 +41,38 @@
  */
 class CI_DB_sqlsrv_driver extends CI_DB {
 
+	/**
+	 * Database driver
+	 *
+	 * @var	string
+	 */
 	public $dbdriver = 'sqlsrv';
 
-	// The character used for escaping
-	protected $_escape_char = '"';
-
-	protected $_random_keyword = ' NEWID()';
-
-	// SQLSRV-specific properties
-	protected $_quoted_identifier = TRUE;
+	// --------------------------------------------------------------------
 
 	/**
-	 * Non-persistent database connection
+	 * ORDER BY random keyword
 	 *
-	 * @param	bool	$pooling = FALSE
+	 * @var	string
+	 */
+	protected $_random_keyword = ' NEWID()';
+
+	/**
+	 * Quoted identifier flag
+	 *
+	 * Whether to use SQL-92 standard quoted identifier
+	 * (double quotes) or brackets for identifier escaping.
+	 *
+	 * @var	bool
+	 */
+	protected $_quoted_identifier = TRUE;
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Database connection
+	 *
+	 * @param	bool	$pooling
 	 * @return	resource
 	 */
 	public function db_connect($pooling = FALSE)
@@ -106,7 +125,7 @@ class CI_DB_sqlsrv_driver extends CI_DB {
 	/**
 	 * Select the database
 	 *
-	 * @param	string	database name
+	 * @param	string	$database
 	 * @return	bool
 	 */
 	public function db_select($database = '')
@@ -130,7 +149,7 @@ class CI_DB_sqlsrv_driver extends CI_DB {
 	/**
 	 * Execute the query
 	 *
-	 * @param	string	an SQL query
+	 * @param	string	$sql	an SQL query
 	 * @return	resource
 	 */
 	protected function _execute($sql)
@@ -145,7 +164,7 @@ class CI_DB_sqlsrv_driver extends CI_DB {
 	/**
 	 * Begin Transaction
 	 *
-	 * @param	bool	$test_mode = FALSE
+	 * @param	bool	$test_mode
 	 * @return	bool
 	 */
 	public function trans_begin($test_mode = FALSE)
@@ -205,8 +224,8 @@ class CI_DB_sqlsrv_driver extends CI_DB {
 	/**
 	 * Escape String
 	 *
-	 * @param	string
-	 * @param	bool	whether or not the string will be used in a LIKE condition
+	 * @param	string	$str
+	 * @param	bool	$like	Whether or not the string will be used in a LIKE condition
 	 * @return	string
 	 */
 	public function escape_str($str, $like = FALSE)
@@ -273,7 +292,7 @@ class CI_DB_sqlsrv_driver extends CI_DB {
 	 * Generates a platform-specific query string so that the table names can be fetched
 	 *
 	 * @param	bool
-	 * @return	string
+	 * @return	string	$prefix_limit
 	 */
 	protected function _list_tables($prefix_limit = FALSE)
 	{
@@ -297,7 +316,7 @@ class CI_DB_sqlsrv_driver extends CI_DB {
 	 *
 	 * Generates a platform-specific query string so that the column names can be fetched
 	 *
-	 * @param	string	the table name
+	 * @param	string	$table
 	 * @return	string
 	 */
 	protected function _list_columns($table = '')
@@ -312,7 +331,7 @@ class CI_DB_sqlsrv_driver extends CI_DB {
 	 *
 	 * Generates a platform-specific query so that the column data can be retrieved
 	 *
-	 * @param	string	the table name
+	 * @param	string	$table
 	 * @return	string
 	 */
 	protected function _field_data($table)
@@ -365,8 +384,8 @@ class CI_DB_sqlsrv_driver extends CI_DB {
 	 *
 	 * Generates a platform-specific update string from the supplied data
 	 *
-	 * @param	string	the table name
-	 * @param	array	the update data
+	 * @param	string	$table
+	 * @param	array	$values
 	 * @return	string
 	 */
 	protected function _update($table, $values)
@@ -383,10 +402,10 @@ class CI_DB_sqlsrv_driver extends CI_DB {
 	 *
 	 * Generates a platform-specific truncate string from the supplied data
 	 *
-	 * If the database does not support the truncate() command,
+	 * If the database does not support the TRUNCATE statement,
 	 * then this method maps to 'DELETE FROM table'
 	 *
-	 * @param	string	the table name
+	 * @param	string	$table
 	 * @return	string
 	 */
 	protected function _truncate($table)
@@ -401,7 +420,7 @@ class CI_DB_sqlsrv_driver extends CI_DB {
 	 *
 	 * Generates a platform-specific delete string from the supplied data
 	 *
-	 * @param	string	the table name
+	 * @param	string	$table
 	 * @return	string
 	 */
 	protected function _delete($table)
@@ -417,11 +436,11 @@ class CI_DB_sqlsrv_driver extends CI_DB {
 	// --------------------------------------------------------------------
 
 	/**
-	 * Limit string
+	 * LIMIT
 	 *
 	 * Generates a platform-specific LIMIT clause
 	 *
-	 * @param	string	the sql query string
+	 * @param	string	$sql	SQL Query
 	 * @return	string
 	 */
 	protected function _limit($sql)

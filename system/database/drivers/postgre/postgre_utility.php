@@ -1,4 +1,4 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
 /**
  * CodeIgniter
  *
@@ -24,6 +24,7 @@
  * @since		Version 1.0
  * @filesource
  */
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
  * Postgre Utility Class
@@ -34,13 +35,26 @@
  */
 class CI_DB_postgre_utility extends CI_DB_utility {
 
+	/**
+	 * List databases statement
+	 *
+	 * @var	string
+	 */
 	protected $_list_databases	= 'SELECT datname FROM pg_database';
-	protected $_optimize_table	= 'REINDEX TABLE %s';
 
 	/**
-	 * Postgre Export
+	 * OPTIMIZE TABLE statement
 	 *
-	 * @param	array	Preferences
+	 * @var	string
+	 */
+	protected $_optimize_table	= 'REINDEX TABLE %s';
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Export
+	 *
+	 * @param	array	$params	Preferences
 	 * @return	mixed
 	 */
 	protected function _backup($params = array())

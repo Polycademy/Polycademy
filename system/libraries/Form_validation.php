@@ -1,4 +1,4 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
 /**
  * CodeIgniter
  *
@@ -24,6 +24,7 @@
  * @since		Version 1.0
  * @filesource
  */
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
  * Form Validation Class
@@ -1323,6 +1324,11 @@ class CI_Form_validation {
 	 */
 	public function prep_for_form($data = '')
 	{
+		if ($this->_safe_form_data === FALSE OR empty($data))
+		{
+			return $data;
+		}
+
 		if (is_array($data))
 		{
 			foreach ($data as $key => $val)
@@ -1330,11 +1336,6 @@ class CI_Form_validation {
 				$data[$key] = $this->prep_for_form($val);
 			}
 
-			return $data;
-		}
-
-		if ($this->_safe_form_data === FALSE OR $data === '')
-		{
 			return $data;
 		}
 

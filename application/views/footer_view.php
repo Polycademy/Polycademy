@@ -1,3 +1,4 @@
+<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 		<footer>
 			<div class="container">
 				<article class="row footer_grid">

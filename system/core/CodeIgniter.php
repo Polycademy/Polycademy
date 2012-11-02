@@ -1,4 +1,4 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
 /**
  * CodeIgniter
  *
@@ -24,6 +24,7 @@
  * @since		Version 1.0
  * @filesource
  */
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
  * System Initialization File
@@ -255,17 +256,14 @@
  *  Security check
  * ------------------------------------------------------
  *
- *  None of the functions in the app controller or the
+ *  None of the methods in the app controller or the
  *  loader class can be called via the URI, nor can
- *  controller functions that begin with an underscore
+ *  controller functions that begin with an underscore.
  */
 	$class  = $RTR->fetch_class();
 	$method = $RTR->fetch_method();
 
-	if ( ! class_exists($class)
-		OR strpos($method, '_') === 0
-		OR in_array(strtolower($method), array_map('strtolower', get_class_methods('CI_Controller')))
-		)
+	if ( ! class_exists($class) OR $method[0] === '_' OR method_exists('CI_Controller', $method))
 	{
 		if ( ! empty($RTR->routes['404_override']))
 		{
@@ -324,9 +322,7 @@
 	}
 	else
 	{
-		// is_callable() returns TRUE on some versions of PHP 5 for private and protected
-		// methods, so we'll use this workaround for consistent behavior
-		if ( ! in_array(strtolower($method), array_map('strtolower', get_class_methods($CI))))
+		if ( ! is_callable(array($CI, $method)))
 		{
 			// Check and see if we are using a 404 override and use it.
 			if ( ! empty($RTR->routes['404_override']))

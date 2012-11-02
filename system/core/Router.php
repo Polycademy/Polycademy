@@ -1,4 +1,4 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
 /**
  * CodeIgniter
  *
@@ -24,6 +24,7 @@
  * @since		Version 1.0
  * @filesource
  */
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
  * Router Class
@@ -51,13 +52,6 @@ class CI_Router {
 	 * @var	array
 	 */
 	public $routes =	array();
-
-	/**
-	 * List of error routes
-	 *
-	 * @var	array
-	 */
-	public $error_routes =	array();
 
 	/**
 	 * Current class name
@@ -189,6 +183,7 @@ class CI_Router {
 		{
 			show_error('Unable to determine what should be displayed. A default route has not been specified in the routing file.');
 		}
+
 		// Is the method being specified?
 		if (strpos($this->default_controller, '/') !== FALSE)
 		{
@@ -267,9 +262,13 @@ class CI_Router {
 			return $segments;
 		}
 
+		$temp = str_replace('-', '_', $segments[0]);
+
 		// Does the requested controller exist in the root folder?
-		if (file_exists(APPPATH.'controllers/'.$segments[0].'.php'))
+		if (file_exists(APPPATH.'controllers/'.$temp.'.php'))
 		{
+			$segments[0] = $temp;
+			empty($segments[1]) OR $segments[1] = str_replace('-', '_', $segments[1]);
 			return $segments;
 		}
 
@@ -282,6 +281,9 @@ class CI_Router {
 
 			if (count($segments) > 0)
 			{
+				$segments[0] = str_replace('-', '_', $segments[0]);
+				empty($segments[1]) OR $segments[1] = str_replace('-', '_', $segments[1]);
+
 				// Does the requested controller exist in the sub-folder?
 				if ( ! file_exists(APPPATH.'controllers/'.$this->fetch_directory().$segments[0].'.php'))
 				{

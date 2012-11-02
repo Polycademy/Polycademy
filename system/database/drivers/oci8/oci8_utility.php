@@ -1,4 +1,4 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
 /**
  * CodeIgniter
  *
@@ -24,6 +24,7 @@
  * @since		Version 1.0
  * @filesource
  */
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
  * Oracle Utility Class
@@ -34,12 +35,17 @@
  */
 class CI_DB_oci8_utility extends CI_DB_utility {
 
+	/**
+	 * List databases statement
+	 *
+	 * @var	string
+	 */
 	protected $_list_databases	= 'SELECT username FROM dba_users'; // Schemas are actual usernames
 
 	/**
-	 * Oracle Export
+	 * Export
 	 *
-	 * @param	array	Preferences
+	 * @param	array	$params	Preferences
 	 * @return	mixed
 	 */
 	protected function _backup($params = array())

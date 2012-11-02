@@ -1,4 +1,4 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
 /**
  * CodeIgniter
  *
@@ -24,6 +24,7 @@
  * @since		Version 1.3.1
  * @filesource
  */
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
  * Unit Testing Class
@@ -38,12 +39,51 @@
  */
 class CI_Unit_test {
 
+	/**
+	 * Active flag
+	 *
+	 * @var	bool
+	 */
 	public $active			= TRUE;
+
+	/**
+	 * Test results
+	 *
+	 * @var	array
+	 */
 	public $results			= array();
+
+	/**
+	 * Strict comparison flag
+	 *
+	 * Whether to use === or == when comparing
+	 *
+	 * @var	bool
+	 */
 	public $strict			= FALSE;
+
+	/**
+	 * Template
+	 *
+	 * @var	string
+	 */
 	protected $_template		= NULL;
+
+	/**
+	 * Template rows
+	 *
+	 * @var	string
+	 */
 	protected $_template_rows	= NULL;
+
+	/**
+	 * List of visible test items
+	 *
+	 * @var	array
+	 */
 	protected $_test_items_visible	= array();
+
+	// --------------------------------------------------------------------
 
 	/**
 	 * Constructor
@@ -92,9 +132,9 @@ class CI_Unit_test {
 	 * Runs the supplied tests
 	 *
 	 * @param	mixed	$test
-	 * @param	mixed	$expected = TRUE
-	 * @param	string	$test_name = 'undefined'
-	 * @param	string	$notes = ''
+	 * @param	mixed	$expected
+	 * @param	string	$test_name
+	 * @param	string	$notes
 	 * @return	string
 	 */
 	public function run($test, $expected = TRUE, $test_name = 'undefined', $notes = '')
@@ -112,7 +152,7 @@ class CI_Unit_test {
 		}
 		else
 		{
-			$result = ($this->strict === TRUE) ? ($test === $expected) : ($test === $expected);
+			$result = ($this->strict === TRUE) ? ($test === $expected) : ($test == $expected);
 			$extype = gettype($expected);
 		}
 
@@ -140,7 +180,7 @@ class CI_Unit_test {
 	 *
 	 * Displays a table with the test data
 	 *
-	 * @param	array	 $result = array()
+	 * @param	array	 $result
 	 * @return	string
 	 */
 	public function report($result = array())
@@ -220,7 +260,7 @@ class CI_Unit_test {
 	 *
 	 * Returns the raw result data
 	 *
-	 * @param	array	$results = array()
+	 * @param	array	$results
 	 * @return	array
 	 */
 	public function result($results = array())
