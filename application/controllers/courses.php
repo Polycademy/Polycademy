@@ -69,13 +69,14 @@ class Courses extends CI_Controller {
 			'form_destination'		=> $this->router->fetch_class(),
 		);
 		
-		$this->form_validation->set_rules($this->_settings['form_validation']['application_form']); 
-		if($this->form_validation->run() == true){
+		
+		if($this->form_validation->run('application_form') == false){
 			#this means the form has been ran and suceeded through validation!
-			$this->_form_success();
-		}else{
 			$this->_form_failure();
+		}else{
+			$this->_form_success();
 		}
+		
 		
 		$this->load->view('header_view', $this->_view_data);
 		$this->load->view('courses_view', $this->_view_data);
@@ -86,8 +87,6 @@ class Courses extends CI_Controller {
 	protected function _form_success(){
 		#need some function to say they succeeded
 		#preferably a message and some details + call to action
-		#NEED MESSAGE, and hook to DB model to enter in data
-		#IF HAVE MESSAGE, try to prevent duplicate entries, by overwriting the old entry...? NOO COOKIE DATA? Or just BIG MESSAGE!
 	}
 	
 	protected function _form_failure(){
