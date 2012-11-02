@@ -173,11 +173,11 @@
 							<?= form_label('Full Name', 'form_full_name', array('class' => 'control-label required')) ?>
 							<div class="controls controls-row">
 								<div class="input-append">
-									<?= form_input(array('name' => 'full_name[first]', 'id' => 'form_first_name', 'class' => 'span2', 'placeholder' => 'First Name')) ?>
+									<?= form_input(array('name' => 'full_name[first]', 'id' => 'form_first_name', 'class' => 'span2', 'placeholder' => 'First Name', 'value' => set_value('full_name[first]'))) ?>
 									<span class="add-on"><i class="icon-user"></i></span>
 								</div>
 								<div class="input-append">
-									<?= form_input(array('name' => 'full_name[last]', 'id' => 'form_last_name', 'class' => 'span2', 'placeholder' => 'Last Name')) ?>
+									<?= form_input(array('name' => 'full_name[last]', 'id' => 'form_last_name', 'class' => 'span2', 'placeholder' => 'Last Name', 'value' => set_value('full_name[last]'))) ?>
 									<span class="add-on"><i class="icon-user"></i></span>
 								</div>
 							</div>
@@ -186,7 +186,7 @@
 							<?= form_label('Email', 'form_email', array('class' => 'control-label required')) ?>
 							<div class="controls">
 								<div class="input-append">
-									<?= form_input(array('name' => 'email', 'id' => 'form_email', 'class' => 'span4', 'placeholder' => 'Make sure it\'s correct!')) ?>
+									<?= form_input(array('name' => 'email', 'id' => 'form_email', 'class' => 'span4', 'placeholder' => 'Make sure it\'s correct!', 'value' => set_value('email'))) ?>
 									<span class="add-on"><i class="icon-inbox"></i></span>
 								</div>
 							</div>
@@ -195,7 +195,7 @@
 							<?= form_label('Date of Birth', 'form_birth', array('class' => 'control-label required')) ?>
 							<div class="controls">
 								<div class="input-append date date_picker" data-date="<?= date('d-m-Y', strtotime('-15 years',now())) ?>" data-date-format="dd-mm-yyyy">
-									<?= form_input(array('name' => 'birthday', 'id' => 'form_birth', 'class' => 'span4', 'placeholder' => 'DD-MM-YYYY', 'readonly' => '',)) ?>
+									<?= form_input(array('name' => 'birthday', 'id' => 'form_birth', 'class' => 'span4', 'placeholder' => 'DD-MM-YYYY', 'value' => set_value('birthday'), 'readonly' => '',)) ?>
 									<span class="add-on"><i class="icon-calendar"></i></span>
 								</div>
 							</div>
@@ -204,7 +204,7 @@
 							<?= form_label('Location', 'form_location', array('class' => 'control-label required')) ?>
 							<div class="controls">
 								<div class="input-append">
-									<?= form_input(array('name' => 'location', 'id' => 'form_location', 'class' => 'span4', 'placeholder' => 'City - Country')) ?>
+									<?= form_input(array('name' => 'location', 'id' => 'form_location', 'class' => 'span4', 'placeholder' => 'City - Country', 'value' => set_value('location'))) ?>
 									<span class="add-on"><i class="icon-map-marker"></i></span>
 								</div>
 							</div>
@@ -213,7 +213,7 @@
 							<?= form_label('Skype ID', 'form_skype', array('class' => 'control-label required')) ?>
 							<div class="controls">
 								<div class="input-append">
-									<?= form_input(array('name' => 'skype', 'id' => 'form_skype', 'class' => 'span4', 'placeholder' => 'For Interviews')) ?>
+									<?= form_input(array('name' => 'skype', 'id' => 'form_skype', 'class' => 'span4', 'placeholder' => 'For Interviews', 'value' => set_value('skype'))) ?>
 									<span class="add-on"><i class="icon-eye-open"></i></span>
 								</div>
 							</div>
@@ -223,11 +223,11 @@
 							<?= form_label('Are you interested in applying for the Code for Australia program?', 'form_cfa', array('class' => 'control-label required')) ?>
 							<div class="controls">
 								<label class="radio inline" for="form_cfa_yes">
-									<?= form_radio(array('name' => 'cfa', 'id' => 'form_cfa_yes', 'value' => 'yes')) ?>
+									<input type="radio" name="cfa" id="form_cfa_yes" value="yes" <?= set_radio('cfa', 'yes') ?> />
 									Yes
 								</label>
 								<label class="radio inline" for="form_cfa_no">
-									<?= form_radio(array('name' => 'cfa', 'id' => 'form_cfa_no', 'value' => 'no', 'checked' => 'checked')) ?>
+									<input type="radio" name="cfa" id="form_cfa_no" value="no" <?= set_radio('cfa', 'no', TRUE) ?> />
 									No
 								</label>
 								<span class="help-block">What is <?= anchor('http://codeforaustralia.com.au', 'Code for Australia?', array('title' => 'CFA is a social enterprise program @ Polycademy which gets students to build applications that deal with open government, open data and civic/community issues.')) ?> (It isn't up yet!)</span>
@@ -252,19 +252,19 @@
 											<tbody>
 												<tr>
 													<th scope="row">Semester 1 Cohort 1 - <?= $course_dates_table['st_s1_c1'] ?> to <?php echo $course_dates_table['st_s1_c1_end'] ?></th>
-													<td><?= form_checkbox(array('name' => 'courses[]', 'id' => 'form_course_st_s1_c1', 'value' => 'st_s1_c1')) ?></td>
+													<td><input id="form_course_st_s1_c1" type="checkbox" value="st_s1_c1" name="courses[]" <?= set_checkbox('courses[]', 'st_s1_c1') ?> /></td>
 												</tr>
 												<tr>
 													<th scope="row">Semester 1 Cohort 2 - <?= $course_dates_table['st_s1_c2'] ?> to <?php echo $course_dates_table['st_s1_c2_end'] ?></th>
-													<td><?= form_checkbox(array('name' => 'courses[]', 'id' => 'form_course_st_s1_c2', 'value' => 'st_s1_c2')) ?></td>
+													<td><input id="form_course_st_s1_c2" type="checkbox" value="st_s1_c2" name="courses[]" <?= set_checkbox('courses[]', 'st_s1_c2') ?> /></td>
 												</tr>
 												<tr>
 													<th scope="row">Semester 2 Cohort 1 - <?= $course_dates_table['st_s2_c1'] ?> to <?php echo $course_dates_table['st_s2_c1_end'] ?></th>
-													<td><?= form_checkbox(array('name' => 'courses[]', 'id' => 'form_course_st_s2_c1', 'value' => 'st_s2_c1')) ?></td>
+													<td><input id="form_course_st_s2_c1" type="checkbox" value="st_s2_c1" name="courses[]" <?= set_checkbox('courses[]', 'st_s2_c1') ?> /></td>
 												</tr>
 												<tr>
 													<th scope="row">Semester 2 Cohort 2 - <?= $course_dates_table['st_s2_c2'] ?> to <?php echo $course_dates_table['st_s2_c2_end'] ?></th>
-													<td><?= form_checkbox(array('name' => 'courses[]', 'id' => 'form_course_st_s2_c2', 'value' => 'st_s2_c2')) ?></td>
+													<td><input id="form_course_st_s2_c2" type="checkbox" value="st_s2_c2" name="courses[]" <?= set_checkbox('courses[]', 'st_s2_c2') ?> /></td>
 												</tr>
 											</tbody>
 										</table>
@@ -284,15 +284,15 @@
 											<tbody>
 												<tr>
 													<th scope="row">Term 1 - <?= $course_dates_table['ex_t1'] ?> to <?php echo $course_dates_table['ex_t2_end'] ?></th>
-													<td><?= form_checkbox(array('name' => 'courses[]', 'id' => 'form_course_ex_t1', 'value' => 'ex_t1')) ?></td>
+													<td><input id="form_course_ex_t1" type="checkbox" value="ex_t1" name="courses[]" <?= set_checkbox('courses[]', 'ex_t1') ?> /></td>
 												</tr>
 												<tr>
 													<th scope="row">Term 2 - <?= $course_dates_table['ex_t2'] ?> to <?php echo $course_dates_table['ex_t2_end'] ?></th>
-													<td><?= form_checkbox(array('name' => 'courses[]', 'id' => 'form_course_ex_t2', 'value' => 'ex_t2')) ?></td>
+													<td><input id="form_course_ex_t2" type="checkbox" value="ex_t2" name="courses[]" <?= set_checkbox('courses[]', 'ex_t2') ?> /></td>
 												</tr>
 												<tr>
 													<th scope="row">Term 3 - <?= $course_dates_table['ex_t3'] ?> to <?php echo $course_dates_table['ex_t3_end'] ?></th>
-													<td><?= form_checkbox(array('name' => 'courses[]', 'id' => 'form_course_ex_t3', 'value' => 'ex_t3')) ?></td>
+													<td><input id="form_course_ex_t3" type="checkbox" value="ex_t3" name="courses[]" <?= set_checkbox('courses[]', 'ex_t3') ?> /></td>
 												</tr>
 											</tbody>
 										</table>
@@ -305,11 +305,11 @@
 							<?= form_label('Preferred Payment Options', 'form_payment_options', array('class' => 'control-label required')) ?>
 							<div class="controls">
 								<label class="radio inline" for="form_payment_options_upfront">
-									<?= form_radio(array('name' => 'payment_options', 'id' => 'form_payment_options_upfront', 'value' => 'upfront')) ?>
+									<input type="radio" name="payment_options" id="form_payment_options_upfront" value="upfront" <?= set_radio('payment_options', 'upfront') ?> />
 									Upfront
 								</label>
 								<label class="radio inline" for="form_payment_options_weekly">
-									<?= form_radio(array('name' => 'payment_options', 'id' => 'form_payment_options_weekly', 'value' => 'weekly')) ?>
+									<input type="radio" name="payment_options" id="form_payment_options_weekly" value="weekly" <?= set_radio('payment_options', 'weekly') ?> />
 									Weekly
 								</label>
 							</div>
@@ -318,7 +318,7 @@
 							<?= form_label('Do you agree to the Terms of Service, Privacy Policy and Refund Policy?', 'form_agreement', array('class' => 'control-label required')) ?>
 							<div class="controls">
 								<label class="checkbox" for="form_agreement_yes">
-									<?= form_checkbox(array('name' => 'agreement', 'id' => 'form_agreement_yes', 'value' => 'yes')) ?>
+									<input type="checkbox" name="agreement" id="form_agreement_yes" value="yes" <?= set_checkbox('agreement', 'yes') ?> />
 									Yes I have read the policies and have agreed to them!
 								</label>
 								<span class="help-block">Check out the <?= anchor($links['terms_of_service'], 'TOS & Privacy Policy') ?> and <?= anchor($links['refund_policy'], 'Refund Policy') ?>.</span>
@@ -329,7 +329,7 @@
 						<div class="control-group">
 							<?= form_label('Education and Employment Milestones', 'form_education_employment', array('class' => 'control-label required')) ?>
 							<div class="controls">
-								<?= form_textarea(array('name' => 'education_employment', 'id' => 'form_education_employment', 'class' => 'span5', 'placeholder' => 'Year - Milestone')) ?>
+								<?= form_textarea(array('name' => 'education_employment', 'id' => 'form_education_employment', 'class' => 'span5', 'placeholder' => 'Year - Milestone', 'value' => set_value('education_employment'))) ?>
 								<span class="help-block">Limit 100 words.</span>
 							</div>
 						</div>
@@ -337,7 +337,7 @@
 							<?= form_label('Work or Study Commitments', 'form_work_study', array('class' => 'control-label required')) ?>
 							<div class="controls">
 								<div class="input-append">
-									<?= form_input(array('name' => 'work_study', 'id' => 'form_work_study', 'class' => 'span4', 'placeholder' => 'Make sure you have time!')) ?>
+									<?= form_input(array('name' => 'work_study', 'id' => 'form_work_study', 'class' => 'span4', 'placeholder' => 'Make sure you have time!', 'value' => set_value('work_study'))) ?>
 									<span class="add-on"><i class="icon-time"></i></span>
 								</div>
 							</div>
@@ -345,14 +345,14 @@
 						<div class="control-group">
 							<?= form_label('Technical Experience in Web Apps', 'form_experience', array('class' => 'control-label required')) ?>
 							<div class="controls">
-								<?= form_textarea(array('name' => 'experience', 'id' => 'form_experience', 'class' => 'span5', 'placeholder' => 'Name - Link - Function (No experience is fine too!)')) ?>
+								<?= form_textarea(array('name' => 'experience', 'id' => 'form_experience', 'class' => 'span5', 'placeholder' => 'Name - Link - Function (No experience is fine too!)', 'value' => set_value('experience'))) ?>
 								<span class="help-block">Limit 200 words.</span>
 							</div>
 						</div>
 						<div class="control-group">
 							<?= form_label('What do you want to build and get out of Polycademy?', 'form_build', array('class' => 'control-label required')) ?>
 							<div class="controls">
-								<?= form_textarea(array('name' => 'build', 'id' => 'form_build', 'class' => 'span5', 'placeholder' => 'Your idea is safe with us! Until it goes live of course...')) ?>
+								<?= form_textarea(array('name' => 'build', 'id' => 'form_build', 'class' => 'span5', 'placeholder' => 'Your idea is safe with us! Until it goes live of course...', 'value' => set_value('build'))) ?>
 								<span class="help-block">Limit 400 words.</span>
 							</div>
 						</div>
@@ -360,7 +360,7 @@
 							<?= form_label('Link to a video about yourself, teach or show us something you\'re good at!', 'form_video', array('class' => 'control-label')) ?>
 							<div class="controls">
 								<div class="input-append">
-									<?= form_input(array('name' => 'video', 'id' => 'form_video', 'class' => 'span4', 'placeholder' => 'Youtube?')) ?>
+									<?= form_input(array('name' => 'video', 'id' => 'form_video', 'class' => 'span4', 'placeholder' => 'Youtube?', 'value' => set_value('video'))) ?>
 									<span class="add-on"><i class="icon-film"></i></span>
 								</div>
 								<span class="help-block">(optional)</span>
@@ -372,31 +372,27 @@
 							<?= form_label('What would you like us to offer the most in the future?', 'form_tech', array('class' => 'control-label')) ?>
 							<div class="controls">
 								<label class="radio" for="form_ruby_rails">
-									<?= form_radio(array('name' => 'tech', 'id' => 'form_ruby_rails', 'value' => 'ruby_rails')) ?>
+									<input type="radio" name="tech" id="form_ruby_rails" value="ruby_rails" <?= set_radio('tech', 'ruby_rails') ?> />
 									Ruby on Rails - alternative to PHP
 								</label>
 								<label class="radio" for="form_node">
-									<?= form_radio(array('name' => 'tech', 'id' => 'form_node', 'value' => 'node')) ?>
+									<input type="radio" name="tech" id="form_node" value="node" <?= set_radio('tech', 'node') ?> />
 									Node.js - alternative to PHP
 								</label>
 								<label class="radio" for="form_webgl">
-									<?= form_radio(array('name' => 'tech', 'id' => 'form_webgl', 'value' => 'webgl')) ?>
+									<input type="radio" name="tech" id="form_webgl" value="webgl" <?= set_radio('tech', 'webgl') ?> />
 									WebGL - for 3D graphics & Data Visualisation
 								</label>
-								<label class="radio" for="form_gaming">
-									<?= form_radio(array('name' => 'tech', 'id' => 'form_gaming', 'value' => 'gaming')) ?>
-									Unity 3D and Blender - for Multi-platform Games
-								</label>
 								<label class="radio" for="form_phonegap">
-									<?= form_radio(array('name' => 'tech', 'id' => 'form_phonegap', 'value' => 'phonegap')) ?>
+									<input type="radio" name="tech" id="form_phonegap" value="phonegap" <?= set_radio('tech', 'phonegap') ?> />
 									Phonegap - HTML5/CSS/JS for Mobile Applications
 								</label>
 								<label class="radio" for="form_ruby_mobile">
-									<?= form_radio(array('name' => 'tech', 'id' => 'form_ruby_mobile', 'value' => 'ruby_mobile')) ?>
+									<input type="radio" name="tech" id="form_ruby_mobile" value="ruby_mobile" <?= set_radio('tech', 'ruby_mobile') ?> />
 									RhoMobile/Ruboto/Ruby Motion/MobiRuby - Ruby for Mobile Applications
 								</label>
 								<label class="radio" for="form_php">
-									<?= form_radio(array('name' => 'tech', 'id' => 'form_php', 'value' => 'php')) ?>
+									<input type="radio" name="tech" id="form_php" value="php" <?= set_radio('tech', 'php') ?> />
 									PHP is fine!
 								</label>
 							</div>
@@ -404,7 +400,7 @@
 						<div class="control-group">
 							<?= form_label('What do you think of the timing and dates of the courses on offer?', 'form_feedback', array('class' => 'control-label')) ?>
 							<div class="controls">
-								<?= form_textarea(array('name' => 'feedback', 'id' => 'form_feedback', 'class' => 'span5', 'placeholder' => 'Any suggestions?')) ?>
+								<?= form_textarea(array('name' => 'feedback', 'id' => 'form_feedback', 'class' => 'span5', 'placeholder' => 'Any suggestions?', 'value' => set_value('feedback'))) ?>
 								<span class="help-block">Limit 200 words.</span>
 							</div>
 						</div>
@@ -412,35 +408,35 @@
 							<?= form_label('Where did you hear about us?', 'form_where', array('class' => 'control-label')) ?>
 							<div class="controls">
 								<label class="radio" for="form_friend">
-									<?= form_radio(array('name' => 'where', 'id' => 'form_friend', 'value' => 'Friend/Family/Coworker')) ?>
+									<input type="radio" name="where" id="form_friend" value="Friend/Family/Coworker" <?= set_radio('where', 'Friend/Family/Coworker') ?> />
 									Friend/Family/Coworker
 								</label>
 								<label class="radio" for="form_google">
-									<?= form_radio(array('name' => 'where', 'id' => 'form_google', 'value' => 'Google')) ?>
+									<input type="radio" name="where" id="form_google" value="Google" <?= set_radio('where', 'Google') ?> />
 									Google
 								</label>
 								<label class="radio" for="form_facebook">
-									<?= form_radio(array('name' => 'where', 'id' => 'form_facebook', 'value' => 'Facebook')) ?>
+									<input type="radio" name="where" id="form_facebook" value="Facebook" <?= set_radio('where', 'Facebook') ?> />
 									Facebook
 								</label>
 								<label class="radio" for="form_twitter">
-									<?= form_radio(array('name' => 'where', 'id' => 'form_twitter', 'value' => 'Twitter')) ?>
+									<input type="radio" name="where" id="form_twitter" value="Twitter" <?= set_radio('where', 'Twitter') ?> />
 									Twitter
 								</label>
 								<label class="radio" for="form_alumni">
-									<?= form_radio(array('name' => 'where', 'id' => 'form_alumni', 'value' => 'Alumni or Staff')) ?>
+									<input type="radio" name="where" id="form_alumni" value="Alumni or Staff" <?= set_radio('where', 'Alumni or Staff') ?> />
 									Alumni or Staff
 								</label>
 								<label class="radio" for="form_news">
-									<?= form_radio(array('name' => 'where', 'id' => 'form_news', 'value' => 'News Site')) ?>
+									<input type="radio" name="where" id="form_news" value="News Site" <?= set_radio('where', 'News Site') ?> />
 									News Site
 								</label>
 								<label class="radio" for="form_media">
-									<?= form_radio(array('name' => 'where', 'id' => 'form_media', 'value' => 'TV/Newspaper')) ?>
+									<input type="radio" name="where" id="form_media" value="TV/Newspaper" <?= set_radio('where', 'TV/Newspaper') ?> />
 									TV/Newspaper
 								</label>
 								<label class="radio" for="form_other">
-									<?= form_radio(array('name' => 'where', 'id' => 'form_other', 'value' => 'Other')) ?>
+									<input type="radio" name="where" id="form_other" value="Other" <?= set_radio('where', 'Other') ?> />
 									Other
 								</label>
 							</div>
