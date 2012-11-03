@@ -19,30 +19,29 @@
         <!--[if lt IE 7]>
             <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
         <![endif]-->
-		
         <header class="navbar navbar-static-top">
 			<div class="container">
 				<div class="navbar-inner">
-						<a class="logo" href="<?php echo site_url() ?>"><img src="<?php echo base_url($links['img_assets']) ?>/logo.png" /></a>
-						<p class="slogan"><?=$site_desc?></p>
-						<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</a>
-						<div class="nav-collapse collapse">
-							<ul class="nav">
-								<?php
-									foreach($links['navigation'] as $name => $link){
-										echo '<li>' . anchor($link, $name) . '</li>';
-										end($links['navigation']);
-										if($name !== key($links['navigation'])){
-											echo '<li class="divider-vertical"></li>';
-										}
+					<a class="logo" href="<?php echo site_url() ?>"><img src="<?php echo base_url($links['img_assets']) ?>/logo.png" /></a>
+					<p class="slogan"><?=$site_desc?></p>
+					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</a>
+					<div class="nav-collapse collapse">
+						<ul class="nav">
+							<?php
+								foreach($links['navigation'] as $name => $link){
+									echo '<li>' . anchor($link, $name) . '</li>';
+									end($links['navigation']);
+									if($name !== key($links['navigation'])){
+										echo '<li class="divider-vertical"></li>';
 									}
-								?>
-							</ul>
-						</div>
+								}
+							?>
+						</ul>
+					</div>
 				</div>
 			</div>
         </header>
