@@ -198,7 +198,7 @@
 							<?= form_label('Date of Birth', 'form_birth', array('class' => 'control-label required')) ?>
 							<div class="controls">
 								<div class="input-append date date_picker" data-date="<?= date('d-m-Y', strtotime('-15 years',now())) ?>" data-date-format="dd-mm-yyyy">
-									<?= form_input(array('name' => 'birthday', 'id' => 'form_birth', 'class' => 'span4', 'placeholder' => 'DD-MM-YYYY', 'value' => set_value('birthday'), 'readonly' => '',)) ?>
+									<?= form_input(array('name' => 'birthday', 'id' => 'form_birth', 'class' => 'span4', 'placeholder' => 'DD-MM-YYYY (Use Cal Icon >)', 'value' => set_value('birthday'),)) ?>
 									<span class="add-on"><i class="icon-calendar"></i></span>
 								</div>
 							</div>
