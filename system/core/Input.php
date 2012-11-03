@@ -356,7 +356,11 @@ class CI_Input {
 					// Some proxies typically list the whole chain of IP
 					// addresses through which the client has reached us.
 					// e.g. client_ip, proxy_ip1, proxy_ip2, etc.
-					sscanf($spoof, '%[^,]', $spoof);
+					if (strpos($spoof, ',') !== FALSE)
+					{
+						$spoof = explode(',', $spoof, 2);
+						$spoof = $spoof[0];
+					}
 
 					if ( ! $this->valid_ip($spoof))
 					{
@@ -426,7 +430,7 @@ class CI_Input {
 					}
 
 					// Split the netmask length off the network address
-					sscanf($proxy_ips[$i], '%[^/]/%d', $netaddr, $masklen);
+					list($netaddr, $masklen) = explode('/', $proxy_ips[$i], 2);
 
 					// Again, an IPv6 address is most likely in a compressed form
 					if ($separator === ':')
