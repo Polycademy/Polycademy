@@ -9,12 +9,12 @@
 						<p>• No blog post yet</p>
 					</section>
 					<section class="fbtwitter_panel span4">
-						<h3><a href="<?=$facebook_page?>">FB</a>-<a href="<?=$twitter_page?>">Twitter</a></h3>
+						<h3><a href="<?=$facebook_page?>">FB</a>.<a href="<?=$twitter_page?>">Twitter</a></h3>
 						<p>
 						<?php
 							foreach($feeds as $feed){
 						?>
-								• <em class="footer_dates">(<?=$feed['date']?>)</em> - <?php echo anchor($feed['link'], $feed['title']) ?><br /><br />
+								&#8226; <em class="footer_dates">(<?=$feed['date']?>)</em> - <?php echo anchor($feed['link'], $feed['title']) ?><br /><br />
 						<?php
 							}
 						?>

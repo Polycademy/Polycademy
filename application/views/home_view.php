@@ -259,24 +259,29 @@
 				<article class="row logistics_grid">
 					<section class="team_panel span4">
 						<h3>The Team</h3>
-						<div class="row-fluid">
-							<div class="span3">
-								<img src="<?php echo base_url($links['img_assets']) ?>/team_icon_roger.png" class="team_popovers" rel="popover" data-content="<p>I started building websites in a national youth competition in NZ. Ever since that experience I realised the skills that I acquired allowed me to build online businesses. The web has the lowest barrier to entry in any industry, and this is reflected in the number of tech startups every year. I started Polycademy & Code for Australia to bring Silicon Valley spirit to Canberra & Australia.<br /><br />You can contact Roger at <a href='http://www.linkedin.com/in/qiuroger'>LinkedIn</a></p>" data-title="Roger Qiu - Founder" />
-							</div>
-							<div class="span3">
-								<img src="<?php echo base_url($links['img_assets']) ?>/team_icon_teacher.png" class="team_popovers" rel="popover" data-content="<p>Polycademy is currently hiring teachers specialising in HTML, CSS, JS and PHP. Web design, front end scripting and back end scripting experience is required. If you’re interested in working in this innovative startup with equity and franchising options available, contact us at <?=$recaptcha_personal_email?>.</p>" data-title="You - Instructor" />
-							</div>
-							<div class="span3">
-								<img src="<?php echo base_url($links['img_assets']) ?>/team_icon_teacher.png" class="team_popovers" rel="popover" data-content="<p>Polycademy is currently hiring teachers specialising in HTML, CSS, JS and PHP. Web design, front end scripting and back end scripting experience is required. If you’re interested in working in this innovative startup with equity and franchising options available, contact us at <?=$recaptcha_personal_email?>.</p>" data-title="You - Instructor" />
-							</div>
-							<div class="span3">
-								<img src="<?php echo base_url($links['img_assets']) ?>/team_icon_rory.png" class="team_popovers" rel="popover" data-content="<p>Rory Ford is a volunteer advisor to Polycademy. He's an experienced  lean startup advisor. His career spans product development, customer development, management, marketing, commercialisation and investment in Cordelta, CutOrange, Wooboard and Pollenizer. He's worked with numerous businesses from small affiliate sites to venture funded companies. He is currently working as a Customer Development Consultant at Cordelta in Canberra.<br /><br />You can contact Rory Ford at <a href='http://www.linkedin.com/in/roryford'>LinkedIn</a></p>" data-title="Rory Ford - Advisor" />
-							</div>
+						<div class="image_rollover_container team_popovers" rel="popover" data-content="<p>I started building websites in a national youth competition in NZ. Ever since that experience I realised the skills that I acquired allowed me to build online businesses. The web has the lowest barrier to entry in any industry, and this is reflected in the number of tech startups every year. I started Polycademy & Code for Australia to bring Silicon Valley spirit to Canberra & Australia.<br /><br />You can contact Roger at <a href='http://www.linkedin.com/in/qiuroger' target='_blank'>LinkedIn</a></p>" data-title="Roger Qiu - Founder">
+							<span class="image_rollover"></span>
+							<img src="<?php echo base_url($links['img_assets']) ?>/team_icon_roger.png" />
 						</div>
-						<div class="row-fluid">
-							<div class="span3">
-								<img src="<?php echo base_url($links['img_assets']) ?>/team_icon_mentor.png" class="team_popovers" rel="popover" data-content="<p>Polycademy is looking for advisors specialising in either education design, education technology, technology industry, social enterprise or open government connections.<br /><br />Advisor positions are currently purely voluntary.<br /><br />If you’re a developer, designer or entrepreneur in the Canberra region, we’d love for you to apply as a mentor to the students in Polycademy.<br /><br />Please contact Roger at <?=$recaptcha_personal_email?> for more information.</p>" data-title="You - Advisor" />
-							</div>
+						<div class="image_rollover_container team_popovers" rel="popover" data-content="<p>Rory Ford is a volunteer advisor to Polycademy. He's an experienced  lean startup advisor. His career spans product development, customer development, management, marketing, commercialisation and investment in Cordelta, CutOrange, Wooboard and Pollenizer. He's worked with numerous businesses from small affiliate sites to venture funded companies. He is currently working as a Customer Development Consultant at Cordelta in Canberra.<br /><br />You can contact Rory Ford at <a href='http://www.linkedin.com/in/roryford' target='_blank'>LinkedIn</a></p>" data-title="Rory Ford - Advisor">
+							<span class="image_rollover"></span>
+							<img src="<?php echo base_url($links['img_assets']) ?>/team_icon_rory.png" />
+						</div>
+						<div class="image_rollover_container team_popovers" rel="popover" data-content="<p>Craig Thomler is currently the Managing Director of Delib Australia. Craig has 16 years experience in the online sector, founding and holding senior roles at early-stage technology and resources companies. He spent five years in the Australian Public Service improving public governance through strategic use of digital technologies. He leads Delib Australia (<a href='http://delib.net/' target='_blank'>delib.net</a>), assisting organisations to effectively use digital media to engage stakeholders, customers and citizens, and presents regularly on new media strategy.<br /><br />You can find Craig at his <a href='http://egovau.blogspot.com' target='_blank'>Blog</a> or <a href='http://au.linkedin.com/in/craigthomler' target='_blank'>Profile</a></p>" data-title="Craig Thomler - Advisor">
+							<span class="image_rollover"></span>
+							<img src="<?php echo base_url($links['img_assets']) ?>/team_icon_craig.png" />
+						</div>
+						<div class="image_rollover_container team_popovers" rel="popover" data-content="<p>Lachlan is a volunteer advisor to Polycademy. Lachlan holds a BE, BSc and a PhD in engineering and applied mathematics and has broad professional interests in technology and IT, data mining and analysis, and learning and education. Lachlan has been heavily involved in the entrepreneurship, innovation, technology and investment domains for over a decade. This involvement has included starting a number of companies, mentoring entrepreneurs, and working to advise or invest in a number of companies.<br /><br />You can find Lachlan at <a href='http://au.linkedin.com/in/lachlanblackhall'>LinkedIn</a></p>" data-title="Lachlan Blackhall - Advisor">
+							<span class="image_rollover"></span>
+							<img src="<?php echo base_url($links['img_assets']) ?>/team_icon_lachlan.png" />
+						</div>
+						<div class="image_rollover_container team_popovers" rel="popover" data-content="<p>Polycademy is currently hiring teachers specialising in HTML, CSS, JS and PHP. Web design, front end scripting and back end scripting experience is required. If you’re interested in working in this innovative startup with equity and franchising options available, contact us at <?=$recaptcha_personal_email?>.</p>" data-title="You - Instructor">
+							<span class="image_rollover"></span>
+							<img src="<?php echo base_url($links['img_assets']) ?>/team_icon_teacher.png" />
+						</div>
+						<div class="image_rollover_container team_popovers" rel="popover" data-content="<p>Polycademy is looking for advisors specialising in either education design, education technology, technology industry, social enterprise or open government connections.<br /><br />Advisor positions are currently purely voluntary.<br /><br />If you’re a developer, designer or entrepreneur in the Canberra region, we’d love for you to apply as a mentor to the students in Polycademy.<br /><br />Please contact Roger at <?=$recaptcha_personal_email?> for more information.</p>" data-title="You - Advisor">
+							<span class="image_rollover"></span>
+							<img src="<?php echo base_url($links['img_assets']) ?>/team_icon_mentor.png" />
 						</div>
 					</section>
 					<section class="location_panel span4">

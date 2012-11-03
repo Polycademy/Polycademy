@@ -63,6 +63,8 @@
 @heading_margins: 1.9%;
 @responsive_slider_max_width: 1200px;
 @slider_arrow_margin: 1.2%;
+@team_icon_width: 72px;
+@team_icon_height: 72px;
 
 .outline_transition (@original_color, @duration, @function, @size, @type, @final_colour, @offset){
 	outline: @original_color;
@@ -151,6 +153,7 @@ h5{
    ========================================================================== */
 body{
 	padding: 0;
+	font-family: arial, sans-serif;
 }
 
 .container{
@@ -527,21 +530,52 @@ header.navbar{
 .logistics_grid{
 	margin-top: @grid_margins;
 	margin-bottom: @grid_margins;
-	section > h3{
-		margin-bottom: 8px;
-	}
-	img{
-		border: 1px solid #760f13;
-		margin: 8px auto 0 auto;
-		display: block;
-		cursor:pointer;
-		&:hover{
-			border: 1px solid #dfdfdf;
+	section{
+		> h3{
+			margin-bottom: 8px;
+		}
+		> p{
+			padding: 20px;
 		}
 	}
-	section > p{
-		padding: 20px;
+	.team_panel{
+		text-align: center;
+		.image_rollover_container{
+			display: inline-block;
+			border: 1px solid #760f13;
+			margin: 2px;
+			cursor:pointer;
+			&:hover{
+				border: 1px solid #dfdfdf;
+			}
+			span.image_rollover {
+				-o-transition-duration: 1s;
+				-moz-transition-duration: 1s;
+				-webkit-transition: -webkit-transform 1s;
+				background:url(../img/mag_glass.png) center center no-repeat #000;
+				height: @team_icon_height;
+				width: @team_icon_width;
+				position: absolute;
+				z-index: 10;
+				-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+				opacity: 0;
+			}
+			span.image_rollover:hover {
+				-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
+				opacity: .7;
+				-o-transition-duration: 1s;
+				-moz-transition-duration: 1s;
+				-webkit-transition: -webkit-transform 1s;
+				-webkit-box-shadow: 0px 0px 4px #000;
+				-moz-box-shadow: 0px 0px 4px #000;
+				box-shadow: 0px 0px 4px #000;
+			}
+		}
 	}
+}
+
+.popover{
+	width: 220px;
 }
 
 .popover, .popover-title{
@@ -555,6 +589,19 @@ header.navbar{
 	&:hover{
 		color: #3e3c3c;
 	}
+}
+
+.popover.bottom .arrow {
+    border-bottom-color: rgb(2, 160, 176);
+}
+.popover.top .arrow {
+    border-top-color: rgb(2, 160, 176);
+}
+.popover.right .arrow {
+    border-right-color: rgb(2, 160, 176);
+}
+.popover.left.arrow {
+    border-left-color: rgb(2, 160, 176);
 }
 
 .multiplebgs{
@@ -663,7 +710,7 @@ header.navbar{
 			font-size: 12px;
 		}
 		.form-actions{
-			background: transparent;
+			background: none;
 			padding-left: 30%;
 			border: none;
 		}
