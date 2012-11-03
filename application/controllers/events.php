@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class About extends CI_Controller {
+class Events extends CI_Controller {
 
 	protected $_view_data; //only accessible in this class and any classes that extend home
 	protected $_settings;
@@ -22,13 +22,13 @@ class About extends CI_Controller {
 		
 		$this->_view_data = $this->_settings;
 		$this->_view_data += array(
-			'page_title'			=> 'About',
+			'page_title'			=> 'Events',
 			'page_desc'				=> $this->_settings['site_desc'],
 			'feeds'					=> $rss_feeds,
 		);
 		
 		$this->load->view('header_view', $this->_view_data);
-		$this->load->view('about_view', $this->_view_data);
+		$this->load->view('events_view', $this->_view_data);
 		$this->load->view('footer_view', $this->_view_data);
 		
 	}

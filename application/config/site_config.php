@@ -22,11 +22,11 @@ able application. The development experience integrates industry practices such 
 		'navigation'	=> array(
 			'home'			=> '',
 			'courses'		=> 'courses',
-			'alumni'		=> 'alumni',
+			#'alumni'		=> 'alumni',
 			'blog'			=> 'blog',
-			'get involved'	=> 'get_involved',
-			'about'			=> 'about',
-			'devhub'		=> 'devhub',
+			#'get involved'	=> 'get_involved',
+			#'events'		=> 'events',
+			#'devhub'		=> 'devhub',
 		),
 		#other links
 		'notices'			=> 'blog/notices',
