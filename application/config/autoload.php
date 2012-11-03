@@ -79,7 +79,7 @@ $autoload['packages'] = array();
 |	$autoload['libraries'] = array('database', 'email', 'xmlrpc');
 */
 
-$autoload['libraries'] = array('database', 'firephp');
+$autoload['libraries'] = array('database', 'firephp', 'ion_auth');
 
 
 /*

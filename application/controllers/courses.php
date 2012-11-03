@@ -13,9 +13,7 @@ class Courses extends CI_Controller {
 		$this->_view_data = $this->_settings;
 		
 		$this->load->helper('form');
-		
 		$this->load->library('form_validation');
-		
 		#language files require MY_ or differentiator or else they overwrite the system ones.
 		$this->lang->load('MY_form_validation_lang');
 	
