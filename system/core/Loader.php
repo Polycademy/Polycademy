@@ -130,7 +130,7 @@ class CI_Loader {
 	/**
 	 * Class constructor
 	 *
-	 * Sets component load paths gets the initial output buffering level.
+	 * Sets component load paths, gets the initial output buffering level.
 	 *
 	 * @return	void
 	 */
@@ -148,21 +148,18 @@ class CI_Loader {
 	// --------------------------------------------------------------------
 
 	/**
-	 * Initialize the Loader
+	 * Initializer
 	 *
-	 * @used-by	CI_Controller
+	 * @todo	Figure out a way to move this to the constructor
+	 *		without breaking *package_path*() methods.
 	 * @uses	CI_Loader::_ci_autoloader()
-	 * @return 	object	$this
+	 * @used-by	CI_Controller::__construct()
+	 * @return	void
 	 */
 	public function initialize()
 	{
-		$this->_ci_classes = array();
-		$this->_ci_loaded_files = array();
-		$this->_ci_models = array();
 		$this->_base_classes =& is_loaded();
-
 		$this->_ci_autoloader();
-		return $this;
 	}
 
 	// --------------------------------------------------------------------
