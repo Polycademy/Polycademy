@@ -66,7 +66,7 @@ class Courses extends CI_Controller {
 			'form_destination'		=> $this->router->fetch_class(),
 		);
 		
-		$this->firephp->log($this->input->post('feedback'));
+		#$this->firephp->log($this->input->post('feedback'));
 
 		
 		$this->form_validation->set_rules($this->_settings['form_validation']['application_form']); 

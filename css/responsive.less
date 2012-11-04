@@ -47,6 +47,19 @@
 
 /* Landscape phones and down */
 @media (max-width: 512px) {
+
+	.clear_form_labels(){
+		.control-group{
+			.control-label {
+				padding-top: 0 !important;
+				width: auto !important;
+			}
+			.controls{
+				margin-left: 0 !important;
+			}
+		}
+	}
+
 	header .logo{
 		float: none !important;
 		margin: 35px auto 10px !important;
@@ -61,17 +74,8 @@
 		float: none !important;
 		clear: both !important;
 	}
-	.course_application{
-		.course_application_form{
-			.control-group{
-				.control-label {
-					padding-top: 0 !important;
-					width: auto !important;
-				}
-				.controls{
-					margin-left: 0 !important;
-				}
-			}
-		}
+	.course_application .course_application_form, .blog_create .blog_create_form{
+		.clear_form_labels();
 	}
+	
 }

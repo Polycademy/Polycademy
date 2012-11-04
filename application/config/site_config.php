@@ -135,6 +135,23 @@ able application. The development experience integrates industry practices such 
 				'rules'		=> 'trim|xss_clean',
 			),
 		),
+		'blog_create'		=> array(
+			array(
+				'field'		=> 'title',
+				'label'		=> 'Title',
+				'rules'		=> 'required|trim|word_limit[30]',
+			),
+			array(
+				'field'		=> 'tags',
+				'label'		=> 'Tags',
+				'rules'		=> 'trim|max_length[100]',
+			),
+			array(
+				'field'		=> 'content',
+				'label'		=> 'Content',
+				'rules'		=> 'trim',
+			),
+		),
 	),
 );
 

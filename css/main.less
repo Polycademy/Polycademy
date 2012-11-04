@@ -895,23 +895,24 @@ header.navbar{
 /* ==========================================================================
    BLOG
    ========================================================================== */
-.blog_create_form{
+@blog_creation_label_offset: 15%;
 
+.blog_create_form{
 	margin: 2% auto;
 	width: 95%;
 	.control-group{
 		width: 100%;
 		margin: 15px auto;
 		.control-label{
-			width: 14%;
+			width: @blog_creation_label_offset - 1%;
 			padding-top: 10px;
 			font-weight: bold;
 		}
 		.controls{
 			margin-top: 5px;
 			margin-bottom: 5px;
-			margin-left: 15%;
-			width: 85%;
+			margin-left: @blog_creation_label_offset;
+			width: 100% - @blog_creation_label_offset;
 			> div{
 				margin-right: 10px;
 				margin-top: 5px;
@@ -920,7 +921,7 @@ header.navbar{
 		}
 	}
 	.form-actions{
-		padding-left: 15%;
+		padding-left: @blog_creation_label_offset;
 	}
 	.blog_create_markup_container{
 		display:inline-block;
@@ -947,8 +948,6 @@ header.navbar{
 		}
 	}
 }
-  
-
 
 /* ==========================================================================
    DATEPICKER
