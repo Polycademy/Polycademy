@@ -15,23 +15,27 @@
 					<? }else{ ?>
 						<h4>Type your submission below!</h4>
 					<? } ?>
-					<?= form_open($form_destination, array('class' => 'form-horizontal')) ?>
+					<?= form_open($form_destination, array('class' => 'form-horizontal blog_create_form')) ?>
 						<div class="control-group">
 							<?= form_label('Title', 'form_title', array('class' => 'control-label required')) ?>
 							<div class="controls">
-								<?= form_input(array('name' => 'title', 'id' => 'form_title', 'class' => 'span5', 'value' => set_value('title'))) ?>
+								<?= form_input(array('name' => 'title', 'id' => 'form_title', 'class' => 'span8', 'value' => set_value('title'))) ?>
 							</div>
 						</div>
 						<div class="control-group">
 							<?= form_label('Tags', 'form_tags', array('class' => 'control-label required')) ?>
 							<div class="controls">
-								<?= form_input(array('name' => 'tags', 'id' => 'form_tags', 'class' => 'span5', 'placeholder' => 'Tag,Tag,Tag', 'value' => set_value('tags'))) ?>
+								<?= form_input(array('name' => 'tags', 'id' => 'form_tags', 'class' => 'span8', 'placeholder' => 'Tag,Tag,Tag', 'value' => set_value('tags'))) ?>
 							</div>
 						</div>
 						<div class="control-group">
 							<?= form_label('Content', 'form_content', array('class' => 'control-label required')) ?>
 							<div class="controls">
-								<?= form_textarea(array('name' => 'content', 'id' => 'form_content', 'class' => 'span6', 'value' => set_value('content'))) ?>
+								<?= form_textarea(array('name' => 'content', 'id' => 'form_content', 'class' => 'span8 insert_markitup', 'value' => set_value('content'))) ?>
+								<div class="preview_blog_container">
+									<p>Preview:</p>
+									<div class="preview_blog span8"></div>
+								</div>
 							</div>
 						</div>
 						<div class="form-actions">

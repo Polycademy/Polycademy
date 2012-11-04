@@ -87,4 +87,12 @@ class Blog extends CI_Controller {
 		
 	}
 	
+	#for the template
+	public function preview(){
+	
+		$this->_view_data = $this->_settings;
+		$this->load->view('blog_preview_view', $this->_view_data);
+		
+	}
+
 }

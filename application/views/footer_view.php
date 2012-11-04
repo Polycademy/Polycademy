@@ -12,10 +12,12 @@
 						<h3><a href="<?=$facebook_page?>">FB</a>.<a href="<?=$twitter_page?>">Twitter</a></h3>
 						<p>
 						<?php
-							foreach($feeds as $feed){
+							if(is_array($feeds)){
+								foreach($feeds as $feed){
 						?>
-								&#8226; <em class="footer_dates">(<?=$feed['date']?>)</em> - <?php echo anchor($feed['link'], $feed['title']) ?><br /><br />
+									&#8226; <em class="footer_dates">(<?=$feed['date']?>)</em> - <?php echo anchor($feed['link'], $feed['title']) ?><br /><br />
 						<?php
+								}
 							}
 						?>
 						</p>
@@ -34,7 +36,13 @@
 				<p class="copyright"><?=$copyright?></p>
 			</div>
 		</footer>
-
+		
+        <!--This passes any PHP/Codeigniter Variables to JS in case we need it-->
+		<script>
+			var ci_base_url = "<?= base_url() ?>";
+			var ci_preview_path = "~<?= $links['preview_template'] ?>";
+		</script>
+		
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="<?php echo base_url($links['js_assets']) ?>/jquery-1.8.2.min.js"><\/script>')</script>
 

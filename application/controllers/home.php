@@ -20,16 +20,17 @@ class Home extends CI_Controller {
 			$rss_feeds = array_slice($rss_feeds, 0, 4);
 		}
 		
-		$this->firephp->log($this->ion_auth->is_admin(), 'Yes I am an admin');
-		$this->firephp->log($this->ion_auth->logged_in(), 'Yes I am logged in');
-		$this->firephp->log($this->ion_auth->in_group('admin'), 'Yes I am part of the admin group');
-		$this->firephp->log($this->ion_auth->in_group('staff'), 'Yes I am also part of the members group');
-		
+		#$this->firephp->log($this->ion_auth->is_admin(), 'Yes I am an admin');
+		#$this->firephp->log($this->ion_auth->logged_in(), 'Yes I am logged in');
+		#$this->firephp->log($this->ion_auth->in_group('admin'), 'Yes I am part of the admin group');
+		#$this->firephp->log($this->ion_auth->in_group('staff'), 'Yes I am also part of the members group');
+		/*
 		if($this->ion_auth->in_group('guests')){
 			$this->firephp->log('yes I am part of staff');
 		}else{
 			$this->firephp->log('I am not part of the guests');
 		}
+		*/
 		
 		$this->_view_data += array(
 			'page_title'			=> $this->_settings['site_name'],

@@ -39,6 +39,8 @@ able application. The development experience integrates industry practices such 
 		'css_assets'		=> 'css',
 		'img_assets'		=> 'img',
 		'font_assets'		=> 'fonts',
+		#for markitup form
+		'preview_template'	=> '/blog/preview', //controller/method for the preview
 	),
 	'form_validation'		=> array(
 		'application_form'	=> array(
