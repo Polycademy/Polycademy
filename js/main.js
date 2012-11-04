@@ -508,10 +508,6 @@ if (!(window.console && console.log)) {
 			options.previewParserPath = localize(options.previewParserPath);
 			options.previewTemplatePath = localize(options.previewTemplatePath);
 			
-			//the function localise must be creating the url...
-			
-			
-
 			if (method) {
 				switch(method) {
 					case 'remove':
@@ -595,8 +591,6 @@ if (!(window.console && console.log)) {
 				$$.bind('focus.markItUp', function() {
 					$.markItUp.focused = this;
 				});
-				
-				
 				
 				if (options.previewInElement) {
 				
@@ -960,7 +954,7 @@ if (!(window.console && console.log)) {
 				renderPreview();
 			}
 			
-			// THIS IS THE FUNCTION WE NEED TO FIX...
+			// This sets the method for which we render the preview
 			function renderPreview() {
 				var phtml;
 				if (options.previewHandler && typeof options.previewHandler === 'function') {
@@ -994,7 +988,22 @@ if (!(window.console && console.log)) {
 				return false;
 			}
 			
+			//CUSTOM FUNCTION for parsing html entities in <code> tags
+			function code_parsing(data){
+				//Dont escape & because we need that... in case we deliberately write them in
+				var escape_html = function(data) {
+					return data.replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+				};
+				data = data.replace(/(<code[^>]*>)([\s\S]*?)(<\/code>)/g, function(_, startTag, body, endTag){ return startTag + escape_html(body) + endTag;});
+				return data;
+			};
+			
+			//this is actually rendering the preview
 			function writeInPreview(data) {
+				
+				//here we are parsing the html code to encode any html inside <code>
+				data = code_parsing(data);
+				
 				if (options.previewInElement) {
 					$(options.previewInElement).html(data);
 				} else if (previewWindow && previewWindow.document) {		

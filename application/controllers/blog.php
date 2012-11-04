@@ -5,6 +5,9 @@ class Blog extends CI_Controller {
 	protected $_view_data; //only accessible in this class and any classes that extend home
 	protected $_settings;
 	protected $_user;
+	protected $_tags = array();
+	protected $_limit;
+	protected $_offset;
 	
 	public function __construct(){
 		parent::__construct();
@@ -14,10 +17,70 @@ class Blog extends CI_Controller {
 		#language files require MY_ or differentiator or else they overwrite the system ones.
 		$this->lang->load('MY_form_validation_lang');
 		$this->_user = $this->ion_auth->user()->row(); #get the current user row
+		
+		$this->_limit = $this->_settings['pagination']['blog']['limit'];
+		$this->_offset = $this->_settings['pagination']['blog']['offset']; #initial offset is zero, but later calculated from the limit
 	}
 	
 	public function index(){
-	
+		
+		$this->db->select('*');
+		$this->db->limit($this->_limit, $this->_offset);
+		$this->db->order_by('date', 'desc');
+		$this->db->from('blog');
+		if(!empty($this->_tags)){
+			foreach($this->_tags as $tag){
+				#we need to use like to search for the tags because multiple blog posts have different tags
+				#should be or like as it is not cascading, but all posts that contain any of the tags...
+				$this->db->or_like('tags', $tag);
+			}
+		}
+		
+		$blog_query = $this->db->get();
+		
+		if($blog_query->num_rows() > 0){
+		
+			foreach($blog_query->result() as $row){
+			
+				#$this->firephp->log($row); #$row is an object
+				
+				#find the author's name by cross referencing the author
+				$this->db->select('username')->from('users')->where('id', $row->author);
+				$author_query = $this->db->get();
+				
+				if($author_query->num_rows() > 0){
+				
+					$author = $author_query->row()->username;
+					
+					#$this->firephp->log($author);
+					
+				}else{
+				
+					$author = false;
+				
+				}
+				
+				#produce the blog array
+				$blog_data[] = array(
+					'id'		=> (int) $row->id,
+					'title'		=> $row->title,
+					'content'	=> $row->content,
+					'date'		=> $row->date,
+					'tags'		=> $row->tags,
+					'author'	=> $author,
+				);
+				
+				$this->firephp->log($blog_data);
+				
+			}
+			
+		}else{
+		
+			#no blog posts
+			$blog_data = false;
+		
+		}
+		
 		$rss_feeds = rss_process('http://pipes.yahoo.com/pipes/pipe.run?_id=24a7ee6208f281f8dff1162dbac57584&_render=rss');
 		if($rss_feeds){
 			$rss_feeds = array_slice($rss_feeds, 0, 4);
@@ -28,6 +91,7 @@ class Blog extends CI_Controller {
 			'page_title'			=> 'Blog',
 			'page_desc'				=> $this->_settings['site_desc'],
 			'feeds'					=> $rss_feeds,
+			'blog_data'				=> $blog_data,
 		);
 		
 		$this->load->view('header_view', $this->_view_data);
@@ -38,21 +102,8 @@ class Blog extends CI_Controller {
 	
 	public function notices(){
 	
-		$rss_feeds = rss_process('http://pipes.yahoo.com/pipes/pipe.run?_id=24a7ee6208f281f8dff1162dbac57584&_render=rss');
-		if($rss_feeds){
-			$rss_feeds = array_slice($rss_feeds, 0, 4);
-		}
-		
-		$this->_view_data = $this->_settings;
-		$this->_view_data += array(
-			'page_title'			=> 'Blog',
-			'page_desc'				=> $this->_settings['site_desc'],
-			'feeds'					=> $rss_feeds,
-		);
-		
-		$this->load->view('header_view', $this->_view_data);
-		$this->load->view('blog_view', $this->_view_data);
-		$this->load->view('footer_view', $this->_view_data);
+		$this->_tags[] = 'notices';
+		$this->index();
 		
 	}
 	
@@ -97,6 +148,27 @@ class Blog extends CI_Controller {
 			redirect('home');
 			
 		}
+		
+	}
+	
+	#should go into a regex_helper..., doesn't work well with nested stuff...
+	#will require a full parser one day...
+	protected function _code_parsing($data){
+	
+		#but don't escape already escaped stuff
+		function escape_html($data){
+			return $data[1] . htmlspecialchars($data[2], ENT_COMPAT|ENT_HTML5, 'UTF-8', false) . $data[3];
+		}
+		
+		$this->firephp->log($data);
+
+		
+		$data = preg_replace_callback('/(<code[^>]*>)([\s\S]*?)(<\/code>)/m', "escape_html", $data);
+		
+		$this->firephp->log($data);
+		
+		
+		return $data;
 		
 	}
 	

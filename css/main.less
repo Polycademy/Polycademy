@@ -66,6 +66,8 @@
 @team_icon_width: 72px;
 @team_icon_height: 72px;
 
+@black_text_color: #3F3F3F;
+
 .outline_transition (@original_color, @duration, @function, @size, @type, @final_colour, @offset){
 	outline: @original_color;
 	-webkit-transition: outline @duration @function;
@@ -170,24 +172,41 @@ body{
 	background: url('../img/main_article_bg.png');
 	border-bottom: 1px solid #02223a;
 	color: #fff;
+	.blue_text_container{
+		border: 1px solid #08497a;
+	}
+	.white_text_container{
+		border: 2px solid #226B8F;
+	}
 }
 
 .red_container{
 	background: url('../img/team_location_bg.png');
 	border-top: 1px solid #02223a;
 	color: #fff;
+	.red_text_container{
+		border: 1px solid #b62b2f;
+	}
+	.white_text_container{
+		border: 2px solid #CD0810;
+	}
 }
 
 .blue_text_container{
 	background: url('../img/another_bg.png');
-	border: 1px solid #08497a;
 	padding: 20px;
 }
 
 .red_text_container{
 	background: url('../img/team_location_panel_bg.png') repeat;
-	border: 1px solid #b62b2f;
 	padding: 20px;
+}
+
+.white_text_container{
+	background: #fff;
+	padding: 20px;
+	color: @black_text_color;
+	.border_radius(4px);
 }
 
 /* ==========================================================================
@@ -944,8 +963,18 @@ header.navbar{
 			border: 1px solid #6B9FB9;
 			.border_radius(4px);
 			text-align: left;
-			color: #3f3f3f;
+			color: @black_text_color;
 		}
+	}
+}
+
+.blog_article{
+	margin: 20px auto;
+}
+
+.blog_article, .preview_blog{
+	code{
+		white-space: pre-wrap;
 	}
 }
 

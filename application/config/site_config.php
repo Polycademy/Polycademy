@@ -17,6 +17,12 @@ able application. The development experience integrates industry practices such 
 	'recaptcha_personal_email'	=> '<a href=\'http://www.google.com/recaptcha/mailhide/d?k=01q-bJV3WQrMYWD2quLJ7VPA==&c=FsmnfqaQraWCMzZB6tsagBZd557LPBLlxh80gaenMSo=\'>@polycademy.com</a>',
 	'twitter_page'				=> 'https://twitter.com/Polycademy',
 	'facebook_page'				=> 'https://www.facebook.com/Polycademy',
+	'pagination'	=> array(
+		'blog'	=> array(
+			'limit'		=> 10,
+			'offset'	=> 0,
+		),
+	),
 	'links'						=> array( #this is in order of navigation from left to right 'name of link' => directory/controller name/method name
 		#header links
 		'navigation'	=> array(

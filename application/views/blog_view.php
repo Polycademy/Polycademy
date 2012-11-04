@@ -1,11 +1,27 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 		<div class="blue_container">
 			<div class="container">
-				<article>
-					<h2>We are currently still in development.</h2>
-					<h4>This page will list all the course modules, dates, hours, features, cost and signup form.</h4>
-					<img style="display: block; margin: 20px auto;" src="http://www.lolcats.com/images/u/08/46/lolcatsdotcombsr71ehdl7l9ocf2.jpg" />
-					<h2 id="call_to_action">Please check back for later.</h2>
-				</article>
+				<?
+				if(!empty($blog_data)){
+					foreach($blog_data as $article){
+				?>
+					<article class="white_text_container blog_article">
+						<h1><?= $article['title'] ?></h1>
+						<p><?= (!empty($article['author'])) ? $article['author'] : '' ?></p>
+						<p><?= $article['date'] ?></p>
+						<div class="blog_content">
+							<?= $article['content'] ?>
+						</div>
+						<p><?= $article['tags'] ?></p>
+						<p><?= $article['id'] ?></p>
+					</article>
+				<? 
+					}
+				}else{
+				?>
+					<article>
+						<h2>Sorry no blog posts to show!</h2>
+					</article>
+				<? }?>
 			</div>
 		</div>
