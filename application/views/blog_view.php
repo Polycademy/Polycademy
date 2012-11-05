@@ -6,7 +6,7 @@
 					foreach($blog_data as $article){
 				?>
 					<article class="white_text_container blog_article">
-						<h1><?= $article['title'] ?></h1>
+						<h1 class="blog_title"><?= $article['title'] ?></h1>
 						<div class="blog_content">
 							<?= $article['content'] ?>
 						</div>

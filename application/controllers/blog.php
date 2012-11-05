@@ -9,9 +9,13 @@ class Blog extends CI_Controller {
 	protected $_limit;
 	protected $_offset;
 	
+	protected $_footer_blog = false;
+	protected $_rss_feeds = false;
+	
 	public function __construct(){
 		parent::__construct();
-		$this->_settings = $this->config->item('polycademy');		
+		$this->_settings = $this->config->item('polycademy');
+		
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 		#language files require MY_ or differentiator or else they overwrite the system ones.
@@ -20,6 +24,23 @@ class Blog extends CI_Controller {
 		
 		$this->_limit = $this->_settings['pagination']['blog']['limit'];
 		$this->_offset = $this->_settings['pagination']['blog']['offset']; #initial offset is zero, but later calculated from the limit
+		
+		if($this->_rss_feeds = rss_process('http://pipes.yahoo.com/pipes/pipe.run?_id=24a7ee6208f281f8dff1162dbac57584&_render=rss')){
+			$this->_rss_feeds = array_slice($this->_rss_feeds, 0, 4);
+		}
+		
+		if($this->_footer_blogs = $this->Footer_model->footer_get_blog()){
+			foreach($this->_footer_blogs as $num => $row){
+				$this->_footer_blogs[$num]['date'] = (string) mdate('%Y/%m/%d', strtotime($row['date']));
+			}
+		}
+		
+		$this->_view_data = $this->_settings;
+		$this->_view_data += array(
+			'feeds'					=> $this->_rss_feeds,
+			'footer_blog_data'		=> $this->_footer_blogs,
+		);
+		
 	}
 	
 	public function index(){
@@ -70,7 +91,7 @@ class Blog extends CI_Controller {
 					'author'	=> $author,
 				);
 				
-				$this->firephp->log($blog_data);
+				#$this->firephp->log($blog_data);
 				
 			}
 			
@@ -81,16 +102,9 @@ class Blog extends CI_Controller {
 		
 		}
 		
-		$rss_feeds = rss_process('http://pipes.yahoo.com/pipes/pipe.run?_id=24a7ee6208f281f8dff1162dbac57584&_render=rss');
-		if($rss_feeds){
-			$rss_feeds = array_slice($rss_feeds, 0, 4);
-		}
-		
-		$this->_view_data = $this->_settings;
 		$this->_view_data += array(
 			'page_title'			=> 'Blog',
 			'page_desc'				=> $this->_settings['site_desc'],
-			'feeds'					=> $rss_feeds,
 			'blog_data'				=> $blog_data,
 		);
 		
@@ -114,17 +128,10 @@ class Blog extends CI_Controller {
 			redirect('auth/login');
 			
 		}elseif($this->ion_auth->is_admin()){
-		
-			$rss_feeds = rss_process('http://pipes.yahoo.com/pipes/pipe.run?_id=24a7ee6208f281f8dff1162dbac57584&_render=rss');
-			if($rss_feeds){
-				$rss_feeds = array_slice($rss_feeds, 0, 4);
-			}
 			
-			$this->_view_data = $this->_settings;
 			$this->_view_data += array(
 				'page_title'			=> 'Create Blog',
 				'page_desc'				=> $this->_settings['site_desc'],
-				'feeds'					=> $rss_feeds,
 				'form_destination'		=> $this->router->fetch_class() . '/' . $this->router->fetch_method(),
 			);
 			
@@ -160,12 +167,12 @@ class Blog extends CI_Controller {
 			return $data[1] . htmlspecialchars($data[2], ENT_COMPAT|ENT_HTML5, 'UTF-8', false) . $data[3];
 		}
 		
-		$this->firephp->log($data);
+		#$this->firephp->log($data);
 
 		
 		$data = preg_replace_callback('/(<code[^>]*>)([\s\S]*?)(<\/code>)/m', "escape_html", $data);
 		
-		$this->firephp->log($data);
+		#$this->firephp->log($data);
 		
 		
 		return $data;

@@ -19,7 +19,11 @@ able application. The development experience integrates industry practices such 
 	'facebook_page'				=> 'https://www.facebook.com/Polycademy',
 	'pagination'	=> array(
 		'blog'	=> array(
-			'limit'		=> 10,
+			'limit'		=> 5,
+			'offset'	=> 0,
+		),
+		'footer_blog'	=> array(
+			'limit'		=> 6,
 			'offset'	=> 0,
 		),
 	),
@@ -155,7 +159,7 @@ able application. The development experience integrates industry practices such 
 			array(
 				'field'		=> 'content',
 				'label'		=> 'Content',
-				'rules'		=> 'trim',
+				'rules'		=> 'required|trim',
 			),
 		),
 	),

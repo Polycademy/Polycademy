@@ -6,7 +6,19 @@
 						<h3>
 							<?php echo anchor($links['navigation']['blog'], 'Blog') ?>
 						</h3>
-						<p>• No blog post yet</p>
+						<p>
+							<?
+							if(!empty($footer_blog_data)){
+								foreach($footer_blog_data as $article){
+							?>
+									• <em class="footer_dates">(<?= $article['date'] ?>)</em> - <?= $article['title'] ?><br /><br />
+							<? 
+								}
+							}else{
+							?>
+									• No blog post yet
+							<? }?>
+						</p>
 					</section>
 					<section class="fbtwitter_panel span4">
 						<h3><a href="<?=$facebook_page?>">FB</a>.<a href="<?=$twitter_page?>">Twitter</a></h3>

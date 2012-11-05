@@ -4,27 +4,38 @@ class Courses extends CI_Controller {
 
 	protected $_view_data; //only accessible in this class and any classes that extend home
 	protected $_settings;
+	protected $_footer_blog = false;
+	protected $_rss_feeds = false;
 	
 	public function __construct(){
 		
 		parent::__construct();
 		
 		$this->_settings = $this->config->item('polycademy');
-		$this->_view_data = $this->_settings;
 		
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 		#language files require MY_ or differentiator or else they overwrite the system ones.
 		$this->lang->load('MY_form_validation_lang');
+		
+		if($this->_rss_feeds = rss_process('http://pipes.yahoo.com/pipes/pipe.run?_id=24a7ee6208f281f8dff1162dbac57584&_render=rss')){
+			$this->_rss_feeds = array_slice($this->_rss_feeds, 0, 4);
+		}
+		if($this->_footer_blogs = $this->Footer_model->footer_get_blog()){
+			foreach($this->_footer_blogs as $num => $row){
+				$this->_footer_blogs[$num]['date'] = (string) mdate('%Y/%m/%d', strtotime($row['date']));
+			}
+		}
+		
+		$this->_view_data = $this->_settings;
+		$this->_view_data += array(
+			'feeds'					=> $this->_rss_feeds,
+			'footer_blog_data'		=> $this->_footer_blogs,
+		);
 	
 	}
 	
 	public function index(){
-	
-		$rss_feeds = rss_process('http://pipes.yahoo.com/pipes/pipe.run?_id=24a7ee6208f281f8dff1162dbac57584&_render=rss');
-		if($rss_feeds){
-			$rss_feeds = array_slice($rss_feeds, 0, 4);
-		}
 		
 		$course_dates = array(
 			#standard means the 21 week course (1-2 weeks break in between)
@@ -59,7 +70,6 @@ class Courses extends CI_Controller {
 		$this->_view_data += array(
 			'page_title'			=> 'Courses',
 			'page_desc'				=> $this->_settings['site_desc'],
-			'feeds'					=> $rss_feeds,
 			'course_dates'			=> $course_dates,
 			'course_dates_table'	=> $course_dates_table,
 			'course_times'			=> $this->_course_times(),
