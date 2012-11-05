@@ -17,16 +17,26 @@ able application. The development experience integrates industry practices such 
 	'recaptcha_personal_email'	=> '<a href=\'http://www.google.com/recaptcha/mailhide/d?k=01q-bJV3WQrMYWD2quLJ7VPA==&c=FsmnfqaQraWCMzZB6tsagBZd557LPBLlxh80gaenMSo=\'>@polycademy.com</a>',
 	'twitter_page'				=> 'https://twitter.com/Polycademy',
 	'facebook_page'				=> 'https://www.facebook.com/Polycademy',
+	'pagination'	=> array(
+		'blog'	=> array(
+			'limit'		=> 5,
+			'offset'	=> 0,
+		),
+		'footer_blog'	=> array(
+			'limit'		=> 6,
+			'offset'	=> 0,
+		),
+	),
 	'links'						=> array( #this is in order of navigation from left to right 'name of link' => directory/controller name/method name
 		#header links
 		'navigation'	=> array(
 			'home'			=> '',
 			'courses'		=> 'courses',
-			'alumni'		=> 'alumni',
+			#'alumni'		=> 'alumni',
 			'blog'			=> 'blog',
-			'get involved'	=> 'get_involved',
-			'about'			=> 'about',
-			'devhub'		=> 'devhub',
+			#'get involved'	=> 'get_involved',
+			#'events'		=> 'events',
+			#'devhub'		=> 'devhub',
 		),
 		#other links
 		'notices'			=> 'blog/notices',
@@ -39,6 +49,8 @@ able application. The development experience integrates industry practices such 
 		'css_assets'		=> 'css',
 		'img_assets'		=> 'img',
 		'font_assets'		=> 'fonts',
+		#for markitup form
+		'preview_template'	=> '/blog/preview', //controller/method for the preview
 	),
 	'form_validation'		=> array(
 		'application_form'	=> array(
@@ -131,6 +143,23 @@ able application. The development experience integrates industry practices such 
 				'field'		=> 'where',
 				'label'		=> 'Where',
 				'rules'		=> 'trim|xss_clean',
+			),
+		),
+		'blog_create'		=> array(
+			array(
+				'field'		=> 'title',
+				'label'		=> 'Title',
+				'rules'		=> 'required|trim|word_limit[30]',
+			),
+			array(
+				'field'		=> 'tags',
+				'label'		=> 'Tags',
+				'rules'		=> 'trim|max_length[100]',
+			),
+			array(
+				'field'		=> 'content',
+				'label'		=> 'Content',
+				'rules'		=> 'required|trim',
 			),
 		),
 	),

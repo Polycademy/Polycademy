@@ -4,17 +4,27 @@ class Errors extends CI_Controller {
 
 	protected $_view_data; //only accessible in this class and any classes that extend home
 	protected $_settings;
-	protected $_rss_feeds;
+	protected $_footer_blog = false;
+	protected $_rss_feeds = false;
 	
 	public function __construct(){
 		parent::__construct();
 		$this->_settings = $this->config->item('polycademy');
-		$this->_view_data = $this->_settings;
 		
-		$this->_rss_feeds = rss_process('http://pipes.yahoo.com/pipes/pipe.run?_id=24a7ee6208f281f8dff1162dbac57584&_render=rss');
-		if($this->_rss_feeds){
+		if($this->_rss_feeds = rss_process('http://pipes.yahoo.com/pipes/pipe.run?_id=24a7ee6208f281f8dff1162dbac57584&_render=rss')){
 			$this->_rss_feeds = array_slice($this->_rss_feeds, 0, 4);
 		}
+		if($this->_footer_blogs = $this->Footer_model->footer_get_blog()){
+			foreach($this->_footer_blogs as $num => $row){
+				$this->_footer_blogs[$num]['date'] = (string) mdate('%Y/%m/%d', strtotime($row['date']));
+			}
+		}
+		
+		$this->_view_data = $this->_settings;
+		$this->_view_data += array(
+			'feeds'					=> $this->_rss_feeds,
+			'footer_blog_data'		=> $this->_footer_blogs,
+		);
 		
 	}
 	
@@ -36,7 +46,6 @@ class Errors extends CI_Controller {
 		$this->_view_data += array(
 			'page_title'			=> 'Error!',
 			'page_desc'				=> $this->_settings['site_name'],
-			'feeds'					=> $this->_rss_feeds,
 			'error_title'			=> 'Error Page',
 			'error_message'			=> 'This is an error page! Since you haven\'t received an error, then you should check out the other links!',
 		);
@@ -52,7 +61,6 @@ class Errors extends CI_Controller {
 		$this->_view_data += array(
 			'page_title'			=> 'Error 404',
 			'page_desc'				=> $this->_settings['site_name'],
-			'feeds'					=> $this->_rss_feeds,
 			'error_title'			=> 'Error 404',
 			'error_message'			=> 'This is an error page! Since you haven\'t received an error, then you should check out the other links!',
 		);

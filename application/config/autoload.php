@@ -79,7 +79,7 @@ $autoload['packages'] = array();
 |	$autoload['libraries'] = array('database', 'email', 'xmlrpc');
 */
 
-$autoload['libraries'] = array('database', 'firephp');
+$autoload['libraries'] = array('database', 'firephp', 'ion_auth');
 
 
 /*
@@ -151,7 +151,7 @@ $autoload['language'] = array();
 |
 */
 
-$autoload['model'] = array();
+$autoload['model'] = array('Footer_model');
 
 
 /* End of file autoload.php */

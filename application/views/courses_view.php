@@ -198,7 +198,7 @@
 							<?= form_label('Date of Birth', 'form_birth', array('class' => 'control-label required')) ?>
 							<div class="controls">
 								<div class="input-append date date_picker" data-date="<?= date('d-m-Y', strtotime('-15 years',now())) ?>" data-date-format="dd-mm-yyyy">
-									<?= form_input(array('name' => 'birthday', 'id' => 'form_birth', 'class' => 'span4', 'placeholder' => 'DD-MM-YYYY', 'value' => set_value('birthday'), 'readonly' => '',)) ?>
+									<?= form_input(array('name' => 'birthday', 'id' => 'form_birth', 'class' => 'span4', 'placeholder' => 'DD-MM-YYYY (Use Cal Icon >)', 'value' => set_value('birthday'),)) ?>
 									<span class="add-on"><i class="icon-calendar"></i></span>
 								</div>
 							</div>
@@ -286,7 +286,7 @@
 											</thead>
 											<tbody>
 												<tr>
-													<th scope="row">Term 1 - <?= $course_dates_table['ex_t1'] ?> to <?php echo $course_dates_table['ex_t2_end'] ?></th>
+													<th scope="row">Term 1 - <?= $course_dates_table['ex_t1'] ?> to <?php echo $course_dates_table['ex_t1_end'] ?></th>
 													<td><input id="form_course_ex_t1" type="checkbox" value="ex_t1" name="courses[]" <?= set_checkbox('courses[]', 'ex_t1') ?> /></td>
 												</tr>
 												<tr>
