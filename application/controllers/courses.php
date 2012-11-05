@@ -64,13 +64,16 @@ class Courses extends CI_Controller {
 			'end'	=> 'D jS F',
 		);
 		
-		$course_dates = $this->_course_dates($course_dates, $duration, $format);
+		$course_dates_slider = $this->_course_dates($course_dates, $duration, $format);
 		$course_dates_table = $this->_course_dates($course_dates, $duration, $format_for_table);
+		
+		$this->firephp->log($course_dates_slider);
+		$this->firephp->log($course_dates_table);
 		
 		$this->_view_data += array(
 			'page_title'			=> 'Courses',
 			'page_desc'				=> $this->_settings['site_desc'],
-			'course_dates'			=> $course_dates,
+			'course_dates'			=> $course_dates_slider,
 			'course_dates_table'	=> $course_dates_table,
 			'course_times'			=> $this->_course_times(),
 			'form_destination'		=> $this->router->fetch_class(),
