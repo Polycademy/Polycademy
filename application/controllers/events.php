@@ -33,7 +33,6 @@ class Events extends CI_Controller {
 		
 		$this->_view_data += array(
 			'page_title'			=> 'Events',
-			'page_desc'				=> $this->_settings['site_desc'],
 		);
 		
 		$this->load->view('header_view', $this->_view_data);

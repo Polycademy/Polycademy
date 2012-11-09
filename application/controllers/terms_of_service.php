@@ -30,7 +30,6 @@ class Terms_of_service extends CI_Controller {
 		
 		$this->_view_data += array(
 			'page_title'			=> 'Terms of Service & Privacy Policy',
-			'page_desc'				=> $this->_settings['site_desc'],
 		);
 		
 		$this->load->view('header_view', $this->_view_data);

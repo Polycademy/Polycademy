@@ -34,6 +34,7 @@ class Errors extends CI_Controller {
 	#error_php
 	#error_db
 	#basically if error_404 is in the method, it will go there, but if there is nothing or something else differently it will just go the index rather than becoming an error!
+	#currently redundant
 	public function _remap($method){
 		if($method == 'error_404'){
 			$this->$method();
@@ -46,7 +47,6 @@ class Errors extends CI_Controller {
 	
 		$this->_view_data += array(
 			'page_title'			=> 'Error!',
-			'page_desc'				=> $this->_settings['site_name'],
 			'error_title'			=> 'Error Page',
 			'error_message'			=> ($this->session->flashdata('message')) ? $this->session->flashdata('message') : 'This is an error page!',
 		);
@@ -54,6 +54,7 @@ class Errors extends CI_Controller {
 		$this->load->view('header_view', $this->_view_data);
 		$this->load->view('errors_view', $this->_view_data);
 		$this->load->view('footer_view', $this->_view_data);
+		$this->output->set_status_header(($this->session->flashdata('status_code')) ? $this->session->flashdata('status_code') : '500');
 		
 	}
 	
@@ -61,7 +62,6 @@ class Errors extends CI_Controller {
 	
 		$this->_view_data += array(
 			'page_title'			=> 'Error 404',
-			'page_desc'				=> $this->_settings['site_name'],
 			'error_title'			=> 'Error 404',
 			'error_message'			=> ($this->session->flashdata('message')) ? $this->session->flashdata('message') : 'Sorry we didn\'t find what you wanted, try a search or check out other links.',
 		);

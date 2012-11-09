@@ -72,7 +72,6 @@ class Courses extends CI_Controller {
 		
 		$this->_view_data += array(
 			'page_title'			=> 'Courses',
-			'page_desc'				=> $this->_settings['site_desc'],
 			'course_dates'			=> $course_dates_slider,
 			'course_dates_table'	=> $course_dates_table,
 			'course_times'			=> $this->_course_times(),
