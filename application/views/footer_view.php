@@ -60,7 +60,7 @@
 
         <script src="<?php echo base_url($links['js_assets']) ?>/bootstrap.min.js"></script>
 		<script src="<?php echo base_url($links['js_assets']) ?>/jquery-ui-1.8.20.custom.min.js"></script>
-		<script src="<?php echo base_url($links['js_assets']) ?>/jquery.liquid-slider-0.1.min.js"></script>
+		<script src="<?php echo base_url($links['js_assets']) ?>/jquery.liquid-slider-1.0.min.js"></script>
 
         <script src="<?php echo base_url($links['js_assets']) ?>/main.js"></script>
 
