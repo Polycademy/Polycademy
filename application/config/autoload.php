@@ -79,7 +79,7 @@ $autoload['packages'] = array();
 |	$autoload['libraries'] = array('database', 'email', 'xmlrpc');
 */
 
-$autoload['libraries'] = array('database', 'firephp', 'ion_auth');
+$autoload['libraries'] = array('database', 'firephp', 'session', 'ion_auth');
 
 
 /*
@@ -107,7 +107,7 @@ $autoload['drivers'] = array();
 |	$autoload['helper'] = array('url', 'file');
 */
 
-$autoload['helper'] = array('url', 'date', 'text', 'rss_processor');
+$autoload['helper'] = array('url', 'date', 'text', 'security', 'rss_processor');
 
 
 /*
