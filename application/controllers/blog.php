@@ -13,13 +13,20 @@ class Blog extends CI_Controller {
 	protected $_rss_feeds = false;
 	
 	public function __construct(){
+		
 		parent::__construct();
+		
+		#settings
 		$this->_settings = $this->config->item('polycademy');
 		
+		#helpers
 		$this->load->helper('form');
+		#libraries
 		$this->load->library('form_validation');
-		#language files require MY_ or differentiator or else they overwrite the system ones.
+		$this->load->library('pagination');
+		#lang
 		$this->lang->load('MY_form_validation_lang');
+		#user
 		$this->_user = $this->ion_auth->user()->row(); #get the current user row
 		
 		$this->_limit = $this->_settings['pagination']['blog']['limit'];
@@ -43,7 +50,11 @@ class Blog extends CI_Controller {
 		
 	}
 	
-	public function index(){
+	public function index($offset = false){
+	
+		if(is_numeric($offset) AND $offset > 1){
+			$this->_offset = $offset;
+		}
 		
 		$this->db->select('*');
 		$this->db->limit($this->_limit, $this->_offset);
@@ -62,8 +73,6 @@ class Blog extends CI_Controller {
 		if($blog_query->num_rows() > 0){
 		
 			foreach($blog_query->result() as $row){
-			
-				#$this->firephp->log($row); #$row is an object
 				
 				#find the author's name by cross referencing the author
 				$this->db->select('username')->from('users')->where('id', $row->author);
@@ -72,8 +81,6 @@ class Blog extends CI_Controller {
 				if($author_query->num_rows() > 0){
 				
 					$author = $author_query->row()->username;
-					
-					#$this->firephp->log($author);
 					
 				}else{
 				
@@ -89,22 +96,106 @@ class Blog extends CI_Controller {
 					'date'		=> $row->date,
 					'tags'		=> $row->tags,
 					'author'	=> $author,
+					'link'		=> $row->link,
 				);
 				
 				#$this->firephp->log($blog_data);
 				
 			}
 			
+			#working on pagination now
+			$pagination_config = array(
+				'base_url'			=> site_url('blog'),
+				'total_rows'		=> $this->db->count_all('blog'),
+				'per_page'			=> $this->_limit,
+				'full_tag_open'		=> '<ul>',
+				'full_tag_close'	=> '</ul>',
+				'first_link'		=> '&laquo;',
+				'first_tag_open'	=> '<li>',
+				'first_tag_close'	=> '</li>',
+				'last_link'			=> '&raquo;',
+				'last_tag_open'		=> '<li>',
+				'last_tag_close'	=> '</li>',
+				'next_link'			=> '&rsaquo;',
+				'next_tag_open'		=> '<li>',
+				'next_tag_close'	=> '</li>',
+				'prev_link'			=> '&lsaquo;',
+				'prev_tag_open'		=> '<li>',
+				'prev_tag_close'	=> '</li>',
+				'cur_tag_open'		=> '<li class="active"><span>',
+				'cur_tag_close'		=> '</span></li>',
+				'num_tag_open'		=> '<li>',
+				'num_tag_close'		=> '</li>',
+			);
+			
+			$this->pagination->initialize($pagination_config);
+			$pagination_links =  $this->pagination->create_links();			
+			
 		}else{
 		
 			#no blog posts
 			$blog_data = false;
+			$pagination_links =  false;
 		
 		}
 		
 		$this->_view_data += array(
 			'page_title'			=> 'Blog',
-			'page_desc'				=> $this->_settings['site_desc'],
+			'blog_data'				=> $blog_data,
+			'pagination_links'		=> (string) $pagination_links,
+		);
+		
+		$this->load->view('header_view', $this->_view_data);
+		$this->load->view('blog_view', $this->_view_data);
+		$this->load->view('footer_view', $this->_view_data);
+		
+	}
+	
+	public function id($id = false, $url_title = false){
+	
+		if(!is_numeric($id)){
+		
+			show_404();
+			
+		}else{
+		
+			$this->db->select('blog.*, users.username');
+			$this->db->where('blog.id', $id);
+			$this->db->from('blog');
+			$this->db->join('users', 'users.id = blog.author');
+			
+			$blog_query = $this->db->get();
+			
+			if($blog_query->num_rows() > 0){
+			
+				$blog_query = $blog_query->row();
+				
+				#if the link doesn't match the url_title, then redirect to the link
+				if($blog_query->link != $url_title){
+					redirect('blog/id/' . $id . '/' . $blog_query->link, 'location', 301);
+				}
+				
+				#produce the blog array it is still an array because we are using the same view
+				$blog_data[] = array(
+					'id'		=> (int) $blog_query->id,
+					'title'		=> $blog_query->title,
+					'content'	=> $blog_query->content,
+					'date'		=> $blog_query->date,
+					'tags'		=> $blog_query->tags,
+					'author'	=> $blog_query->username,
+					'link'		=> $blog_query->link,
+				);				
+				
+			}else{
+			
+				show_404();
+				
+			}
+			
+		}
+		
+		$this->_view_data += array(
+			'page_title'			=> $blog_data[0]['title'],
 			'blog_data'				=> $blog_data,
 		);
 		
@@ -131,7 +222,6 @@ class Blog extends CI_Controller {
 			
 			$this->_view_data += array(
 				'page_title'			=> 'Create Blog',
-				'page_desc'				=> $this->_settings['site_desc'],
 				'form_destination'		=> $this->router->fetch_class() . '/' . $this->router->fetch_method(),
 			);
 			
@@ -188,6 +278,7 @@ class Blog extends CI_Controller {
 			'tags'					=> $this->input->post('tags'),
 			'author'				=> $this->_user->id,
 			'content'				=> $this->input->post('content'),
+			'link'					=> url_title($this->input->post('title'), '_', true),
 		);
 		
 		#$this->firephp->log($data);
@@ -198,7 +289,7 @@ class Blog extends CI_Controller {
 			
 			#all of these messages need to be moved to the view template, and the controller should be only passing status codes/messages!
 			$this->_view_data += array(
-				'success_message'	=> 'It\'s done!',
+				'success_message'	=> 'It\'s done! Check it out <a href="' . site_url('blog/id/' . $this->db->insert_id() . '/' . url_title($this->input->post('title'), '_', true)) . '">here!</a>',
 			);
 			
 			return true;
@@ -221,7 +312,7 @@ class Blog extends CI_Controller {
 		);
 	}
 	
-	#for the template
+	#for the template ajax
 	public function preview(){
 	
 		$this->_view_data = $this->_settings;
