@@ -14,17 +14,8 @@ class MY_Exceptions extends CI_Exceptions{
 			$this->_CI =& get_instance();
 		}
 		
-		// Load the routes.php file.
-		if (defined('ENVIRONMENT') && is_file(APPPATH.'config/'.ENVIRONMENT.'/routes.php')){
-			include(APPPATH.'config/'.ENVIRONMENT.'/routes.php');
-		}elseif(is_file(APPPATH.'config/routes.php')){
-			include(APPPATH.'config/routes.php');
-		}
-		
-		$this->_routes = (isset($route) && is_array($route)) ? $route : array();
-		unset($route);
-		
 		$this->_CI->load->library('session');
+		$this->_routes = $this->_CI->router->routes;
 		
 	}
 	
@@ -70,6 +61,7 @@ class MY_Exceptions extends CI_Exceptions{
 		if(!empty($this->_routes['error_page'])){
 		
 			$this->_CI->session->set_flashdata('message', $message);
+			$this->_CI->session->set_flashdata('status_code', $status_code);
 			header('Location: ' . base_url() . $this->_routes['error_page'] . $status_code);
 		
 		}else{
