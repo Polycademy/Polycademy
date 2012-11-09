@@ -33,14 +33,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @author		EllisLab Dev Team
  * @link		http://codeigniter.com/user_guide/database/
  */
-abstract class CI_DB_utility extends CI_DB_forge {
+abstract class CI_DB_utility {
 
 	/**
 	 * Database object
 	 *
 	 * @var	object
 	 */
-	public $db;
+	protected $db;
 
 	// --------------------------------------------------------------------
 
@@ -70,13 +70,12 @@ abstract class CI_DB_utility extends CI_DB_forge {
 	/**
 	 * Class constructor
 	 *
+	 * @param	object	&$db	Database object
 	 * @return	void
 	 */
-	public function __construct()
+	public function __construct(&$db)
 	{
-		// Assign the main database object to $this->db
-		$CI =& get_instance();
-		$this->db =& $CI->db;
+		$this->db =& $db;
 		log_message('debug', 'Database Utility Class Initialized');
 	}
 
@@ -96,7 +95,7 @@ abstract class CI_DB_utility extends CI_DB_forge {
 		}
 		elseif ($this->_list_databases === FALSE)
 		{
-			return ($this->db->db_debug) ? $this->db->display_error('db_unsuported_feature') : FALSE;
+			return ($this->db->db_debug) ? $this->db->display_error('db_unsupported_feature') : FALSE;
 		}
 
 		$this->db->data_cache['db_names'] = array();
@@ -140,7 +139,7 @@ abstract class CI_DB_utility extends CI_DB_forge {
 	{
 		if ($this->_optimize_table === FALSE)
 		{
-			return ($this->db->db_debug) ? $this->db->display_error('db_unsuported_feature') : FALSE;
+			return ($this->db->db_debug) ? $this->db->display_error('db_unsupported_feature') : FALSE;
 		}
 
 		$query = $this->db->query(sprintf($this->_optimize_table, $this->db->escape_identifiers($table_name)));
@@ -164,7 +163,7 @@ abstract class CI_DB_utility extends CI_DB_forge {
 	{
 		if ($this->_optimize_table === FALSE)
 		{
-			return ($this->db->db_debug) ? $this->db->display_error('db_unsuported_feature') : FALSE;
+			return ($this->db->db_debug) ? $this->db->display_error('db_unsupported_feature') : FALSE;
 		}
 
 		$result = array();
@@ -201,7 +200,7 @@ abstract class CI_DB_utility extends CI_DB_forge {
 	{
 		if ($this->_repair_table === FALSE)
 		{
-			return ($this->db->db_debug) ? $this->db->display_error('db_unsuported_feature') : FALSE;
+			return ($this->db->db_debug) ? $this->db->display_error('db_unsupported_feature') : FALSE;
 		}
 
 		$query = $this->db->query(sprintf($this->_repair_table, $this->db->escape_identifiers($table_name)));
@@ -362,7 +361,7 @@ abstract class CI_DB_utility extends CI_DB_forge {
 		{
 			if ($this->db->db_debug)
 			{
-				return $this->db->display_error('db_unsuported_compression');
+				return $this->db->display_error('db_unsupported_compression');
 			}
 
 			$prefs['format'] = 'txt';

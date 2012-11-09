@@ -1,4 +1,4 @@
-<?php
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 /**
  * CodeIgniter
  *
@@ -21,19 +21,26 @@
  * @copyright	Copyright (c) 2008 - 2012, EllisLab, Inc. (http://ellislab.com/)
  * @license		http://opensource.org/licenses/OSL-3.0 Open Software License (OSL 3.0)
  * @link		http://codeigniter.com
- * @since		Version 1.0
+ * @since		Version 2.1.0
  * @filesource
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * Postgre Forge Class
+ * PDO PostgreSQL Forge Class
  *
  * @category	Database
  * @author		EllisLab Dev Team
  * @link		http://codeigniter.com/user_guide/database/
  */
-class CI_DB_postgre_forge extends CI_DB_forge {
+class CI_DB_pdo_pgsql_forge extends CI_DB_pdo_forge {
+
+	/**
+	 * DROP TABLE IF statement
+	 *
+	 * @var	string
+	 */
+	protected $_drop_table_if	= 'DROP TABLE IF EXISTS';
 
 	/**
 	 * UNSIGNED support
@@ -183,5 +190,5 @@ class CI_DB_postgre_forge extends CI_DB_forge {
 
 }
 
-/* End of file postgre_forge.php */
-/* Location: ./system/database/drivers/postgre/postgre_forge.php */
+/* End of file pdo_pgsql_forge.php */
+/* Location: ./system/database/drivers/pdo/subdrivers/pdo_pgsql_forge.php */

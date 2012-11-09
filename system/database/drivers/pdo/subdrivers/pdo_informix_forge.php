@@ -1,4 +1,4 @@
-<?php
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 /**
  * CodeIgniter
  *
@@ -21,19 +21,26 @@
  * @copyright	Copyright (c) 2008 - 2012, EllisLab, Inc. (http://ellislab.com/)
  * @license		http://opensource.org/licenses/OSL-3.0 Open Software License (OSL 3.0)
  * @link		http://codeigniter.com
- * @since		Version 1.0
+ * @since		Version 2.1.0
  * @filesource
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * Postgre Forge Class
+ * PDO Informix Forge Class
  *
  * @category	Database
  * @author		EllisLab Dev Team
  * @link		http://codeigniter.com/user_guide/database/
  */
-class CI_DB_postgre_forge extends CI_DB_forge {
+class CI_DB_pdo_informix_forge extends CI_DB_pdo_forge {
+
+	/**
+	 * RENAME TABLE statement
+	 *
+	 * @var	string
+	 */
+	protected $_rename_table	= 'RENAME TABLE %s TO %s';
 
 	/**
 	 * UNSIGNED support
@@ -41,41 +48,19 @@ class CI_DB_postgre_forge extends CI_DB_forge {
 	 * @var	array
 	 */
 	protected $_unsigned		= array(
-		'INT2'		=> 'INTEGER',
 		'SMALLINT'	=> 'INTEGER',
 		'INT'		=> 'BIGINT',
-		'INT4'		=> 'BIGINT',
 		'INTEGER'	=> 'BIGINT',
-		'INT8'		=> 'NUMERIC',
-		'BIGINT'	=> 'NUMERIC',
 		'REAL'		=> 'DOUBLE PRECISION',
-		'FLOAT'		=> 'DOUBLE PRECISION'
+		'SMALLFLOAT'	=> 'DOUBLE PRECISION'
 	);
 
 	/**
-	 * NULL value representation in CREATE/ALTER TABLE statements
+	 * DEFAULT value representation in CREATE/ALTER TABLE statements
 	 *
 	 * @var	string
 	 */
-	protected $_null		= 'NULL';
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Class constructor
-	 *
-	 * @param	object	&$db	Database object
-	 * @return	void
-	 */
-	public function __construct(&$db)
-	{
-		parent::__construct($db);
-
-		if (version_compare($this->db->version(), '9.0', '>'))
-		{
-			$this->create_table_if = 'CREATE TABLE IF NOT EXISTS';
-		}
-	}
+	protected $_default		= ', ';
 
 	// --------------------------------------------------------------------
 
@@ -88,47 +73,14 @@ class CI_DB_postgre_forge extends CI_DB_forge {
 	 * @return	string|string[]
 	 */
 	protected function _alter_table($alter_type, $table, $field)
- 	{
-		if (in_array($alter_type, array('DROP', 'ADD'), TRUE))
+	{
+		if ($alter_type === 'CHANGE')
 		{
-			return parent::_alter_table($alter_type, $table, $field);
+			$alter_type = 'MODIFY';
 		}
 
-		$sql = 'ALTER TABLE '.$this->db->escape_identifiers($table);
-		$sqls = array();
-		for ($i = 0, $c = count($field), $sql .= $alter_type.' '; $i < $c; $i++)
-		{
-			if ($field[$i]['_literal'] !== FALSE)
-			{
-				return FALSE;
-			}
-
-			if (version_compare($this->db->version(), '8', '>=') && isset($field[$i]['type']))
-			{
-				$sqls[] = $sql.' TYPE '.$field[$i]['type'].$field[$i]['length'];
-			}
-
-			if ( ! empty($field[$i]['default']))
-			{
-				$sqls[] = $sql.' ALTER '.$this->db->escape_identifiers($field[$i]['name'])
-					.' SET '.$field[$i]['default'];
-			}
-
-			if (isset($field[$i]['null']))
-			{
-				$sqls[] = $sql.' ALTER '.$this->db->escape_identifiers($field[$i]['name'])
-					.($field[$i]['null'] === TRUE ? ' DROP NOT NULL' : ' SET NOT NULL');
-			}
-
-			if ( ! empty($field[$i]['new_name']))
-			{
-				$sqls[] = $sql.' RENAME '.$this->db->escape_identifiers($field[$i]['name'])
-					.' TO '.$this->db->escape_identifiers($field[$i]['new_name']);
-			}
-		}
-
-		return $sqls;
- 	}
+		return parent::_alter_table($alter_type, $table, $field);
+	}
 
 	// --------------------------------------------------------------------
 
@@ -142,12 +94,6 @@ class CI_DB_postgre_forge extends CI_DB_forge {
 	 */
 	protected function _attr_type(&$attributes)
 	{
-		// Reset field lenghts for data types that don't support it
-		if (isset($attributes['CONSTRAINT']) && stripos($attributes['TYPE'], 'int') !== FALSE)
-		{
-			$attributes['CONSTRAINT'] = NULL;
-		}
-
 		switch (strtoupper($attributes['TYPE']))
 		{
 			case 'TINYINT':
@@ -158,7 +104,34 @@ class CI_DB_postgre_forge extends CI_DB_forge {
 				$attributes['TYPE'] = 'INTEGER';
 				$attributes['UNSIGNED'] = FALSE;
 				return;
+			case 'BYTE':
+			case 'TEXT':
+			case 'BLOB':
+			case 'CLOB':
+				$attributes['UNIQUE'] = FALSE;
+				if (isset($attributes['DEFAULT']))
+				{
+					unset($attributes['DEFAULT']);
+				}
+				return;
 			default: return;
+		}
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Field attribute UNIQUE
+	 *
+	 * @param	array	&$attributes
+	 * @param	array	&$field
+	 * @return	void
+	 */
+	protected function _attr_unique(&$attributes, &$field)
+	{
+		if ( ! empty($attributes['UNIQUE']) && $attributes['UNIQUE'] === TRUE)
+		{
+			$field['unique'] = ' UNIQUE CONSTRAINT '.$this->db->escape_identifiers($field['name']);
 		}
 	}
 
@@ -173,15 +146,10 @@ class CI_DB_postgre_forge extends CI_DB_forge {
 	 */
 	protected function _attr_auto_increment(&$attributes, &$field)
 	{
-		if ( ! empty($attributes['AUTO_INCREMENT']) && $attributes['AUTO_INCREMENT'] === TRUE)
-		{
-			$field['type'] = ($field['type'] === 'NUMERIC')
-						? 'BIGSERIAL'
-						: 'SERIAL';
-		}
+		// Not supported
 	}
 
 }
 
-/* End of file postgre_forge.php */
-/* Location: ./system/database/drivers/postgre/postgre_forge.php */
+/* End of file pdo_informix_forge.php */
+/* Location: ./system/database/drivers/pdo/subdrivers/pdo_informix_forge.php */

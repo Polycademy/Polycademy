@@ -352,26 +352,30 @@ class CI_Loader {
 	/**
 	 * Load the Database Utilities Class
 	 *
-	 * @return	void
+	 * @param	object	$db	Database object
+	 * @param	bool	$return	Whether to return the DB Forge class object or not
+	 * @return	void|object
 	 */
-	public function dbutil()
+	public function dbutil($db = NULL, $return = FALSE)
 	{
-		if ( ! class_exists('CI_DB'))
-		{
-			$this->database();
-		}
-
 		$CI =& get_instance();
 
-		// for backwards compatibility, load dbforge so we can extend dbutils off it
-		// this use is deprecated and strongly discouraged
-		$CI->load->dbforge();
+		if ( ! is_object($db) OR ! ($db instanceof CI_DB))
+		{
+			class_exists('CI_DB', FALSE) OR $this->database();
+			$db =& $CI->db;
+		}
 
 		require_once(BASEPATH.'database/DB_utility.php');
-		require_once(BASEPATH.'database/drivers/'.$CI->db->dbdriver.'/'.$CI->db->dbdriver.'_utility.php');
-		$class = 'CI_DB_'.$CI->db->dbdriver.'_utility';
+		require_once(BASEPATH.'database/drivers/'.$db->dbdriver.'/'.$db->dbdriver.'_utility.php');
+		$class = 'CI_DB_'.$db->dbdriver.'_utility';
 
-		$CI->dbutil = new $class();
+		if ($return === TRUE)
+		{
+			return new $class($db);
+		}
+
+		$CI->dbutil = new $class($db);
 	}
 
 	// --------------------------------------------------------------------
@@ -379,22 +383,42 @@ class CI_Loader {
 	/**
 	 * Load the Database Forge Class
 	 *
-	 * @return	void
+	 * @param	object	$db	Database object
+	 * @param	bool	$return	Whether to return the DB Forge class object or not
+	 * @return	void|object
 	 */
-	public function dbforge()
+	public function dbforge($db = NULL, $return = FALSE)
 	{
-		if ( ! class_exists('CI_DB'))
+		$CI =& get_instance();
+		if ( ! is_object($db) OR ! ($db instanceof CI_DB))
 		{
-			$this->database();
+			class_exists('CI_DB', FALSE) OR $this->database();
+			$db =& $CI->db;
 		}
 
-		$CI =& get_instance();
-
 		require_once(BASEPATH.'database/DB_forge.php');
-		require_once(BASEPATH.'database/drivers/'.$CI->db->dbdriver.'/'.$CI->db->dbdriver.'_forge.php');
-		$class = 'CI_DB_'.$CI->db->dbdriver.'_forge';
+		require_once(BASEPATH.'database/drivers/'.$db->dbdriver.'/'.$db->dbdriver.'_forge.php');
 
-		$CI->dbforge = new $class();
+		if ( ! empty($db->subdriver))
+		{
+			$driver_path = BASEPATH.'database/drivers/'.$db->dbdriver.'/subdrivers/'.$db->dbdriver.'_'.$db->subdriver.'_forge.php';
+			if (file_exists($driver_path))
+			{
+				require_once($driver_path);
+				$class = 'CI_DB_'.$db->dbdriver.'_'.$db->subdriver.'_forge';
+			}
+		}
+		else
+		{
+			$class = 'CI_DB_'.$db->dbdriver.'_forge';
+		}
+
+		if ($return === TRUE)
+		{
+			return new $class($db);
+		}
+
+		$CI->dbforge = new $class($db);
 	}
 
 	// --------------------------------------------------------------------
@@ -847,7 +871,9 @@ class CI_Loader {
 		// If the PHP installation does not support short tags we'll
 		// do a little string replacement, changing the short tags
 		// to standard PHP echo statements.
-		if ( ! is_php('5.4') && (bool) @ini_get('short_open_tag') === FALSE && config_item('rewrite_short_tags') === TRUE)
+		if ( ! is_php('5.4') && (bool) @ini_get('short_open_tag') === FALSE
+			&& config_item('rewrite_short_tags') === TRUE && function_usable('eval')
+		)
 		{
 			echo eval('?>'.preg_replace('/;*\s*\?>/', '; ?>', str_replace('<?=', '<?php echo ', file_get_contents($_ci_path))));
 		}
