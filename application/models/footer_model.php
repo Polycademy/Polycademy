@@ -40,10 +40,11 @@ class Footer_model extends CI_Model{
 				
 				$blog_data[] = array(
 					'id'		=> (int) $row->id,
-					'title'		=> $row->title,
+					'title'		=> character_limiter($row->title, 34),
 					'content'	=> $row->content,
 					'date'		=> $row->date,
 					'tags'		=> $row->tags,
+					'link'		=> $row->link,
 				);
 				
 			}

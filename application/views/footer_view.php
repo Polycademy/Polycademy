@@ -11,7 +11,7 @@
 							if(!empty($footer_blog_data)){
 								foreach($footer_blog_data as $article){
 							?>
-									• <em class="footer_dates">(<?= $article['date'] ?>)</em> - <?= $article['title'] ?><br /><br />
+									• <em class="footer_dates">(<?= $article['date'] ?>)</em> - <?= anchor($links['navigation']['blog'] . '/id/' . $article['id'] . '/' . $article['link'], $article['title']) ?><br /><br />
 							<? 
 								}
 							}else{
@@ -36,7 +36,7 @@
 					</section>
 					<section class="notices_panel span4">
 						<h3>
-							<?php echo anchor($links['notices'], array_search($links['notices'], $links)) ?>
+							<?php echo anchor($links['notices'], 'Notices') ?>
 						</h3>
 						<p>We’re hiring teachers who would specialise in web design & web development.<br /><br />We’re interested in acquiring mentors, investors and employers who are interested to get involved.<br /><br />We’re also looking for a good location for the classroom.<br /><br />Find out more at <a href='http://www.google.com/recaptcha/mailhide/d?k=01q-bJV3WQrMYWD2quLJ7VPA==&c=FsmnfqaQraWCMzZB6tsagBZd557LPBLlxh80gaenMSo='>@polycademy.com</a></p>
 					</section>
