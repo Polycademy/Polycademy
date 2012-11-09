@@ -13,6 +13,9 @@
 	.nav {
 		float: none !important;
 	}
+	.white_text_container{
+		margin: 20px 6% !important;
+	}
 }
 
 /* (Cascading) to get the slogan to disappear */
@@ -36,6 +39,7 @@
 
 /* Landscape phone to portrait tablet */
 @media (max-width: 767px){
+
 	.row > section{
 		margin-top: 16px;
 		margin-bottom: 16px;
@@ -43,6 +47,18 @@
 	.liquid-responsive .liquid-slider .panel .panel-wrapper{
 		padding: 20px 35px !important;
 	}
+	
+	.white_text_container{
+		margin: 20px 4% !important;
+	}
+	
+	.blog_content, .preview_blog{
+		p{
+			font-size: 140% !important;
+			line-height: 150% !important;
+		}
+	}
+	
 }
 
 /* Landscape phones and down */
@@ -76,6 +92,17 @@
 	}
 	.course_application .course_application_form, .blog_create .blog_create_form{
 		.clear_form_labels();
+	}
+	
+	.white_text_container{
+		margin: 20px 2% !important;
+	}
+	
+	.blog_content, .preview_blog{
+		p{
+			font-size: 130% !important;
+			line-height: 140% !important;
+		}
 	}
 	
 }
