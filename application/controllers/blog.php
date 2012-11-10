@@ -21,6 +21,7 @@ class Blog extends CI_Controller {
 		
 		#helpers
 		$this->load->helper('form');
+		$this->load->helper('pagination_helper');
 		#libraries
 		$this->load->library('form_validation');
 		$this->load->library('pagination');
@@ -99,37 +100,21 @@ class Blog extends CI_Controller {
 					'link'		=> $row->link,
 				);
 				
-				#$this->firephp->log($blog_data);
-				
 			}
 			
-			#working on pagination now
-			$pagination_config = array(
-				'base_url'			=> site_url('blog'),
-				'total_rows'		=> $this->db->count_all('blog'),
-				'per_page'			=> $this->_limit,
-				'full_tag_open'		=> '<ul>',
-				'full_tag_close'	=> '</ul>',
-				'first_link'		=> '&laquo;',
-				'first_tag_open'	=> '<li>',
-				'first_tag_close'	=> '</li>',
-				'last_link'			=> '&raquo;',
-				'last_tag_open'		=> '<li>',
-				'last_tag_close'	=> '</li>',
-				'next_link'			=> '&rsaquo;',
-				'next_tag_open'		=> '<li>',
-				'next_tag_close'	=> '</li>',
-				'prev_link'			=> '&lsaquo;',
-				'prev_tag_open'		=> '<li>',
-				'prev_tag_close'	=> '</li>',
-				'cur_tag_open'		=> '<li class="active"><span>',
-				'cur_tag_close'		=> '</span></li>',
-				'num_tag_open'		=> '<li>',
-				'num_tag_close'		=> '</li>',
+			$pagination_links = create_pagination(
+				site_url('blog'),
+				$this->db->count_all('blog'),
+				$this->_limit,
+				array(
+					'full_tag_div'	=> array(
+						'class'		=> 'pagination pagination-centered pagination-large',
+					),
+					'cur_tag'		=> array(
+						'class'		=> 'active',
+					),
+				)
 			);
-			
-			$this->pagination->initialize($pagination_config);
-			$pagination_links =  $this->pagination->create_links();			
 			
 		}else{
 		
@@ -142,7 +127,7 @@ class Blog extends CI_Controller {
 		$this->_view_data += array(
 			'page_title'			=> 'Blog',
 			'blog_data'				=> $blog_data,
-			'pagination_links'		=> (string) $pagination_links,
+			'pagination_links'		=> $pagination_links,
 		);
 		
 		$this->load->view('header_view', $this->_view_data);
@@ -184,7 +169,39 @@ class Blog extends CI_Controller {
 					'tags'		=> $blog_query->tags,
 					'author'	=> $blog_query->username,
 					'link'		=> $blog_query->link,
-				);				
+				);
+				
+				#NEXT BLOG ARTICLE
+				$this->db->select('id, link');
+				$this->db->from('blog');
+				$this->db->where('date >', $blog_query->date);
+				$this->db->order_by('date', 'asc');
+				$this->db->limit(1);
+				
+				$next_blog_query = $this->db->get();
+				
+				if($next_blog_query->num_rows() > 0){
+				
+					$next_blog = $next_blog_query->row();
+					$pager['next_link'] = site_url('blog/id/' . $next_blog->id . '/' . $next_blog->link);
+				
+				}
+				
+				#PREVIOUS BLOG ARTICLE
+				$this->db->select('id, link');
+				$this->db->from('blog');
+				$this->db->where('date <', $blog_query->date);
+				$this->db->order_by('date', 'desc');
+				$this->db->limit(1);
+				
+				$prev_blog_query = $this->db->get();
+				
+				if($prev_blog_query->num_rows() > 0){
+				
+					$prev_blog = $prev_blog_query->row();
+					$pager['prev_link'] = site_url('blog/id/' . $prev_blog->id . '/' . $prev_blog->link);
+				
+				}
 				
 			}else{
 			
@@ -197,6 +214,8 @@ class Blog extends CI_Controller {
 		$this->_view_data += array(
 			'page_title'			=> $blog_data[0]['title'],
 			'blog_data'				=> $blog_data,
+			'pager'					=> $pager,
+			'single_page'			=> true,
 		);
 		
 		$this->load->view('header_view', $this->_view_data);

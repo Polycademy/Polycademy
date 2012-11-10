@@ -22,7 +22,7 @@ $config['polycademy'] = array(
 			'offset'	=> 0,
 		),
 		'footer_blog'	=> array(
-			'limit'		=> 6,
+			'limit'		=> 5,
 			'offset'	=> 0,
 		),
 	),
