@@ -25,7 +25,7 @@
 */
 if(!function_exists('create_pagination')){
 
-	function create_pagination($base_url, $total_rows, $limit, $attributes = array(), $display_pages = true, $num_links = 2, $use_page_numbers = false){
+	function create_pagination($base_url, $total_rows, $limit, $attributes = array(), $uri_segment = 3, $display_pages = true, $num_links = 2, $use_page_numbers = false){
 		
 		$CI =& get_instance();
 		
@@ -69,6 +69,7 @@ if(!function_exists('create_pagination')){
 			'base_url'			=> $base_url,
 			'total_rows'		=> $total_rows,
 			'per_page'			=> $limit,
+			'uri_segment'		=> $uri_segment,
 			'display_pages'		=> $display_pages,
 			'num_links'			=> $num_links,
 			'use_page_numbers'	=> $use_page_numbers,

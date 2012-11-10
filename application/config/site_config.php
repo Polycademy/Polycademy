@@ -38,7 +38,7 @@ $config['polycademy'] = array(
 			#'devhub'		=> 'devhub',
 		),
 		#other links
-		'notices'			=> 'blog/notices',
+		'notices'			=> 'blog/tags/notices',
 		'codex'				=> 'wiki',
 		'forum'				=> 'forum',
 		'terms_of_service'	=> 'terms_of_service',

@@ -61,13 +61,6 @@ class Blog extends CI_Controller {
 		$this->db->limit($this->_limit, $this->_offset);
 		$this->db->order_by('date', 'desc');
 		$this->db->from('blog');
-		if(!empty($this->_tags)){
-			foreach($this->_tags as $tag){
-				#we need to use like to search for the tags because multiple blog posts have different tags
-				#should be or like as it is not cascading, but all posts that contain any of the tags...
-				$this->db->or_like('tags', $tag);
-			}
-		}
 		
 		$blog_query = $this->db->get();
 		
@@ -95,7 +88,7 @@ class Blog extends CI_Controller {
 					'title'		=> $row->title,
 					'content'	=> $row->content,
 					'date'		=> $row->date,
-					'tags'		=> $row->tags,
+					'tags'		=> explode(',', $row->tags),
 					'author'	=> $author,
 					'link'		=> $row->link,
 				);
@@ -124,10 +117,15 @@ class Blog extends CI_Controller {
 		
 		}
 		
+		if($this->ion_auth->logged_in() && $this->ion_auth->is_admin()){
+			$admin_user = true;
+		}
+		
 		$this->_view_data += array(
 			'page_title'			=> 'Blog',
 			'blog_data'				=> $blog_data,
 			'pagination_links'		=> $pagination_links,
+			'admin_user'			=> $admin_user,
 		);
 		
 		$this->load->view('header_view', $this->_view_data);
@@ -166,7 +164,7 @@ class Blog extends CI_Controller {
 					'title'		=> $blog_query->title,
 					'content'	=> $blog_query->content,
 					'date'		=> $blog_query->date,
-					'tags'		=> $blog_query->tags,
+					'tags'		=> explode(',', $blog_query->tags),
 					'author'	=> $blog_query->username,
 					'link'		=> $blog_query->link,
 				);
@@ -211,11 +209,16 @@ class Blog extends CI_Controller {
 			
 		}
 		
+		if($this->ion_auth->logged_in() AND $this->ion_auth->is_admin()){
+			$admin_user = true;
+		}
+		
 		$this->_view_data += array(
 			'page_title'			=> $blog_data[0]['title'],
 			'blog_data'				=> $blog_data,
 			'pager'					=> $pager,
 			'single_page'			=> true,
+			'admin_user'			=> $admin_user,
 		);
 		
 		$this->load->view('header_view', $this->_view_data);
@@ -224,10 +227,149 @@ class Blog extends CI_Controller {
 		
 	}
 	
-	public function notices(){
+	public function tags(){
 	
-		$this->_tags[] = 'notices';
-		$this->index();
+		$tag_array = $this->uri->segment_array();
+		$tag_cutoff_key = array_search('tags', $tag_array);
+		$page_cutoff_key = array_search('page', $tag_array);
+		
+		$this->firephp->log($page_cutoff_key);
+		
+		if($page_cutoff_key){
+		
+			#The page cutoff length is between the /tag/ and the /page/. It needs to minus 1 because you don't want to capture the /page/
+			$page_cutoff_length = $page_cutoff_key - $tag_cutoff_key - 1;
+			$tag_array = array_slice($tag_array, $tag_cutoff_key, $page_cutoff_length);
+			$offset = implode('', array_slice($this->uri->segment_array(), $page_cutoff_key));
+			
+			$this->firephp->log($tag_cutoff_key);
+			$this->firephp->log($page_cutoff_length);
+			$this->firephp->log($tag_array);
+			$this->firephp->log($offset, 'THE OFFSET:');
+			
+		}else{
+		
+			$tag_array = array_slice($tag_array, $tag_cutoff_key);
+			
+		}
+		
+		if(!empty($tag_array)){
+		
+			$this->_tags = array_merge((array) $this->_tags, (array) $tag_array);
+			
+			$this->firephp->log($this->_tags , 'THE TAGS:');
+			
+			if(!empty($offset) AND is_numeric($offset) AND $offset > 1){
+				$this->_offset = $offset;
+			}
+			
+			$this->firephp->log($this->_offset, 'CHECKED OFFSET:');
+			
+			$this->db->select('*');
+			$this->db->limit($this->_limit, $this->_offset);
+			$this->db->order_by('date', 'desc');
+			$this->db->from('blog');
+			foreach($this->_tags as $tag){
+				$this->db->or_like('tags', $tag);
+			}
+			
+			$blog_query = $this->db->get();
+			
+			if($blog_query->num_rows() > 0){
+			
+				foreach($blog_query->result() as $row){
+					
+					#find the author's name by cross referencing the author
+					$this->db->select('username')->from('users')->where('id', $row->author);
+					$author_query = $this->db->get();
+					
+					if($author_query->num_rows() > 0){
+					
+						$author = $author_query->row()->username;
+						
+					}else{
+					
+						$author = false;
+					
+					}
+					
+					#produce the blog array
+					$blog_data[] = array(
+						'id'		=> (int) $row->id,
+						'title'		=> $row->title,
+						'content'	=> $row->content,
+						'date'		=> $row->date,
+						'tags'		=> explode(',', $row->tags),
+						'author'	=> $author,
+						'link'		=> $row->link,
+					);
+					
+				}
+				
+				$this->db->select('id');
+				$this->db->from('blog');
+				foreach($this->_tags as $tag){
+					$this->db->or_like('tags', $tag);
+				}
+				$tag_count_query = $this->db->get();
+				$tag_count = $tag_count_query->num_rows();
+				
+				$this->firephp->log($tag_count, 'TAG COUNT:');
+				
+				if($page_cutoff_key){
+					$pagination_url = site_url(implode('/', array_slice($this->uri->segment_array(), 0, $page_cutoff_key)));
+				}else{
+					$pagination_url = site_url($this->uri->uri_string() . '/page');
+				}
+				
+				$this->firephp->log($page_cutoff_key, 'PAGE CUTOFFKEY');
+				
+				$pagination_links = create_pagination(
+					$pagination_url,
+					$tag_count,
+					$this->_limit,
+					array(
+						'full_tag_div'	=> array(
+							'class'		=> 'pagination pagination-centered pagination-large',
+						),
+						'cur_tag'		=> array(
+							'class'		=> 'active',
+						),
+					),
+					(($page_cutoff_key) ? $page_cutoff_key + 1 : false)
+				);
+				
+			}else{
+			
+				$blog_data = false;
+				$pagination_links =  false;
+			
+			}
+			
+			
+		}else{
+		
+			$blog_data = false;
+			$pagination_links =  false;
+			
+		}
+		
+		if($this->ion_auth->logged_in() && $this->ion_auth->is_admin()){
+			$admin_user = true;
+		}
+		
+		$this->_view_data += array(
+			'page_title'			=> 'Blog tag(s)',
+			'blog_data'				=> $blog_data,
+			'pagination_links'		=> $pagination_links,
+			'tag_page'				=> true,
+			'tags'					=> $this->_tags,
+			'admin_user'			=> $admin_user,
+		);
+		
+		$this->load->view('header_view', $this->_view_data);
+		$this->load->view('blog_view', $this->_view_data);
+		$this->load->view('footer_view', $this->_view_data);
 		
 	}
 	
@@ -267,8 +409,78 @@ class Blog extends CI_Controller {
 		
 	}
 	
+	public function edit($id = false){
+	
+		if(!$this->ion_auth->logged_in()){
+		
+			redirect('auth/login');
+			
+		}elseif($this->ion_auth->is_admin()){
+			
+			if(!is_numeric($id)){
+			
+				show_404();
+				
+			}else{
+			
+				$this->db->select('id, title, content, tags');
+				$this->db->where('id', $id);
+				$this->db->from('blog');
+				
+				$blog_query = $this->db->get();
+				
+				if($blog_query->num_rows() > 0){
+				
+					$blog_query = $blog_query->row();
+					
+					$blog_data = array(
+						'id'		=> $blog_query->id,
+						'title'		=> $blog_query->title,
+						'content'	=> $blog_query->content,
+						'tags'		=> $blog_query->tags,
+					);
+					
+				}else{
+				
+					show_404();
+					
+				}
+				
+			}
+			
+			$this->_view_data += array(
+				'page_title'			=> 'Editing ' . $blog_data['title'],
+				'form_destination'		=> $this->router->fetch_class() . '/' . $this->router->fetch_method() . '/' . $id,
+				'blog_data'				=> $blog_data,
+			);
+			
+			$this->form_validation->set_rules($this->_settings['form_validation']['blog_create']);
+			
+			if($this->form_validation->run() == true){
+			
+				$this->_form_success_update($id);
+				
+			}else{
+			
+				$this->_form_failure();
+				
+			}
+			
+			$this->load->view('header_view', $this->_view_data);
+			$this->load->view('blog_edit_view', $this->_view_data);
+			$this->load->view('footer_view', $this->_view_data);
+			
+		}else{
+			
+			redirect('home');
+			
+		}
+		
+	}
+	
 	#should go into a regex_helper..., doesn't work well with nested stuff...
 	#will require a full parser one day...
+	#THIS IS NOT EVEN CALLED...?
 	protected function _code_parsing($data){
 	
 		#but don't escape already escaped stuff
@@ -276,16 +488,44 @@ class Blog extends CI_Controller {
 			return $data[1] . htmlspecialchars($data[2], ENT_COMPAT|ENT_HTML5, 'UTF-8', false) . $data[3];
 		}
 		
-		#$this->firephp->log($data);
-
-		
 		$data = preg_replace_callback('/(<code[^>]*>)([\s\S]*?)(<\/code>)/m', "escape_html", $data);
-		
-		#$this->firephp->log($data);
-		
 		
 		return $data;
 		
+	}
+	
+	#UPDATE THIS
+	protected function _form_success_update($id){
+	
+		$data = array(
+			'title'					=> $this->input->post('title'),
+			'tags'					=> $this->input->post('tags'),
+			'content'				=> $this->input->post('content'),
+			'link'					=> url_title($this->input->post('title'), '_', true),
+		);
+		
+		$this->db->where('id', $id);
+		$this->db->update('blog', $data);
+		
+		if($this->db->affected_rows()){
+			
+			#all of these messages need to be moved to the view template, and the controller should be only passing status codes/messages!
+			$this->_view_data += array(
+				'success_message'	=> 'It\'s done! Check it out <a href="' . site_url('blog/id/' . $id . '/' . url_title($this->input->post('title'), '_', true)) . '">here!</a>',
+			);
+			
+			return true;
+			
+		}else{
+		
+			$this->_view_data += array(
+				'error_messages'	=> '<li>We have experienced a database error in submitting your application, please try again later or contact us directly.</li>',
+			);
+			
+			return false;
+			
+		}
+	
 	}
 	
 	#should be moved to models

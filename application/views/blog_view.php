@@ -2,6 +2,13 @@
 		<div class="white_container">
 			<div class="container">
 				<?
+					if(!empty($tag_page)){
+				?>
+						<h4>Showing articles with the tag(s): '<?= implode(', ', $tags) ?>'</h4>
+				<?
+					}
+				?>
+				<?
 					if(!empty($blog_data)){
 						foreach($blog_data as $article){
 				?>
@@ -12,7 +19,17 @@
 								</div>
 								<div class="meta_box">
 									<span class="author_meta">Posted by <?= (!empty($article['author'])) ? $article['author'] : 'Unknown' ?> on <?= $article['date'] ?></span>
-									<?= (!empty($article['tags'])) ? '<span class="tag_meta">Tags: ' . $article['tags'] . '</span>' : '' ?>
+									<? if(!empty($article['tags'])){ ?>
+											<span class="tag_meta">Tags:
+												<? foreach($article['tags'] as $tag){ ?>
+													<?= anchor('blog/tags/' . $tag, $tag) ?>
+												<? } ?>
+											</span>
+									<? } ?>
+									<span class="comment_meta"><?= anchor('blog/id/' . $article['id'] . '/' . $article['link'] . '#disqus_thread', 'Want to Comment?') ?></span>
+									<? if(!empty($admin_user)){ ?>
+										<span class="edit_meta"><?= anchor('blog/edit/' . $article['id'], 'Edit this Article') ?></span>
+									<? } ?>
 								</div>
 							</article>
 				<? 
