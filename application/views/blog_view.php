@@ -26,7 +26,20 @@
 												<? } ?>
 											</span>
 									<? } ?>
-									<span class="comment_meta"><?= anchor('blog/id/' . $article['id'] . '/' . $article['link'] . '#disqus_thread', 'Want to Comment?') ?></span>
+									<span class="comment_meta">
+										<?= anchor('blog/id/' . $article['id'] . '/' . $article['link'] . '#disqus_thread', 'Want to Comment?') ?>
+									</span>
+									<? if(!empty($single_page)){ ?>
+										<div class="addthis_toolbox addthis_default_style ">
+											<a class="addthis_button_preferred_1"></a>
+											<a class="addthis_button_preferred_2"></a>
+											<a class="addthis_button_preferred_3"></a>
+											<a class="addthis_button_preferred_4"></a>
+											<a class="addthis_button_compact"></a>
+											<a class="addthis_counter addthis_bubble_style"></a>
+										</div>
+										<script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-509f8a9354e18205"></script>
+									<? } ?>
 									<? if(!empty($admin_user)){ ?>
 										<span class="edit_meta"><?= anchor('blog/edit/' . $article['id'], 'Edit this Article') ?></span>
 									<? } ?>

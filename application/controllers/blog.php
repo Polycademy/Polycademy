@@ -33,8 +33,11 @@ class Blog extends CI_Controller {
 		$this->_limit = $this->_settings['pagination']['blog']['limit'];
 		$this->_offset = $this->_settings['pagination']['blog']['offset']; #initial offset is zero, but later calculated from the limit
 		
-		if($this->_rss_feeds = rss_process('http://pipes.yahoo.com/pipes/pipe.run?_id=24a7ee6208f281f8dff1162dbac57584&_render=rss')){
+		$errors = '';
+		if($this->_rss_feeds = rss_process('http://pipes.yahoo.com/pipes/pipe.run?_id=24a7ee6208f281f8dff1162dbac57584&_render=rss', $errors)){
 			$this->_rss_feeds = array_slice($this->_rss_feeds, 0, 4);
+		}else{
+			$this->_rss_feeds = $errors;
 		}
 		
 		if($this->_footer_blogs = $this->Footer_model->footer_get_blog()){
@@ -233,7 +236,7 @@ class Blog extends CI_Controller {
 		$tag_cutoff_key = array_search('tags', $tag_array);
 		$page_cutoff_key = array_search('page', $tag_array);
 		
-		$this->firephp->log($page_cutoff_key);
+		#$this->firephp->log($page_cutoff_key);
 		
 		if($page_cutoff_key){
 		
@@ -242,10 +245,10 @@ class Blog extends CI_Controller {
 			$tag_array = array_slice($tag_array, $tag_cutoff_key, $page_cutoff_length);
 			$offset = implode('', array_slice($this->uri->segment_array(), $page_cutoff_key));
 			
-			$this->firephp->log($tag_cutoff_key);
-			$this->firephp->log($page_cutoff_length);
-			$this->firephp->log($tag_array);
-			$this->firephp->log($offset, 'THE OFFSET:');
+			#$this->firephp->log($tag_cutoff_key);
+			#$this->firephp->log($page_cutoff_length);
+			#$this->firephp->log($tag_array);
+			#$this->firephp->log($offset, 'THE OFFSET:');
 			
 		}else{
 		
@@ -257,13 +260,13 @@ class Blog extends CI_Controller {
 		
 			$this->_tags = array_merge((array) $this->_tags, (array) $tag_array);
 			
-			$this->firephp->log($this->_tags , 'THE TAGS:');
+			#$this->firephp->log($this->_tags , 'THE TAGS:');
 			
 			if(!empty($offset) AND is_numeric($offset) AND $offset > 1){
 				$this->_offset = $offset;
 			}
 			
-			$this->firephp->log($this->_offset, 'CHECKED OFFSET:');
+			#$this->firephp->log($this->_offset, 'CHECKED OFFSET:');
 			
 			$this->db->select('*');
 			$this->db->limit($this->_limit, $this->_offset);
@@ -314,7 +317,7 @@ class Blog extends CI_Controller {
 				$tag_count_query = $this->db->get();
 				$tag_count = $tag_count_query->num_rows();
 				
-				$this->firephp->log($tag_count, 'TAG COUNT:');
+				#$this->firephp->log($tag_count, 'TAG COUNT:');
 				
 				if($page_cutoff_key){
 					$pagination_url = site_url(implode('/', array_slice($this->uri->segment_array(), 0, $page_cutoff_key)));
@@ -322,7 +325,7 @@ class Blog extends CI_Controller {
 					$pagination_url = site_url($this->uri->uri_string() . '/page');
 				}
 				
-				$this->firephp->log($page_cutoff_key, 'PAGE CUTOFFKEY');
+				#$this->firephp->log($page_cutoff_key, 'PAGE CUTOFFKEY');
 				
 				$pagination_links = create_pagination(
 					$pagination_url,
