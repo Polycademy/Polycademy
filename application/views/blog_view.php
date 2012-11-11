@@ -22,7 +22,7 @@
 									<? if(!empty($article['tags'])){ ?>
 											<span class="tag_meta">Tags:
 												<? foreach($article['tags'] as $tag){ ?>
-													<?= anchor('blog/tags/' . $tag, $tag) ?>
+													<?= (!empty($tag)) ? anchor('blog/tags/' . $tag, $tag) : '' ?>
 												<? } ?>
 											</span>
 									<? } ?>
