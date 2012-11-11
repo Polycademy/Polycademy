@@ -25,13 +25,13 @@
 						<div class="control-group">
 							<?= form_label('Tags', 'form_tags', array('class' => 'control-label required')) ?>
 							<div class="controls">
-								<?= form_input(array('name' => 'tags', 'id' => 'form_tags', 'class' => 'span8', 'placeholder' => 'Tag,Tag,Tag', 'value' => ((set_value('tags')) ? set_value('tags') : $blog_data['tags']))) ?>
+								<?= form_input(array('name' => 'tags', 'id' => 'form_tags', 'class' => 'span8', 'placeholder' => 'Tag,Tag,Tag (Only alphanumerics!)', 'value' => ((set_value('tags')) ? set_value('tags') : $blog_data['tags']))) ?>
 							</div>
 						</div>
 						<div class="control-group">
 							<?= form_label('Content', 'form_content', array('class' => 'control-label required')) ?>
 							<div class="controls">
-								<?= form_textarea(array('name' => 'content', 'id' => 'form_content', 'class' => 'span8 insert_markitup', 'value' => ((set_value('content')) ? set_value('content') : $blog_data['content']))) ?>
+								<?= form_textarea(array('name' => 'content', 'id' => 'form_content', 'class' => 'span8 insert_markitup', 'placeholder' => 'Make sure to convert all characters into entities!', 'value' => ((set_value('content')) ? set_value('content') : $blog_data['content']))) ?>
 								<div class="preview_blog_container">
 									<p>Preview:</p>
 									<div class="preview_blog span8"></div>
