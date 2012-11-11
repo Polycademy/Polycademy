@@ -293,6 +293,6 @@
 						<p>The classroom space will include 15 - 16 workstations. There will be whiteboards, projectors, tables, and  chairs to help students collaborate. A function room will be used for events and catering. We’ll even try to get a vending machine.<br /><br />After class, the classroom will be open day & night for coders and designers to chill out and discuss.<br /><br />If you know a place please contact us at <?=$recaptcha_personal_email?></p>
 					</section>
 				</article>
-				<h2>Class starts in 2013 Jan/Feb, <?php echo anchor($links['navigation']['courses'], 'register your interest now!'); ?></h2>
+				<h2>Class starts in 2013 Jan/Feb, <?php echo anchor($links['navigation']['courses'], 'register your interest'); ?> and <?= anchor('http://eepurl.com/rDJTv', 'get informed!', 'target="_blank"') ?></h2>
 			</div>
 		</div>
