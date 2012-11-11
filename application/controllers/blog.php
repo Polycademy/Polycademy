@@ -171,6 +171,8 @@ class Blog extends CI_Controller {
 					'link'		=> $blog_query->link,
 				);
 				
+				#var_dump($blog_data[0]['tags']);
+				
 				#NEXT BLOG ARTICLE
 				$this->db->select('id, link');
 				$this->db->from('blog');
@@ -232,7 +234,7 @@ class Blog extends CI_Controller {
 	}
 	
 	public function tags(){
-	
+		
 		$tag_array = $this->uri->segment_array();
 		$tag_cutoff_key = array_search('tags', $tag_array);
 		$page_cutoff_key = array_search('page', $tag_array);
@@ -505,10 +507,12 @@ class Blog extends CI_Controller {
 	
 		$data = array(
 			'title'					=> $this->input->post('title'),
-			'tags'					=> $this->input->post('tags'),
+			'tags'					=> preg_replace('/[^a-z0-9_\,\-]/i', '', $this->input->post('tags')),
 			'content'				=> $this->input->post('content'),
 			'link'					=> url_title($this->input->post('title'), '_', true),
 		);
+		
+		$this->firephp->log($data['tags']);
 		
 		$this->db->where('id', $id);
 		$this->db->update('blog', $data);
@@ -540,7 +544,7 @@ class Blog extends CI_Controller {
 		$data = array(
 			'date'					=> date('Y-m-d H:i:s', now()),
 			'title'					=> $this->input->post('title'),
-			'tags'					=> $this->input->post('tags'),
+			'tags'					=> preg_replace('/[^a-z0-9_\,\-]/i', '', $this->input->post('tags')),
 			'author'				=> $this->_user->id,
 			'content'				=> $this->input->post('content'),
 			'link'					=> url_title($this->input->post('title'), '_', true),
