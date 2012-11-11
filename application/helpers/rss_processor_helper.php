@@ -2,17 +2,10 @@
 
 function rss_process($feed_url){
 
-	libxml_use_internal_errors(true);
-	
-	$xml = simplexml_load_file($feed_url, null, LIBXML_NOCDATA);
-	
-	if(!$xml){
-	
-		$errors = libxml_get_errors();
-		libxml_clear_errors();
-		return $errors;
-	
-	}else{
+	/*
+	Suppress this error cause it's annoying.
+	*/
+	if(@$xml = simplexml_load_file($feed_url, null, LIBXML_NOCDATA)){
 	
 		if(isset($xml->channel->item)){
 			
