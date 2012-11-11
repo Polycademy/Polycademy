@@ -4,7 +4,14 @@ function rss_process($feed_url, &$errors = array()){
 
 	libxml_use_internal_errors(true);
 	
-	if($xml = simplexml_load_file($feed_url, null, LIBXML_NOCDATA)){
+	$xml = simplexml_load_file($feed_url, null, LIBXML_NOCDATA);
+	
+	if(!$xml){
+	
+		$errors = libxml_get_errors();
+		libxml_clear_errors();
+	
+	}else{
 	
 		if(isset($xml->channel->item)){
 			
@@ -23,12 +30,7 @@ function rss_process($feed_url, &$errors = array()){
 			
 		}
 	
-	}else{
-	
-		libxml_clear_errors();
-		
 	}
-	
 	
 	return false;
 	
