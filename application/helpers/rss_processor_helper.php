@@ -1,6 +1,6 @@
 <?php  if (!defined('BASEPATH')) exit('No direct script access allowed'); 
 
-function rss_process($feed_url, &$errors = array()){
+function rss_process($feed_url){
 
 	libxml_use_internal_errors(true);
 	
@@ -10,6 +10,7 @@ function rss_process($feed_url, &$errors = array()){
 	
 		$errors = libxml_get_errors();
 		libxml_clear_errors();
+		return $errors;
 	
 	}else{
 	
