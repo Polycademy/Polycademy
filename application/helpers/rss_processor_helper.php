@@ -1,6 +1,8 @@
 <?php  if (!defined('BASEPATH')) exit('No direct script access allowed'); 
 
-function rss_process($feed_url){
+function rss_process($feed_url, &$errors = array()){
+
+	libxml_use_internal_errors(true);
 	
 	if($xml = simplexml_load_file($feed_url, null, LIBXML_NOCDATA)){
 	
@@ -21,7 +23,12 @@ function rss_process($feed_url){
 			
 		}
 	
+	}else{
+	
+		libxml_clear_errors();
+		
 	}
+	
 	
 	return false;
 	
