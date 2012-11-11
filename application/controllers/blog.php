@@ -33,11 +33,8 @@ class Blog extends CI_Controller {
 		$this->_limit = $this->_settings['pagination']['blog']['limit'];
 		$this->_offset = $this->_settings['pagination']['blog']['offset']; #initial offset is zero, but later calculated from the limit
 		
-		$errors = '';
-		if($this->_rss_feeds = rss_process('http://pipes.yahoo.com/pipes/pipe.run?_id=24a7ee6208f281f8dff1162dbac57584&_render=rss', $errors)){
+		if($this->_rss_feeds = rss_process('http://pipes.yahoo.com/pipes/pipe.run?_id=24a7ee6208f281f8dff1162dbac57584&_render=rss')){
 			$this->_rss_feeds = array_slice($this->_rss_feeds, 0, 4);
-		}else{
-			$this->_rss_feeds = $errors;
 		}
 		
 		if($this->_footer_blogs = $this->Footer_model->footer_get_blog()){
@@ -122,6 +119,8 @@ class Blog extends CI_Controller {
 		
 		if($this->ion_auth->logged_in() && $this->ion_auth->is_admin()){
 			$admin_user = true;
+		}else{
+			$admin_user = false;
 		}
 		
 		$this->_view_data += array(
@@ -214,6 +213,8 @@ class Blog extends CI_Controller {
 		
 		if($this->ion_auth->logged_in() AND $this->ion_auth->is_admin()){
 			$admin_user = true;
+		}else{
+			$admin_user = false;
 		}
 		
 		$this->_view_data += array(
@@ -359,6 +360,8 @@ class Blog extends CI_Controller {
 		
 		if($this->ion_auth->logged_in() && $this->ion_auth->is_admin()){
 			$admin_user = true;
+		}else{
+			$admin_user = false;
 		}
 		
 		$this->_view_data += array(
