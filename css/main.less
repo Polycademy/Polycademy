@@ -65,8 +65,9 @@
 @slider_arrow_margin: 1.2%;
 @team_icon_width: 72px;
 @team_icon_height: 72px;
-
+/* Blog */
 @black_text_color: #313131;
+@content_separation_height: 25px;
 
 .outline_transition (@original_color, @duration, @function, @size, @type, @final_colour, @offset){
 	outline: @original_color;
@@ -1081,10 +1082,23 @@ header.navbar{
 		font-family: georgia, verdana, sans-serif;
 		font-size: 150%;
 		line-height: 160%;
-		margin: 0 0 25px;
+		margin: 0 0 @content_separation_height;
 	}
 	p + p{
 		text-indent: 5%;
+	}
+	iframe, object{
+		display: block;
+		margin: @content_separation_height auto;
+		max-width: 98%;
+	}
+	img{
+		display: block;
+		margin: @content_separation_height auto;
+		border: 1px solid #CECECE;
+		max-width: 98%;
+		height: auto;
+		width: auto;
 	}
 }
 
