@@ -1175,10 +1175,6 @@ $(function(){
 	/*Date Picker*/
 	$('.date_picker').datepicker();
 	
-	
-	
-	
-	
 	/* Markitup for Blog Create, Includes settings and execution */
 	markitup_settings = {
 		onShiftEnter:	{keepDefault:false, replaceWith:'<br />\n'},
@@ -1223,8 +1219,5 @@ $(function(){
 	};
 	
 	$('.blog_create .insert_markitup').markItUp(markitup_settings);
-	
-	/* Filepicker.io */
-	filepicker.setKey('AaFOEqpVcRxiHd9edzvNNz');
 	
 });

@@ -30,6 +30,10 @@
 						</div>
 						<div class="control-group">
 							<script src="https://api.filepicker.io/v1/filepicker.js"></script>
+							<script>
+								/* Filepicker.io */
+								filepicker.setKey('AaFOEqpVcRxiHd9edzvNNz');
+							</script>
 							<?= form_label('Upload', 'form_upload', array('class' => 'control-label')) ?>
 							<div class="controls">
 								<?= form_input(array('name' => 'upload', 'id' => 'form_upload', 'type' => 'filepicker', 'data-fp-button-class' => 'btn btn-info', 'onchange' => 'alert(event.fpfile.url)')) ?>
