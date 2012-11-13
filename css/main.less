@@ -1100,6 +1100,25 @@ header.navbar{
 		height: auto;
 		width: auto;
 	}
+	blockquote{
+		border-left: 5px solid #CCCCCC;
+		font-size: 170%;
+		margin: @content_separation_height auto;
+		quotes:"\201C""\201D";
+	}
+	blockquote:before{
+		content:open-quote;
+		font-size: 400%;
+		margin-right: 12px;
+		vertical-align: -25px;
+		color: #ccc;
+	}
+	blockquote :first-child{
+		display:inline;
+	}
+	blockquote :last-child{
+		margin-bottom:0;
+	}
 }
 
 /* ==========================================================================
