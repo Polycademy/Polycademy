@@ -340,7 +340,7 @@ $config['csrf_protection'] = TRUE; #ajax requests require one to setup ajax to a
 $config['csrf_token_name'] = 'csrf_token';
 $config['csrf_cookie_name'] = 'csrf_cookie';
 $config['csrf_expire'] = 7200;
-$config['csrf_regenerate'] = FALSE; #this will make refreshing forms or ajax requests fail, because each submission generatesa a new server token, but the cookie token stays the same... (well, it could be the other way).
+$config['csrf_regenerate'] = FALSE; #this will make refreshing forms or ajax requests fail, because each submission generates a new server token, but the cookie token stays the same... (well, it could be the other way).
 $config['csrf_exclude_uris'] = array(); #if you integrate into payment gateways, this needs to be adjusted, API end points expecting POSTDATA (this is your own controller/method name)
 
 /*
