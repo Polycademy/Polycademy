@@ -1,1 +1,0 @@
-Welcome %username% (<a href="#" onclick="logout();return false;">Logout</a>)

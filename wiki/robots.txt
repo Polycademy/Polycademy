@@ -1,7 +1,0 @@
-User-agent: *
-Disallow: /addons
-Disallow: /admin
-Disallow: /includes
-Disallow: /functions
-Disallow: /generated
-Disallow: /templates
