@@ -1224,4 +1224,7 @@ $(function(){
 	
 	$('.blog_create .insert_markitup').markItUp(markitup_settings);
 	
+	/* Filepicker.io */
+	filepicker.setKey('AaFOEqpVcRxiHd9edzvNNz');
+	
 });

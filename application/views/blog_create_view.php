@@ -23,9 +23,16 @@
 							</div>
 						</div>
 						<div class="control-group">
-							<?= form_label('Tags', 'form_tags', array('class' => 'control-label required')) ?>
+							<?= form_label('Tags', 'form_tags', array('class' => 'control-label')) ?>
 							<div class="controls">
 								<?= form_input(array('name' => 'tags', 'id' => 'form_tags', 'class' => 'span8', 'placeholder' => 'Tag,Tag,Tag (Only alphanumerics!)', 'value' => set_value('tags'))) ?>
+							</div>
+						</div>
+						<div class="control-group">
+							<script src="https://api.filepicker.io/v1/filepicker.js"></script>
+							<?= form_label('Upload', 'form_upload', array('class' => 'control-label')) ?>
+							<div class="controls">
+								<?= form_input(array('name' => 'upload', 'id' => 'form_upload', 'type' => 'filepicker', 'data-fp-button-class' => 'btn btn-info', 'onchange' => 'alert(event.fpfile.url)')) ?>
 							</div>
 						</div>
 						<div class="control-group">
@@ -39,7 +46,7 @@
 							</div>
 						</div>
 						<div class="form-actions">
-							<?= form_button(array('name' => 'submit', 'class' => 'btn btn-primary', 'type' => 'submit', 'value' => 'true', 'content' => 'Submit Application')) ?>
+							<?= form_button(array('name' => 'submit', 'class' => 'btn btn-primary', 'type' => 'submit', 'value' => 'true', 'content' => 'Submit Article')) ?>
 						</div>
 					<?= form_close() ?>
 				</article>

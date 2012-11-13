@@ -462,6 +462,8 @@ class Blog extends CI_Controller {
 				'blog_data'				=> $blog_data,
 			);
 			
+			#var_dump($this->input->post());
+			
 			$this->form_validation->set_rules($this->_settings['form_validation']['blog_create']);
 			
 			if($this->form_validation->run() == true){
@@ -512,12 +514,14 @@ class Blog extends CI_Controller {
 			'link'					=> url_title($this->input->post('title'), '_', true),
 		);
 		
-		$this->firephp->log($data['tags']);
+		#$this->firephp->log($data['tags']);
 		
 		$this->db->where('id', $id);
 		$this->db->update('blog', $data);
 		
-		if($this->db->affected_rows()){
+		#var_dump($this->db->affected_rows());
+		
+		if($this->db->affected_rows() >= 0){
 			
 			#all of these messages need to be moved to the view template, and the controller should be only passing status codes/messages!
 			$this->_view_data += array(
