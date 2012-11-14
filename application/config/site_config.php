@@ -10,7 +10,7 @@ $config['polycademy'] = array(
 	'site_domain'				=> 'polycademy.com',
 	'site_name'					=> 'Polycademy',
 	'site_desc'					=> 'an academy for web application entrepreneurship',
-	'meta_desc'					=> 'Polycademy is a school in Canberra that teaches web application development from a top-down framework. It is catered to potential web application entrepreneurs or developer/designers who want to reskill. Students are placed in teams and are taught web tech by starting with envisioning their own project to coding and deployment. Students finish the course not with a shiny paper, but an actual usable application. The development experience integrates industry practices such as using revision control systems and agile development methodologies, and also includes workshops and mentoring from established entrepreneurs/developers and designers in deploying the product to the market.',
+	'meta_desc'					=> 'Polycademy is a school in Canberra that teaches web application development and entrepreneurship. It is catered to potential web application entrepreneurs or developer/designers who want to reskill. Students are placed in teams and are taught web tech by starting with envisioning their own project to coding and deployment. Students finish the course with an actual product. Our three philosophies are minimum viable product, agile methodology and flipped classroom. Students will gain mentors and industry contacts through our demo days.',
 	'copyright'					=> '&copy; Polycademy & Code for Australia 2012',
 	'google_analytics_key'		=> 'UA-36175888-1',
 	'recaptcha_personal_email'	=> '<a href=\'http://www.google.com/recaptcha/mailhide/d?k=01q-bJV3WQrMYWD2quLJ7VPA==&c=FsmnfqaQraWCMzZB6tsagBZd557LPBLlxh80gaenMSo=\'>@polycademy.com</a>',
@@ -69,6 +69,43 @@ $config['polycademy'] = array(
 				'rules'		=> 'required|valid_email|min_length[5]|max_length[40]|trim',
 			),
 			array(
+				'field'		=> 'skype',
+				'label'		=> 'Skype ID',
+				'rules'		=> 'required|max_length[30]|trim|xss_clean',
+			),
+			array(
+				'field'		=> 'courses[]',
+				'label'		=> 'Courses',
+				'rules'		=> 'required|trim|xss_clean',
+			),
+			array(
+				'field'		=> 'agreement',
+				'label'		=> 'Agreement to TOS, Privacy Policy and Refund Policy',
+				'rules'		=> 'required|trim|xss_clean',
+			),
+			array(
+				'field'		=> 'build',
+				'label'		=> 'What do you want to build?',
+				'rules'		=> 'required|trim|xss_clean|htmlspecialchars|word_limit[400]',
+			),
+		),
+		'application_update'=> array(
+			array(
+				'field'		=> 'full_name',
+				'label'		=> 'Full Name',
+				'rules'		=> 'required|trim|xss_clean',
+			),
+			array(
+				'field'		=> 'email',
+				'label'		=> 'Email',
+				'rules'		=> 'required|valid_email|min_length[5]|max_length[40]|trim|xss_clean',
+			),
+			array(
+				'field'		=> 'phone',
+				'label'		=> 'Phone',
+				'rules'		=> 'trim|xss_clean',
+			),
+			array(
 				'field'		=> 'birthday',
 				'label'		=> 'Date of Birth',
 				'rules'		=> 'required|trim|xss_clean|valid_date[DD-MM-YYYY]',
@@ -99,11 +136,6 @@ $config['polycademy'] = array(
 				'rules'		=> 'required|trim|xss_clean',
 			),
 			array(
-				'field'		=> 'agreement',
-				'label'		=> 'Agreement to TOS, Privacy Policy and Refund Policy',
-				'rules'		=> 'required|trim|xss_clean',
-			),
-			array(
 				'field'		=> 'education_employment',
 				'label'		=> 'Education & Employment',
 				'rules'		=> 'required|trim|xss_clean|htmlspecialchars|word_limit[100]',
@@ -127,21 +159,6 @@ $config['polycademy'] = array(
 				'field'		=> 'video',
 				'label'		=> 'Video',
 				'rules'		=> 'trim|xss_clean|max_length[65]|htmlspecialchars|prep_url',
-			),
-			array(
-				'field'		=> 'tech',
-				'label'		=> 'Tech',
-				'rules'		=> 'trim|xss_clean',
-			),
-			array(
-				'field'		=> 'feedback',
-				'label'		=> 'Feedback',
-				'rules'		=> 'trim|xss_clean|htmlspecialchars|word_limit[200]',
-			),
-			array(
-				'field'		=> 'where',
-				'label'		=> 'Where',
-				'rules'		=> 'trim|xss_clean',
 			),
 		),
 		'blog_create'		=> array(

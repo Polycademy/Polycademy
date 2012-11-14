@@ -8,7 +8,7 @@
 							<div class="row-fluid">
 								<section class="slide_details span6">
 									<h4>What is it?</h4>
-									<p>The 21 weeks standard involves of 8 hours per week instruction time plus 3 hours per week free time. The class size is limited to 15 students and we recommend you to get into a team of 2 or 3. During after hours, the classroom will be open for you to chill out and meet the other students.</p>
+									<p>The 21 weeks standard involves of 8 hours per week instruction time plus 3 hours per week free time. That equals 231 hours of value. The class size is limited to 15 students and we recommend you to get into a team of 2 or 3. During after hours, the classroom will be open for you to chill out and meet the other students.</p>
 									<p>Our three philosophies at Polycademy is <strong>Minimum Viable Product (MVP)</strong>, <strong>Agile Development</strong> and <strong>Flipped Classroom</strong>.</p>
 									<ul>
 										<li><strong>MVP</strong> means designing your product so it is minimum enough to launch quickly to get market testing, and viable enough to make your product distinct from competitors.</li>
@@ -33,8 +33,7 @@
 										<li>Firebug</li>
 										<li>Browsers</li>
 										<li>Git & Github</li>
-										<li>System Ops</li>
-										<li>FTP</li>
+										<li>Command Line</li>
 										<li>AMP Stack</li>
 									</ul>
 									<ul class="detailed_list">
@@ -47,8 +46,8 @@
 									<ul class="detailed_list">
 										<li>Programming</li>
 										<li>PHP with Codeigniter</li>
-										<li>Filtering & Validation</li>
-										<li>Database CRUD with MySQL</li>
+										<li>Algorithms and Design Patterns</li>
+										<li>Database CRUD</li>
 										<li>Javascript with Coffeescript</li>
 										<li>AJAX with JSON</li>
 									</ul>
@@ -90,17 +89,19 @@
 								</section>
 								<section class="slide_details span6">
 									<h4>Ready to go?</h4>
-									<p>Tuition (AUD) can be paid with 2 options. If you are applying to the Code for Australia program, your tuition may be seriously discounted or be completely free.</p>
+									<p>Tuition (AUD) can be paid with 2 options. If you are applying to the Code for Australia program, your tuition may be seriously discounted or be completely free. Should you choose to terminate your course, you won't have any contractual obligations to pay the remainder of the fee.</p>
 									<div class="prices row-fluid">
 										<ul class="price_list span6">
 											<li>Upfront</li>
-											<li>$5499</li>
-											<li><strong>-$1000 (Special for Early Applications until January 15th 2013)</strong></li>
-											<li>$4499</li>
+											<li>$4999</li>
+											<li><strong>-$1000 (Special for the first 20 applications until January 1st 2013)</strong></li>
+											<li>$3999</li>
+											<li>No contract</li>
 										</ul>
 										<ul class="price_list span6">
 											<li>Weekly</li>
-											<li>$299 per week</li>
+											<li>$239 per week</li>
+											<li>No contract</li>
 										</ul>
 									</div>
 									<p>If 21 weeks is too long for you, or you're on a tourist visa, check out the the <a class="jump_course" href="#right" data-liquidslider-ref="course_slider">11 week express program</a> on the next slide.</p>
@@ -114,7 +115,7 @@
 							<div class="row-fluid">
 								<section class="slide_details span6">
 									<h4>What is it?</h4>
-									<p>The 11 weeks express is the same as the 21 weeks standard except that it involves of <strong>15 hours per week instruction time plus 6 hours per week free time</strong>. The class size is limited to 15 students and we recommend you to get into a team of 2 or 3. During after hours, the classroom will be open for you to chill out and meet the other students.</p>
+									<p>The 11 weeks express is the same as the 21 weeks standard except that it involves of <strong>15 hours per week instruction time plus 6 hours per week free time</strong>. That is 231 hours of value. The class size is limited to 15 students and we recommend you to get into a team of 2 or 3. During after hours, the classroom will be open for you to chill out and meet the other students.</p>
 									<p>If you are from overseas, an <?php echo anchor('http://www.immi.gov.au/visitors/tourist/', 'Australian tourist visa') ?> will give you enough time to stay in Canberra to complete the 11 week course. The student visa is not suitable for Polycademy.</p>
 								</section>
 								<section class="slide_details span6">
@@ -132,17 +133,19 @@
 							<div class="row-fluid">
 								<section class="slide_details span12">
 									<h4>Ready to go?</h4>
-									<p>Tuition (AUD) can be paid with 2 options. If you are applying to the Code for Australia program, your tuition may be seriously discounted or be completely free.</p>
+									<p>Tuition (AUD) can be paid with 2 options. If you are applying to the Code for Australia program, your tuition may be seriously discounted or be completely free. Should you choose to terminate your course, you won't have any contractual obligations to pay the remainder of the fee.</p>
 									<div class="prices row-fluid">
 										<ul class="price_list span6">
 											<li>Upfront</li>
-											<li>$5399</li>
-											<li><strong>-$1000 (Special for Early Applications until January 15th 2013)</strong></li>
-											<li>$4399</li>
+											<li>$4899</li>
+											<li><strong>-$1000 (Special for the first 10 applications until January 1st 2013)</strong></li>
+											<li>$3899</li>
+											<li>No contract</li>
 										</ul>
 										<ul class="price_list span6">
 											<li>Weekly</li>
-											<li>$559 per week</li>
+											<li>$459 per week</li>
+											<li>No contract</li>
 										</ul>
 									</div>
 									<p>If 11 weeks is too intensive for you, and you need to go to work or school, check out the the <a class="jump_course" href="#left" data-liquidslider-ref="course_slider">21 week standard program</a> on the previous slide.</p>
@@ -195,24 +198,6 @@
 							</div>
 						</div>
 						<div class="control-group">
-							<?= form_label('Date of Birth', 'form_birth', array('class' => 'control-label required')) ?>
-							<div class="controls">
-								<div class="input-append date date_picker" data-date="<?= date('d-m-Y', strtotime('-15 years',now())) ?>" data-date-format="dd-mm-yyyy">
-									<?= form_input(array('name' => 'birthday', 'id' => 'form_birth', 'class' => 'span4', 'placeholder' => 'DD-MM-YYYY (Use Cal Icon >)', 'value' => set_value('birthday'),)) ?>
-									<span class="add-on"><i class="icon-calendar"></i></span>
-								</div>
-							</div>
-						</div>
-						<div class="control-group">
-							<?= form_label('Location', 'form_location', array('class' => 'control-label required')) ?>
-							<div class="controls">
-								<div class="input-append">
-									<?= form_input(array('name' => 'location', 'id' => 'form_location', 'class' => 'span4', 'placeholder' => 'City - Country', 'value' => set_value('location'))) ?>
-									<span class="add-on"><i class="icon-map-marker"></i></span>
-								</div>
-							</div>
-						</div>
-						<div class="control-group">
 							<?= form_label('Skype ID', 'form_skype', array('class' => 'control-label required')) ?>
 							<div class="controls">
 								<div class="input-append">
@@ -222,20 +207,6 @@
 							</div>
 						</div>
 						<h3>Preferences <small>&lang;REQUIRED&rang;</small></h3>
-						<div class="control-group">
-							<?= form_label('Are you interested in applying for the Code for Australia program?', 'form_cfa', array('class' => 'control-label required')) ?>
-							<div class="controls">
-								<label class="radio inline" for="form_cfa_yes">
-									<input type="radio" name="cfa" id="form_cfa_yes" value="yes" <?= set_radio('cfa', 'yes') ?> />
-									Yes
-								</label>
-								<label class="radio inline" for="form_cfa_no">
-									<input type="radio" name="cfa" id="form_cfa_no" value="no" <?= set_radio('cfa', 'no', TRUE) ?> />
-									No
-								</label>
-								<span class="help-block">What is <?= anchor('http://codeforaustralia.com.au', 'Code for Australia?', array('title' => 'CFA is a social enterprise program @ Polycademy which gets students to build applications that deal with open government, open data and civic/community issues.')) ?> (It isn't up yet!)</span>
-							</div>
-						</div>
 						<div class="control-group">
 							<?= form_label('Tick all the courses you would prefer to get into. We\'ll try to get you into your most recent preference.', 'form_course', array('class' => 'control-label required')) ?>
 							<div class="controls">
@@ -305,51 +276,13 @@
 							</div>
 						</div>
 						<div class="control-group">
-							<?= form_label('Preferred Payment Options', 'form_payment_options', array('class' => 'control-label required')) ?>
-							<div class="controls">
-								<label class="radio inline" for="form_payment_options_upfront">
-									<input type="radio" name="payment_options" id="form_payment_options_upfront" value="upfront" <?= set_radio('payment_options', 'upfront') ?> />
-									Upfront
-								</label>
-								<label class="radio inline" for="form_payment_options_weekly">
-									<input type="radio" name="payment_options" id="form_payment_options_weekly" value="weekly" <?= set_radio('payment_options', 'weekly') ?> />
-									Weekly
-								</label>
-							</div>
-						</div>
-						<div class="control-group">
 							<?= form_label('Do you agree to the Terms of Service, Privacy Policy and Refund Policy?', 'form_agreement', array('class' => 'control-label required')) ?>
 							<div class="controls">
 								<label class="checkbox" for="form_agreement_yes">
 									<input type="checkbox" name="agreement" id="form_agreement_yes" value="yes" <?= set_checkbox('agreement', 'yes') ?> />
-									Yes I have read the policies and have agreed to them!
+									I agree!
 								</label>
 								<span class="help-block">Check out the <?= anchor($links['terms_of_service'], 'TOS & Privacy Policy') ?> and <?= anchor($links['refund_policy'], 'Refund Policy') ?>.</span>
-							</div>
-						</div>
-						<h3>Help us Help you! <small>&lang;REQUIRED&rang;</small></h3>
-						<h5>These will help you get selected with the proper cohort.</h5>
-						<div class="control-group">
-							<?= form_label('Education and Employment Milestones', 'form_education_employment', array('class' => 'control-label required')) ?>
-							<div class="controls">
-								<?= form_textarea(array('name' => 'education_employment', 'id' => 'form_education_employment', 'class' => 'span5', 'placeholder' => 'Year - Milestone', 'value' => set_value('education_employment'))) ?>
-								<span class="help-block">Limit 100 words.</span>
-							</div>
-						</div>
-						<div class="control-group">
-							<?= form_label('Work or Study Commitments', 'form_work_study', array('class' => 'control-label required')) ?>
-							<div class="controls">
-								<div class="input-append">
-									<?= form_input(array('name' => 'work_study', 'id' => 'form_work_study', 'class' => 'span4', 'placeholder' => 'Make sure you have time!', 'value' => set_value('work_study'))) ?>
-									<span class="add-on"><i class="icon-time"></i></span>
-								</div>
-							</div>
-						</div>
-						<div class="control-group">
-							<?= form_label('Technical Experience in Web Apps', 'form_experience', array('class' => 'control-label required')) ?>
-							<div class="controls">
-								<?= form_textarea(array('name' => 'experience', 'id' => 'form_experience', 'class' => 'span5', 'placeholder' => 'Name - Link - Function (No experience is fine too!)', 'value' => set_value('experience'))) ?>
-								<span class="help-block">Limit 200 words.</span>
 							</div>
 						</div>
 						<div class="control-group">
@@ -357,91 +290,6 @@
 							<div class="controls">
 								<?= form_textarea(array('name' => 'build', 'id' => 'form_build', 'class' => 'span5', 'placeholder' => 'Your idea is safe with us! Until it goes live of course...', 'value' => set_value('build'))) ?>
 								<span class="help-block">Limit 400 words.</span>
-							</div>
-						</div>
-						<div class="control-group">
-							<?= form_label('Link to a video about yourself, teach or show us something you\'re good at!', 'form_video', array('class' => 'control-label')) ?>
-							<div class="controls">
-								<div class="input-append">
-									<?= form_input(array('name' => 'video', 'id' => 'form_video', 'class' => 'span4', 'placeholder' => 'Youtube?', 'value' => set_value('video'))) ?>
-									<span class="add-on"><i class="icon-film"></i></span>
-								</div>
-								<span class="help-block">(optional)</span>
-							</div>
-						</div>
-						<h3>Survey! <small>&lang;OPTIONAL&rang;</small></h3>
-						<h5>These are completely optional, they don't affect your application.</h5>
-						<div class="control-group">
-							<?= form_label('What would you like us to offer the most in the future?', 'form_tech', array('class' => 'control-label')) ?>
-							<div class="controls">
-								<label class="radio" for="form_ruby_rails">
-									<input type="radio" name="tech" id="form_ruby_rails" value="ruby_rails" <?= set_radio('tech', 'ruby_rails') ?> />
-									Ruby on Rails - alternative to PHP
-								</label>
-								<label class="radio" for="form_node">
-									<input type="radio" name="tech" id="form_node" value="node" <?= set_radio('tech', 'node') ?> />
-									Node.js - alternative to PHP
-								</label>
-								<label class="radio" for="form_webgl">
-									<input type="radio" name="tech" id="form_webgl" value="webgl" <?= set_radio('tech', 'webgl') ?> />
-									WebGL - for 3D graphics & Data Visualisation
-								</label>
-								<label class="radio" for="form_phonegap">
-									<input type="radio" name="tech" id="form_phonegap" value="phonegap" <?= set_radio('tech', 'phonegap') ?> />
-									Phonegap - HTML5/CSS/JS for Mobile Applications
-								</label>
-								<label class="radio" for="form_ruby_mobile">
-									<input type="radio" name="tech" id="form_ruby_mobile" value="ruby_mobile" <?= set_radio('tech', 'ruby_mobile') ?> />
-									RhoMobile/Ruboto/Ruby Motion/MobiRuby - Ruby for Mobile Applications
-								</label>
-								<label class="radio" for="form_php">
-									<input type="radio" name="tech" id="form_php" value="php" <?= set_radio('tech', 'php') ?> />
-									PHP is fine!
-								</label>
-							</div>
-						</div>
-						<div class="control-group">
-							<?= form_label('What do you think of the timing and dates of the courses on offer?', 'form_feedback', array('class' => 'control-label')) ?>
-							<div class="controls">
-								<?= form_textarea(array('name' => 'feedback', 'id' => 'form_feedback', 'class' => 'span5', 'placeholder' => 'Any suggestions?', 'value' => set_value('feedback'))) ?>
-								<span class="help-block">Limit 200 words.</span>
-							</div>
-						</div>
-						<div class="control-group">
-							<?= form_label('Where did you hear about us?', 'form_where', array('class' => 'control-label')) ?>
-							<div class="controls">
-								<label class="radio" for="form_friend">
-									<input type="radio" name="where" id="form_friend" value="Friend/Family/Coworker" <?= set_radio('where', 'Friend/Family/Coworker') ?> />
-									Friend/Family/Coworker
-								</label>
-								<label class="radio" for="form_google">
-									<input type="radio" name="where" id="form_google" value="Google" <?= set_radio('where', 'Google') ?> />
-									Google
-								</label>
-								<label class="radio" for="form_facebook">
-									<input type="radio" name="where" id="form_facebook" value="Facebook" <?= set_radio('where', 'Facebook') ?> />
-									Facebook
-								</label>
-								<label class="radio" for="form_twitter">
-									<input type="radio" name="where" id="form_twitter" value="Twitter" <?= set_radio('where', 'Twitter') ?> />
-									Twitter
-								</label>
-								<label class="radio" for="form_alumni">
-									<input type="radio" name="where" id="form_alumni" value="Alumni or Staff" <?= set_radio('where', 'Alumni or Staff') ?> />
-									Alumni or Staff
-								</label>
-								<label class="radio" for="form_news">
-									<input type="radio" name="where" id="form_news" value="News Site" <?= set_radio('where', 'News Site') ?> />
-									News Site
-								</label>
-								<label class="radio" for="form_media">
-									<input type="radio" name="where" id="form_media" value="TV/Newspaper" <?= set_radio('where', 'TV/Newspaper') ?> />
-									TV/Newspaper
-								</label>
-								<label class="radio" for="form_other">
-									<input type="radio" name="where" id="form_other" value="Other" <?= set_radio('where', 'Other') ?> />
-									Other
-								</label>
 							</div>
 						</div>
 						<div class="control-group">

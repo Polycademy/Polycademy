@@ -67,8 +67,8 @@ class Courses extends CI_Controller {
 		$course_dates_slider = $this->_course_dates($course_dates, $duration, $format);
 		$course_dates_table = $this->_course_dates($course_dates, $duration, $format_for_table);
 		
-		$this->firephp->log($course_dates_slider);
-		$this->firephp->log($course_dates_table);
+		#$this->firephp->log($course_dates_slider);
+		#$this->firephp->log($course_dates_table);
 		
 		$this->_view_data += array(
 			'page_title'			=> 'Courses',
@@ -109,20 +109,9 @@ class Courses extends CI_Controller {
 			'app_date'				=> date('Y-m-d H:i:s', now()),
 			'name'					=> implode(' ', $this->input->post('full_name')),
 			'email'					=> $this->input->post('email'),
-			'birthday'				=> $this->input->post('birthday'),
-			'location'				=> $this->input->post('location'),
 			'skype'					=> $this->input->post('skype'),
-			'cfa'					=> ($this->input->post('cfa') == 'yes') ? 1 : 0,
 			'courses'				=> implode(',', $this->input->post('courses')),
-			'payment_options'		=> $this->input->post('payment_options'),
-			'education_employment'	=> $this->input->post('education_employment'),
-			'work_study'			=> $this->input->post('work_study'),
-			'experience'			=> $this->input->post('experience'),
 			'build'					=> $this->input->post('build'),
-			'video'					=> $this->input->post('video'),
-			'tech'					=> $this->input->post('tech'),
-			'feedback'				=> $this->input->post('feedback'),
-			'where'					=> $this->input->post('where'),
 		);
 		
 		$query = $this->db->insert('application_form', $data); 
