@@ -286,11 +286,14 @@
 					</section>
 					<section class="location_panel span4">
 						<h3>Location</h3>
-						<p>Polycademy is researching for the best classroom in Canberra. This startup is bootstrapped so we’re looking for the most cost effective space.<br /><br />There are opportunities for collaboration in colocation or coworking with software development companies.<br /><br />Contact us for if you have ideas, or if you are interested in collaboration at <?=$recaptcha_personal_email?></p>
+						<p>
+							We're looking into <?= anchor('https://twitter.com/entry29', 'Entry 29') ?>, a new coworking place being launched in Canberra. It's next to the Street Theatre, see it <?= anchor('https://maps.google.com.au/maps/ms?msa=0&amp;msid=217597873095148299897.0004ce871cbdfc1fc8467&amp;ie=UTF8&amp;t=h&amp;ll=-35.277978,149.123869&amp;spn=0.001858,0.001609&amp;z=18&amp;source=embed', 'here', 'target="_blank"') ?>
+							<iframe class="location_gmap" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com.au/maps/ms?msa=0&amp;msid=217597873095148299897.0004ce871cbdfc1fc8467&amp;ie=UTF8&amp;t=h&amp;ll=-35.277978,149.123869&amp;spn=0.001858,0.001609&amp;z=18&amp;output=embed"></iframe>
+						</p>
 					</section>
 					<section class="space_panel span4">
 						<h3>Space</h3>
-						<p>The classroom space will include 15 - 16 workstations. There will be whiteboards, projectors, tables, and  chairs to help students collaborate. A function room will be used for events and catering. We’ll even try to get a vending machine.<br /><br />After class, the classroom will be open day & night for coders and designers to chill out and discuss.<br /><br />If you know a place please contact us at <?=$recaptcha_personal_email?></p>
+						<p>The classroom space will include 15 - 16 workstations. There will be whiteboards, projectors, tables, and  chairs to help students collaborate. A function room will be used for events and catering. We’ll even try to get a vending machine.<br /><br />After class, the classroom will be open day & night for coders and designers to chill out and discuss.<br /><br />The space at Entry 29 is still being refurbished by a group of entrepreneurs, and the project is being led by Rory Ford. Check out our <?= anchor('blog/id/130/entry_29_a_possible_location_for_polycademy', 'blog article') ?> on what the inside currently looks like!</p>
 					</section>
 				</article>
 				<h2>Class starts in 2013 Jan/Feb, <?php echo anchor($links['navigation']['courses'], 'register your interest'); ?> and <?= anchor('http://eepurl.com/rDJTv', 'get informed!', 'target="_blank"') ?></h2>
