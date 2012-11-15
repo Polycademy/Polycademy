@@ -221,6 +221,7 @@ class Blog extends CI_Controller {
 		
 		$this->_view_data += array(
 			'page_title'			=> $blog_data[0]['title'],
+			'blog_meta_desc'		=> strip_tags(character_limiter($blog_data[0]['content'], 260, false)),
 			'blog_data'				=> $blog_data,
 			'pager'					=> $pager,
 			'single_page'			=> true,

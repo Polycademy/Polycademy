@@ -8,7 +8,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title><?=$page_title?> - <?= ($this->router->fetch_class() == $this->router->routes['default_controller']) ? $site_desc : $site_name . ' is ' . $site_desc ?></title>
-        <meta name="description" content="<?=$meta_desc?>">
+        <meta name="description" content="<?= ((empty($single_page)) ? $meta_desc : $blog_meta_desc) ?>">
 		<meta name="google-site-verification" content="Mq6Yv8R9mGJK9SrUH5oZ8SNB8Z_WJHwkdkgp49ukHYE" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="shortcut icon" href="<?php echo base_url() ?>favicon.ico">
