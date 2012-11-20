@@ -96,12 +96,10 @@
 											<li>$4999</li>
 											<li><strong>-$1000 (Special for the first 20 applications until January 1st 2013)</strong></li>
 											<li>$3999</li>
-											<li>No contract</li>
 										</ul>
 										<ul class="price_list span6">
 											<li>Weekly</li>
 											<li>$239 per week</li>
-											<li>No contract</li>
 										</ul>
 									</div>
 									<p>If 21 weeks is too long for you, or you're on a tourist visa, check out the the <a class="jump_course" href="#right" data-liquidslider-ref="course_slider">11 week express program</a> on the next slide.</p>
@@ -140,12 +138,10 @@
 											<li>$4899</li>
 											<li><strong>-$1000 (Special for the first 10 applications until January 1st 2013)</strong></li>
 											<li>$3899</li>
-											<li>No contract</li>
 										</ul>
 										<ul class="price_list span6">
 											<li>Weekly</li>
 											<li>$459 per week</li>
-											<li>No contract</li>
 										</ul>
 									</div>
 									<p>If 11 weeks is too intensive for you, and you need to go to work or school, check out the the <a class="jump_course" href="#left" data-liquidslider-ref="course_slider">21 week standard program</a> on the previous slide.</p>

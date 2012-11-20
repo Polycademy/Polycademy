@@ -263,7 +263,7 @@
 							<span class="image_rollover"></span>
 							<img src="<?php echo base_url($links['img_assets']) ?>/team_icon_roger.png" />
 						</div>
-						<div class="image_rollover_container team_popovers" rel="popover" data-content="<p>Rory Ford is a volunteer advisor to Polycademy. He's an experienced  lean startup advisor. His career spans product development, customer development, management, marketing, commercialisation and investment in Cordelta, CutOrange, Wooboard and Pollenizer. He's worked with numerous businesses from small affiliate sites to venture funded companies. He is currently working as a Customer Development Consultant at Cordelta in Canberra.<br /><br />You can contact Rory Ford at <a href='http://www.linkedin.com/in/roryford' target='_blank'>LinkedIn</a></p>" data-title="Rory Ford - Advisor">
+						<div class="image_rollover_container team_popovers" rel="popover" data-content="<p>Rory is an experienced product manager and online marketer who is perhaps better known for promoting lean startup principles. A director of Entry 29, a former employee at Pollenizer in Sydney and with hands-on experience working on more than ten startups, Rory is a well regarded addition to the Polycademy advisory team.<br /><br />You can contact Rory Ford at <a href='http://www.linkedin.com/in/roryford' target='_blank'>LinkedIn</a></p>" data-title="Rory Ford - Advisor">
 							<span class="image_rollover"></span>
 							<img src="<?php echo base_url($links['img_assets']) ?>/team_icon_rory.png" />
 						</div>
