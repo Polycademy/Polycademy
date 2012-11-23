@@ -642,7 +642,7 @@ abstract class CI_DB_forge {
 			show_error('Field information is required.');
 		}
 
-		$sqls = $this->_alter_table('CHANGE', $this->db->dbprefix.$table, $this->fields);
+		$sqls = $this->_alter_table('CHANGE', $this->db->dbprefix.$table, $this->_process_fields());
 		$this->_reset();
 		if ($sqls === FALSE)
 		{
@@ -762,7 +762,7 @@ abstract class CI_DB_forge {
 						$attributes['CONSTRAINT'] = $this->db->escape($attributes['CONSTRAINT']);
 					default:
 						$field['length'] = is_array($attributes['CONSTRAINT'])
-								? '('.implode(',', $attributes['CONSTRAINT']).')'
+								? "('".implode("','", $attributes['CONSTRAINT'])."')"
 								: '('.$attributes['CONSTRAINT'].')';
 						break;
 				}
