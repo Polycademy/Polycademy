@@ -35,6 +35,7 @@
 										<li>Git & Github</li>
 										<li>Command Line</li>
 										<li>AMP Stack</li>
+										<li>IDE</li>
 									</ul>
 									<ul class="detailed_list">
 										<li>Design</li>

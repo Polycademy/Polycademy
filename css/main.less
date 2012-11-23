@@ -664,11 +664,12 @@ header.navbar{
 		ul.detailed_list{
 			float: left;
 			width: 140px;
-			margin: 0 3%;
+			height: 235px;
 			li{
 				&:first-child{
 					list-style-type: none;
 					font-weight: bold;
+					margin-top: 0;
 				}
 			}
 		}
@@ -1109,7 +1110,7 @@ iframe.location_gmap{
 	code{
 		white-space: pre-wrap;
 	}
-	p{
+	p, ul, ol{
 		font-family: georgia, verdana, sans-serif;
 		font-size: 150%;
 		line-height: 160%;
@@ -1117,6 +1118,13 @@ iframe.location_gmap{
 	}
 	p + p{
 		text-indent: 5%;
+	}
+	ul, ol{
+		list-style-position:inside;
+		margin: @content_separation_height 0 @content_separation_height 5%;
+		li{
+			margin-bottom: 0.5em;
+		}
 	}
 	iframe, object{
 		display: block;
