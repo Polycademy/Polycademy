@@ -31,6 +31,7 @@ $config['polycademy'] = array(
 		'navigation'	=> array(
 			'home'			=> '',
 			'courses'		=> 'courses',
+			'code for australia'	=> 'http://codeforaustralia.com.au',
 			#'alumni'		=> 'alumni',
 			'blog'			=> 'blog',
 			#'get involved'	=> 'get_involved',
