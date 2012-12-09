@@ -32,6 +32,7 @@ $config['polycademy'] = array(
 			'home'			=> '',
 			'courses'		=> 'courses',
 			'code for australia'	=> 'http://codeforaustralia.com.au',
+			'php bounce'	=> 'http://phpbounce.aws.af.cm/',
 			#'alumni'		=> 'alumni',
 			'blog'			=> 'blog',
 			#'get involved'	=> 'get_involved',
