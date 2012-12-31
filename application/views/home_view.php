@@ -250,6 +250,7 @@
 						</div>
 					</section>
 				</article>
+				<h2>Exclusive: Do you want a chance to learn at Polycademy for free? Check out our <?php echo anchor($links['scholarship'], 'scholarship competition') ?>.</h2>
 			</div>
 		</div>
 		

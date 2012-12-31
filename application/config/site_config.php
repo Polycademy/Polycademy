@@ -46,6 +46,7 @@ $config['polycademy'] = array(
 		'forum'				=> 'forum',
 		'terms_of_service'	=> 'terms_of_service',
 		'refund_policy'		=> 'refund_policy',
+		'scholarship'		=> 'scholarship',
 		#resources for base_url()
 		'js_assets'			=> 'js',
 		'css_assets'		=> 'css',
