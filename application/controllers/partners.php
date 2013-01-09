@@ -1,8 +1,8 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Get_involved extends CI_Controller {
+class Partners extends CI_Controller {
 
-	protected $_view_data; //only accessible in this class and any classes that extend home
+	protected $_view_data;
 	protected $_settings;
 	protected $_footer_blog = false;
 	protected $_rss_feeds = false;
@@ -29,11 +29,11 @@ class Get_involved extends CI_Controller {
 	public function index(){
 		
 		$this->_view_data += array(
-			'page_title'			=> 'Get Involved',
+			'page_title'			=> 'Partners',
 		);
 		
 		$this->load->view('header_view', $this->_view_data);
-		$this->load->view('get_involved_view', $this->_view_data);
+		$this->load->view('partners_view', $this->_view_data);
 		$this->load->view('footer_view', $this->_view_data);
 		
 	}

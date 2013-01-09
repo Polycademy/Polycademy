@@ -2,16 +2,33 @@
  * Polycademy Responsive CSS
  */
 
+body{
+	padding: 0;
+}
+ 
 /* Large desktop */
 /* @media (min-width: 1200px) {} */
 
 /* Portrait tablet to landscape and desktop */
 /* @media (min-width: 768px) and (max-width: 979px) {} */
 
+@media (min-width: 970px) and (max-width: 1192px){
+	
+	header.navbar .nav{
+		float: none;
+		clear: both;
+	}
+	header.navbar .logo{
+		margin-bottom: 18px;
+	}
+	
+}
+
+
 /* Get the nav to stop floating right none once its been collapsed */
 @media (max-width: 970px) {
-	.nav {
-		float: none !important;
+	header.navbar .nav{
+		float: none;
 	}
 	.white_text_container{
 		margin: 20px 6% !important;
@@ -35,6 +52,11 @@
 @media (max-width: 767px){
 	.logistics_grid{
 		.team_panel{
+			padding: 0 18%;
+		}
+	}
+	.partners{
+		.partner_profiles{
 			padding: 0 18%;
 		}
 	}

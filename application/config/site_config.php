@@ -31,14 +31,13 @@ $config['polycademy'] = array(
 		'navigation'	=> array(
 			'home'			=> '',
 			'courses'		=> 'courses',
+			'partners'		=> 'partners',
 			'code for australia'	=> 'http://codeforaustralia.com.au',
 			'php bounce'	=> 'http://phpbounce.aws.af.cm/',
 			'events'		=> 'http://polycademy.eventbrite.com.au/',
 			#'alumni'		=> 'alumni',
-			'blog'			=> 'blog',
-			#'get involved'	=> 'get_involved',
-			#'events'		=> 'events',
 			#'devhub'		=> 'devhub',
+			'blog'			=> 'blog',
 		),
 		#other links
 		'notices'			=> 'blog/tags/notices',
