@@ -38,7 +38,10 @@
 						<h3>
 							<?php echo anchor($links['notices'], 'Notices') ?>
 						</h3>
-						<p>We’re hiring teachers who would specialise in web design & web development.<br /><br />We’re interested in acquiring mentors, investors and employers who are interested to get involved.<br /><br />We’re also looking for a good location for the classroom.<br /><br />Find out more at <a href='http://www.google.com/recaptcha/mailhide/d?k=01q-bJV3WQrMYWD2quLJ7VPA==&c=FsmnfqaQraWCMzZB6tsagBZd557LPBLlxh80gaenMSo='>@polycademy.com</a></p>
+						<p>We are hiring teachers who specialise in web design & web development. If you're interested to become a co-instructor or teaching assistant check out our jobs at <a href='http://siliconbeachaustralia.org/jobs/jobs/lead-instructor-web-application-development-entrepreneurship-education/'>Silicon Beach Jobs</a>.
+						<br />
+						<br />
+						You can contact us at <a href='http://www.google.com/recaptcha/mailhide/d?k=01q-bJV3WQrMYWD2quLJ7VPA==&c=FsmnfqaQraWCMzZB6tsagBZd557LPBLlxh80gaenMSo='>@polycademy.com</a></p>
 					</section>
 				</article>
 				<ul class="footer_links">

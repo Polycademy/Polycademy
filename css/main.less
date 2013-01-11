@@ -1,6 +1,5 @@
 @import url("bootstrap.less"); /* Watch out for pathing issues, this is relative from this file because it is being compiled by Simpless */
-@import url("bootstrap-responsive.less");
-@import url("responsive.less");
+
 
 /*!
  * Polycademy CSS
@@ -168,7 +167,6 @@ h5{
    CONTAINERS
    ========================================================================== */
 body{
-	padding: 0;
 	font-family: arial, sans-serif;
 }
 
@@ -453,6 +451,7 @@ header.navbar{
 		font-size: 18px;
 		float: right;
 		clear: right;
+		margin: 0;
 		li > a{
 			color: #6c6c6c;
 			text-shadow: none;
@@ -866,8 +865,14 @@ iframe.location_gmap{
 }
 
 /* ==========================================================================
-   TOS & Privacy Policy & Refund Policy
+   TOS & Privacy Policy & Refund Policy & Scholarship
    ========================================================================== */
+.scholarship, .refund_policy, .terms_of_service, .privacy_policy{
+	section{
+		max-width: 660px;
+		margin: 0 auto;
+	}
+}
    
 /* ==========================================================================
    COURSE APPLICATION FORM
@@ -1124,6 +1129,7 @@ iframe.location_gmap{
 		margin: @content_separation_height 0 @content_separation_height 5%;
 		li{
 			margin-bottom: 0.5em;
+			line-height: 160%;
 		}
 	}
 	iframe, object{
@@ -1160,6 +1166,54 @@ iframe.location_gmap{
 	}
 }
 
+/* ==========================================================================
+   PARTNERS
+   ========================================================================== */
+.partners{
+	section{
+		max-width: 660px;
+		margin: 35px auto;
+		h3{
+			margin: 10px;
+		}
+		.partner_profiles{
+			text-align: center;
+			.image_rollover_container{
+				display: inline-block;
+				border: 1px solid #760f13;
+				margin: 2px;
+				cursor:pointer;
+				&:hover{
+					border: 1px solid #dfdfdf;
+				}
+				span.image_rollover {
+					-o-transition-duration: 1s;
+					-moz-transition-duration: 1s;
+					-webkit-transition: -webkit-transform 1s;
+					background:url(../img/mag_glass.png) center center no-repeat #000;
+					height: @team_icon_height;
+					width: @team_icon_width;
+					position: absolute;
+					z-index: 10;
+					-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+					opacity: 0;
+				}
+				span.image_rollover:hover {
+					-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
+					opacity: .7;
+					-o-transition-duration: 1s;
+					-moz-transition-duration: 1s;
+					-webkit-transition: -webkit-transform 1s;
+					-webkit-box-shadow: 0px 0px 4px #000;
+					-moz-box-shadow: 0px 0px 4px #000;
+					box-shadow: 0px 0px 4px #000;
+				}
+			}
+		}
+	}
+}
+   
+   
 /* ==========================================================================
    DATEPICKER
    ========================================================================== */
@@ -1416,3 +1470,10 @@ footer{
 		}
 	}
 }
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+
+@import url("bootstrap-responsive.less");
+@import url("responsive.less");

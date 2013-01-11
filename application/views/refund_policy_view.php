@@ -2,10 +2,9 @@
 		<div class="blue_container">
 			<div class="container">
 				<article class="refund_policy blue_text_container">
-					<h2>Refund Policy</h2>
-					<p>Effective date: October 30th 2012</p>
-					<p>To participate in Polycademy's program you need to agree to this refund policy.</p>
+					<h1>Refund Policy</h1>
 					<section>
+						<p>Effective date: October 30th 2012</p>
 						<h4>1. The Agreement</h4>
 						<p>This agreement is between the student (STUDENT) and Polycademy (POLYCADEMY) regarding its courses.</p>
 					</section>
