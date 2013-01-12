@@ -4,7 +4,7 @@
 				<article class="refund_policy blue_text_container">
 					<h1>Refund Policy</h1>
 					<section>
-						<p>Effective date: October 30th 2012</p>
+						<p>Effective date: January 12th 2013</p>
 						<h4>1. The Agreement</h4>
 						<p>This agreement is between the student (STUDENT) and Polycademy (POLYCADEMY) regarding its courses.</p>
 					</section>
@@ -14,7 +14,7 @@
 					</section>
 					<section>
 						<h4>3. Tuition</h4>
-						<p>STUDENT understands that a deposit ($500) is due within 7 days of being accepted to POLYCADEMY and have signed and returned this agreement to POLYCADEMY. Being accepted to POLYCADEMY does not mean you have signed this agreement. This is effective for both upfront and weekly payments.</p>
+						<p>STUDENT understands that a deposit ($500) and is due within 1 day of accepting this agreement and being accepted to POLYCADEMY. This is effective for both upfront and weekly payments.</p>
 						<p>If STUDENT elects to pay upfront, the remainder of the upfront payment is due within 21 days of signing this agreement.</p>
 						<p>If STUDENT elects to pay weekly, the first week's payment is due within 21 days of signing this agreement. If STUDENT is paying weekly, then the deposit will be refunded at the course's completion.</p>
 						<p>The deposit is non-refundable if the STUDENT elects to cancel the agreement.</p>
