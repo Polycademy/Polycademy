@@ -7,7 +7,7 @@
 						<h3>Mentors</h3>
 						<p>Our mentors are volunteers who have had extensive experience in the development industry or have relevant business experience. They are here to help you learn!</p>
 						<div class="partner_profiles">
-							<div class="image_rollover_container team_popovers" rel="popover" data-content="<p>Felix has formal qualifications in Economics, and has worked in Canberra for more than half a decade. His expertise includes python and the Google-App-Engine stack, as well as data mining and data visualisation.<br /><br />He is the founder and developer of <a href='www.SharehouseGame.com'>www.SharehouseGame.com</a> and is currently working as a Senior Data Miner in the Australian Government. He is a strong subscriber to the Agile and Lean methodologies.<br /><br />You can check out him out at <a href='http://twitter.com/xlfe'>Twitter</a>.</p>" data-title="Felix Barbalet - Data Scientist">
+							<div class="image_rollover_container team_popovers" rel="popover" data-content="<p>Felix has formal qualifications in Economics, and has worked in Canberra for more than half a decade. His expertise includes python and the Google-App-Engine stack, as well as data mining and data visualisation.<br /><br />He is the founder and developer of <a href='http://www.SharehouseGame.com'>www.SharehouseGame.com</a> and is currently working as a Senior Data Miner in the Australian Government. He is a strong subscriber to the Agile and Lean methodologies.<br /><br />You can check out him out at <a href='http://twitter.com/xlfe'>Twitter</a>.</p>" data-title="Felix Barbalet - Data Scientist">
 								<span class="image_rollover"></span>
 								<img src="<?php echo base_url($links['img_assets']) ?>/mentor_icon_felix.png" />
 							</div>
