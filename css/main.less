@@ -617,7 +617,93 @@ header.navbar{
 }
 
 /* ==========================================================================
-   COURSE SLIDER
+   COURSE DEMO
+   ========================================================================== */
+.course_demo{
+	margin: @grid_margins auto;
+	background: url('../img/another_bg.png');
+	border: 2px solid #08395e;
+	padding: 20px;
+	.course_title{
+		margin: 0 auto;
+	}
+	.course_grid{
+		.row-fluid{
+			margin: 0;
+		}
+	}
+	.course_details{
+		overflow: hidden;
+		margin-top: 20px;
+		margin-bottom: 20px;
+		.outline_transition (#277094, 250ms, linear, 1px, dashed, #b8e8ff, 10px);
+		p{
+			color: #E6EAEC;
+			line-height: 22px;
+		}
+		a{
+			color: #bbbbbb;
+			&:hover{
+				color: #989898;
+			}
+		}
+		h4{
+			text-align: left;
+		}
+		ul{
+			color: #E6EAEC;
+			margin-top: 15px;
+			margin-bottom: 15px;
+			li{
+				margin: 10px 0;
+				line-height: 22px;
+			}
+		}
+		ul.detailed_list{
+			float: left;
+			width: 140px;
+			height: 235px;
+			li{
+				&:first-child{
+					list-style-type: none;
+					font-weight: bold;
+					margin-top: 0;
+				}
+			}
+		}
+		.date_times{
+			margin: 4px 3%;
+			ul{
+				li{
+					margin: 10px 15px;
+					&:first-child{
+						margin: 0;
+						text-decoration: underline;
+						list-style-type: none;
+						font-weight: bold;
+					}
+				}
+			}
+		}
+		.prices{
+			margin: 4px 3%;
+			ul{
+				li{
+					margin: 10px 15px;
+					&:first-child{
+						margin: 0;
+						text-decoration: underline;
+						list-style-type: none;
+						font-weight: bold;
+					}
+				}
+			}
+		}
+	}
+}
+   
+/* ==========================================================================
+   COURSE SLIDER (not used currently)
    ========================================================================== */
 #course_slider-wrapper{
 	margin: @grid_margins auto;

@@ -91,6 +91,11 @@ $config['polycademy'] = array(
 				'label'		=> 'What do you want to build?',
 				'rules'		=> 'required|trim|xss_clean|htmlspecialchars|word_limit[400]',
 			),
+			array(
+				'field'		=> 'where',
+				'label'		=> 'Where did you here about us?',
+				'rules'		=> 'trim|xss_clean|htmlspecialchars|word_limit[400]',
+			),
 		),
 		'application_update'=> array(
 			array(
@@ -157,6 +162,11 @@ $config['polycademy'] = array(
 				'field'		=> 'build',
 				'label'		=> 'What do you want to build?',
 				'rules'		=> 'required|trim|xss_clean|htmlspecialchars|word_limit[400]',
+			),
+			array(
+				'field'		=> 'where',
+				'label'		=> 'Where did you here about us?',
+				'rules'		=> 'trim|xss_clean|htmlspecialchars|word_limit[400]',
 			),
 			array(
 				'field'		=> 'video',

@@ -1,155 +1,104 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 		<div class="blue_container">
 			<div class="container">
-				<article class="liquid-slider" id="course_slider">
-					<section class="standard_slide">
-						<h1 class="slide_title">21 Weeks Standard</h1>
-						<div class="slide_grid">
-							<div class="row-fluid">
-								<section class="slide_details span6">
-									<h4>What is it?</h4>
-									<p>The 21 weeks standard involves of 8 hours per week instruction time plus 3 hours per week free time. That equals 231 hours of value. The class size is limited to 15 students and we recommend you to get into a team of 2 or 3. During after hours, the classroom will be open for you to chill out and meet the other students.</p>
-									<p>Our three philosophies at Polycademy is <strong>Minimum Viable Product (MVP)</strong>, <strong>Agile Development</strong> and <strong>Flipped Classroom</strong>.</p>
-									<ul>
-										<li><strong>MVP</strong> means designing your product so it is minimum enough to launch quickly to get market testing, and viable enough to make your product distinct from competitors.</li>
-										<li><strong>Agile Development</strong> is about rapid and flexible incremental iteration to code. Rather than memorising the whole corpus of programming in 21 weeks, each week is a milestone in which parts of your product will be deployed.</li>
-										<li><strong>Flipped Classroom</strong> means that before class an online ecosystem of materials will be provided to you. During class we'll keep it practical by spending time discussing models, cutting code, and deploying applications to the cloud.</li>
-									</ul>
-									<p>We'll be arranging your team with a mentor who will volunteer their time to coach your team on the entrepenurial or development process.</p>
-									<p>At the end of 21 weeks, a careers/pitching fair will be opened. Tech employers and investors will be invited to check out your work.</p>
-								</section>
-								<section class="slide_details span6">
-									<h4>What will you learn?</h4>
-									<p>The following details may be adjusted after launch.</p>
-									<ul class="detailed_list">
-										<li>Theory</li>
-										<li>Agile Development Method</li>
-										<li>MVP Design</li>
-										<li>MoSCoW Features</li>
-										<li>Object Oriented Programming</li>
-									</ul>
-									<ul class="detailed_list">
-										<li>Environment</li>
-										<li>Firebug</li>
-										<li>Browsers</li>
-										<li>Git & Github</li>
-										<li>Command Line</li>
-										<li>AMP Stack</li>
-										<li>IDE</li>
-									</ul>
-									<ul class="detailed_list">
-										<li>Design</li>
-										<li>User Experience Design</li>
-										<li>Adobe Photoshop Mockups</li>
-										<li>HTML with H5BP and Bootstrap</li>
-										<li>CSS with LESS.css</li>
-									</ul>
-									<ul class="detailed_list">
-										<li>Programming</li>
-										<li>PHP with Codeigniter</li>
-										<li>Algorithms and Design Patterns</li>
-										<li>Database CRUD</li>
-										<li>Javascript with Coffeescript</li>
-										<li>AJAX with JSON</li>
-									</ul>
-									<ul class="detailed_list">
-										<li>Performance</li>
-										<li>Browser Caching</li>
-										<li>File Caching</li>
-										<li>Memcached</li>
-										<li>Opcode Caching</li>
-										<li>CDN & Reverse Proxy Caching</li>
-										<li>Compression</li>
-									</ul>
-									<ul class="detailed_list">
-										<li>Deployment</li>
-										<li>Domain Operations</li>
-										<li>Cloud Hosting</li>
-										<li>Search Engine Optimisation</li>
-										<li>Web Analytics</li>
-										<li>Entrepreneurship</li>
-									</ul>
-								</section>
-							</div>
-							<div class="row-fluid">
-								<section class="slide_details span6">
-									<h4>When will you start?</h4>
-									<p>The are 2 cohorts running with the 21 weeks standard. The following dates & times may be adjusted after launch.</p>
-									<div class="date_times row-fluid">
-										<ul class="date_list span6">
-											<li>Cohort 1</li>
-											<li>From <strong><?php echo $course_dates['st_s1_c1'] ?></strong> to <strong><?php echo $course_dates['st_s1_c1_end']; ?></strong>.</li>
-											<li>It will run between <strong><?php echo $course_times['standard_cohort1'] ?></strong>.</li>
-										</ul>
-										<ul class="date_list span6">
-											<li>Cohort 2</li>
-											<li>From <strong><?php echo $course_dates['st_s1_c2'] ?></strong> to <strong><?php echo $course_dates['st_s1_c2_end']; ?></strong>.</li>
-											<li>It will run between <strong><?php echo $course_times['standard_cohort2'] ?></strong>.</li>
-										</ul>
-									</div>
-								</section>
-								<section class="slide_details span6">
-									<h4>Ready to go?</h4>
-									<p>Tuition (AUD) can be paid with 2 options. If you are applying to the Code for Australia program, your tuition may be seriously discounted or be completely free. Should you choose to terminate your course, you won't have any contractual obligations to pay the remainder of the fee.</p>
-									<div class="prices row-fluid">
-										<ul class="price_list span6">
-											<li>Upfront</li>
-											<li>$4999</li>
-											<li><strong>-$1000 (Special for the first 20 applications until January 1st 2013)</strong></li>
-											<li>$3999</li>
-										</ul>
-										<ul class="price_list span6">
-											<li>Weekly</li>
-											<li>$239 per week</li>
-										</ul>
-									</div>
-									<p>If 21 weeks is too long for you, or you're on a tourist visa, check out the the <a class="jump_course" href="#right" data-liquidslider-ref="course_slider">11 week express program</a> on the next slide.</p>
-								</section>
-							</div>
+				<article class="course_demo">
+					<h1 class="course_title">11 Weeks Express</h1>
+					<div class="course_grid">
+						<div class="row-fluid">
+							<section class="course_details span6">
+								<h4>What is it?</h4>
+								<p>The 11 weeks express involves of <strong>15 hours per week instruction time plus 6 hours per week free time</strong>. That equals 231 hours of value. The class size is limited to 15 students and we recommend you to get into a team of 2 or 3. During after hours, the classroom will be open for you to chill out and meet the other students.</p>
+								<p>Our three philosophies at Polycademy is <strong>Minimum Viable Product (MVP)</strong>, <strong>Agile Development</strong> and <strong>Flipped Classroom</strong>.</p>
+								<ul>
+									<li><strong>MVP</strong> means designing your product so it is minimum enough to launch quickly to get market testing, and viable enough to make your product distinct from competitors.</li>
+									<li><strong>Agile Development</strong> is about rapid and flexible incremental iteration to code. Rather than memorising the whole corpus of programming in 11 weeks, each week is a milestone in which parts of your product will be deployed.</li>
+									<li><strong>Flipped Classroom</strong> means that before class an online ecosystem of materials will be provided to you. During class we'll keep it practical by spending time discussing models, cutting code, and deploying applications to the cloud.</li>
+								</ul>
+								<p>We'll be arranging your team with a mentor who will volunteer their time to coach your team on the entrepenurial or development process.</p>
+								<p>At the end of 11 weeks, a careers/pitching fair will be opened. Tech employers and investors will be invited to check out your work.</p>
+								<p>If you are from overseas, an <?php echo anchor('http://www.immi.gov.au/visitors/tourist/', 'Australian tourist visa') ?> will give you enough time to stay in Canberra to complete the 11 week course. The student visa is not suitable for Polycademy.</p>
+							</section>
+							<section class="course_details span6">
+								<h4>What will you learn?</h4>
+								<p>The following details may be adjusted after launch.</p>
+								<ul class="detailed_list">
+									<li>Theory</li>
+									<li>Agile Development Method</li>
+									<li>MVP Design</li>
+									<li>MoSCoW Features</li>
+									<li>Object Oriented Programming</li>
+								</ul>
+								<ul class="detailed_list">
+									<li>Environment</li>
+									<li>Firebug</li>
+									<li>Browsers</li>
+									<li>Git & Github</li>
+									<li>Command Line</li>
+									<li>AMP Stack</li>
+									<li>IDE</li>
+								</ul>
+								<ul class="detailed_list">
+									<li>Design</li>
+									<li>User Experience Design</li>
+									<li>Adobe Photoshop Mockups</li>
+									<li>HTML with H5BP and Bootstrap</li>
+									<li>CSS with LESS.css</li>
+								</ul>
+								<ul class="detailed_list">
+									<li>Programming</li>
+									<li>PHP with Codeigniter</li>
+									<li>Algorithms and Design Patterns</li>
+									<li>Database CRUD</li>
+									<li>Javascript with Coffeescript</li>
+									<li>AJAX with JSON</li>
+								</ul>
+								<ul class="detailed_list">
+									<li>Performance</li>
+									<li>Browser Caching</li>
+									<li>File Caching</li>
+									<li>Memcached</li>
+									<li>Opcode Caching</li>
+									<li>CDN & Reverse Proxy Caching</li>
+									<li>Compression</li>
+								</ul>
+								<ul class="detailed_list">
+									<li>Deployment</li>
+									<li>Domain Operations</li>
+									<li>Cloud Hosting</li>
+									<li>Search Engine Optimisation</li>
+									<li>Web Analytics</li>
+									<li>Entrepreneurship</li>
+								</ul>
+							</section>
 						</div>
-					</section>
-					<section class="express_slide">
-						<h1 class="slide_title">11 Weeks Express</h1>
-						<div class="slide_grid">
-							<div class="row-fluid">
-								<section class="slide_details span6">
-									<h4>What is it?</h4>
-									<p>The 11 weeks express is the same as the 21 weeks standard except that it involves of <strong>15 hours per week instruction time plus 6 hours per week free time</strong>. That is 231 hours of value. The class size is limited to 15 students and we recommend you to get into a team of 2 or 3. During after hours, the classroom will be open for you to chill out and meet the other students.</p>
-									<p>If you are from overseas, an <?php echo anchor('http://www.immi.gov.au/visitors/tourist/', 'Australian tourist visa') ?> will give you enough time to stay in Canberra to complete the 11 week course. The student visa is not suitable for Polycademy.</p>
-								</section>
-								<section class="slide_details span6">
-									<h4>When will you start?</h4>
-									<p>The is only 1 cohort running with the 11 week express. The following dates & times may be adjusted after launch.</p>
-									<div class="date_times">
-										<ul class="date_list">
-											<li>Cohort 1</li>
-											<li>From <strong><?php echo $course_dates['ex_t1'] ?></strong> to <strong><?php echo $course_dates['ex_t1_end']; ?></strong>.</li>
-											<li>It will run between <strong><?php echo $course_times['express'] ?></strong>.</li>
-										</ul>
-									</div>
-								</section>
-							</div>
-							<div class="row-fluid">
-								<section class="slide_details span12">
-									<h4>Ready to go?</h4>
-									<p>Tuition (AUD) can be paid with 2 options. If you are applying to the Code for Australia program, your tuition may be seriously discounted or be completely free. Should you choose to terminate your course, you won't have any contractual obligations to pay the remainder of the fee.</p>
-									<div class="prices row-fluid">
-										<ul class="price_list span6">
-											<li>Upfront</li>
-											<li>$4899</li>
-											<li><strong>-$1000 (Special for the first 10 applications until January 1st 2013)</strong></li>
-											<li>$3899</li>
-										</ul>
-										<ul class="price_list span6">
-											<li>Weekly</li>
-											<li>$459 per week</li>
-										</ul>
-									</div>
-									<p>If 11 weeks is too intensive for you, and you need to go to work or school, check out the the <a class="jump_course" href="#left" data-liquidslider-ref="course_slider">21 week standard program</a> on the previous slide.</p>
-								</section>
-							</div>
+						<div class="row-fluid">
+							<section class="course_details span6">
+								<h4>When will you start?</h4>
+								<p>The following dates & times may be adjusted after launch.</p>
+								<div class="date_times row-fluid">
+									<ul class="date_list span6">
+										<li>Cohort 1</li>
+										<li>From <strong><?php echo $course_dates['ex_t1'] ?></strong> to <strong><?php echo $course_dates['ex_t1_end']; ?></strong>.</li>
+										<li>It will run between <strong><?php echo $course_times['express'] ?></strong>.</li>
+									</ul>
+								</div>
+							</section>
+							<section class="course_details span6">
+								<h4>Ready to go?</h4>
+								<p>Tuition (AUD) can be paid with 2 options. If you are applying to the Code for Australia program, your tuition may be seriously discounted or be completely free. Should you choose to terminate your course, you won't have any contractual obligations to pay the remainder of the fee.</p>
+								<div class="prices row-fluid">
+									<ul class="price_list span6">
+										<li>Upfront</li>
+										<li>$4899</li>
+									</ul>
+									<ul class="price_list span6">
+										<li>Weekly</li>
+										<li>$459 per week</li>
+									</ul>
+								</div>
+							</section>
 						</div>
-					</section>
+					</div>
 				</article>
 			</div>
 		</div>
@@ -168,7 +117,7 @@
 						<h1 class="form_success"><?= $success_message ?></h1>
 					<? }else{ ?>
 						<h4>Becoming a web application entrepeneur is not easy. You need to be truly passionate and committed to developing your idea into reality.</h4>
-						<p>Please note that this is an application form, there is no obligation to pay until you have been accepted and have agreed to the contract.<br />Your information here will only be recorded for application purposes. If you are accepted into the course, we may offer your information to potential investors or employers.</p>
+						<p>Your information here will only be recorded for application purposes. If you are accepted into the course, we may offer your information to potential investors or employers.</p>
 					<? } ?>
 					<?= form_open($form_destination . '#course_application', array('class' => 'course_application_form form-horizontal')) ?>
 						<h3>Personal Details <small>&lang;REQUIRED&rang;</small></h3>
@@ -207,69 +156,34 @@
 						<div class="control-group">
 							<?= form_label('Tick all the courses you would prefer to get into. We\'ll try to get you into your most recent preference.', 'form_course', array('class' => 'control-label required')) ?>
 							<div class="controls">
-								<div class="row-fluid">
-									<div class="span6">
-										<table class="table table-bordered table-condensed">
-											<colgroup>
-												<col class="course_row_title" />
-												<col class="course_row_input" />
-											</colgroup>
-											<thead>
-												<tr>
-													<th scope="col"><strong>21 Weeks Standard</strong></th>
-													<th scope="col"><i class="icon-ok icon-white"></i></th>
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<th scope="row">Semester 1 Cohort 1 - <?= $course_dates_table['st_s1_c1'] ?> to <?php echo $course_dates_table['st_s1_c1_end'] ?></th>
-													<td><input id="form_course_st_s1_c1" type="checkbox" value="st_s1_c1" name="courses[]" <?= set_checkbox('courses[]', 'st_s1_c1') ?> /></td>
-												</tr>
-												<tr>
-													<th scope="row">Semester 1 Cohort 2 - <?= $course_dates_table['st_s1_c2'] ?> to <?php echo $course_dates_table['st_s1_c2_end'] ?></th>
-													<td><input id="form_course_st_s1_c2" type="checkbox" value="st_s1_c2" name="courses[]" <?= set_checkbox('courses[]', 'st_s1_c2') ?> /></td>
-												</tr>
-												<tr>
-													<th scope="row">Semester 2 Cohort 1 - <?= $course_dates_table['st_s2_c1'] ?> to <?php echo $course_dates_table['st_s2_c1_end'] ?></th>
-													<td><input id="form_course_st_s2_c1" type="checkbox" value="st_s2_c1" name="courses[]" <?= set_checkbox('courses[]', 'st_s2_c1') ?> /></td>
-												</tr>
-												<tr>
-													<th scope="row">Semester 2 Cohort 2 - <?= $course_dates_table['st_s2_c2'] ?> to <?php echo $course_dates_table['st_s2_c2_end'] ?></th>
-													<td><input id="form_course_st_s2_c2" type="checkbox" value="st_s2_c2" name="courses[]" <?= set_checkbox('courses[]', 'st_s2_c2') ?> /></td>
-												</tr>
-											</tbody>
-										</table>
-									</div>
-									<div class="span6">
-										<table class="table table-bordered table-condensed">
-											<colgroup>
-												<col class="course_row_title" />
-												<col class="course_row_input" />
-											</colgroup>
-											<thead>
-												<tr>
-													<th scope="col"><strong>11 Weeks Express</strong></th>
-													<th scope="col"><i class="icon-ok icon-white"></i></th>
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<th scope="row">Term 1 - <?= $course_dates_table['ex_t1'] ?> to <?php echo $course_dates_table['ex_t1_end'] ?></th>
-													<td><input id="form_course_ex_t1" type="checkbox" value="ex_t1" name="courses[]" <?= set_checkbox('courses[]', 'ex_t1') ?> /></td>
-												</tr>
-												<tr>
-													<th scope="row">Term 2 - <?= $course_dates_table['ex_t2'] ?> to <?php echo $course_dates_table['ex_t2_end'] ?></th>
-													<td><input id="form_course_ex_t2" type="checkbox" value="ex_t2" name="courses[]" <?= set_checkbox('courses[]', 'ex_t2') ?> /></td>
-												</tr>
-												<tr>
-													<th scope="row">Term 3 - <?= $course_dates_table['ex_t3'] ?> to <?php echo $course_dates_table['ex_t3_end'] ?></th>
-													<td><input id="form_course_ex_t3" type="checkbox" value="ex_t3" name="courses[]" <?= set_checkbox('courses[]', 'ex_t3') ?> /></td>
-												</tr>
-											</tbody>
-										</table>
-									</div>
+								<div class="span5">
+									<table class="table table-bordered table-condensed">
+										<colgroup>
+											<col class="course_row_title" />
+											<col class="course_row_input" />
+										</colgroup>
+										<thead>
+											<tr>
+												<th scope="col"><strong>11 Weeks Express</strong></th>
+												<th scope="col"><i class="icon-ok icon-white"></i></th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<th scope="row">Term 1 - <?= $course_dates_table['ex_t1'] ?> to <?php echo $course_dates_table['ex_t1_end'] ?></th>
+												<td><input id="form_course_ex_t1" type="checkbox" value="ex_t1" name="courses[]" <?= set_checkbox('courses[]', 'ex_t1') ?> /></td>
+											</tr>
+											<tr>
+												<th scope="row">Term 2 - <?= $course_dates_table['ex_t2'] ?> to <?php echo $course_dates_table['ex_t2_end'] ?></th>
+												<td><input id="form_course_ex_t2" type="checkbox" value="ex_t2" name="courses[]" <?= set_checkbox('courses[]', 'ex_t2') ?> /></td>
+											</tr>
+											<tr>
+												<th scope="row">Term 3 - <?= $course_dates_table['ex_t3'] ?> to <?php echo $course_dates_table['ex_t3_end'] ?></th>
+												<td><input id="form_course_ex_t3" type="checkbox" value="ex_t3" name="courses[]" <?= set_checkbox('courses[]', 'ex_t3') ?> /></td>
+											</tr>
+										</tbody>
+									</table>
 								</div>
-							<span class="help-block"><strong>The $1000 discount only applies for Semester 1 or Term 1 cohorts</strong>.</span>
 							</div>
 						</div>
 						<div class="control-group">
@@ -286,6 +200,13 @@
 							<?= form_label('What do you want to build and get out of Polycademy?', 'form_build', array('class' => 'control-label required')) ?>
 							<div class="controls">
 								<?= form_textarea(array('name' => 'build', 'id' => 'form_build', 'class' => 'span5', 'placeholder' => 'Your idea is safe with us! Until it goes live of course...', 'value' => set_value('build'))) ?>
+								<span class="help-block">Limit 400 words.</span>
+							</div>
+						</div>
+						<div class="control-group">
+							<?= form_label('Where did you here about us?', 'form_where', array('class' => 'control-label')) ?>
+							<div class="controls">
+								<?= form_textarea(array('name' => 'where', 'id' => 'form_where', 'class' => 'span5', 'placeholder' => 'We would like to know where you found out about us so we can better focus our marketing!', 'value' => set_value('where'))) ?>
 								<span class="help-block">Limit 400 words.</span>
 							</div>
 						</div>

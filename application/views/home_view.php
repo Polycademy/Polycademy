@@ -44,7 +44,7 @@
 						</div>
 					</section>
 				</article>
-				<h2>At Polycademy we turn people into web developers in <?php echo anchor($links['navigation']['courses'], '11 or 21 weeks') ?>.</h2>
+				<h2>At Polycademy we turn people into web developers in <?php echo anchor($links['navigation']['courses'], '11 weeks') ?>.</h2>
 				<article class="liquid-slider" id="mid_slider">
 					<section class="envision_slide">
 						<h3 class="slide_title">Envision</h3>
@@ -293,9 +293,9 @@
 					</section>
 					<section class="space_panel span4">
 						<h3>Space</h3>
-						<p>The classroom space will include 15 - 16 workstations. There will be whiteboards, projectors, tables, and  chairs to help students collaborate. A function room will be used for events and catering. We’ll even try to get a vending machine.<br /><br />After class, the classroom will be open day & night for coders and designers to chill out and discuss.<br /><br />The space at Entry 29 is still being refurbished by a group of entrepreneurs, and the project is being led by Rory Ford. Check out our <?= anchor('blog/id/130/entry_29_a_possible_location_for_polycademy', 'blog article') ?> on what the inside currently looks like!</p>
+						<p>The classroom space will include whiteboards, projectors, tables, and  chairs to help students collaborate. A function room will be used for events and catering.<br /><br />After class, the classroom will be open day & night for coders and designers to chill out and discuss.</p>
 					</section>
 				</article>
-				<h2>Class starts in 2013 Jan/Feb, <?php echo anchor($links['navigation']['courses'], 'register your interest'); ?> and <?= anchor('http://eepurl.com/rDJTv', 'get informed!', 'target="_blank"') ?></h2>
+				<h2>Class has already started, <?php echo anchor($links['navigation']['courses'], 'register your interest'); ?> and <?= anchor('http://eepurl.com/rDJTv', 'get informed!', 'target="_blank"') ?></h2>
 			</div>
 		</div>

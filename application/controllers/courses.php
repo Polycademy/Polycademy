@@ -112,6 +112,7 @@ class Courses extends CI_Controller {
 			'skype'					=> $this->input->post('skype'),
 			'courses'				=> implode(',', $this->input->post('courses')),
 			'build'					=> $this->input->post('build'),
+			'where'					=> $this->input->post('where'),
 		);
 		
 		$query = $this->db->insert('application_form', $data); 
@@ -197,7 +198,7 @@ class Courses extends CI_Controller {
 		$course_times = array(
 			'standard_cohort1' => '6pm - 9pm on Monday & Tuesday and 6pm - 8pm on Wednesday',
 			'standard_cohort2' => '6pm - 9pm on Thursday & Friday and 6pm - 8pm on Saturday',
-			'express' => '9am - 12pm & 2pm - 4pm on Monday, Tuesday and Thursday',
+			'express' => '6pm - 8pm (3hrs) on Monday to Friday',
 		);
 		
 		return $course_times;

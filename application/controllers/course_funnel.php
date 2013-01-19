@@ -139,7 +139,7 @@ class Course_funnel extends CI_Controller {
 		
 		$query = $this->db->get();
 		
-		$this->firephp->log($this->db->last_query());
+		//$this->firephp->log($this->db->last_query());
 		
 		if(!$query->num_rows()){
 			
@@ -151,7 +151,7 @@ class Course_funnel extends CI_Controller {
 			
 			#$application_fieldnames = $this->db->list_fields('application_form');
 			$application = $query->row_array();
-			$this->firephp->log($application['courses']);
+			//$this->firephp->log($application['courses']);
 			$application['courses'] = explode(',', $application['courses']);
 			
 			$this->_view_data += array(
@@ -256,6 +256,7 @@ class Course_funnel extends CI_Controller {
 			'work_study'			=> $this->input->post('work_study'),
 			'experience'			=> $this->input->post('experience'),
 			'build'					=> $this->input->post('build'),
+			'where'					=> $this->input->post('where'),
 			'video'					=> $this->input->post('video'),
 		);
 		

@@ -217,6 +217,13 @@
 								</div>
 							</div>
 							<div class="control-group">
+								<?= form_label('Where did you here about us?', 'form_where', array('class' => 'control-label')) ?>
+								<div class="controls">
+									<?= form_textarea(array('name' => 'where', 'id' => 'form_where', 'class' => 'span5', 'placeholder' => 'We would like to know where you found out about us so we can better focus our marketing!', 'value' => ((set_value('where')) ? set_value('where') : $application['where']))) ?>
+									<span class="help-block">Limit 400 words.</span>
+								</div>
+							</div>
+							<div class="control-group">
 								<?= form_label('Link to a video about yourself, teach or show us something you\'re good at!', 'form_video', array('class' => 'control-label')) ?>
 								<div class="controls">
 									<div class="input-append">
