@@ -287,13 +287,13 @@
 					<section class="location_panel span4">
 						<h3>Location</h3>
 						<p>
-							We're looking into <?= anchor('https://twitter.com/entry29', 'Entry 29') ?>, a new coworking place being launched in Canberra. It's next to the Street Theatre, see it <?= anchor('https://maps.google.com.au/maps/ms?msa=0&amp;msid=217597873095148299897.0004ce871cbdfc1fc8467&amp;ie=UTF8&amp;t=h&amp;ll=-35.277978,149.123869&amp;spn=0.001858,0.001609&amp;z=18&amp;source=embed', 'here', 'target="_blank"') ?>
-							<iframe class="location_gmap" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com.au/maps/ms?msa=0&amp;msid=217597873095148299897.0004ce871cbdfc1fc8467&amp;ie=UTF8&amp;t=h&amp;ll=-35.277978,149.123869&amp;spn=0.001858,0.001609&amp;z=18&amp;output=embed"></iframe>
+							We're locating Polycademy at 7 London Circuit, see it <?= anchor('https://maps.google.com.au/maps/ms?msid=217597873095148299897.0004d3a4244d8d9f6a83e&msa=0&ll=-35.281389,149.124867&spn=0.001982,0.002824', 'here', 'target="_blank"') ?>. It's a grade A office and close to Canberra central. It's in the same building as NICTA!
+							<iframe class="location_gmap" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com.au/maps/ms?msa=0&amp;msid=217597873095148299897.0004d3a4244d8d9f6a83e&amp;ie=UTF8&amp;t=h&amp;ll=-35.281595,149.125012&amp;spn=0.001858,0.001609&amp;z=18&amp;output=embed"></iframe>
 						</p>
 					</section>
 					<section class="space_panel span4">
 						<h3>Space</h3>
-						<p>The classroom space will include whiteboards, projectors, tables, and  chairs to help students collaborate. A function room will be used for events and catering.<br /><br />After class, the classroom will be open day & night for coders and designers to chill out and discuss.</p>
+						<p>The classroom space will include whiteboards, projectors, tables, and  chairs to help students collaborate. A function room will be used for events and catering.<br /><br />After class, the classroom will be open day & night for coders and designers to chill out and discuss.<br /><br />Photos will be up soon!</p>
 					</section>
 				</article>
 				<h2>Class has already started, <?php echo anchor($links['navigation']['courses'], 'register your interest'); ?> and <?= anchor('http://eepurl.com/rDJTv', 'get informed!', 'target="_blank"') ?></h2>
