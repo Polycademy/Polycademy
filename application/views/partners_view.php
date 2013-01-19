@@ -19,6 +19,10 @@
 								<span class="image_rollover"></span>
 								<img src="<?php echo base_url($links['img_assets']) ?>/mentor_icon_neil.png" />
 							</div>
+							<div class="image_rollover_container team_popovers" rel="popover" data-content="<p>Ross works as a developer for the Australian Government, developing web applications using a variety of Microsoft technologies. Currently he's working with MVC3 and entity framework, combined with extensive Javascript, JQuery and AJAX. He is well experiencedwith WCAG 2.0 Acessibility, Twitter Bootstrap, Web Application Security, C#, CSS and Microsoft SQL server.<br /><br />Ross is also the founder and developer of <a href='www.datametrics.biz'>ManageOut</a>, an event planning web application for Australian training organizations.</p>" data-title="Ross Mullen - Web Developer">
+								<span class="image_rollover"></span>
+								<img src="<?php echo base_url($links['img_assets']) ?>/mentor_icon_ross.png" />
+							</div>
 						</div>
 					</section>
 					<section>
