@@ -293,7 +293,7 @@
 					</section>
 					<section class="space_panel span4">
 						<h3>Space</h3>
-						<p>The classroom is located at: <strong>Room 570, Level 5 (Tower A), 7 London Circuit ACTON Canberra Australia</strong><br /><br />The classroom space will include whiteboards, projectors, tables, and  chairs to help students collaborate. A function room will be used for events and catering.<br /><br />After class, the classroom will be open day & night for coders and designers to chill out and discuss.<br /><br />Photos will be up soon!</p>
+						<p>The classroom is located at: <strong>Polycademy, Room 570, Level 5 (Tower A), 7 London Circuit ACTON Canberra Australia</strong><br /><br />The classroom space will include whiteboards, projectors, tables, and  chairs to help students collaborate. A function room will be used for events and catering.<br /><br />After class, the classroom will be open day & night for coders and designers to chill out and discuss.</p>
 					</section>
 				</article>
 				<h2>Class has already started, <?php echo anchor($links['navigation']['courses'], 'register your interest'); ?> and <?= anchor('http://eepurl.com/rDJTv', 'get informed!', 'target="_blank"') ?></h2>
