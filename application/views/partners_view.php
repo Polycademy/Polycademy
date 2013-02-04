@@ -23,6 +23,10 @@
 								<span class="image_rollover"></span>
 								<img src="<?php echo base_url($links['img_assets']) ?>/mentor_icon_ross.png" />
 							</div>
+							<div class="image_rollover_container team_popovers" rel="popover" data-content="<p>Thomas is doing a PhD in Applied Maths in Computer Tomography at ANU, after obtaining a BSc with Honours in Maths. He has been a mentor for the NZ Olympiad Maths Group, as well as a departmental tutor at various universities.</p>" data-title="Thomas Li - Mathematician">
+								<span class="image_rollover"></span>
+								<img src="<?php echo base_url($links['img_assets']) ?>/mentor_icon_thomas.png" />
+							</div>
 						</div>
 					</section>
 					<section>
