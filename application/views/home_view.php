@@ -143,7 +143,7 @@
 										</div>
 										<div class="span8">
 											<h5>Javascript</h5>
-											<p>Go interactive with Javascript, jQuery, and CoffeeScript to make your web app come to life.</p>
+											<p>Go interactive with Javascript, jQuery, and JavascriptMVC to make your web app come to life.</p>
 										</div>
 									</div>
 								</section>
