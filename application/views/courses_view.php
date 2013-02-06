@@ -49,7 +49,7 @@
 									<li>PHP with Codeigniter</li>
 									<li>Algorithms and Design Patterns</li>
 									<li>Database CRUD</li>
-									<li>Javascript with Coffeescript</li>
+									<li>Javascript with JavascriptMVC</li>
 									<li>AJAX with JSON</li>
 								</ul>
 								<ul class="detailed_list">
