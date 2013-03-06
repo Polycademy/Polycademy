@@ -78,7 +78,7 @@
 								<div class="date_times row-fluid">
 									<ul class="date_list span6">
 										<li>Cohort 1</li>
-										<li>From <strong><?php echo $course_dates['ex_t1'] ?></strong> to <strong><?php echo $course_dates['ex_t1_end']; ?></strong>.</li>
+										<li>From <strong><?php echo $course_dates['ex_t2'] ?></strong> to <strong><?php echo $course_dates['ex_t2_end']; ?></strong>.</li>
 										<li>It will run between <strong><?php echo $course_times['express'] ?></strong>.</li>
 									</ul>
 								</div>
@@ -170,8 +170,8 @@
 										</thead>
 										<tbody>
 											<tr>
-												<th scope="row">Term 1 - <?= $course_dates_table['ex_t1'] ?> to <?php echo $course_dates_table['ex_t1_end'] ?></th>
-												<td><input id="form_course_ex_t1" type="checkbox" value="ex_t1" name="courses[]" <?= set_checkbox('courses[]', 'ex_t1') ?> /></td>
+												<th scope="row"><span class="strikethrough">Term 1 - <?= $course_dates_table['ex_t1'] ?> to <?php echo $course_dates_table['ex_t1_end'] ?></span></th>
+												<td><input id="form_course_ex_t1" type="checkbox" value="ex_t1" name="courses[]" disabled="disabled" <?= set_checkbox('courses[]', 'ex_t1') ?> /></td>
 											</tr>
 											<tr>
 												<th scope="row">Term 2 - <?= $course_dates_table['ex_t2'] ?> to <?php echo $course_dates_table['ex_t2_end'] ?></th>
