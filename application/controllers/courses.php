@@ -38,15 +38,10 @@ class Courses extends CI_Controller {
 	public function index(){
 		
 		$course_dates = array(
-			#standard means the 21 week course (1-2 weeks break in between)
-			'st_s1_c1'	=> '4th Feb 2013',
-			'st_s1_c2'	=> '7th Feb 2013',
-			'st_s2_c1'	=> '15th Jul 2013',
-			'st_s2_c2'	=> '18th Jul 2013',
 			#express means the 11 week course (1-2 weeks break in between)
-			'ex_t1'		=> '4th Feb 2013',
-			'ex_t2'		=> '6th May 2013',
-			'ex_t3'		=> '5th August 2013',
+			'ex_t1'		=> '6th January 2014',
+			'ex_t2'		=> '7th April 2014',
+			'ex_t3'		=> '14th July 2014',
 		);
 		
 		$duration = array(
@@ -60,8 +55,8 @@ class Courses extends CI_Controller {
 		);
 		
 		$format_for_table = array(
-			'start'	=> 'D jS F',
-			'end'	=> 'D jS F',
+			'start'	=> 'D jS F Y',
+			'end'	=> 'D jS F Y',
 		);
 		
 		$course_dates_slider = $this->_course_dates($course_dates, $duration, $format);

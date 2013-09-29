@@ -27,15 +27,16 @@
 									<li>MVP Design</li>
 									<li>MoSCoW Features</li>
 									<li>Object Oriented Programming</li>
+									<li>Asynchronous Programming</li>
 								</ul>
 								<ul class="detailed_list">
 									<li>Environment</li>
-									<li>Firebug</li>
+									<li>Vagrant Deployment</li>
 									<li>Browsers</li>
 									<li>Git & Github</li>
 									<li>Command Line</li>
-									<li>AMP Stack</li>
-									<li>IDE</li>
+									<li>AMP, NodeJS, Ruby</li>
+									<li>Build Automation using Grunt</li>
 								</ul>
 								<ul class="detailed_list">
 									<li>Design</li>
@@ -48,44 +49,38 @@
 									<li>Programming</li>
 									<li>PHP with Codeigniter</li>
 									<li>Algorithms and Design Patterns</li>
-									<li>Database CRUD</li>
-									<li>Javascript with JavascriptMVC</li>
-									<li>AJAX with JSON</li>
+									<li>Database CRUD using SQL, Redis and NoSQL</li>
+									<li>Javascript with AngularJS</li>
+									<li>AJAX and API architecture</li>
+									<li>Sockets & Network Programming</li>
 								</ul>
 								<ul class="detailed_list">
 									<li>Performance</li>
-									<li>Browser Caching</li>
-									<li>File Caching</li>
-									<li>Memcached</li>
-									<li>Opcode Caching</li>
+									<li>Browser & File Caching</li>
 									<li>CDN & Reverse Proxy Caching</li>
+									<li>Concurrent Programming</li>
+									<li>Opcode Caching</li>
+									<li>Message Queues</li>
 									<li>Compression</li>
 								</ul>
 								<ul class="detailed_list">
 									<li>Deployment</li>
 									<li>Domain Operations</li>
-									<li>Cloud Hosting</li>
+									<li>Cloud Hosting & PAAS</li>
 									<li>Search Engine Optimisation</li>
-									<li>Web Analytics</li>
+									<li>Web Analytics and Tracking</li>
 									<li>Entrepreneurship</li>
 								</ul>
 							</section>
 						</div>
 						<div class="row-fluid">
 							<section class="course_details span6">
-								<h4>When will you start?</h4>
-								<p>The following dates & times may be adjusted after launch.</p>
-								<div class="date_times row-fluid">
-									<ul class="date_list span6">
-										<li>Cohort 1</li>
-										<li>From <strong><?php echo $course_dates['ex_t2'] ?></strong> to <strong><?php echo $course_dates['ex_t2_end']; ?></strong>.</li>
-										<li>It will run between <strong><?php echo $course_times['express'] ?></strong>.</li>
-									</ul>
-								</div>
+								<h4>What's the Schedule Like?</h4>
+								<p>Check the application form for proposed dates. A typical weekly timeline is <strong>3 hours per day for 5 days a week for 11 weeks. These hours start at 5pm and end at 8pm.</strong> However these times are flexible and change according to student needs.</p>
 							</section>
 							<section class="course_details span6">
 								<h4>Ready to go?</h4>
-								<p>Tuition (AUD) can be paid with 2 options. If you are applying to the Code for Australia program, your tuition may be seriously discounted or be completely free. Should you choose to terminate your course, you won't have any contractual obligations to pay the remainder of the fee.</p>
+								<p>Tuition (AUD) can be paid with 2 options. Should you choose to terminate your course, you won't have any contractual obligations to pay the remainder of the fee. All prices are GST inclusive, however they may be payment charges if paying by credit card.</p>
 								<div class="prices row-fluid">
 									<ul class="price_list span6">
 										<li>Upfront</li>
@@ -170,7 +165,7 @@
 										</thead>
 										<tbody>
 											<tr>
-												<th scope="row"><span class="strikethrough">Term 1 - <?= $course_dates_table['ex_t1'] ?> to <?php echo $course_dates_table['ex_t1_end'] ?></span></th>
+												<th scope="row">Term 1 - <?= $course_dates_table['ex_t1'] ?> to <?php echo $course_dates_table['ex_t1_end'] ?></th>
 												<td><input id="form_course_ex_t1" type="checkbox" value="ex_t1" name="courses[]" disabled="disabled" <?= set_checkbox('courses[]', 'ex_t1') ?> /></td>
 											</tr>
 											<tr>

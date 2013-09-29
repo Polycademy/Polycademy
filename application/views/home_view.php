@@ -143,7 +143,7 @@
 										</div>
 										<div class="span8">
 											<h5>Javascript</h5>
-											<p>Go interactive with Javascript, jQuery, and JavascriptMVC to make your web app come to life.</p>
+											<p>Go interactive with Javascript, jQuery, and AngularJS to make your web app come to life.</p>
 										</div>
 									</div>
 								</section>
@@ -167,7 +167,7 @@
 										</div>
 										<div class="span8">
 											<h5>Performance</h5>
-											<p>Compress, cache, refactor and use CDNs to make your app zoom!</p>
+											<p>Compress, cache, refactor, fork and use CDNs to make your app zoom!</p>
 										</div>
 									</div>
 								</section>
@@ -287,13 +287,13 @@
 					<section class="location_panel span4">
 						<h3>Location</h3>
 						<p>
-							Polycademy is located at 7 London Circuit, see it <?= anchor('https://maps.google.com.au/maps/ms?msid=217597873095148299897.0004d3a4244d8d9f6a83e&msa=0&ll=-35.281389,149.124867&spn=0.001982,0.002824', 'here', 'target="_blank"') ?>. It's a grade A office and close to Canberra central. It's in the same building as NICTA!
-							<iframe class="location_gmap" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com.au/maps/ms?msa=0&amp;msid=217597873095148299897.0004d3a4244d8d9f6a83e&amp;ie=UTF8&amp;t=h&amp;ll=-35.281595,149.125012&amp;spn=0.001858,0.001609&amp;z=18&amp;output=embed"></iframe>
+							Polycademy is located at 7 London Circuit, see it <?= anchor('https://maps.google.com.au/maps/ms?msid=217597873095148299897.0004e77db6d1cf3bd54ef&msa=0&ll=-33.877771,151.198182&spn=0.001381,0.003082', 'here', 'target="_blank"') ?>. Right in the heart  of Sydney! 10 minute walk from Central Station.
+							<iframe class="location_gmap" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com.au/maps/ms?msid=217597873095148299897.0004e77db6d1cf3bd54ef&amp;msa=0&amp;ie=UTF8&amp;t=h&amp;ll=-33.877617,151.198257&amp;spn=0.01247,0.018239&amp;z=15&amp;output=embed"></iframe>
 						</p>
 					</section>
 					<section class="space_panel span4">
 						<h3>Space</h3>
-						<p>The classroom is located at: <strong>Polycademy, Room 570, Level 5 (Tower A), 7 London Circuit ACTON Canberra Australia</strong><br /><br />The classroom space will include whiteboards, projectors, tables, and  chairs to help students collaborate. A function room will be used for events and catering.<br /><br />After class, the classroom will be open day & night for coders and designers to chill out and discuss.</p>
+						<p>The classroom is located at: <strong>Vibewire, 525 Harris Street, Sydney, Australia</strong><br /><br /> The classroom is situated at the <a href="http://vibewire.org/" target="_blank">Vibewire Coworking place</a>. It includes whiteboards, projectors, tables, and  chairs to help students collaborate.<br /><br />The place is open day & night for students to chill our or study together.</p>
 					</section>
 				</article>
 				<h2>Class has already started, <?php echo anchor($links['navigation']['courses'], 'register your interest'); ?> and <?= anchor('http://eepurl.com/rDJTv', 'get informed!', 'target="_blank"') ?></h2>
