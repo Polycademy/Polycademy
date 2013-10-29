@@ -166,7 +166,7 @@
 										<tbody>
 											<tr>
 												<th scope="row">Term 1 - <?= $course_dates_table['ex_t1'] ?> to <?php echo $course_dates_table['ex_t1_end'] ?></th>
-												<td><input id="form_course_ex_t1" type="checkbox" value="ex_t1" name="courses[]" disabled="disabled" <?= set_checkbox('courses[]', 'ex_t1') ?> /></td>
+												<td><input id="form_course_ex_t1" type="checkbox" value="ex_t1" name="courses[]" <?= set_checkbox('courses[]', 'ex_t1') ?> /></td>
 											</tr>
 											<tr>
 												<th scope="row">Term 2 - <?= $course_dates_table['ex_t2'] ?> to <?php echo $course_dates_table['ex_t2_end'] ?></th>
