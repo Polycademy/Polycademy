@@ -10,6 +10,7 @@
         <title><?=$page_title?> - <?= ($this->router->fetch_class() == $this->router->routes['default_controller']) ? $site_desc : $site_name . ' is ' . $site_desc ?></title>
         <meta name="description" content="<?= ((empty($custom_meta_desc)) ? $meta_desc : $custom_meta_desc) ?>">
 		<meta name="google-site-verification" content="Mq6Yv8R9mGJK9SrUH5oZ8SNB8Z_WJHwkdkgp49ukHYE" />
+		<meta name="msvalidate.01" content="907A19AD04C8D5C2095C9DCE875FD165" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="shortcut icon" href="<?php echo base_url() ?>favicon.ico">
 		<link rel="apple-touch-icon" href="<?php echo base_url() ?>apple-touch-icon.png">
