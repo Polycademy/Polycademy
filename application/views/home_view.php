@@ -287,7 +287,7 @@
 					<section class="location_panel span4">
 						<h3>Location</h3>
 						<p>
-							Polycademy is located at 525 Harris Street, see it <?= anchor('https://maps.google.com.au/maps/ms?msid=217597873095148299897.0004e77db6d1cf3bd54ef&msa=0&ll=-33.877771,151.198182&spn=0.001381,0.003082', 'here', 'target="_blank"') ?>. Right in the heart  of Sydney! 10 minute walk from Central Station.
+							Polycademy is located at 525 Harris Street, see it <?= anchor('https://maps.google.com.au/maps/ms?msid=217597873095148299897.0004e77db6d1cf3bd54ef&msa=0&ll=-33.877771,151.198182&spn=0.001381,0.003082', 'here', 'target="_blank"') ?>. Right in the heart  of Sydney! 10 minute walk from Central Station. (Our Canberra office is at Entry 29).
 							<iframe class="location_gmap" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com.au/maps/ms?msid=217597873095148299897.0004e77db6d1cf3bd54ef&amp;msa=0&amp;ie=UTF8&amp;t=h&amp;ll=-33.877617,151.198257&amp;spn=0.01247,0.018239&amp;z=15&amp;output=embed"></iframe>
 						</p>
 					</section>
