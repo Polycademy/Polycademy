@@ -72,7 +72,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  *  Define a custom error handler so we can log PHP errors
  * ------------------------------------------------------
  */
-	set_error_handler('_exception_handler');
+	set_exception_handler('_exception_handler');
 
 	if ( ! is_php('5.4'))
 	{

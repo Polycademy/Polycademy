@@ -141,7 +141,8 @@ if(ENVIRONMENT == 'production'){
 		'encrypt' => FALSE,
 		'compress' => FALSE,
 		'stricton' => FALSE,
-		'failover' => array()
+		'failover' => array(),
+		'port'	  => 3306
 	);
 
 }

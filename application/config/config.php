@@ -386,6 +386,7 @@ $config['minify_output'] = FALSE;
 |
 */
 $config['time_reference'] = 'Australia/ACT';
+date_default_timezone_set('Australia/ACT');
 
 
 /*
