@@ -18,7 +18,7 @@
  *
  * @package		CodeIgniter
  * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2008 - 2012, EllisLab, Inc. (http://ellislab.com/)
+ * @copyright	Copyright (c) 2008 - 2013, EllisLab, Inc. (http://ellislab.com/)
  * @license		http://opensource.org/licenses/OSL-3.0 Open Software License (OSL 3.0)
  * @link		http://codeigniter.com
  * @since		Version 1.0
@@ -229,7 +229,7 @@ abstract class CI_DB_forge {
 	 *
 	 * @param	string	$key
 	 * @param	bool	$primary
-	 * @return	object
+	 * @return	CI_DB_forge
 	 */
 	public function add_key($key = '', $primary = FALSE)
 	{
@@ -266,7 +266,7 @@ abstract class CI_DB_forge {
 	 * Add Field
 	 *
 	 * @param	array	$field
-	 * @return	object
+	 * @return	CI_DB_forge
 	 */
 	public function add_field($field = '')
 	{
@@ -402,7 +402,7 @@ abstract class CI_DB_forge {
 		// Are indexes created from within the CREATE TABLE statement? (e.g. in MySQL)
 		if ($this->_create_table_keys === TRUE)
 		{
-			$columns .= $this->_process_indexes();
+			$columns .= $this->_process_indexes($table);
 		}
 
 		// _create_table will usually have the following format: "%s %s (%s\n)"
@@ -680,8 +680,12 @@ abstract class CI_DB_forge {
 			return $sql.'DROP COLUMN '.$this->db->escape_identifiers($field);
 		}
 
+		$sql .= ($alter_type === 'ADD')
+			? 'ADD '
+			: $alter_type.' COLUMN ';
+
 		$sqls = array();
-		for ($i = 0, $c = count($field), $sql .= $alter_type.' COLUMN '; $i < $c; $i++)
+		for ($i = 0, $c = count($field); $i < $c; $i++)
 		{
 			$sqls[] = $sql
 				.($field[$i]['_literal'] !== FALSE ? $field[$i]['_literal'] : $this->_process_column($field[$i]));
@@ -736,6 +740,18 @@ abstract class CI_DB_forge {
 					'_literal'		=> FALSE
 			);
 
+			if ($create_table === FALSE)
+			{
+				if (isset($attributes['AFTER']))
+				{
+					$field['after'] = $attributes['AFTER'];
+				}
+				elseif (isset($attributes['FIRST']))
+				{
+					$field['first'] = (bool) $attributes['FIRST'];
+				}
+			}
+
 			$this->_attr_default($attributes, $field);
 
 			if (isset($attributes['NULL']))
@@ -744,10 +760,14 @@ abstract class CI_DB_forge {
 				{
 					$field['null'] = empty($this->_null) ? '' : ' '.$this->_null;
 				}
-				elseif ($create_table === TRUE)
+				else
 				{
 					$field['null'] = ' NOT NULL';
 				}
+			}
+			elseif ($create_table === TRUE)
+			{
+				$field['null'] = ' NOT NULL';
 			}
 
 			$this->_attr_auto_increment($attributes, $field);
@@ -962,14 +982,25 @@ abstract class CI_DB_forge {
 	 * @param	string	$table
 	 * @return	string
 	 */
-	protected function _process_indexes($table = NULL)
+	protected function _process_indexes($table)
 	{
 		$table = $this->db->escape_identifiers($table);
 		$sqls = array();
 
 		for ($i = 0, $c = count($this->keys); $i < $c; $i++)
 		{
-			if ( ! isset($this->fields[$this->keys[$i]]))
+			if (is_array($this->keys[$i]))
+			{
+				for ($i2 = 0, $c2 = count($this->keys[$i]); $i2 < $c2; $i2++)
+				{
+					if ( ! isset($this->fields[$this->keys[$i][$i2]]))
+					{
+						unset($this->keys[$i][$i2]);
+						continue;
+					}
+				}
+			}
+			elseif ( ! isset($this->fields[$this->keys[$i]]))
 			{
 				unset($this->keys[$i]);
 				continue;
