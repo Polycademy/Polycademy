@@ -65,7 +65,8 @@
 */
 
 $route['default_controller'] = 'home';
-$route['404_override'] = '';
+$route['404_override'] = 'errors/error_404';
+$route['error_page'] = 'errors/error_';
 $route['blog/(:num)'] = 'blog/index/$1';
 
 /* End of file routes.php */
