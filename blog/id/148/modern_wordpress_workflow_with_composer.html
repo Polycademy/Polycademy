@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Modern Wordpress Workflow with Composer - Polycademy is an academy for web application entrepreneurship</title>
+        <meta name="description" content="I've recently began on a small client project involving a Wordpress site for Auto Timor Leste - Toyota East Timor. I don't usually work on Wordpress, but the last time I worked with it, I realised it was a clunky blogging platform that is quite difficult to">
+		<meta name="google-site-verification" content="Mq6Yv8R9mGJK9SrUH5oZ8SNB8Z_WJHwkdkgp49ukHYE" />
+		<meta name="msvalidate.01" content="907A19AD04C8D5C2095C9DCE875FD165" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="shortcut icon" href="../../../favicon.ico">
+		<link rel="apple-touch-icon" href="../../../apple-touch-icon.png">
+		<link rel="stylesheet" href="../../../css/main.css">
+        <script src="../../../js/modernizr-2.6.1-respond-1.1.0.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+        <![endif]-->
+        <header class="navbar navbar-static-top">
+			<div class="container">
+				<div class="navbar-inner">
+					<a class="logo" href="../../../index.html"><img src="../../../img/logo.png" /></a>
+					<p class="slogan">an academy for web application entrepreneurship</p>
+					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</a>
+					<div class="nav-collapse collapse">
+						<ul class="nav">
+							<li><a href="../../../index.html">home</a></li><li class="divider-vertical"></li><li><a href="../../../courses.html">courses</a></li><li class="divider-vertical"></li><li><a href="../../../partners.html">partners</a></li><li class="divider-vertical"></li><li><a href="http://codeforaustralia.com.au">code for australia</a></li><li class="divider-vertical"></li><li><a href="http://phpbounce.aws.af.cm/">php bounce</a></li><li class="divider-vertical"></li><li><a href="http://polycademy.eventbrite.com.au/">events</a></li><li class="divider-vertical"></li><li><a href="../../../blog.html">blog</a></li>						</ul>
+					</div>
+				</div>
+			</div>
+        </header>		<div class="white_container">
+			<div class="container">
+															<article class="white_text_container blog_article">
+								<h1 class="blog_title"><a href="modern_wordpress_workflow_with_composer.html">Modern Wordpress Workflow with Composer</a></h1>
+								<div class="blog_content">
+									<p>I've recently began on a small client project involving a Wordpress site for Auto Timor Leste -  Toyota East Timor. I don't usually work on Wordpress, but the last time I worked with it, I realised it was a clunky blogging platform that is quite difficult to work with when you want to do more than just blogging. Nowadays there are better alternatives like <a href="http://docpad.org/">Docpad</a>, <a href="http://octopress.org/">Octopress</a> and <a href="http://jekyllrb.com/">Jekyll</a> but those are still in the early adopters stage with developers. So Wordpress does have the advantage of being widely known and easily supported by developers. It also has a whole set of plugins. So you can say it's made for the non-developer. With that in mind, I suggested to use Wordpress as Toyota's official website framework.</p>
+
+<p>When I was working Wordpress a while ago, the deployment process involved downloading the official Wordpress installation via zip file. Unzipping it into your web root directory, running the initial configuration, hardcoding any configuration required in the <code>wp-config.php</code> file and then finally FTPing into an online server usually purchased from Lunarpages.</p>
+
+<p>Such a workflow has several disadvantages. The worst is FTP. FTP is very slow. It transfers each file individually one by one, and each time it does this, it needs to reestablish the connection. This can be a real hassle when you have thousands of files, and the Wordpress 3.7.1 framework has as of now 1176 files. And if you hit any interruption in the connection, you may need to restart the whole process since you don't know which file was half uploaded and corrupted. The other problem is that server differences will require reconfiguration on the remote server. This generally means saving the config file separately, modifying it to match the necessary remote server configuration which could involve database settings and database migration, uploading it via FTP to the remote server, access the site from your web browser and debug things manually. Oh and you have do this all over again if you need to install plugins or fiddle with the theme. This leads us to our second problem: dependency management and version control.</p>
+
+<p>Storing the wordpress project as files on your work computer makes it difficult to work flexibly. What if your computer dies? What if you want to work on a different computer? What if you need to share code with a team and each needs to contribute in different ways to the overall project? So you might decide to copy paste your working folder in a backup harddisk, and copy it to a USB thumbdrive so you can work on the go. Now you have the problem of version control. How do you reconcile different versions of the project elegantly. If you changed one file on the USB thumbdrive, then this becomes the new master version, which has to be manually copied to all the other locations where you stored the code. You might meet merge conflicts, where 2 files might have been updated to different code at the same time, which version is the right one to use, and what if both versions solve different problems. And this problem becomes compounded if you're working in a team. Furthermore, this constant copying and pasting results in a lot of duplication, especially if the majority of the project are external dependencies, that is plugins or themes or the Wordpress framework itself, which is code written by people outside of your current scope. There should be some way of isolating your application's code from dependencies so that there's less duplication of the source code, and you only need to bring in the dependency when it's actually being executed.</p>
+
+<p>Now I am digressing, of course there has been solutions to this distributed source control via SVN and friends for large software projects, but if you're a single developer, there are still many lessons to learn from large software development workflow.</p>
+
+<p>So I began looking a different, more modern way. Nowadays we have PAAS (platform as a service) businesses that offer a more streamlined way of deploying web applications. They usually operate via a customised deployment routine similar to <a href="https://github.com/capistrano/capistrano">Capistrano</a>, <a href="https://github.com/progrium/dokku">Dokku</a>, <a href="http://danbarber.me/using-git-for-deployment/">Git based deployment</a>, or some form proprietary <a href="http://en.wikipedia.org/wiki/Continuous_integration">continuous integration</a>. All of these systems provide deployment hooks, which is essentially automated code that is ran after the code has be transported to the remote server. This solves the FTP problem because they package up the directory you want to send into a compressed archive, and once it's uploaded, it's extracted to the web root location. This speeds up the deployment process immensely, and it's more secure as well.</p>
+
+<p>But there is still the problem of configuration and dependency management. So I researched a bit and found articles regarding Wordpress and Composer and Git. Here are my sources: <a href="http://roots.io/using-composer-with-wordpress/">Using Composer with Wordpress</a> and <a href="http://www.mixd.co.uk/blog/deploying-wordpress-using-git-and-capistrano/">Deploying Wordpress using Git and Capistrano</a>. You should read those sources before going further.</p>
+
+<p>Those sites are really good sources, but they left a bit of detail out. So I'm going to fill in some gaps:</p>
+
+<p>Start by getting <a href="http://nelm.io/blog/2011/12/composer-part-1-what-why/">Composer</a> (dependency management tool) to install Wordpress as a dependency. Now Wordpress has not been registered as a package on Packagist (Composer's department store). But this is not a problem. We can use a custom installer which will bring in Wordpress as a zip file and unload it into the project directory. Here is the <code>composer.json</code></p>
+
+<pre>
+<code>
+{
+	"repositories": [
+		{
+			"type": "package",
+			"package": {
+				"name": "wordpress",
+				"type": "webroot",
+				"version": "3.7.1",
+				"dist": {
+					"type": "zip",
+					"url": "https://github.com/WordPress/WordPress/archive/3.7.1.zip"
+				},
+				"require": {
+					"fancyguy/webroot-installer": "1.0.0"
+				}
+			}
+		}
+	],
+	"require":{
+		"php": ">=5.3.0",
+		"wordpress": "3.7.1"
+	},
+	"config": {
+		"bin-dir": "bin/",
+		"process-timeout": "1000"
+	},
+	"extra": {
+		"webroot-dir": "wp",
+		"webroot-package": "wordpress"
+	}
+}
+</code>
+</pre>
+
+<p>When running <code>composer install</code>, this will download <code>https://github.com/WordPress/WordPress/archive/3.7.1.zip</code> and utilise this <code>"fancyguy/webroot-installer": "1.0.0"</code> custom installer to extract the archive into your root directory. The <code>	"extra": { "webroot-dir": "wp", "webroot-package": "wordpress" }</code> becomes important. The "webroot-dir" specifies what the wordpress directory's name, while the webroot-package specifies what package we want the custom installer to use. To get different versions of Wordpress, just change the "3.7.1" version to desired Wordpress version. There are three locations to change, the <code>"version": "3.7.1"</code>, <code>"url": "https://github.com/WordPress/WordPress/archive/3.7.1.zip"</code> and <code>"wordpress": "3.7.1"</code>. The Wordpress framework is downloaded from the <a href="https://github.com/WordPress/WordPress">Github mirror</a>. Because Wordpress is a rather large dependency, I set the <code>"process-timeout": "1000"</code> to 1000 seconds, since a slow internet connection may cause your installation to timeout. Composer uses 300s by default. Your directory layout should look like this:</p>
+
+<pre>
+<code>
+vendor
+wp
+composer.json
+composer.lock
+</code>
+</pre>
+
+<p>Now let's configure Wordpress so it understands that it's in its own directory. Follow the <strong>Using a pre-existing subdirectory install</strong> instructions here <a href="http://codex.wordpress.org/Giving_WordPress_Its_Own_Directory">Giving Wordpress Its Own Directory</a>. The General panel means going to <code>http://pathtoprojectdir/wp/wp-admin</code>, then going to Settings > General and change the Site Address Url but not the Wordpress Address Url. When you first get there, it'll ask you about the <code>wp-config.php</code> file, just say yes. Make sure you've got the database settings setup already, this is just like a normal Wordpress installation. After you've copied the "index.php" (note that the .htaccess file probably does not exist anymore) to your project root, you need to make the index.php's require command point to the Wordpress directory. Which going to be like this snippet:</p>
+
+<pre>
+<code>
+/** Loads the WordPress Environment and Template */
+require( dirname( __FILE__ ) . '/wp/wp-blog-header.php' );
+</code>
+</pre>
+
+<p>You should now copy the <code>wp-config.php</code> or <code>wp-config-sample.php</code> into your project root and rename it to <code>wp-config.php</code>. Next copy the whole <code>wp-content</code> directory into your project root as well. Your project directory should look like this:</p>
+
+<pre>
+<code>
+vendor
+wp
+wp-content
+composer.json
+composer.lock
+index.php
+wp-config.php
+</code>
+</pre>
+
+<p>Now we have to configure wp-config.php so that Wordpress understands that our application code is in wp-content and the wordpress installation is in wp. Here's what my wp-config.php file looks like:</p>
+
+<pre>
+<code>
+&lt;?php
+
+define('ENVIRONMENT', 'development');
+
+/**
+ * Automatic Url + Content Dir/Url Detection for Wordpress
+ */
+$document_root = rtrim(str_replace(array('/', '\'), '/', $_SERVER['DOCUMENT_ROOT']), '/');
+
+$root_dir = str_replace(array('/', '\'), '/', __DIR__);
+$wp_dir = str_replace(array('/', '\'), '/', __DIR__ . '/wp');
+$wp_content_dir = str_replace(array('/', '\'), '/', __DIR__ . '/wp-content');
+
+$root_url = substr_replace($root_dir, '', stripos($root_dir, $document_root), strlen($document_root));
+$wp_url = substr_replace($wp_dir, '', stripos($wp_dir, $document_root), strlen($document_root));
+$wp_content_url = substr_replace($wp_content_dir, '', stripos($wp_content_dir, $document_root), strlen($document_root));
+
+$scheme = (isset($_SERVER['HTTPS']) AND $_SERVER['HTTPS'] != 'off' AND !$_SERVER['HTTPS']) ? 'https://' : 'http://';
+$host = rtrim($_SERVER['SERVER_NAME'], '/');
+$port = (isset($_SERVER['SERVER_PORT']) AND $_SERVER['SERVER_PORT'] != '80' AND $_SERVER['SERVER_PORT'] != '443') ? ':' . $_SERVER['SERVER_PORT'] : '';
+
+$root_url = $scheme . $host . $port . $root_url;
+$wp_url = $scheme . $host . $port . $wp_url;
+$wp_content_url = $scheme . $host . $port . $wp_content_url;
+
+define('WP_HOME', $root_url); //url to index.php
+define('WP_SITEURL', $wp_url); //url to wordpress installation
+define('WP_CONTENT_DIR', $wp_content_dir); //wp-content dir
+define('WP_CONTENT_URL', $wp_content_url); //wp-content url
+
+/**
+ * Secrets
+ */
+require_once('Secrets.php');
+Secrets::load();
+
+/**
+ * MySQL settings
+ */
+if(ENVIRONMENT == 'production'){
+
+	define('DB_NAME', $_ENV['secrets']['database_name']);
+	define('DB_USER', $_ENV['secrets']['database_user']);
+	define('DB_PASSWORD', $_ENV['secrets']['database_pass']);
+	define('DB_HOST', $_ENV['secrets']['database_host']);
+	define('DB_CHARSET', 'utf8');
+	define('DB_COLLATE', '');
+
+}else{
+
+	define('DB_NAME', 'autotimorleste');
+	define('DB_USER', 'root');
+	define('DB_PASSWORD', '');
+	define('DB_HOST', 'localhost');
+	define('DB_CHARSET', 'utf8');
+	define('DB_COLLATE', '');
+
+}
+
+/**#@+
+ * Authentication Unique Keys and Salts.
+ *
+ * Change these to different unique phrases!
+ * You can generate these using the {@link https://api.wordpress.org/secret-key/1.1/salt/ WordPress.org secret-key service}
+ * You can change these at any point in time to invalidate all existing cookies. This will force all users to have to log in again.
+ *
+ * @since 2.6.0
+ */
+define('AUTH_KEY',         $_ENV['secrets']['auth_key']);
+define('SECURE_AUTH_KEY',  $_ENV['secrets']['secure_auth_key']);
+define('LOGGED_IN_KEY',    $_ENV['secrets']['logged_in_key']);
+define('NONCE_KEY',        $_ENV['secrets']['nonce_key']);
+define('AUTH_SALT',        $_ENV['secrets']['auth_salt']);
+define('SECURE_AUTH_SALT', $_ENV['secrets']['secure_auth_salt']);
+define('LOGGED_IN_SALT',   $_ENV['secrets']['logged_in_salt']);
+define('NONCE_SALT',       $_ENV['secrets']['nonce_salt']);
+
+/**#@-*/
+
+/**
+ * WordPress Database Table prefix.
+ *
+ * You can have multiple installations in one database if you give each a unique
+ * prefix. Only numbers, letters, and underscores please!
+ */
+$table_prefix  = 'wp_';
+
+/**
+ * WordPress Localized Language, defaults to English.
+ *
+ * Change this to localize WordPress. A corresponding MO file for the chosen
+ * language must be installed to wp-content/languages. For example, install
+ * de_DE.mo to wp-content/languages and set WPLANG to 'de_DE' to enable German
+ * language support.
+ */
+define('WPLANG', '');
+
+/**
+ * For developers: WordPress debugging mode.
+ *
+ * Change this to true to enable the display of notices during development.
+ * It is strongly recommended that plugin and theme developers use WP_DEBUG
+ * in their development environments.
+ */
+define('WP_DEBUG', false);
+
+/* That's all, stop editing! Happy blogging. */
+
+/** Absolute path to the WordPress directory. */
+if ( !defined('ABSPATH') )
+	define('ABSPATH', __DIR__ . '/wp/');
+
+/** Sets up WordPress vars and included files. */
+require_once(ABSPATH . 'wp-settings.php');
+</code>
+</pre>
+
+<p>It probably looks quite different from yours. There's a quite a bit of important logic working here. Let's go through it. The first part defines the <code>ENVIRONMENT</code> constant. This will be useful for our branching off our database configuration. The next we do some magic URL detection. Remember the part in the General panel where you had to set the URL to the Wordpress installation and the site URL. It's probably along the lines of "http://localhost/pathtoyoursite". This will be a bit of a problem if you upload it to a remote server, and the URL will probably be your production URL having a real domain. We don't want to do so much configuration work, so I wrote some code to automatically detect the URL to the project root and other relevant areas such as:</p>
+
+<pre>
+<code>
+define('WP_HOME', $root_url); //url to index.php
+define('WP_SITEURL', $wp_url); //url to wordpress installation
+define('WP_CONTENT_DIR', $wp_content_dir); //wp-content dir
+define('WP_CONTENT_URL', $wp_content_url); //wp-content url
+</code>
+</pre>
+
+<p>This allows our Wordpress project to work with any URL on any server, whether it's your development server or production server. I saved this portion of the code as a gist:</p>
+
+<script src="https://gist.github.com/CMCDragonkai/7578784.js"></script>
+
+<p>The next portion loads the Secrets class and loads secrets. What are these secrets? Well they are the production database configuration and authentication keys. These are required since it is not a good practice to save production configuration keys to version control. I will get back to this and the database/auth configuration in a moment. At the bottom, we made sure that the require command required from the "wp" directory.</p>
+
+<pre>
+<code>
+/** Absolute path to the WordPress directory. */
+if ( !defined('ABSPATH') )
+	define('ABSPATH', __DIR__ . '/wp/');
+
+/** Sets up WordPress vars and included files. */
+require_once(ABSPATH . 'wp-settings.php');
+</code>
+</pre>
+
+<p>Let's get the Secrets working. First we need a secrets directory which will hold <code>keys.php</code>. Something like this:</p>
+
+<pre>
+<code>
+&lt;?php
+
+//encryption
+
+$secrets['auth_key'] = '';
+$secrets['secure_auth_key'] = '';
+$secrets['logged_in_key'] = '';
+$secrets['nonce_key'] = '';
+$secrets['auth_salt'] = '';
+$secrets['secure_auth_salt'] = '';
+$secrets['logged_in_salt'] = '';
+$secrets['nonce_salt'] = '';
+
+//production database details
+
+$secrets['database_host'] = '';
+$secrets['database_name'] = '';
+$secrets['database_user'] = '';
+$secrets['database_pass'] = '';
+</code>
+</pre>
+
+<p>The above will be inside "secrets/keys.php". This file will be ignored in version control. <a href="http://stackoverflow.com/questions/11575398/how-can-i-save-my-secret-keys-and-password-securely-in-my-version-control-system">This is a good practice.</a> Next we'll get the Secrets class which I wrote to facilitate the loading of secrets. It will include any php file inside the secrets folder, and pass all properties that is part of the <code>$secrets[]</code> array into the <code>$_ENV['secrets'][]</code> array. Here is a gist of the Secrets class:</p>
+
+<script src="https://gist.github.com/CMCDragonkai/7579059.js"></script> 
+
+<p>The Secrets.php should be committed to version control and should be at the project root. You project structure should look like:</p>
+
+<pre>
+<code>
+vendor
+secrets
+wp
+wp-content
+composer.json
+composer.lock
+index.php
+wp-config.php
+Secrets.php
+</code>
+</pre>
+
+<p>Now you can see how the secrets can be utilised in production settings. On the production side, you would write a deploy hook that downloads your keys.php into the secrets folder which would be kept in a separate location that is of course secret. You can use Dropbox, private git then curl.</p>
+
+<p>Now that we have separated the framework from our application code, which mostly kept in the wp-content directory, because that's where our themes and plugins go, we should go a step further and use Composer to manage any plugin dependencies. Now most Wordpress plugins are not Composer compatible. But the guys at <a href="http://wpackagist.org/">http://wpackagist.org/</a> as mirrored every single Wordpress plugin as a composer installable package. All of which use a custom installer to install into the "wp-content/plugins" directory. I installed the WP-Migrate-DB plugin via Composer. You can do this by adding their location as a repository location as seen in this snippet:</p>
+
+<pre>
+<code>
+	"repositories": [
+		{
+			"type": "composer",
+			"url": "http://wpackagist.org"
+		},
+		{
+			"type": "package",
+			"package": {
+				"name": "wordpress",
+				"type": "webroot",
+				"version": "3.7.1",
+				"dist": {
+					"type": "zip",
+					"url": "https://github.com/WordPress/WordPress/archive/3.7.1.zip"
+				},
+				"require": {
+					"fancyguy/webroot-installer": "1.0.0"
+				}
+			}
+		}
+	],
+</code>
+</pre>
+
+<p>Then you can install the plugins in the require position:</p>
+
+<pre>
+<code>
+	"require":{
+		"php": ">=5.3.0",
+		"wordpress": "3.7.1",
+		"wpackagist/wp-migrate-db": "0.5"
+	},
+</code>
+</pre>
+
+<p>Now how do we find out the exact name and version of the Wordpress plugin that we want? Well you need to go into the plugin SVN directory: <a href="http://plugins.svn.wordpress.org/">http://plugins.svn.wordpress.org/</a> and do a Ctrl+F to the plugin name, and that's the correct name to use. Click on the plugin, and you'll find the version you will want. Run <code>composer update</code> and this will install the plugin into "wp-content/plugins/pluginname/".</p>
+
+<p>Let's now commit this to Git version control. However before we do so, we need to add some directories to the <code>.gitignore</code>. These ones to be specific:</p>
+
+<pre>
+<code>
+#################
+## Custom
+#################
+
+vendor/*
+bin/*
+secrets/*
+!secrets/*.example
+!secrets/*.gitkeep
+wp/*
+wp-content/backup/*
+wp-content/cache/*
+wp-content/plugins/*
+wp-content/upgrade/*
+wp-content/uploads/*
+</code>
+</pre>
+
+<p>We have to ignore those files and folders because they don't belong in the version control. The secrets are self-explanatory. The wp folder is a dependency which can be brought in via Composer, there's no need to duplicate third party source code in our source control. The wp-content folders are ignored for the same reason. The uploads and backup and cache directory are actually meant to be managed outside the source control because they do not constitute the source code of the software application. Of course when you want to migrate to another server, creating a server snapshot or a database dump. For best case practices, your file uploads should go to a completely separate file sever such as Amazon S3, so the storage, backup and serving of the files can be abstracted from the logical component which is your software application source code.</p>
+
+<p>So this blog post was a bit longer than I thought it would take, and it is more catered to those who already understand bits of Wordpress and how Composer works. But I hope it helps you to make your Wordpress workflow better.</p>								</div>
+								<div class="meta_box">
+									<span class="author_meta">Posted by CMCDragonkai on 2013-11-22 16:13:40</span>
+																				<span class="tag_meta">Tags:
+																									<a href="../../tags/wordpress.html">wordpress</a>																									<a href="../../tags/composer.html">composer</a>																									<a href="../../tags/coding.html">coding</a>																									<a href="../../tags/workflow.html">workflow</a>																							</span>
+																		<span class="comment_meta">
+										<a href="modern_wordpress_workflow_with_composer.html#disqus_thread">Want to Comment?</a>									</span>
+																			<div class="addthis_toolbox addthis_default_style ">
+											<a class="addthis_button_preferred_1"></a>
+											<a class="addthis_button_preferred_2"></a>
+											<a class="addthis_button_preferred_3"></a>
+											<a class="addthis_button_preferred_4"></a>
+											<a class="addthis_button_compact"></a>
+											<a class="addthis_counter addthis_bubble_style"></a>
+										</div>
+										<script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-509f8a9354e18205"></script>
+																										</div>
+							</article>
+												<div>
+									<ul class="pager">
+																					<li>
+												<a href="../147/preloading_page_content_like_youtube_using_angularjs.html">&larr; Older</a>
+											</li>
+																															<li>
+												<a href="../149/transferring_code_for_australia.html">Newer &rarr;</a>
+											</li>
+																			</ul>
+								</div>
+											<div id="disqus_thread"></div>
+							<script type="text/javascript">
+								/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+								var disqus_shortname = "polycademy";
+								var disqus_developer = 0;
+								var disqus_identifier = "blog_148";
+								var disqus_url = "http://polycademy.ap01.aws.af.cm/blog/id/148/modern_wordpress_workflow_with_composer";
+								var disqus_title = "Modern Wordpress Workflow with Composer";
+
+								/* * * DON'T EDIT BELOW THIS LINE * * */
+								(function() {
+									var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+									dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+									(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+								})();
+							</script>
+							<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+							</div>
+		</div>		<footer>
+			<div class="container">
+				<article class="row footer_grid">
+					<section class="blog_panel span4">
+						<h3>
+							<a href="../../../blog.html">Blog</a>						</h3>
+						<p>
+																• <em class="footer_dates">(2015/03/04)</em> - <a href="../152/a_new_direction.html">A New Direction</a><br /><br />
+																• <em class="footer_dates">(2014/03/30)</em> - <a href="../151/the_problem_of_javascript_and_search_engines_and_introducing_snapsearch.html">The Problem of Javascript and Search Engines and introducing SnapSearch</a><br /><br />
+																• <em class="footer_dates">(2014/01/26)</em> - <a href="../150/using_virtualbox_for_development.html">Using VirtualBox for Development</a><br /><br />
+																• <em class="footer_dates">(2013/11/28)</em> - <a href="../149/transferring_code_for_australia.html">Transferring Code for Australia</a><br /><br />
+																• <em class="footer_dates">(2013/11/22)</em> - <a href="modern_wordpress_workflow_with_composer.html">Modern Wordpress Workflow with Composer</a><br /><br />
+													</p>
+					</section>
+					<section class="fbtwitter_panel span4">
+						<h3><a href="https://www.facebook.com/Polycademy">FB</a>.<a href="https://twitter.com/Polycademy">Twitter</a></h3>
+						<p>
+												</p>
+					</section>
+					<section class="notices_panel span4">
+						<h3>
+							<a href="../../tags/notices.html">Notices</a>						</h3>
+						<p>We're looking for companies, mentors and advisors. If you are interested in getting involved and checking out our students, check our partners page and contact us.
+						<br />
+						<br />
+						You can contact us at <a href='http://www.google.com/recaptcha/mailhide/d?k=01q-bJV3WQrMYWD2quLJ7VPA==&c=FsmnfqaQraWCMzZB6tsagBZd557LPBLlxh80gaenMSo='>@polycademy.com</a> or phone us at +61 (0)420 925 975</p>
+					</section>
+				</article>
+				<ul class="footer_links">
+					<li><a href="../../../terms_of_service.html">Terms of Service & Privacy Policy</a></li>
+					<li><a href="../../../refund_policy.html">Refund Policy</a></li>
+				</ul>
+				<p class="copyright">&copy; Polycademy & Code for Australia 2012</p>
+			</div>
+		</footer>
+		
+        <!--This passes any PHP/Codeigniter Variables to JS in case we need it-->
+		<script>
+			var ci_base_url = "http://polycademy.ap01.aws.af.cm/";
+			var ci_preview_path = "~/blog/preview";
+		</script>
+		
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="../../../js/jquery-1.8.2.min.js"><\/script>')</script>
+
+        <script src="../../../js/bootstrap.min.js"></script>
+		<script src="../../../js/jquery-ui-1.8.20.custom.min.js"></script>
+		<script src="../../../js/jquery.liquid-slider-1.0.min.js"></script>
+
+        <script src="../../../js/main.js"></script>
+		
+					<script>
+				var _gaq = _gaq || [];
+				_gaq.push(['_setAccount', 'UA-36175888-1']);
+				_gaq.push(['_trackPageview']);
+
+				(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+				})();
+			</script>
+		    </body>
+</html>

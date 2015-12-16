@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Blog tag(s) - Polycademy is an academy for web application entrepreneurship</title>
+        <meta name="description" content="Polycademy is a school in Canberra that teaches web application development and entrepreneurship. It is catered to potential web application entrepreneurs or developer/designers who want to reskill. Students are placed in teams and are taught web tech by starting with envisioning their own project to coding and deployment. Students finish the course with an actual product. Our three philosophies are minimum viable product, agile methodology and flipped classroom. Students will gain mentors and industry contacts through our demo days.">
+		<meta name="google-site-verification" content="Mq6Yv8R9mGJK9SrUH5oZ8SNB8Z_WJHwkdkgp49ukHYE" />
+		<meta name="msvalidate.01" content="907A19AD04C8D5C2095C9DCE875FD165" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="shortcut icon" href="../../favicon.ico">
+		<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+		<link rel="stylesheet" href="../../css/main.css">
+        <script src="../../js/modernizr-2.6.1-respond-1.1.0.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+        <![endif]-->
+        <header class="navbar navbar-static-top">
+			<div class="container">
+				<div class="navbar-inner">
+					<a class="logo" href="../../index.html"><img src="../../img/logo.png" /></a>
+					<p class="slogan">an academy for web application entrepreneurship</p>
+					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</a>
+					<div class="nav-collapse collapse">
+						<ul class="nav">
+							<li><a href="../../index.html">home</a></li><li class="divider-vertical"></li><li><a href="../../courses.html">courses</a></li><li class="divider-vertical"></li><li><a href="../../partners.html">partners</a></li><li class="divider-vertical"></li><li><a href="http://codeforaustralia.com.au">code for australia</a></li><li class="divider-vertical"></li><li><a href="http://phpbounce.aws.af.cm/">php bounce</a></li><li class="divider-vertical"></li><li><a href="http://polycademy.eventbrite.com.au/">events</a></li><li class="divider-vertical"></li><li><a href="../../blog.html">blog</a></li>						</ul>
+					</div>
+				</div>
+			</div>
+        </header>		<div class="white_container">
+			<div class="container">
+										<h4>Showing articles with the tag(s): 'virtualbox'</h4>
+															<article class="white_text_container blog_article">
+								<h1 class="blog_title"><a href="../id/150/using_virtualbox_for_development.html">Using VirtualBox for Development</a></h1>
+								<div class="blog_content">
+									<p>Polycademy has been improving it's development workflow. Especially the deployment of web server stack.</p>
+
+<img src="https://www.filepicker.io/api/file/HGpC8vm3ROCGfjU1rgBi" alt="" />
+
+<p>One of the things that I realised in running the courses, is that the work to setup web server stacks which means the HTTP server, Application Server, Database Server and various other daemons and applications is a very time consuming process. This is mainly devops work and configuration management, it's not really development. What is required is an automatic way to create development and production servers that is isolated from each other, and has the exact same configuration every time you destroy or create one. The development server should match the environment of the production servers so that you reduce the number configuration problems during deployment of your application to the production server. In setting up a workflow like this, you can get a file that specifies how these virtual servers are setup, and just copy paste the file to whichever computer you are currently developing with. In some cases you can just straight up copy the virtual machine image which is the entire operating system and associated installed applications and load this into wherever you want to develop as well.</p>
+
+<p>So I've been spending time researching on deployment automation. And I came across services like <a href="http://www.vagrantup.com/">Vagrant</a>, <a href="https://www.docker.io/">Docker</a>, <a href="https://www.virtualbox.org/" title="">VirtualBox</a>, <a href="http://www.getchef.com/">Chef</a>, <a href="http://puppetlabs.com/">Puppet</a>, <a href="http://www.ansibleworks.com/">Ansible</a>, <a href="http://www.saltstack.com/">SaltStack</a> and a whole lot more. Enterprises tend to use devops personnel to write up configuration scripts that essentially deploy hundreds or thousands of servers in an automated mannger. This saves time and cost. However these methods are perfectly applicable to the individual developer or startup.</p>
+
+<p>My research has led me to conclude that a combination of VirtualBox, Vagrant, Docker, and Ansible is the best development and deployment workflow for individual or startup projects. VirtualBox is for setting up virtual operating systems on your computer, this is only for development, in production your virtual operating systems are provided to you when you rent a VPS from a hoster such as Digital Ocean. Vagrant is a command line tool that allows you auto configure VirtualBox. Docker is for setting up lightweight virtual machines inside the virtual operating system, and these will run the applications you're developing. It's like a virtual machine inside a virtual machine. I don't yet understand the specifics of how Docker works, but when I do I'll probably write a blog post about setting up your own private cloud host. Finally Ansible the configuration management/IT automation tool, that will basically setup Docker and other services inside the Virtual Machines, and perhaps setup your application inside Docker as well. Note that another service called Packer allows you to quickly replicate your virtual machine images so it's good for the development of virtual appliances.</p>
+
+<p>So in order to learn how to do all of this, I had start at the beginning with VirtualBox. I've managed to setup VirtualBox as a guest operating system that not only has a synchronised development folder with my host operating system (Windows, Linux and Mac) but is also accessible over the network.</p>
+
+<p>What does this all mean? This means I can open up my Sublime Text Editor to my "www" directory. This is where all my projects reside. I can edit a file in this directory. This file change is automatically propagated to the virtual machine instance. Then in my host machine I can open up Firefox to "http://localhost:8000" or "http://dev.test.com:8000" and get to see my updated change in my application. Then in my host or guest machine, can I commit and synchronise to github. All of this can be done without installing a web server stack (HTTP servers, Application Runtimes..etc) on my host machine, thus keeping my host machine clean. I'm not talking about production deployment at this moment, because I haven't got that far with Docker..etc. Therefore any deployment routines to production servers will still stay the same. However I'm still quite happy with what I have here, it is definitely an improvement over running WAMP or MAMP. As I can easily use NGINX and other Unix based tools. Furthermore, the instructions below can easily be adapted to setting up SSH access from your host machine too if you want to command your guest operating system from your host's terminal.</p>
+
+<p>Now comes the tutorial of how to set this all up. This part does require you understand Ubuntu Linux, basic bash scripting, CLI usage, modifying the hosts file and setting up NGINX.</p>
+
+<p>First download VirtualBox: <a href="https://www.virtualbox.org/wiki/Downloads">https://www.virtualbox.org/wiki/Downloads</a>. Then download Ubuntu Desktop: <a href="http://www.ubuntu.com/download/desktop">http://www.ubuntu.com/download/desktop</a></p>
+
+<p>Run VirtualBox and create a new virtual machine instance. A wizard dialog will pop up. Make sure to select the correct settings for your virtual machine. The perfomance of the virtual machine will be better if you give it a static size hard drive and 2048 mb ram, 2 CPUs and 32 mb of Video Memory along with 3D acceleration. These settings can be changed later inside the GUI of VirtualBox, they make your VM more expensive to use, but it also makes your VM a lot more faster and responsive. Once your virtual machine instance is set, you need to start it up. Then load the ISO of Ubuntu image you just downloaded. Follow the instructions to install Ubuntu in your new virtual operating system.</p>
+
+<p>Once it's all been installed, you need to remove the ISO CD from your virtual operating system. This can be done by shutting down your VM (virtual machine), then going into the settings of your VM inside VirtualBox and removing the CD in the storage settings. Start it up again and this time install the VBoxAdditions ISO. The VM would have prompted you to do this. This VBoxAdditions allows your VM to setup shared folders and other good things. We'll need shared folders to allow your host machine to edit files and have your guest machine use those updated files. Once that is done, you'll need to restart your VM and remove the VBoxAdditions ISO CD.</p>
+
+<p>Setting up shared folders is quite easy. Shutdown your VM. Go into the VirtualBox settings for the VM. Go into shared folders. Add a new shared folder record. The first folder path is the path your development folder. For me this is "D:www". The folder name would be "www". Make sure Read-only is off, switch on Auto-mount and Make Permanent. Hit Ok. Start your VM. Using your terminal in root user assuming that your folder is "www", run:</p>
+
+<pre>
+<code>
+cd /media/sf_www/
+ls -l
+</code>
+</pre>
+
+<p>This should show you the contents of your "www" folder on your host machine. If your folder was called something else, it will always have the prefix of "sf_". Furthermore we can see the owner and group the files and folders are associated with. This folder will be grouped under "vboxsf". Right now we can only access it with the root user. In order to add extra users to this group we can use this bash command (fill "username" with the name of the user):</p>
+
+<pre>
+<code>
+sudo adduser username vboxsf
+</code>
+</pre>
+
+<p>We should add the default user that you log in with, and also the "www-data" user. The "www-data" user will be the user that your web server stack will use. Your webserver such as NGINX, PHP, Cron scripts should not be using root or your default user, but a custom user for web stuff. It doesn't need to be called "www-data" but that is the default name used by PHP-FPM.</p>
+
+<p>Once you do that, the setting does not take effect immediately. You need to restart your VM. After which you no longer have to be a root user to access the "sf_www" directory inside your VM.</p>
+
+<p>Now the <code>/media/sf_www</code> is not really convenient directory path. So let's try to access it from something like <code>/www</code>. To do so, setup a symbolic link from <code>/media/sf_www</code> to <code>/www</code>.</p>
+
+<pre>
+<code>
+ln -s /media/sf_www /www
+</code>
+</pre>
+
+<p>Now test it out. Go into the "www" directory from your host machine, and create or edit a file. Now in your VM, check the <code>/www</code> directory and see if the file is there or edited. We should now have synchronised development folders!</p>
+
+<p>Now let's do some port forwarding. First we need an HTTP server on the VM. So we can install NGINX which by default listens on port 80 and shows a default NGINX page.</p>
+
+<pre>
+<code>
+sudo apt-get install nginx
+</code>
+</pre>
+
+<p>Test it out by launching Firefox inside the VM and heading to "http://localhost". If it shows the page, then NGINX is working. While you're at it, try out Polycademy's NGINX configuration best practices: <a href="https://github.com/Polycademy/WebserverConfiguration">https://github.com/Polycademy/WebserverConfiguration</a></p>
+
+<p>Shutdown the VM. Inside VirtualBox's VM settings, go into Network. From Network, the Network Adapter should be set to NAT. Click on Port Forwarding. Add a new record. In this record, set the Host Port to 8000 and the Guest Port to 80. The Protocol should be TCP. The name and everything else can be left as default. You can change the name to anything you like. Restart the VM.</p>
+
+<p>Now in your host machine, launch your browser and head to "http://localhost:8000". This should show the same page as the page you saw when you visited with Firefox inside the VM. In the future you can also port forward HTTPS connections, and you'll need to go from a random host port such as 8001 to the port 443 on the guest machine, this would result in URLs like https://localhost:8001.</p>
+
+<p>You can change the hosts file inside the host machine independently of the guest machine. This means the hosts file inside the guest machine affects the guest. So if you want a development URL such as "http://dev.example.com" inside the guest machine, just set that up inside <code>/etc/hosts</code> in the guest machine. This will work for browsers inside the guest machine. But if you want that for the host machine, you'll need to add that record to the hosts file in the host machine.</p>
+
+<p>Now you can install all your web server stack into your VM and not worry about the host machine or incompatibilities between operating systems especially when you develop on Windows/Mac but deploy on Linux.</p>
+
+<p>If you meet any problems, check the NGINX logs which should be specified inside the "nginx.conf" file inside <code>/etc/nginx/nginx.conf</code>. There could be issues with file caching with NGINX, which means that NGINX is caching the files it's serving. This is not good for development, and should be switched off. You should then restart NGINX with <code>sudo service nginx restart</code>. Other problems could include permissions like "vboxsf" but this should work great.</p>
+
+<p>The next step would be learning Vagrant & Ansible to automate the VM constructions as it builds on top VirtualBox (and other various VM provisioiners). Currently all you have is a VM image you could share, but sharing a 1 gig file is a bit hard, a configuration file would be smaller and easier to work with.</p>								</div>
+								<div class="meta_box">
+									<span class="author_meta">Posted by CMCDragonkai on 2014-01-26 20:43:54</span>
+																				<span class="tag_meta">Tags:
+																									<a href="coding.html">coding</a>																									<a href="virtualbox.html">virtualbox</a>																									<a href="workflow.html">workflow</a>																							</span>
+																		<span class="comment_meta">
+										<a href="../id/150/using_virtualbox_for_development.html#disqus_thread">Want to Comment?</a>									</span>
+																										</div>
+							</article>
+							</div>
+		</div>		<footer>
+			<div class="container">
+				<article class="row footer_grid">
+					<section class="blog_panel span4">
+						<h3>
+							<a href="../../blog.html">Blog</a>						</h3>
+						<p>
+																• <em class="footer_dates">(2015/03/04)</em> - <a href="../id/152/a_new_direction.html">A New Direction</a><br /><br />
+																• <em class="footer_dates">(2014/03/30)</em> - <a href="../id/151/the_problem_of_javascript_and_search_engines_and_introducing_snapsearch.html">The Problem of Javascript and Search Engines and introducing SnapSearch</a><br /><br />
+																• <em class="footer_dates">(2014/01/26)</em> - <a href="../id/150/using_virtualbox_for_development.html">Using VirtualBox for Development</a><br /><br />
+																• <em class="footer_dates">(2013/11/28)</em> - <a href="../id/149/transferring_code_for_australia.html">Transferring Code for Australia</a><br /><br />
+																• <em class="footer_dates">(2013/11/22)</em> - <a href="../id/148/modern_wordpress_workflow_with_composer.html">Modern Wordpress Workflow with Composer</a><br /><br />
+													</p>
+					</section>
+					<section class="fbtwitter_panel span4">
+						<h3><a href="https://www.facebook.com/Polycademy">FB</a>.<a href="https://twitter.com/Polycademy">Twitter</a></h3>
+						<p>
+												</p>
+					</section>
+					<section class="notices_panel span4">
+						<h3>
+							<a href="notices.html">Notices</a>						</h3>
+						<p>We're looking for companies, mentors and advisors. If you are interested in getting involved and checking out our students, check our partners page and contact us.
+						<br />
+						<br />
+						You can contact us at <a href='http://www.google.com/recaptcha/mailhide/d?k=01q-bJV3WQrMYWD2quLJ7VPA==&c=FsmnfqaQraWCMzZB6tsagBZd557LPBLlxh80gaenMSo='>@polycademy.com</a> or phone us at +61 (0)420 925 975</p>
+					</section>
+				</article>
+				<ul class="footer_links">
+					<li><a href="../../terms_of_service.html">Terms of Service & Privacy Policy</a></li>
+					<li><a href="../../refund_policy.html">Refund Policy</a></li>
+				</ul>
+				<p class="copyright">&copy; Polycademy & Code for Australia 2012</p>
+			</div>
+		</footer>
+		
+        <!--This passes any PHP/Codeigniter Variables to JS in case we need it-->
+		<script>
+			var ci_base_url = "http://polycademy.ap01.aws.af.cm/";
+			var ci_preview_path = "~/blog/preview";
+		</script>
+		
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="../../js/jquery-1.8.2.min.js"><\/script>')</script>
+
+        <script src="../../js/bootstrap.min.js"></script>
+		<script src="../../js/jquery-ui-1.8.20.custom.min.js"></script>
+		<script src="../../js/jquery.liquid-slider-1.0.min.js"></script>
+
+        <script src="../../js/main.js"></script>
+		
+					<script>
+				var _gaq = _gaq || [];
+				_gaq.push(['_setAccount', 'UA-36175888-1']);
+				_gaq.push(['_trackPageview']);
+
+				(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+				})();
+			</script>
+		    </body>
+</html>

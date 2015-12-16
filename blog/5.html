@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Blog - Polycademy is an academy for web application entrepreneurship</title>
+        <meta name="description" content="Polycademy is a school in Canberra that teaches web application development and entrepreneurship. It is catered to potential web application entrepreneurs or developer/designers who want to reskill. Students are placed in teams and are taught web tech by starting with envisioning their own project to coding and deployment. Students finish the course with an actual product. Our three philosophies are minimum viable product, agile methodology and flipped classroom. Students will gain mentors and industry contacts through our demo days.">
+		<meta name="google-site-verification" content="Mq6Yv8R9mGJK9SrUH5oZ8SNB8Z_WJHwkdkgp49ukHYE" />
+		<meta name="msvalidate.01" content="907A19AD04C8D5C2095C9DCE875FD165" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="shortcut icon" href="../favicon.ico">
+		<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+		<link rel="stylesheet" href="../css/main.css">
+        <script src="../js/modernizr-2.6.1-respond-1.1.0.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+        <![endif]-->
+        <header class="navbar navbar-static-top">
+			<div class="container">
+				<div class="navbar-inner">
+					<a class="logo" href="../index.html"><img src="../img/logo.png" /></a>
+					<p class="slogan">an academy for web application entrepreneurship</p>
+					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</a>
+					<div class="nav-collapse collapse">
+						<ul class="nav">
+							<li><a href="../index.html">home</a></li><li class="divider-vertical"></li><li><a href="../courses.html">courses</a></li><li class="divider-vertical"></li><li><a href="../partners.html">partners</a></li><li class="divider-vertical"></li><li><a href="http://codeforaustralia.com.au">code for australia</a></li><li class="divider-vertical"></li><li><a href="http://phpbounce.aws.af.cm/">php bounce</a></li><li class="divider-vertical"></li><li><a href="http://polycademy.eventbrite.com.au/">events</a></li><li class="divider-vertical"></li><li><a href="../blog.html">blog</a></li>						</ul>
+					</div>
+				</div>
+			</div>
+        </header>		<div class="white_container">
+			<div class="container">
+															<article class="white_text_container blog_article">
+								<h1 class="blog_title"><a href="id/147/preloading_page_content_like_youtube_using_angularjs.html">Preloading page content like Youtube using AngularJS</a></h1>
+								<div class="blog_content">
+									<p>I want to start blogging more about my technical journeys through Polycademy. While I was building Dream it App (<a href="http://dreamitapp.com">http://dreamitapp.com</a>), I noticed that there would FOUCs (flash of unstyled content) in between pages on the same application. Dream it App is a single page application, so state transitions are meant to be more fluid and closer to a desktop experience. In a traditional static page, you get FOUCs/FONCs (flash of no content) all the time between changing pages or changing sites, usually it's a white background. You'll notice this when you're on Google and you navigate to a particular new site you have been to before. But in way SPAs should be able to avoid this problem. Unfortunately for most cases, you trade the page transition white background FONC for a FOUC that has the template and styles loaded, but the data/content not loaded. This is happening because SPAs are asynchronously loading resources, so things don't come in one at a time. But then I saw Youtube's new loading mechanism.</p>
+
+<p>If you've been to Youtube recently, you may have noticed a loading mechanism. Go any Youtube video, and then click on one of the related videos without opening a new tab or window. You should see this:</p>
+
+<img src="https://www.filepicker.io/api/file/UoNnwORUKaTCyEVY24aw" alt="" />
+
+<p>It looks like a loading bar. But this is not what this post will be talking about. A loading bar is fairly easy to implement in AngularJS, see the <a href="http://victorbjelkholm.github.io/ngProgress/">ngProgress</a> module. What Youtube is doing is preloading all the data and content of the next video before it transitions the view state to that new video page.</p>
+
+<p>So I began thinking overnight on how to achieve this. This is a difficult thing to implement. When writing an AngularJS application, you have controllers that associate themselves to various view states. A basic example would be that every single page (delineated by the URL) has a controller. Then you put all the commands that load data asynchronously from the server, and all the modifications of data into the controller. You might even abstract the process and modularise but in the end it's all activated from the controller. In most use cases, only when the page has transitioned to the new page will the controller's code run and hence bring in all of the content for the new page. So there has to be some way to load data asynchronously before activating the controller. One couldn't just run the controller before changing page, because the controller may be relying on the DOM as a dependency to run other things.</p>
+
+<p>The first obvious solution would the preload resources upon the first load. In some sites, they preload images and cache them in the browser before you even load a page that needs those images. This could work as well for a small site that has fairly static content. However when you get to scaling up dynamic content it doesn't work. It does work well for templates. In fact Polycademy's current Angular architecture is to preload all templates and cache them upon the first page load. This is because templates are usually quite small when they are all combined. But this doesn't solve the problem since the content is still being loaded asynchronously and being added to the template. So when you transition state, you might see the template, but no data. What we need is a method to separate the activation of loading asynchronous content that is on demand and relevant to the specific page from the controller's code. So that upon running the controller's code (and transitioning the view), the data is there already. But this all needs to be done JIT (just in time) for the page, not for all pages.</p>
+
+<p>So I did some googling. And there is a method to do this. It's called the resolve property on the routes. It is possible to configure AngularJS's routes to each have a resolve property, which calls functions that return a promise, which all have to be resolved, before finally dependency injecting them into the controller.</p>
+
+<p>The methods are listed here: <a href="http://stackoverflow.com/questions/11972026/delaying-angularjs-route-change-until-model-loaded-to-prevent-flicker">Delaying AngularJS route change until model loaded to prevent flicker</a> and <a href="http://www.youtube.com/watch?v=P6KITGRQujQ&list=UUKW92i7iQFuNILqQOUOCrFw&index=4&feature=plcp&noredirect=1">AngularJS - Behave like Gmail using Routes with Resolve</a> and <a href="http://egghead.io/lessons/angularjs-route-life-cycle">AngularJS Video Tutorial: Route Life Cycle</a></p>
+
+<p>I haven't got around to testing those methods in production. But I hope it also works with the back button. Youtube does its preloading mechanism on the back button as well. At any case, this is a boon to user experience. One of the major factors of using SPAs to is to have a more responsive experience, and seeing FOUCs as you transition between views deteriorates that experience. You would never see a well designed desktop app with FOUCs in between transitions.</p>
+
+<p>I also use ui-router for a more sophisticated state machine routing. And ui-router also supports resolve. So I'll be implementing this in Polycademy's next AngularJS projects.</p>
+
+<p>Also for images to be resolved prior to the state change, you can use AngularJS to HTTP preload them. See this Stackoverflow post: <a href="http://stackoverflow.com/questions/18627609/angularjs-resolve-to-wait-until-external-images-have-loaded">http://stackoverflow.com/questions/18627609/angularjs-resolve-to-wait-until-external-images-have-loaded</a> This form of eager loading for each state change is required when the layout of the next page depends on the image's size which may not be determined until is loaded. This obviously refers to dynamic or user uploaded images, not image assets of your site, which you do know what the size is beforehand.</p>								</div>
+								<div class="meta_box">
+									<span class="author_meta">Posted by CMCDragonkai on 2013-11-02 15:10:07</span>
+																				<span class="tag_meta">Tags:
+																									<a href="tags/angularjs.html">angularjs</a>																									<a href="tags/youtube.html">youtube</a>																									<a href="tags/javascript.html">javascript</a>																									<a href="tags/fouc.html">fouc</a>																									<a href="tags/coding.html">coding</a>																							</span>
+																		<span class="comment_meta">
+										<a href="id/147/preloading_page_content_like_youtube_using_angularjs.html#disqus_thread">Want to Comment?</a>									</span>
+																										</div>
+							</article>
+											<article class="white_text_container blog_article">
+								<h1 class="blog_title"><a href="id/146/finishing_2013_classes_for_polycademy.html">Finishing 2013 classes for Polycademy</a></h1>
+								<div class="blog_content">
+									<p>It has been a while since our last blog post, but we've had quite a bit of activity here for the last several months.</p>
+
+<p>When we finished term 1, our students created various MVP versions of their ideas. Two of them can be seen online: <a href="http://buhloon.aws.af.cm">Buhloon</a> and <a href="http://chessdimension.ap01.aws.af.cm/canvas">ChessDimensions</a>. The students found out that learning software development is an arduous process. But it's something that can be learned with commitment, and also something that allows you to create original applications in a short amount of time. It's also a life long learning process, since they've only scratched the surface of application development.</p>
+
+<p>After and during term 1, we learned new development techniques. We wanted to streamline some of the course content, since during term 1 we transitioned between static web applications to more dynamic interactive applications, facilitated by single page frameworks such as AngularJS.</p>
+
+<p>Term 2 unfortunately didn't run, since I was finishing up University examinations as I was about to graduate from the Australian National University. Once I had graduated, I decided to move Polycademy to Sydney.</p>
+
+<p>So Polycademy is now located at the <a href="http://vibewire.org/">Vibewire</a> co working place. It's in the heart of Sydney, close to <a href="http://fishburners.org/">Fishburners</a> and Central station. This place is designed for social enterprises and organisations, so we're in good company.</p>
+
+<p>Just before I launch into talking about what's happening in term 3, I want to point that we finished building an application for a client. It's called Dream it App (<a href="http://dreamitapp.com/">http://dreamitapp.com/</a>). It's a platform for people to generate and discuss ideas for new web, mobile and desktop applications. If you have an idea for a cool application or if you already have built applications, add it on Dream it App and try get people talking about it.</p>
+
+<p>It took about 2 and half months from start to finish, and it's a full single page application built on top of PHP, AngularJS, and Bootstrap. We learned that building large scale single page applications is much more difficult than static web applications. Static web applications refer to when the "view" (what you're seeing) is pretty much generated completely by the server side environment. Then people generally use jQuery to spice things up and make a few things dynamic. It was difficult because the javascript development practices haven't really been standardised, so we are often juggling competing best case practices. Every development company has their own opinion on javascript architecture and workflow. For example there are <a href="http://wibblycode.wordpress.com/2013/01/01/the-state-of-javascript-package-management/">5 different package managers for client side javascript</a>: bower, ender, volo, component or jamjs. Of course there's the problem of browser incompatibility. Every browser has their own idiosyncrasies that you have to shim or monkey patch. These problems are being flattened with the introduction of Yeoman, RequireJS and Grunt, but JS development is still quite fractured. Regardless, it was great experience. One thing that tends to happen after producing something new is that you experience overruns that produce new code that can be reused in other projects. Some of these are on my <a href="https://gist.github.com/CMCDragonkai">gists</a>, such as <a href="https://gist.github.com/CMCDragonkai/6191419">Masonry with AngularJS</a>, <a href="https://gist.github.com/CMCDragonkai/6555321">Disqus with AngularJS</a>.</p>
+
+<p>Now in term 3, Polycademy has been working with Mustafa Sharara a student from Qatar on creating a new service coined SnapSearch. SnapSearch will help developers and site owners make their dynamic, interactive and HTML5 web applications indexable by search engines. Currently major search engines such as Google, Bing, Yahoo cannot index or get incorrect results from their index when they send their robot to index dynamic sites, SnapSearch will prevent that problem, and remove any economic disadvantages when using single page application frameworks. Hopefully this will usher in a world of web 3.0, where every site can dynamic and interactive. More news on SnapSearch will be posted here in the future.</p>
+
+<p>In preparation for 2014, we are going to be redesigning Polycademy.com. For now, we've updated the course page with new content regarding the course content. Some of the major things include: Asynchronous Programming, Automated Development Environment Deployment using <a href="http://www.vagrantup.com/">Vagrant</a> and <a href="http://www.opscode.com/chef/">Chef</a>, Build Automation using <a href="http://gruntjs.com/">Grunt</a>, Polyglot programming involving PHP, JS, and Ruby, Behaviour Driven Development with <a href="http://codeception.com/">Codeception</a>, Concurrrent Programming using <a href="http://gearman.org/">Gearman</a> and <a href="http://redis.io/">Redis</a> Message Queues, and Authentication and Authorisation with <a href="https://github.com/Polycademy/PolyAuth">PolyAuth</a>.</p>
+
+<p>But of course with so much course content, we have to be flexible depending on what kind of technology stack is suitable for the application that students want to build!</p>
+
+<p>Upcoming blog posts should be more regular as I can talk about various technologies and what we're doing with them.</p>								</div>
+								<div class="meta_box">
+									<span class="author_meta">Posted by CMCDragonkai on 2013-10-02 09:15:25</span>
+																				<span class="tag_meta">Tags:
+																									<a href="tags/teaching.html">teaching</a>																									<a href="tags/coding.html">coding</a>																									<a href="tags/business.html">business</a>																									<a href="tags/coworking.html">coworking</a>																									<a href="tags/events.html">events</a>																							</span>
+																		<span class="comment_meta">
+										<a href="id/146/finishing_2013_classes_for_polycademy.html#disqus_thread">Want to Comment?</a>									</span>
+																										</div>
+							</article>
+											<article class="white_text_container blog_article">
+								<h1 class="blog_title"><a href="id/145/bootcamps_also_teach_you_how_to_learn.html">Bootcamps also teach you how to learn</a></h1>
+								<div class="blog_content">
+									<p>Recently ComputerWorld in NZ published 2 articles ("<a href="http://computerworld.co.nz/news.nsf/news/bootcamp-approach-wont-create-it-professionals-iitp#3E36F5087F590FACCC257B670079CA80">Bootcamp approach won't create IT professionals</a>" & "<a href="http://computerworld.co.nz/news.nsf/news/developer-bootcamps-good-or-bad">http://computerworld.co.nz/news.nsf/news/developer-bootcamps-good-or-bad</a>") comparing a 3 year university degree versus a 3 month bootcamp. They asked the question would a bootcamp work in New Zealand?</p>
+
+<p>One of the commentator's opinions is that in university you learn how to learn, but in bootcamps you simply get technical training and that's it. I beg to differ.</p>
+
+<p>I decided to explain in the comment section just how bootcamps teach you how to learn as well:</p>
+
+<blockquote>
+<p>The best developers I find are the ones that are self-taught. It doesn't matter whether they are university trained or bootcamp trained or both. In the end everybody has to commit to life long learning, especially in the development world when technology changes so fast and your current skills become outdated in 5 years or so.</p>
+<p>Therefore my bootcamp endeavours to teach how to learn. The students of Polycademy "learn how to learn" as well. While we may focus on a particular technology stack, that stack is simply used in order to illustrate or demonstrate a concept. Yes the students of a bootcamp hit the ground running. But they hit the ground with the understanding that there is so much more to learn, we don't teach them everything in 3 months. It's impossible. I doubt a university teaches them everything in 3 years either. However the 3 months gives them confidence, an overview, and skills to take themselves forward in their career, startup or whatever life goals they want to pursue.</p>
+<p>I think the comparison between a 3 month bootcamp and a 3 year uni degree is somewhat unfair and apples vs oranges. In a 3 year uni degree, you do not spend 24/7 studying. A lot of that time is spent partying, working, procrastinating, daily life stuff and finally a bit of studying. In our 3 months, there's a reason why it's called a bootcamp. It's intensive. In that 3 months time, I've calculated myself that it was worth (in terms of just contact hours) more than 4 uni 6unit courses (Australian terminology). We don't have the advantages of time that university has. We have barely the kind of funding a university has. We only have 3 months, so we focus on what we do best. Teaching and learning and collaborating. I'm sure if our students spent 3 years with us, they would learn more if not comparably with a university. Think about in this way. After those 3 months, they can pursue other paths, perhaps more learning, perhaps on the job learning. But we have definitely condensed their learning time and made them a lot more productive and confident versus spending 3 months at university.</p>
+</blockquote>								</div>
+								<div class="meta_box">
+									<span class="author_meta">Posted by CMCDragonkai on 2013-05-11 08:22:29</span>
+																				<span class="tag_meta">Tags:
+																									<a href="tags/teaching.html">teaching</a>																									<a href="tags/coding.html">coding</a>																									<a href="tags/business.html">business</a>																							</span>
+																		<span class="comment_meta">
+										<a href="id/145/bootcamps_also_teach_you_how_to_learn.html#disqus_thread">Want to Comment?</a>									</span>
+																										</div>
+							</article>
+											<article class="white_text_container blog_article">
+								<h1 class="blog_title"><a href="id/143/coworking_in_canberra_again.html">Coworking in Canberra Again!</a></h1>
+								<div class="blog_content">
+									<p>Polycademy is currently looking for companies/entrepreneurs to share the cost via coworking of our office. You'll have it pretty much to yourself throughout morning to afternoon. I may just use it at night.</p>
+
+<p>It's a grade A officespace in 7 London Circuit Canberra, a room that can hold 5. It has dedicated bandwidth (wireless and wired internet), receptionists, air conditioning, furnishings, furniture (3 desks, 5 chairs), wireless projector and a whiteboard. There's also enough power outlets for several computers. This place is close to the city, and you'll be working next to various consultancies.</p>
+
+<p>The place is currently worth 4800 every 3 months. However I can provide it to you for about 1400 per month (no contract). This includes the whole package! You can store whatever you want in the room.</p>
+
+<p>If you’re interested, contact me at <a href="http://www.google.com/recaptcha/mailhide/d?k=01q-bJV3WQrMYWD2quLJ7VPA==&c=FsmnfqaQraWCMzZB6tsagBZd557LPBLlxh80gaenMSo=">@polycademy.com</a>. I can take you up for a look.</p>								</div>
+								<div class="meta_box">
+									<span class="author_meta">Posted by CMCDragonkai on 2013-05-07 20:57:13</span>
+																				<span class="tag_meta">Tags:
+																									<a href="tags/coworking.html">coworking</a>																									<a href="tags/business.html">business</a>																							</span>
+																		<span class="comment_meta">
+										<a href="id/143/coworking_in_canberra_again.html#disqus_thread">Want to Comment?</a>									</span>
+																										</div>
+							</article>
+											<article class="white_text_container blog_article">
+								<h1 class="blog_title"><a href="id/142/final_pitches_and_canberra_tech_startup_demo_day.html">Final Pitches and Canberra Tech Startup Demo Day</a></h1>
+								<div class="blog_content">
+									<p>We're very excited to say that our first cohort of students have finished their intensive 11 week course just one week ago. In line with our vision of entrepreneurship, we practiced our final pitches and had a successful event on the 19th April where we invited startups from around Canberra to join Polycademy's students and show case their web applications.</p>
+
+<img src="https://www.filepicker.io/api/file/fuFV72UhQYWGBhdMDFpt" alt="Tim Wee practicing his pitch before the big event!" />
+
+<p>While we were practicing, we kept in mind a few points that I'd like to share. One important thing I learned while being in Sydstart last year, was that you should (almost) always start by sharing a story to define the problem, and then how your solution effectively solves it. It took practice, but the students sometimes forgot that they had to be able to link their solution back to the original problem they mentioned, this brings back the focus and keeps the pitch cohesive.</p>
+
+<p>When they were providing their story, it was important to help the audience visualise not only the problem, so they can identify with it, but also the solution. If it was too detail oriented, people forgot the big picture. This means juggling between big purposeful claims, and down to earth insights. They had to put people into the shoes of the end user, which meant illustrating the context of usage and the differentiating factor, what made people want to use your solution instead of another solution?</p>
+
+<p>Of course depending on the audience, you can then focus on the market opportunity, how you're meant to monetise the service, and what you will be focusing on in the future, such what kind of help you need, financial or otherwise. For our audience, it was general, so at the final event, we decided to show case the actual implementation.</p>
+
+<p>The students focused most of their time on finishing their application and trying to learn as much as possible in their last week. In fact we ended up having a couple of almost all nighters with the stereotypical pizzas and drinks!</p>
+
+<p>On the day, we managed to get a wide variety of audience members and speakers:</p>
+
+<ol>
+<li>ChessDimensions - Tim Wee talked about his progress at Polycademy and his plans for building ChessDimensions. On the day he was able to show case the preliminary user interface, an actual HTML5 canvas based Chessboard with all the pieces moving. All he needs to do now is connect his server side chess rule checking to the front end, and implement web sockets for multiplayer matches.</li>
+<li><a href="http://www.reasonwell.com/">ReasonWell</a> - Ben Williamson talked about his startup and web/mobile app called ReasonWell, a service to facilitate structured online debate.</li>
+<li>SwapSpot - Phuong Lan Trinh talked about her experience at Polycademy, and her plans for building SwapSpot, a service to help car owners swap time limited parking spots. It still needs more work, but she's planning to finish it in a few months.</li>
+<li><a href="http://www.unboxyourgift.com/">Unbox Your Gift</a> - Rita Joyan talked about her business Unbox Your Gift, a step by step system designed to get you to identify your Gift/purpose and to use it to exit the rat race.</li>
+<li><a href="http://www.coseats.com/">Coseats.com</a> - Torsten Herbst showcased the largest ridesharing service in Australia.</li>
+<li>Buhloon - Matt Maher showcased his web application Buhloon that he built through Polycademy. It is a service to help manage rewards and chores for parents and children. In the long term this will teach the children delayed gratification.</li>
+<li>ManageOut - Ross Mullen one of Polycademy's mentors talked about his a startup he was working called ManageOut in order to help event organisers handle their audience members.</li>
+<li>TripleThink - Joshua Young talked about his latest human machine interaction solution.</li>
+</ol>
+
+<img src="https://www.filepicker.io/api/file/2wCptbkwRuiDZJRUxpBB" alt="Matt Maher Pitching" />
+
+<img src="https://www.filepicker.io/api/file/srAHKhNTEybEZuo3WevY" alt="Ben Williamson Pitching" />
+
+<img src="https://www.filepicker.io/api/file/5zTCzClmRGO5OT9JZGTI" alt="Tim Wee Pitching" />
+
+<p>The students are still free to come and hangout at the office to finish off their apps and we'll be having regular meetups to go over their progress and discuss opportunities at the meetup group <a href="http://www.meetup.com/polyhack/">ACT Web Application Development & Entrepreneurship Group</a>. We welcome you to join if you're interested in discussing the latest web technology and enjoy hackathons. </p>
+
+<p>The next cohort is scheduled in 1 week from now, however I'll be spending some time consolidating our goals and progress. The wiki (online textbook) will need some cleaning up due to changes we made in the 11 weeks. Some of our technology stack changed halfway due to the nature of our goals. I'll also be redesigning the Polycademy website and bringing in an alumni page with links to the hosted demos and some video interviews! Stay tuned to check out their web application demos, and for up coming events!</p>								</div>
+								<div class="meta_box">
+									<span class="author_meta">Posted by CMCDragonkai on 2013-04-27 20:38:29</span>
+																				<span class="tag_meta">Tags:
+																									<a href="tags/teaching.html">teaching</a>																									<a href="tags/events.html">events</a>																									<a href="tags/coding.html">coding</a>																							</span>
+																		<span class="comment_meta">
+										<a href="id/142/final_pitches_and_canberra_tech_startup_demo_day.html#disqus_thread">Want to Comment?</a>									</span>
+																										</div>
+							</article>
+				<div class="pagination pagination-centered pagination-large"><ul><li><a href="index.html" data-ci-pagination-page="0" rel="prev">&lsaquo;</a></li><li><a href="index.html" data-ci-pagination-page="0" rel="start">1</a></li><li class="active"><span>2</span></li><li><a href="10.html" data-ci-pagination-page="10">3</a></li><li><a href="15.html" data-ci-pagination-page="15">4</a></li><li><a href="10.html" data-ci-pagination-page="10" rel="next">&rsaquo;</a></li><li><a href="20.html" data-ci-pagination-page="20">&raquo;</a></li></ul></div>			</div>
+		</div>		<footer>
+			<div class="container">
+				<article class="row footer_grid">
+					<section class="blog_panel span4">
+						<h3>
+							<a href="../blog.html">Blog</a>						</h3>
+						<p>
+																• <em class="footer_dates">(2015/03/04)</em> - <a href="id/152/a_new_direction.html">A New Direction</a><br /><br />
+																• <em class="footer_dates">(2014/03/30)</em> - <a href="id/151/the_problem_of_javascript_and_search_engines_and_introducing_snapsearch.html">The Problem of Javascript and Search Engines and introducing SnapSearch</a><br /><br />
+																• <em class="footer_dates">(2014/01/26)</em> - <a href="id/150/using_virtualbox_for_development.html">Using VirtualBox for Development</a><br /><br />
+																• <em class="footer_dates">(2013/11/28)</em> - <a href="id/149/transferring_code_for_australia.html">Transferring Code for Australia</a><br /><br />
+																• <em class="footer_dates">(2013/11/22)</em> - <a href="id/148/modern_wordpress_workflow_with_composer.html">Modern Wordpress Workflow with Composer</a><br /><br />
+													</p>
+					</section>
+					<section class="fbtwitter_panel span4">
+						<h3><a href="https://www.facebook.com/Polycademy">FB</a>.<a href="https://twitter.com/Polycademy">Twitter</a></h3>
+						<p>
+												</p>
+					</section>
+					<section class="notices_panel span4">
+						<h3>
+							<a href="tags/notices.html">Notices</a>						</h3>
+						<p>We're looking for companies, mentors and advisors. If you are interested in getting involved and checking out our students, check our partners page and contact us.
+						<br />
+						<br />
+						You can contact us at <a href='http://www.google.com/recaptcha/mailhide/d?k=01q-bJV3WQrMYWD2quLJ7VPA==&c=FsmnfqaQraWCMzZB6tsagBZd557LPBLlxh80gaenMSo='>@polycademy.com</a> or phone us at +61 (0)420 925 975</p>
+					</section>
+				</article>
+				<ul class="footer_links">
+					<li><a href="../terms_of_service.html">Terms of Service & Privacy Policy</a></li>
+					<li><a href="../refund_policy.html">Refund Policy</a></li>
+				</ul>
+				<p class="copyright">&copy; Polycademy & Code for Australia 2012</p>
+			</div>
+		</footer>
+		
+        <!--This passes any PHP/Codeigniter Variables to JS in case we need it-->
+		<script>
+			var ci_base_url = "http://polycademy.ap01.aws.af.cm/";
+			var ci_preview_path = "~/blog/preview";
+		</script>
+		
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="../js/jquery-1.8.2.min.js"><\/script>')</script>
+
+        <script src="../js/bootstrap.min.js"></script>
+		<script src="../js/jquery-ui-1.8.20.custom.min.js"></script>
+		<script src="../js/jquery.liquid-slider-1.0.min.js"></script>
+
+        <script src="../js/main.js"></script>
+		
+					<script>
+				var _gaq = _gaq || [];
+				_gaq.push(['_setAccount', 'UA-36175888-1']);
+				_gaq.push(['_trackPageview']);
+
+				(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+				})();
+			</script>
+		    </body>
+</html>

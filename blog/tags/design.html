@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Blog tag(s) - Polycademy is an academy for web application entrepreneurship</title>
+        <meta name="description" content="Polycademy is a school in Canberra that teaches web application development and entrepreneurship. It is catered to potential web application entrepreneurs or developer/designers who want to reskill. Students are placed in teams and are taught web tech by starting with envisioning their own project to coding and deployment. Students finish the course with an actual product. Our three philosophies are minimum viable product, agile methodology and flipped classroom. Students will gain mentors and industry contacts through our demo days.">
+		<meta name="google-site-verification" content="Mq6Yv8R9mGJK9SrUH5oZ8SNB8Z_WJHwkdkgp49ukHYE" />
+		<meta name="msvalidate.01" content="907A19AD04C8D5C2095C9DCE875FD165" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="shortcut icon" href="../../favicon.ico">
+		<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+		<link rel="stylesheet" href="../../css/main.css">
+        <script src="../../js/modernizr-2.6.1-respond-1.1.0.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+        <![endif]-->
+        <header class="navbar navbar-static-top">
+			<div class="container">
+				<div class="navbar-inner">
+					<a class="logo" href="../../index.html"><img src="../../img/logo.png" /></a>
+					<p class="slogan">an academy for web application entrepreneurship</p>
+					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</a>
+					<div class="nav-collapse collapse">
+						<ul class="nav">
+							<li><a href="../../index.html">home</a></li><li class="divider-vertical"></li><li><a href="../../courses.html">courses</a></li><li class="divider-vertical"></li><li><a href="../../partners.html">partners</a></li><li class="divider-vertical"></li><li><a href="http://codeforaustralia.com.au">code for australia</a></li><li class="divider-vertical"></li><li><a href="http://phpbounce.aws.af.cm/">php bounce</a></li><li class="divider-vertical"></li><li><a href="http://polycademy.eventbrite.com.au/">events</a></li><li class="divider-vertical"></li><li><a href="../../blog.html">blog</a></li>						</ul>
+					</div>
+				</div>
+			</div>
+        </header>		<div class="white_container">
+			<div class="container">
+										<h4>Showing articles with the tag(s): 'design'</h4>
+															<article class="white_text_container blog_article">
+								<h1 class="blog_title"><a href="../id/134/creating_code_for_australia_front_end_finished.html">Creating Code for Australia (front end finished)</a></h1>
+								<div class="blog_content">
+									<p><a href="http://codeforaustralia.com.au">Code for Australia</a>'s website is finished! Right now it's only front-end with no back-end code. Well there wasn't any need for backend code, although I was playing around with Laravel...</p>
+
+<p>Code for Australia's two main programs are the Cross Disciplinary Innovation Track and Professional Developer Track. The fellows that are part of Code for America and Code for Europe fall into the Professional Developer Track. The reason that Code for Australia includes a different kind of program is because of the synergy between an educational institution (such as Polycademy) and the outcomes that Code for X programs try to achieve. This synergy is essentially the ability to acquire cross disciplinary innovation. Throughout my life, I've always noticed that blue skies innovation comes from a mixing of different ideas and fields, whereas process innovation (like marginal efficiency gains) comes from specialisation in one field. This is echoed by the "Medici Effect" book, you can find it <a href="http://www.themedicigroup.com/the-medici-effect">here</a>. Therefore in order to tap into blue skies innovation, Code for Australia's Cross Disciplinary Innovation Track will bring in people who want to technologically innovate the public service(s), with backgrounds outside of software development, and get them to understand web application development through Polycademy. We then go to Government institutions and say that we could provide them with Professional Developer volunteers or Cross Disciplinary Innovators (which could come from their organisation as a training package or externally).</p>
+
+<p>Both of these tracks will achieve Code for Australia's goal of open source governance, but they will do it differently and perhaps with interesting differing results. While Professional Developers may be able to produce applications quickly, these are only marginal improvements to open source governance. In order to truly integrate digital democracy, we need people outside of software development to understand the ramifications of the digital revolution.</p>
+
+<p>Now, onto some code. You may notice that there are some changes compared to the Photoshop mockup. The final website layout will not always look like the Photoshop mockup. This is true primarily because Photoshop mockups are static layouts and there isn't any interactivity that can be coded in. Therefore when it comes to producing via html/css/js, things will look a little different. The Photoshop mockup is just there as a guideline and also to help with image graphic slicing.</p>
+
+<p>I unfortunately did not get a chance to record my progress, I'm currently working on a slow laptop. However there were a couple things that I discovered while creating this layout. Perhaps they will help others who are trying to figure out the same problem.</p>
+
+<h4>CSS Negative Margin Overlap Trick</h4>
+
+<p>On the photoshop file you may have seen numbers trying to overlap the backgrounds of their own container and the parent container. I knew this was possible in CSS with negative margins, so I scoured the internet for a solution. I couldn't find one, so I did a small test using jsfiddle.</p>
+
+<img src="https://www.filepicker.io/api/file/N11rHTHSsOLtnY4wr3Ws" alt="Negative Margin Overlap Trick image" />
+
+<iframe style="width: 100%; height: 300px" src="http://jsfiddle.net/CMCDragonkai/VFV2Q/1/embedded/result,html,css/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<p>I wanted to have the numbers to be contained within the sections that they were denoting. In order to have extend and overlap onto the parent container, there needed to be a negative margin-top for the 1. The trick was to have the section container to also have a negative margin-top and a positive padding-top to push up the background colour underneath the 1. No need for z-index!</p>
+
+<p>In order to implement it in Twitter Bootstrap with the sections being in rows was a bit more difficult. This was because the Bootstrap's rows were interfering with the negative margins, and we needed them to behave like stacked rows. In order to solve this issue, an even simpler and more cross-browser css solution was needed.</p>
+
+<iframe style="width: 100%; height: 300px" src="http://jsfiddle.net/CMCDragonkai/wppLr/1/embedded/result,html,css/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<p>And there it is, all you need is to make the number float:left or right. By making the number float, the browser ignores its size when setting out the flow of the content, and simply assumes it doesn't exist when putting up the section's background. You still a need a negative margin for the number, but the section no longer requires negative margin because the floated element is not counted. I used an inline element as the numbers, but this should work for other applications when you need tag or label for any sectional content. You could even design dates for blog articles to work like this.</p>
+
+<h4>Twitter Bootstrap's Row Based Vertical Centering</h4>
+
+<p>Twitter's bootstrap is an amazing HTML/CSS/JS framework. It really speeds up the development of the website frontend. However its framework can have confusing results because of all the magic under the hood. So on Photoshop, I wanted to vertically center (and horizontally center) this multilined content in the second section box.</p>
+
+<img src="https://www.filepicker.io/api/file/HCE8zaOfTreWdRcbLftb" alt="Vertical Centering Image for Twitter Bootstrap" />
+
+<p>What I was trying to do was vertically center some content inside Bootstrap's row. There are <a href="http://blog.themeforest.net/tutorials/vertical-centering-with-css/">many</a> ways of doing this in CSS and <a href="http://css-tricks.com/vertically-center-multi-lined-text/">every one of them</a> feels like a hack. Anyhow, I used the table method because it was the most obvious and simple. Here's some pseudo code.</p>
+
+<pre>
+<code>
+.parent_container {
+display:table;
+}
+.vertically_centered_content {
+display:table-cell;
+vertical-align:middle;
+}
+</code>
+</pre>
+
+<p>This ends up not working if you use Twitter Bootstrap's row functionality. Basically if you look at the site, the multilined text is in a row with the image of a ballot box to the right. I was using the row functionality in order to make them behave as a row in a big browser and in a small browser they would stack up vertically.</p>
+
+<img src="https://www.filepicker.io/api/file/7k71DqCkSDKlt91WIr6w" alt="Image of the row aligned content and image" />
+
+<p>Unfortunately the table method of vertical alignment doesn't work with the rows. Which is sad because sometimes when people want elements aligned up in a row, they also want them to be aligned up vertically.</p>
+
+<p>In order to solve this issue, I had to abandon the row functionality completely. Incidentally the same method that allows vertical align, when combined a few percentages will create a row like functionality anyway.</p>
+
+<iframe style="width: 100%; height: 300px" src="http://jsfiddle.net/CMCDragonkai/gHgVG/1/embedded/result,html,css/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<p>So there you have an alternative to Twitter Bootstrap's row functionality that allows vertical centering. It even works cross-browser.* You can't see it in the jsfiddle example, but if there is a real image with proper widths and heights and display:block, it will even stack vertically when the screen gets too small.</p>
+
+<p>*(I don't support < IE8.)</p>
+
+<h4>Bootstrap Span Centering</h4>
+
+<p>If you are using Bootstrap's span to create a responsive width, and you want to center it. Just add this to the container:</p>
+
+<pre>
+<code>
+.container_with_bootstrap_span_centered{
+float: none;
+margin: 50px auto;
+display: table;
+}
+</code>
+</pre>
+
+<p>Ok I'm done. Next project, more Polyhack events in Canberra and perhaps a Codecademy for PHP.</p>								</div>
+								<div class="meta_box">
+									<span class="author_meta">Posted by CMCDragonkai on 2012-11-30 09:42:01</span>
+																				<span class="tag_meta">Tags:
+																									<a href="codeforaustralia.html">codeforaustralia</a>																									<a href="design.html">design</a>																							</span>
+																		<span class="comment_meta">
+										<a href="../id/134/creating_code_for_australia_front_end_finished.html#disqus_thread">Want to Comment?</a>									</span>
+																										</div>
+							</article>
+											<article class="white_text_container blog_article">
+								<h1 class="blog_title"><a href="../id/132/creating_code_for_australia_mockup_stage.html">Creating Code for Australia (mockup stage)</a></h1>
+								<div class="blog_content">
+									<p>I've been busy creating the Code for Australia website. I decided to record my 3 hour long Photoshop mockup session, and then create a time lapse video reducing it down to 6:29 minutes. The video is not a tutorial, but you can see some of the processes I go through in order to quickly iterate through the design. You can see it on Youtube below.</p>
+
+<p>My workflow generally starts from wireframing and sketching using pen & paper, this may take a few hours or a few weeks depending on how complex the site/app is. In this case, I'm going for a simple single page web site, as it's purpose currently is to generate interest, and operate like an online brochure or business card when I'm presenting to external stakeholders. I then move to Adobe Photoshop in order create a higher fidelity mockup, the purpose of this stage is to flesh out the drawings into something that is more orderly/colourful. The mockup can also be presented to any potential clients. While it is easier to iterate on paper, it's easier to conceptualise the final design in Photoshop. The final stage in front end development is the prototyping stage in HTML/CSS/JS, which I'll get to in a couple of days.</p>
+
+<iframe width="560" height="315" src="http://www.youtube.com/embed/eXg2AdiQcqE" frameborder="0" allowfullscreen></iframe>
+
+<h4>Here are some of the resources that I used:</h4>
+<ul>
+<li><a href="http://960.gs/">960 Grid</a> for alignment</li>
+<li><a href="http://subtlepatterns.com/">Subtle Patterns</a> for textures and backgrounds</li>
+<li><a href="https://kuler.adobe.com/">Kuler</a> for colour selection</li>
+<li><a href="http://thenounproject.com/">Noun Project</a> for icons</li>
+</ul>
+
+<p>There won't be much back end code as there's no dynamic processes happening yet. When Code for Australia actually launches with various applications, then the site will turn more complex.</p>
+
+<p>Here are some photos of the quickly drawn wireframes. My style of wireframing isn't common, it's more like scribbling. I guess every designer has their own style.</p>
+
+<img src="https://www.filepicker.io/api/file/HspCVmYpT1G38ht3xbau" alt="Code for Australia Wireframe 1" />
+
+<img src="https://www.filepicker.io/api/file/38m0ceOeToeL9NFMiFBO" alt="Code for Australia Wireframe 2" />
+
+<p>It is difficult to estimate the total amount of time taken to get to here, because I took many breaks in between the wireframing stage. If I had worked on it non-stop, I guess it probably would have taken 5 hours. Stay tuned for the next blog post showing the prototyping stage.</p>
+
+<p>Current stage of the website:</p>
+
+<a href="https://www.filepicker.io/api/file/JAuYwXjsQo8rCm5Dj8rI"><img src="https://www.filepicker.io/api/file/R7ruY7ECSSETNWCo4nYQ" alt="Current Stage of CFA" /></a>
+
+<p>Oh and I believe I should be writing up a newsletter for all those who signed up to the newsletter.</p>								</div>
+								<div class="meta_box">
+									<span class="author_meta">Posted by CMCDragonkai on 2012-11-24 04:37:44</span>
+																				<span class="tag_meta">Tags:
+																									<a href="design.html">design</a>																									<a href="photoshop.html">photoshop</a>																									<a href="mockup.html">mockup</a>																									<a href="codeforaustralia.html">codeforaustralia</a>																							</span>
+																		<span class="comment_meta">
+										<a href="../id/132/creating_code_for_australia_mockup_stage.html#disqus_thread">Want to Comment?</a>									</span>
+																										</div>
+							</article>
+							</div>
+		</div>		<footer>
+			<div class="container">
+				<article class="row footer_grid">
+					<section class="blog_panel span4">
+						<h3>
+							<a href="../../blog.html">Blog</a>						</h3>
+						<p>
+																• <em class="footer_dates">(2015/03/04)</em> - <a href="../id/152/a_new_direction.html">A New Direction</a><br /><br />
+																• <em class="footer_dates">(2014/03/30)</em> - <a href="../id/151/the_problem_of_javascript_and_search_engines_and_introducing_snapsearch.html">The Problem of Javascript and Search Engines and introducing SnapSearch</a><br /><br />
+																• <em class="footer_dates">(2014/01/26)</em> - <a href="../id/150/using_virtualbox_for_development.html">Using VirtualBox for Development</a><br /><br />
+																• <em class="footer_dates">(2013/11/28)</em> - <a href="../id/149/transferring_code_for_australia.html">Transferring Code for Australia</a><br /><br />
+																• <em class="footer_dates">(2013/11/22)</em> - <a href="../id/148/modern_wordpress_workflow_with_composer.html">Modern Wordpress Workflow with Composer</a><br /><br />
+													</p>
+					</section>
+					<section class="fbtwitter_panel span4">
+						<h3><a href="https://www.facebook.com/Polycademy">FB</a>.<a href="https://twitter.com/Polycademy">Twitter</a></h3>
+						<p>
+												</p>
+					</section>
+					<section class="notices_panel span4">
+						<h3>
+							<a href="notices.html">Notices</a>						</h3>
+						<p>We're looking for companies, mentors and advisors. If you are interested in getting involved and checking out our students, check our partners page and contact us.
+						<br />
+						<br />
+						You can contact us at <a href='http://www.google.com/recaptcha/mailhide/d?k=01q-bJV3WQrMYWD2quLJ7VPA==&c=FsmnfqaQraWCMzZB6tsagBZd557LPBLlxh80gaenMSo='>@polycademy.com</a> or phone us at +61 (0)420 925 975</p>
+					</section>
+				</article>
+				<ul class="footer_links">
+					<li><a href="../../terms_of_service.html">Terms of Service & Privacy Policy</a></li>
+					<li><a href="../../refund_policy.html">Refund Policy</a></li>
+				</ul>
+				<p class="copyright">&copy; Polycademy & Code for Australia 2012</p>
+			</div>
+		</footer>
+		
+        <!--This passes any PHP/Codeigniter Variables to JS in case we need it-->
+		<script>
+			var ci_base_url = "http://polycademy.ap01.aws.af.cm/";
+			var ci_preview_path = "~/blog/preview";
+		</script>
+		
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="../../js/jquery-1.8.2.min.js"><\/script>')</script>
+
+        <script src="../../js/bootstrap.min.js"></script>
+		<script src="../../js/jquery-ui-1.8.20.custom.min.js"></script>
+		<script src="../../js/jquery.liquid-slider-1.0.min.js"></script>
+
+        <script src="../../js/main.js"></script>
+		
+					<script>
+				var _gaq = _gaq || [];
+				_gaq.push(['_setAccount', 'UA-36175888-1']);
+				_gaq.push(['_trackPageview']);
+
+				(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+				})();
+			</script>
+		    </body>
+</html>

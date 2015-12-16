@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>The Problem of Javascript and Search Engines and introducing SnapSearch - Polycademy is an academy for web application entrepreneurship</title>
+        <meta name="description" content="Every single application I've been building since 2 years ago have been a single page application. The server side is a REST API, and the client side is rich and handles the view and web page generation. I've been doing it so much, that I sometimes forget how">
+		<meta name="google-site-verification" content="Mq6Yv8R9mGJK9SrUH5oZ8SNB8Z_WJHwkdkgp49ukHYE" />
+		<meta name="msvalidate.01" content="907A19AD04C8D5C2095C9DCE875FD165" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="shortcut icon" href="../../../favicon.ico">
+		<link rel="apple-touch-icon" href="../../../apple-touch-icon.png">
+		<link rel="stylesheet" href="../../../css/main.css">
+        <script src="../../../js/modernizr-2.6.1-respond-1.1.0.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+        <![endif]-->
+        <header class="navbar navbar-static-top">
+			<div class="container">
+				<div class="navbar-inner">
+					<a class="logo" href="../../../index.html"><img src="../../../img/logo.png" /></a>
+					<p class="slogan">an academy for web application entrepreneurship</p>
+					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</a>
+					<div class="nav-collapse collapse">
+						<ul class="nav">
+							<li><a href="../../../index.html">home</a></li><li class="divider-vertical"></li><li><a href="../../../courses.html">courses</a></li><li class="divider-vertical"></li><li><a href="../../../partners.html">partners</a></li><li class="divider-vertical"></li><li><a href="http://codeforaustralia.com.au">code for australia</a></li><li class="divider-vertical"></li><li><a href="http://phpbounce.aws.af.cm/">php bounce</a></li><li class="divider-vertical"></li><li><a href="http://polycademy.eventbrite.com.au/">events</a></li><li class="divider-vertical"></li><li><a href="../../../blog.html">blog</a></li>						</ul>
+					</div>
+				</div>
+			</div>
+        </header>		<div class="white_container">
+			<div class="container">
+															<article class="white_text_container blog_article">
+								<h1 class="blog_title"><a href="the_problem_of_javascript_and_search_engines_and_introducing_snapsearch.html">The Problem of Javascript and Search Engines and introducing SnapSearch</a></h1>
+								<div class="blog_content">
+									<p>Every single application I've been building since 2 years ago have been a single page application. The server side is a REST API, and the client side is rich and handles the view and web page generation. I've been doing it so much, that I sometimes forget how to build web applications in the old static way. It's my prediction that soon every single website/web application will be using some sort of javascript, and this even includes mostly static content websites, because the advancements in javascript makes possible all sorts of new user interfaces, and interactivity in producing and consuming content on the web.</p>
+
+<p>There is one big problem however. Search engines, social network robots, and friendly scrapers do not execute javascript. This means things like Google Search, Google Adverts, Bing, Facebook, Twitter, LinkedIn and more all don't work or don't work very well with javascript enhanced rich client side applications. The social networks also use bots for embedding content, such as when you share a link.</p>
+
+<p>This has resulted in developers having to choose between a rich interactive application that provides new and exciting user experience, or static reliable webpages. Most businesses end up compromising with static public facing pages, and then internally a rich control panel. Or if they are starting a whole new content based site, they stick with static server side web page generation.</p>
+
+<p>Now why don't the crawlers and robots support javascript execution? Well one thing is that it's difficult. You need a whole javascript runtime, and executing that is not cheap nor can it be done very fast. One of the main issues is that javascript is used to bring in asynchronous content. So the static content on a single page application is just a skeleton, the javascript is executed to fill it up with dynamic content. This means any robot/crawler has to stay on the page for a while waiting for asynchronous content to be loaded. A static HTTP request might be completed in 1 second, but waiting for asynchronous content can triple, or quadruple the time required. So it's a complex and expensive thing to do.</p>
+
+<p>I and Mustafa (a student in Polycademy) set out to solve this problem. After about 9 months of development, let me introduce you to <a href="https://snapsearch.io/">SnapSearch</a>.</p>
+
+<a href="https://snapsearch.io/"><img src="https://www.filepicker.io/api/file/yzChr7UhS5OfX6AcqItc" alt="SnapSearch logo" /></a>
+
+<p><a href="https://snapsearch.io/">SnapSearch</a> is Search Engine Optimisation (SEO) for Javascript, HTML 5 and Single Page Applications. It makes your javascript applications crawlable by search engines and scrapable by social network robots. It works by intercepting requests that is sent to your web application, detects if its coming from a search engine bot or social network bot, and in turn returns a response containing a cached snapshot version of your javascript web page which it acquired by rendering your webpage previously or on the fly with automated Firefox instances.</p>
+
+<p>SnapSearch provides a number of officially supported, professionally developed middleware that can be easily integrated into your current web application stack. It currently provides PHP, Node.js, Ruby and Python middlewares. They are very flexible, and allow you to specify which search engines you want to intercept for, and which you want to ignore.</p>
+
+<p>It's free to get started, there's a 1000 free usages per month cap. You get nice analytics that allows you to figure out which search engines are accessing your site. There's comprehensive documentation for both the <a href="https://snapsearch.io/documentation">API</a> and the <a href="https://github.com/SnapSearch/">middleware</a>. Note that if you're into web scraping and you're looking for a solution to process javascript, you can use SnapSearch for this purpose too, it's very fast, in fact most on the fly renderings happen under 4 seconds, whereas cached snapshots gets returned under 1 second. SnapSearch is load balanced, so we'll scale linearly.</p>
+
+<p><strong>For a limited time offer, use "SNAP" as the code when you sign up and you'll get 2000 free usages per month cap.</strong></p>
+
+<p>The project is under heavy development, and there's still lots more to do. But it's fully functional and production ready. I'm already using it for <a href="http://dreamitapp.com/">http://dreamitapp.com/</a> and <a href="https://snapsearch.io/">https://snapsearch.io/</a></p>
+
+<p>If you're looking for help setting it all up. Feel free to hit our web chat at <a href="http://www.hipchat.com/gz6yae0iP">Hipchat</a>. I'll be able to answer any questions and help with deployment.</p>
+
+<p>If you're writing a single page application, or web pages enhanced with javascript, you don't need to make any more compromises. Just build it, and know that SEO will always be available to you. Try the demo on your web page, and you can see the difference in the content being served to search engines.</p>
+
+<p>The tech savvy among you might realise this is similar to PhantomJS as a service. But it's not, because it doesn't use PhantomJS. Using real Firefox instances has the advantage of being able to take advantage of Mozilla's 6 week Firefox release cycles. This means we can support the latest in HTML5 technology quicker. The qtwebkit engine that PhantomJS relies on has a slower and sporadic release cycle. And it doesn't support plugins/extensions. SnapSearch has the possibility of adding in plugin/extensions such as Flash (this is under development).</p>
+
+<p>If you're looking to get into single page application development, and you haven't jumped on the bandwagon yet, look no further than AngularJS. It's the best! Also try out Facebook's React as it can easily integrate into AngularJS's directive concept (it can be faster).</p>
+
+<p>The land of client side development is changing very fast, and there is some serious engineering going on. I suggest you to also check out <a href="http://www.polymer-project.org/">Polymer</a> and <a href="http://mozilla.github.io/brick/">Brick</a>. Both of which AngularJS will be taking advantage of when they become more stable. Here's a <a href="http://techcrunch.com/2013/09/01/mozilla-gets-on-the-web-components-bandwagon-with-brick/">comparison</a>, you'll see that it's very similar to AngularJS directives.</p>								</div>
+								<div class="meta_box">
+									<span class="author_meta">Posted by CMCDragonkai on 2014-03-30 18:49:46</span>
+																				<span class="tag_meta">Tags:
+																									<a href="../../tags/javascript.html">javascript</a>																									<a href="../../tags/angularjs.html">angularjs</a>																									<a href="../../tags/coding.html">coding</a>																									<a href="../../tags/seo.html">seo</a>																									<a href="../../tags/snapsearch.html">snapsearch</a>																							</span>
+																		<span class="comment_meta">
+										<a href="the_problem_of_javascript_and_search_engines_and_introducing_snapsearch.html#disqus_thread">Want to Comment?</a>									</span>
+																			<div class="addthis_toolbox addthis_default_style ">
+											<a class="addthis_button_preferred_1"></a>
+											<a class="addthis_button_preferred_2"></a>
+											<a class="addthis_button_preferred_3"></a>
+											<a class="addthis_button_preferred_4"></a>
+											<a class="addthis_button_compact"></a>
+											<a class="addthis_counter addthis_bubble_style"></a>
+										</div>
+										<script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-509f8a9354e18205"></script>
+																										</div>
+							</article>
+												<div>
+									<ul class="pager">
+																					<li>
+												<a href="../150/using_virtualbox_for_development.html">&larr; Older</a>
+											</li>
+																															<li>
+												<a href="../152/a_new_direction.html">Newer &rarr;</a>
+											</li>
+																			</ul>
+								</div>
+											<div id="disqus_thread"></div>
+							<script type="text/javascript">
+								/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+								var disqus_shortname = "polycademy";
+								var disqus_developer = 0;
+								var disqus_identifier = "blog_151";
+								var disqus_url = "http://polycademy.ap01.aws.af.cm/blog/id/151/the_problem_of_javascript_and_search_engines_and_introducing_snapsearch";
+								var disqus_title = "The Problem of Javascript and Search Engines and introducing SnapSearch";
+
+								/* * * DON'T EDIT BELOW THIS LINE * * */
+								(function() {
+									var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+									dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+									(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+								})();
+							</script>
+							<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+							</div>
+		</div>		<footer>
+			<div class="container">
+				<article class="row footer_grid">
+					<section class="blog_panel span4">
+						<h3>
+							<a href="../../../blog.html">Blog</a>						</h3>
+						<p>
+																• <em class="footer_dates">(2015/03/04)</em> - <a href="../152/a_new_direction.html">A New Direction</a><br /><br />
+																• <em class="footer_dates">(2014/03/30)</em> - <a href="the_problem_of_javascript_and_search_engines_and_introducing_snapsearch.html">The Problem of Javascript and Search Engines and introducing SnapSearch</a><br /><br />
+																• <em class="footer_dates">(2014/01/26)</em> - <a href="../150/using_virtualbox_for_development.html">Using VirtualBox for Development</a><br /><br />
+																• <em class="footer_dates">(2013/11/28)</em> - <a href="../149/transferring_code_for_australia.html">Transferring Code for Australia</a><br /><br />
+																• <em class="footer_dates">(2013/11/22)</em> - <a href="../148/modern_wordpress_workflow_with_composer.html">Modern Wordpress Workflow with Composer</a><br /><br />
+													</p>
+					</section>
+					<section class="fbtwitter_panel span4">
+						<h3><a href="https://www.facebook.com/Polycademy">FB</a>.<a href="https://twitter.com/Polycademy">Twitter</a></h3>
+						<p>
+												</p>
+					</section>
+					<section class="notices_panel span4">
+						<h3>
+							<a href="../../tags/notices.html">Notices</a>						</h3>
+						<p>We're looking for companies, mentors and advisors. If you are interested in getting involved and checking out our students, check our partners page and contact us.
+						<br />
+						<br />
+						You can contact us at <a href='http://www.google.com/recaptcha/mailhide/d?k=01q-bJV3WQrMYWD2quLJ7VPA==&c=FsmnfqaQraWCMzZB6tsagBZd557LPBLlxh80gaenMSo='>@polycademy.com</a> or phone us at +61 (0)420 925 975</p>
+					</section>
+				</article>
+				<ul class="footer_links">
+					<li><a href="../../../terms_of_service.html">Terms of Service & Privacy Policy</a></li>
+					<li><a href="../../../refund_policy.html">Refund Policy</a></li>
+				</ul>
+				<p class="copyright">&copy; Polycademy & Code for Australia 2012</p>
+			</div>
+		</footer>
+		
+        <!--This passes any PHP/Codeigniter Variables to JS in case we need it-->
+		<script>
+			var ci_base_url = "http://polycademy.ap01.aws.af.cm/";
+			var ci_preview_path = "~/blog/preview";
+		</script>
+		
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="../../../js/jquery-1.8.2.min.js"><\/script>')</script>
+
+        <script src="../../../js/bootstrap.min.js"></script>
+		<script src="../../../js/jquery-ui-1.8.20.custom.min.js"></script>
+		<script src="../../../js/jquery.liquid-slider-1.0.min.js"></script>
+
+        <script src="../../../js/main.js"></script>
+		
+					<script>
+				var _gaq = _gaq || [];
+				_gaq.push(['_setAccount', 'UA-36175888-1']);
+				_gaq.push(['_trackPageview']);
+
+				(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+				})();
+			</script>
+		    </body>
+</html>

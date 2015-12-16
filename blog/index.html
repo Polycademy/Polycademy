@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Blog - Polycademy is an academy for web application entrepreneurship</title>
+        <meta name="description" content="Polycademy is a school in Canberra that teaches web application development and entrepreneurship. It is catered to potential web application entrepreneurs or developer/designers who want to reskill. Students are placed in teams and are taught web tech by starting with envisioning their own project to coding and deployment. Students finish the course with an actual product. Our three philosophies are minimum viable product, agile methodology and flipped classroom. Students will gain mentors and industry contacts through our demo days.">
+		<meta name="google-site-verification" content="Mq6Yv8R9mGJK9SrUH5oZ8SNB8Z_WJHwkdkgp49ukHYE" />
+		<meta name="msvalidate.01" content="907A19AD04C8D5C2095C9DCE875FD165" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="shortcut icon" href="../favicon.ico">
+		<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+		<link rel="stylesheet" href="../css/main.css">
+        <script src="../js/modernizr-2.6.1-respond-1.1.0.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+        <![endif]-->
+        <header class="navbar navbar-static-top">
+			<div class="container">
+				<div class="navbar-inner">
+					<a class="logo" href="../index.html"><img src="../img/logo.png" /></a>
+					<p class="slogan">an academy for web application entrepreneurship</p>
+					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</a>
+					<div class="nav-collapse collapse">
+						<ul class="nav">
+							<li><a href="../index.html">home</a></li><li class="divider-vertical"></li><li><a href="../courses.html">courses</a></li><li class="divider-vertical"></li><li><a href="../partners.html">partners</a></li><li class="divider-vertical"></li><li><a href="http://codeforaustralia.com.au">code for australia</a></li><li class="divider-vertical"></li><li><a href="http://phpbounce.aws.af.cm/">php bounce</a></li><li class="divider-vertical"></li><li><a href="http://polycademy.eventbrite.com.au/">events</a></li><li class="divider-vertical"></li><li><a href="../blog.html">blog</a></li>						</ul>
+					</div>
+				</div>
+			</div>
+        </header>		<div class="white_container">
+			<div class="container">
+															<article class="white_text_container blog_article">
+								<h1 class="blog_title"><a href="id/152/a_new_direction.html">A New Direction</a></h1>
+								<div class="blog_content">
+									<p>I know it has been quite quiet here at Polycademy. I've been working on a startup called <a href="https://matrix.ai/">Matrix AI (https://matrix.ai)</a>, and now this is my current direction.</p>
+
+<p>Thanks to all the students, mentors and partners who worked with me on Polycademy. It was a great experience, and I learned a lot both technically and educationally. I hope you all do well on your own path whether it involves web application development or otherwise.</p>
+
+<p>This website will be left operational for posterity.</p>
+
+<p>For my new project I'm working on a new operating system for the cloud and internet of things. If you're interested in this field, feel free to <a href="http://www.google.com/recaptcha/mailhide/d?k=01q-bJV3WQrMYWD2quLJ7VPA==&c=FsmnfqaQraWCMzZB6tsagBZd557LPBLlxh80gaenMSo=">contact me</a>.</p>								</div>
+								<div class="meta_box">
+									<span class="author_meta">Posted by CMCDragonkai on 2015-03-04 15:05:11</span>
+																				<span class="tag_meta">Tags:
+																									<a href="tags/business.html">business</a>																							</span>
+																		<span class="comment_meta">
+										<a href="id/152/a_new_direction.html#disqus_thread">Want to Comment?</a>									</span>
+																										</div>
+							</article>
+											<article class="white_text_container blog_article">
+								<h1 class="blog_title"><a href="id/151/the_problem_of_javascript_and_search_engines_and_introducing_snapsearch.html">The Problem of Javascript and Search Engines and introducing SnapSearch</a></h1>
+								<div class="blog_content">
+									<p>Every single application I've been building since 2 years ago have been a single page application. The server side is a REST API, and the client side is rich and handles the view and web page generation. I've been doing it so much, that I sometimes forget how to build web applications in the old static way. It's my prediction that soon every single website/web application will be using some sort of javascript, and this even includes mostly static content websites, because the advancements in javascript makes possible all sorts of new user interfaces, and interactivity in producing and consuming content on the web.</p>
+
+<p>There is one big problem however. Search engines, social network robots, and friendly scrapers do not execute javascript. This means things like Google Search, Google Adverts, Bing, Facebook, Twitter, LinkedIn and more all don't work or don't work very well with javascript enhanced rich client side applications. The social networks also use bots for embedding content, such as when you share a link.</p>
+
+<p>This has resulted in developers having to choose between a rich interactive application that provides new and exciting user experience, or static reliable webpages. Most businesses end up compromising with static public facing pages, and then internally a rich control panel. Or if they are starting a whole new content based site, they stick with static server side web page generation.</p>
+
+<p>Now why don't the crawlers and robots support javascript execution? Well one thing is that it's difficult. You need a whole javascript runtime, and executing that is not cheap nor can it be done very fast. One of the main issues is that javascript is used to bring in asynchronous content. So the static content on a single page application is just a skeleton, the javascript is executed to fill it up with dynamic content. This means any robot/crawler has to stay on the page for a while waiting for asynchronous content to be loaded. A static HTTP request might be completed in 1 second, but waiting for asynchronous content can triple, or quadruple the time required. So it's a complex and expensive thing to do.</p>
+
+<p>I and Mustafa (a student in Polycademy) set out to solve this problem. After about 9 months of development, let me introduce you to <a href="https://snapsearch.io/">SnapSearch</a>.</p>
+
+<a href="https://snapsearch.io/"><img src="https://www.filepicker.io/api/file/yzChr7UhS5OfX6AcqItc" alt="SnapSearch logo" /></a>
+
+<p><a href="https://snapsearch.io/">SnapSearch</a> is Search Engine Optimisation (SEO) for Javascript, HTML 5 and Single Page Applications. It makes your javascript applications crawlable by search engines and scrapable by social network robots. It works by intercepting requests that is sent to your web application, detects if its coming from a search engine bot or social network bot, and in turn returns a response containing a cached snapshot version of your javascript web page which it acquired by rendering your webpage previously or on the fly with automated Firefox instances.</p>
+
+<p>SnapSearch provides a number of officially supported, professionally developed middleware that can be easily integrated into your current web application stack. It currently provides PHP, Node.js, Ruby and Python middlewares. They are very flexible, and allow you to specify which search engines you want to intercept for, and which you want to ignore.</p>
+
+<p>It's free to get started, there's a 1000 free usages per month cap. You get nice analytics that allows you to figure out which search engines are accessing your site. There's comprehensive documentation for both the <a href="https://snapsearch.io/documentation">API</a> and the <a href="https://github.com/SnapSearch/">middleware</a>. Note that if you're into web scraping and you're looking for a solution to process javascript, you can use SnapSearch for this purpose too, it's very fast, in fact most on the fly renderings happen under 4 seconds, whereas cached snapshots gets returned under 1 second. SnapSearch is load balanced, so we'll scale linearly.</p>
+
+<p><strong>For a limited time offer, use "SNAP" as the code when you sign up and you'll get 2000 free usages per month cap.</strong></p>
+
+<p>The project is under heavy development, and there's still lots more to do. But it's fully functional and production ready. I'm already using it for <a href="http://dreamitapp.com/">http://dreamitapp.com/</a> and <a href="https://snapsearch.io/">https://snapsearch.io/</a></p>
+
+<p>If you're looking for help setting it all up. Feel free to hit our web chat at <a href="http://www.hipchat.com/gz6yae0iP">Hipchat</a>. I'll be able to answer any questions and help with deployment.</p>
+
+<p>If you're writing a single page application, or web pages enhanced with javascript, you don't need to make any more compromises. Just build it, and know that SEO will always be available to you. Try the demo on your web page, and you can see the difference in the content being served to search engines.</p>
+
+<p>The tech savvy among you might realise this is similar to PhantomJS as a service. But it's not, because it doesn't use PhantomJS. Using real Firefox instances has the advantage of being able to take advantage of Mozilla's 6 week Firefox release cycles. This means we can support the latest in HTML5 technology quicker. The qtwebkit engine that PhantomJS relies on has a slower and sporadic release cycle. And it doesn't support plugins/extensions. SnapSearch has the possibility of adding in plugin/extensions such as Flash (this is under development).</p>
+
+<p>If you're looking to get into single page application development, and you haven't jumped on the bandwagon yet, look no further than AngularJS. It's the best! Also try out Facebook's React as it can easily integrate into AngularJS's directive concept (it can be faster).</p>
+
+<p>The land of client side development is changing very fast, and there is some serious engineering going on. I suggest you to also check out <a href="http://www.polymer-project.org/">Polymer</a> and <a href="http://mozilla.github.io/brick/">Brick</a>. Both of which AngularJS will be taking advantage of when they become more stable. Here's a <a href="http://techcrunch.com/2013/09/01/mozilla-gets-on-the-web-components-bandwagon-with-brick/">comparison</a>, you'll see that it's very similar to AngularJS directives.</p>								</div>
+								<div class="meta_box">
+									<span class="author_meta">Posted by CMCDragonkai on 2014-03-30 18:49:46</span>
+																				<span class="tag_meta">Tags:
+																									<a href="tags/javascript.html">javascript</a>																									<a href="tags/angularjs.html">angularjs</a>																									<a href="tags/coding.html">coding</a>																									<a href="tags/seo.html">seo</a>																									<a href="tags/snapsearch.html">snapsearch</a>																							</span>
+																		<span class="comment_meta">
+										<a href="id/151/the_problem_of_javascript_and_search_engines_and_introducing_snapsearch.html#disqus_thread">Want to Comment?</a>									</span>
+																										</div>
+							</article>
+											<article class="white_text_container blog_article">
+								<h1 class="blog_title"><a href="id/150/using_virtualbox_for_development.html">Using VirtualBox for Development</a></h1>
+								<div class="blog_content">
+									<p>Polycademy has been improving it's development workflow. Especially the deployment of web server stack.</p>
+
+<img src="https://www.filepicker.io/api/file/HGpC8vm3ROCGfjU1rgBi" alt="" />
+
+<p>One of the things that I realised in running the courses, is that the work to setup web server stacks which means the HTTP server, Application Server, Database Server and various other daemons and applications is a very time consuming process. This is mainly devops work and configuration management, it's not really development. What is required is an automatic way to create development and production servers that is isolated from each other, and has the exact same configuration every time you destroy or create one. The development server should match the environment of the production servers so that you reduce the number configuration problems during deployment of your application to the production server. In setting up a workflow like this, you can get a file that specifies how these virtual servers are setup, and just copy paste the file to whichever computer you are currently developing with. In some cases you can just straight up copy the virtual machine image which is the entire operating system and associated installed applications and load this into wherever you want to develop as well.</p>
+
+<p>So I've been spending time researching on deployment automation. And I came across services like <a href="http://www.vagrantup.com/">Vagrant</a>, <a href="https://www.docker.io/">Docker</a>, <a href="https://www.virtualbox.org/" title="">VirtualBox</a>, <a href="http://www.getchef.com/">Chef</a>, <a href="http://puppetlabs.com/">Puppet</a>, <a href="http://www.ansibleworks.com/">Ansible</a>, <a href="http://www.saltstack.com/">SaltStack</a> and a whole lot more. Enterprises tend to use devops personnel to write up configuration scripts that essentially deploy hundreds or thousands of servers in an automated mannger. This saves time and cost. However these methods are perfectly applicable to the individual developer or startup.</p>
+
+<p>My research has led me to conclude that a combination of VirtualBox, Vagrant, Docker, and Ansible is the best development and deployment workflow for individual or startup projects. VirtualBox is for setting up virtual operating systems on your computer, this is only for development, in production your virtual operating systems are provided to you when you rent a VPS from a hoster such as Digital Ocean. Vagrant is a command line tool that allows you auto configure VirtualBox. Docker is for setting up lightweight virtual machines inside the virtual operating system, and these will run the applications you're developing. It's like a virtual machine inside a virtual machine. I don't yet understand the specifics of how Docker works, but when I do I'll probably write a blog post about setting up your own private cloud host. Finally Ansible the configuration management/IT automation tool, that will basically setup Docker and other services inside the Virtual Machines, and perhaps setup your application inside Docker as well. Note that another service called Packer allows you to quickly replicate your virtual machine images so it's good for the development of virtual appliances.</p>
+
+<p>So in order to learn how to do all of this, I had start at the beginning with VirtualBox. I've managed to setup VirtualBox as a guest operating system that not only has a synchronised development folder with my host operating system (Windows, Linux and Mac) but is also accessible over the network.</p>
+
+<p>What does this all mean? This means I can open up my Sublime Text Editor to my "www" directory. This is where all my projects reside. I can edit a file in this directory. This file change is automatically propagated to the virtual machine instance. Then in my host machine I can open up Firefox to "http://localhost:8000" or "http://dev.test.com:8000" and get to see my updated change in my application. Then in my host or guest machine, can I commit and synchronise to github. All of this can be done without installing a web server stack (HTTP servers, Application Runtimes..etc) on my host machine, thus keeping my host machine clean. I'm not talking about production deployment at this moment, because I haven't got that far with Docker..etc. Therefore any deployment routines to production servers will still stay the same. However I'm still quite happy with what I have here, it is definitely an improvement over running WAMP or MAMP. As I can easily use NGINX and other Unix based tools. Furthermore, the instructions below can easily be adapted to setting up SSH access from your host machine too if you want to command your guest operating system from your host's terminal.</p>
+
+<p>Now comes the tutorial of how to set this all up. This part does require you understand Ubuntu Linux, basic bash scripting, CLI usage, modifying the hosts file and setting up NGINX.</p>
+
+<p>First download VirtualBox: <a href="https://www.virtualbox.org/wiki/Downloads">https://www.virtualbox.org/wiki/Downloads</a>. Then download Ubuntu Desktop: <a href="http://www.ubuntu.com/download/desktop">http://www.ubuntu.com/download/desktop</a></p>
+
+<p>Run VirtualBox and create a new virtual machine instance. A wizard dialog will pop up. Make sure to select the correct settings for your virtual machine. The perfomance of the virtual machine will be better if you give it a static size hard drive and 2048 mb ram, 2 CPUs and 32 mb of Video Memory along with 3D acceleration. These settings can be changed later inside the GUI of VirtualBox, they make your VM more expensive to use, but it also makes your VM a lot more faster and responsive. Once your virtual machine instance is set, you need to start it up. Then load the ISO of Ubuntu image you just downloaded. Follow the instructions to install Ubuntu in your new virtual operating system.</p>
+
+<p>Once it's all been installed, you need to remove the ISO CD from your virtual operating system. This can be done by shutting down your VM (virtual machine), then going into the settings of your VM inside VirtualBox and removing the CD in the storage settings. Start it up again and this time install the VBoxAdditions ISO. The VM would have prompted you to do this. This VBoxAdditions allows your VM to setup shared folders and other good things. We'll need shared folders to allow your host machine to edit files and have your guest machine use those updated files. Once that is done, you'll need to restart your VM and remove the VBoxAdditions ISO CD.</p>
+
+<p>Setting up shared folders is quite easy. Shutdown your VM. Go into the VirtualBox settings for the VM. Go into shared folders. Add a new shared folder record. The first folder path is the path your development folder. For me this is "D:www". The folder name would be "www". Make sure Read-only is off, switch on Auto-mount and Make Permanent. Hit Ok. Start your VM. Using your terminal in root user assuming that your folder is "www", run:</p>
+
+<pre>
+<code>
+cd /media/sf_www/
+ls -l
+</code>
+</pre>
+
+<p>This should show you the contents of your "www" folder on your host machine. If your folder was called something else, it will always have the prefix of "sf_". Furthermore we can see the owner and group the files and folders are associated with. This folder will be grouped under "vboxsf". Right now we can only access it with the root user. In order to add extra users to this group we can use this bash command (fill "username" with the name of the user):</p>
+
+<pre>
+<code>
+sudo adduser username vboxsf
+</code>
+</pre>
+
+<p>We should add the default user that you log in with, and also the "www-data" user. The "www-data" user will be the user that your web server stack will use. Your webserver such as NGINX, PHP, Cron scripts should not be using root or your default user, but a custom user for web stuff. It doesn't need to be called "www-data" but that is the default name used by PHP-FPM.</p>
+
+<p>Once you do that, the setting does not take effect immediately. You need to restart your VM. After which you no longer have to be a root user to access the "sf_www" directory inside your VM.</p>
+
+<p>Now the <code>/media/sf_www</code> is not really convenient directory path. So let's try to access it from something like <code>/www</code>. To do so, setup a symbolic link from <code>/media/sf_www</code> to <code>/www</code>.</p>
+
+<pre>
+<code>
+ln -s /media/sf_www /www
+</code>
+</pre>
+
+<p>Now test it out. Go into the "www" directory from your host machine, and create or edit a file. Now in your VM, check the <code>/www</code> directory and see if the file is there or edited. We should now have synchronised development folders!</p>
+
+<p>Now let's do some port forwarding. First we need an HTTP server on the VM. So we can install NGINX which by default listens on port 80 and shows a default NGINX page.</p>
+
+<pre>
+<code>
+sudo apt-get install nginx
+</code>
+</pre>
+
+<p>Test it out by launching Firefox inside the VM and heading to "http://localhost". If it shows the page, then NGINX is working. While you're at it, try out Polycademy's NGINX configuration best practices: <a href="https://github.com/Polycademy/WebserverConfiguration">https://github.com/Polycademy/WebserverConfiguration</a></p>
+
+<p>Shutdown the VM. Inside VirtualBox's VM settings, go into Network. From Network, the Network Adapter should be set to NAT. Click on Port Forwarding. Add a new record. In this record, set the Host Port to 8000 and the Guest Port to 80. The Protocol should be TCP. The name and everything else can be left as default. You can change the name to anything you like. Restart the VM.</p>
+
+<p>Now in your host machine, launch your browser and head to "http://localhost:8000". This should show the same page as the page you saw when you visited with Firefox inside the VM. In the future you can also port forward HTTPS connections, and you'll need to go from a random host port such as 8001 to the port 443 on the guest machine, this would result in URLs like https://localhost:8001.</p>
+
+<p>You can change the hosts file inside the host machine independently of the guest machine. This means the hosts file inside the guest machine affects the guest. So if you want a development URL such as "http://dev.example.com" inside the guest machine, just set that up inside <code>/etc/hosts</code> in the guest machine. This will work for browsers inside the guest machine. But if you want that for the host machine, you'll need to add that record to the hosts file in the host machine.</p>
+
+<p>Now you can install all your web server stack into your VM and not worry about the host machine or incompatibilities between operating systems especially when you develop on Windows/Mac but deploy on Linux.</p>
+
+<p>If you meet any problems, check the NGINX logs which should be specified inside the "nginx.conf" file inside <code>/etc/nginx/nginx.conf</code>. There could be issues with file caching with NGINX, which means that NGINX is caching the files it's serving. This is not good for development, and should be switched off. You should then restart NGINX with <code>sudo service nginx restart</code>. Other problems could include permissions like "vboxsf" but this should work great.</p>
+
+<p>The next step would be learning Vagrant & Ansible to automate the VM constructions as it builds on top VirtualBox (and other various VM provisioiners). Currently all you have is a VM image you could share, but sharing a 1 gig file is a bit hard, a configuration file would be smaller and easier to work with.</p>								</div>
+								<div class="meta_box">
+									<span class="author_meta">Posted by CMCDragonkai on 2014-01-26 20:43:54</span>
+																				<span class="tag_meta">Tags:
+																									<a href="tags/coding.html">coding</a>																									<a href="tags/virtualbox.html">virtualbox</a>																									<a href="tags/workflow.html">workflow</a>																							</span>
+																		<span class="comment_meta">
+										<a href="id/150/using_virtualbox_for_development.html#disqus_thread">Want to Comment?</a>									</span>
+																										</div>
+							</article>
+											<article class="white_text_container blog_article">
+								<h1 class="blog_title"><a href="id/149/transferring_code_for_australia.html">Transferring Code for Australia</a></h1>
+								<div class="blog_content">
+									<p>It's been almost a year since I launched Code for Australia to garner interest in the project. I've since stopped working on it, but there is a team of people who will be taking charge of the project from now on. Their current website is here: <a href="http://codeforaus.org/">http://codeforaus.org/</a>, but they'll be moving to <a href="http://codeforaustralia.org/">http://codeforaustralia.org/</a> once that domain frees up.</p>
+
+<p>When I first began, I was looking to implement Code for Australia in the same vein as Code for America. Code for America started out with projects called fellowships. These were essentially paid internships that got teams of developers usually around 3, to work for participating city governments and complete a software project that could enrich the civic services for people. You can see some of the results of these projects here: <a href="http://commons.codeforamerica.org/">http://commons.codeforamerica.org/</a></p>
+
+<p>The difference between getting Code for America to do these projects and getting contractors to do projects was that Code for America, was that Code for America was focused on open innovation. They utilised open source technologies, and its developers were volunteers, not employees. Furthermore the projects they focused on were civic problems. Problems that affect people living in the city, not necessarily some sort of administrative or business function of the city government. This is a very abridged description of the amazing work that Code for America has done (they do a lot more now), so you read up more about them here: <a href="http://codeforamerica.org/">http://codeforamerica.org/</a></p>
+
+<p>So I started talking to people in Canberra. Went to the various meetups and acquired meetings with various influential people involved in the government tech space. I actually managed to talk Sota Yamashita who wanted to start <a href="http://code4japan.org/">Code for Japan</a>, and it has started! Now I didn't manage to do a very deep search in Canberra, but I managed get enough information to decide that Code for Australia wouldn't work the same way it could work in Code for America or Code for Europe. The main problem was the concept of government tendering. So the way Australian government agencies get services, is that they release a contract out so that multiple vendors can fairly bid on the project. The vendor with the lowest price balanced with good quality or long term stability would get the contract. One of the people I met told me that it wouldn't be fair for the government to give special preference to an organisation such as Code for Australia. How could they justify that preference, especially when there are small vendors actually competing for jobs? After all, to them Code for Australia would just be another vendor. Another big difference is the the lack of philanthropy (and general startup investment) in Australia, which hinders the progress of non-profit startups compared to the US. I also got the feeling that state and city governments in the US were more independent, allowing them to make their own funding decisions, but I may be just speculating here from an outside observer.</p>
+
+<p>For Code for Australia to start, it wouldn't work from top down, that is fellowships with city governments to mass support like brigades. Instead it needs to go the other way, from <a href="http://brigade.codeforamerica.org/">grass roots brigades</a>, and work its way up to fellowships which means it would be recognised by the Australia government as an alternative vendor that focuses on a civic goods/services niche.</p>
+
+<p>But I also realised that I didn't want to wrangle with government officials having chats all the time, and I didn't really want to start the grassroots campaign. I wanted to get stuff done. I wanted to build innovative software, and I wanted to help others learn to build innovative software (and in the future hardware) via Polycademy. So I left Code for Australia as just a website stating its intentions.</p>
+
+<p>But a few weeks ago, I learned about CodeforAus, because Pia Waugh blogged about it in the Govhack blog. And the one of the founders of CodeforAus sent a tweet to the Code for Australia twitter profile, asking if we could talk. So we talked and I told him about my experience, and that I'm happy for them to take up the project and the domain name and other profiles, and I would be also happy to join the team to help them promote Code for Australia in Canberra and Sydney.</p>
+
+<p>The current team of Code for Aus is: Alvaro Maz, Dan Groch, Jacob Lindsay, Chris D'Aloisio, and finally me whos not partaking in the internal operations, but helping them wherever I can.</p>
+
+<p>Hopefully projects will be setup all over Australia. There's a lot of civic problems we can address!</p>								</div>
+								<div class="meta_box">
+									<span class="author_meta">Posted by CMCDragonkai on 2013-11-28 13:09:58</span>
+																				<span class="tag_meta">Tags:
+																									<a href="tags/codeforaustralia.html">codeforaustralia</a>																							</span>
+																		<span class="comment_meta">
+										<a href="id/149/transferring_code_for_australia.html#disqus_thread">Want to Comment?</a>									</span>
+																										</div>
+							</article>
+											<article class="white_text_container blog_article">
+								<h1 class="blog_title"><a href="id/148/modern_wordpress_workflow_with_composer.html">Modern Wordpress Workflow with Composer</a></h1>
+								<div class="blog_content">
+									<p>I've recently began on a small client project involving a Wordpress site for Auto Timor Leste -  Toyota East Timor. I don't usually work on Wordpress, but the last time I worked with it, I realised it was a clunky blogging platform that is quite difficult to work with when you want to do more than just blogging. Nowadays there are better alternatives like <a href="http://docpad.org/">Docpad</a>, <a href="http://octopress.org/">Octopress</a> and <a href="http://jekyllrb.com/">Jekyll</a> but those are still in the early adopters stage with developers. So Wordpress does have the advantage of being widely known and easily supported by developers. It also has a whole set of plugins. So you can say it's made for the non-developer. With that in mind, I suggested to use Wordpress as Toyota's official website framework.</p>
+
+<p>When I was working Wordpress a while ago, the deployment process involved downloading the official Wordpress installation via zip file. Unzipping it into your web root directory, running the initial configuration, hardcoding any configuration required in the <code>wp-config.php</code> file and then finally FTPing into an online server usually purchased from Lunarpages.</p>
+
+<p>Such a workflow has several disadvantages. The worst is FTP. FTP is very slow. It transfers each file individually one by one, and each time it does this, it needs to reestablish the connection. This can be a real hassle when you have thousands of files, and the Wordpress 3.7.1 framework has as of now 1176 files. And if you hit any interruption in the connection, you may need to restart the whole process since you don't know which file was half uploaded and corrupted. The other problem is that server differences will require reconfiguration on the remote server. This generally means saving the config file separately, modifying it to match the necessary remote server configuration which could involve database settings and database migration, uploading it via FTP to the remote server, access the site from your web browser and debug things manually. Oh and you have do this all over again if you need to install plugins or fiddle with the theme. This leads us to our second problem: dependency management and version control.</p>
+
+<p>Storing the wordpress project as files on your work computer makes it difficult to work flexibly. What if your computer dies? What if you want to work on a different computer? What if you need to share code with a team and each needs to contribute in different ways to the overall project? So you might decide to copy paste your working folder in a backup harddisk, and copy it to a USB thumbdrive so you can work on the go. Now you have the problem of version control. How do you reconcile different versions of the project elegantly. If you changed one file on the USB thumbdrive, then this becomes the new master version, which has to be manually copied to all the other locations where you stored the code. You might meet merge conflicts, where 2 files might have been updated to different code at the same time, which version is the right one to use, and what if both versions solve different problems. And this problem becomes compounded if you're working in a team. Furthermore, this constant copying and pasting results in a lot of duplication, especially if the majority of the project are external dependencies, that is plugins or themes or the Wordpress framework itself, which is code written by people outside of your current scope. There should be some way of isolating your application's code from dependencies so that there's less duplication of the source code, and you only need to bring in the dependency when it's actually being executed.</p>
+
+<p>Now I am digressing, of course there has been solutions to this distributed source control via SVN and friends for large software projects, but if you're a single developer, there are still many lessons to learn from large software development workflow.</p>
+
+<p>So I began looking a different, more modern way. Nowadays we have PAAS (platform as a service) businesses that offer a more streamlined way of deploying web applications. They usually operate via a customised deployment routine similar to <a href="https://github.com/capistrano/capistrano">Capistrano</a>, <a href="https://github.com/progrium/dokku">Dokku</a>, <a href="http://danbarber.me/using-git-for-deployment/">Git based deployment</a>, or some form proprietary <a href="http://en.wikipedia.org/wiki/Continuous_integration">continuous integration</a>. All of these systems provide deployment hooks, which is essentially automated code that is ran after the code has be transported to the remote server. This solves the FTP problem because they package up the directory you want to send into a compressed archive, and once it's uploaded, it's extracted to the web root location. This speeds up the deployment process immensely, and it's more secure as well.</p>
+
+<p>But there is still the problem of configuration and dependency management. So I researched a bit and found articles regarding Wordpress and Composer and Git. Here are my sources: <a href="http://roots.io/using-composer-with-wordpress/">Using Composer with Wordpress</a> and <a href="http://www.mixd.co.uk/blog/deploying-wordpress-using-git-and-capistrano/">Deploying Wordpress using Git and Capistrano</a>. You should read those sources before going further.</p>
+
+<p>Those sites are really good sources, but they left a bit of detail out. So I'm going to fill in some gaps:</p>
+
+<p>Start by getting <a href="http://nelm.io/blog/2011/12/composer-part-1-what-why/">Composer</a> (dependency management tool) to install Wordpress as a dependency. Now Wordpress has not been registered as a package on Packagist (Composer's department store). But this is not a problem. We can use a custom installer which will bring in Wordpress as a zip file and unload it into the project directory. Here is the <code>composer.json</code></p>
+
+<pre>
+<code>
+{
+	"repositories": [
+		{
+			"type": "package",
+			"package": {
+				"name": "wordpress",
+				"type": "webroot",
+				"version": "3.7.1",
+				"dist": {
+					"type": "zip",
+					"url": "https://github.com/WordPress/WordPress/archive/3.7.1.zip"
+				},
+				"require": {
+					"fancyguy/webroot-installer": "1.0.0"
+				}
+			}
+		}
+	],
+	"require":{
+		"php": ">=5.3.0",
+		"wordpress": "3.7.1"
+	},
+	"config": {
+		"bin-dir": "bin/",
+		"process-timeout": "1000"
+	},
+	"extra": {
+		"webroot-dir": "wp",
+		"webroot-package": "wordpress"
+	}
+}
+</code>
+</pre>
+
+<p>When running <code>composer install</code>, this will download <code>https://github.com/WordPress/WordPress/archive/3.7.1.zip</code> and utilise this <code>"fancyguy/webroot-installer": "1.0.0"</code> custom installer to extract the archive into your root directory. The <code>	"extra": { "webroot-dir": "wp", "webroot-package": "wordpress" }</code> becomes important. The "webroot-dir" specifies what the wordpress directory's name, while the webroot-package specifies what package we want the custom installer to use. To get different versions of Wordpress, just change the "3.7.1" version to desired Wordpress version. There are three locations to change, the <code>"version": "3.7.1"</code>, <code>"url": "https://github.com/WordPress/WordPress/archive/3.7.1.zip"</code> and <code>"wordpress": "3.7.1"</code>. The Wordpress framework is downloaded from the <a href="https://github.com/WordPress/WordPress">Github mirror</a>. Because Wordpress is a rather large dependency, I set the <code>"process-timeout": "1000"</code> to 1000 seconds, since a slow internet connection may cause your installation to timeout. Composer uses 300s by default. Your directory layout should look like this:</p>
+
+<pre>
+<code>
+vendor
+wp
+composer.json
+composer.lock
+</code>
+</pre>
+
+<p>Now let's configure Wordpress so it understands that it's in its own directory. Follow the <strong>Using a pre-existing subdirectory install</strong> instructions here <a href="http://codex.wordpress.org/Giving_WordPress_Its_Own_Directory">Giving Wordpress Its Own Directory</a>. The General panel means going to <code>http://pathtoprojectdir/wp/wp-admin</code>, then going to Settings > General and change the Site Address Url but not the Wordpress Address Url. When you first get there, it'll ask you about the <code>wp-config.php</code> file, just say yes. Make sure you've got the database settings setup already, this is just like a normal Wordpress installation. After you've copied the "index.php" (note that the .htaccess file probably does not exist anymore) to your project root, you need to make the index.php's require command point to the Wordpress directory. Which going to be like this snippet:</p>
+
+<pre>
+<code>
+/** Loads the WordPress Environment and Template */
+require( dirname( __FILE__ ) . '/wp/wp-blog-header.php' );
+</code>
+</pre>
+
+<p>You should now copy the <code>wp-config.php</code> or <code>wp-config-sample.php</code> into your project root and rename it to <code>wp-config.php</code>. Next copy the whole <code>wp-content</code> directory into your project root as well. Your project directory should look like this:</p>
+
+<pre>
+<code>
+vendor
+wp
+wp-content
+composer.json
+composer.lock
+index.php
+wp-config.php
+</code>
+</pre>
+
+<p>Now we have to configure wp-config.php so that Wordpress understands that our application code is in wp-content and the wordpress installation is in wp. Here's what my wp-config.php file looks like:</p>
+
+<pre>
+<code>
+&lt;?php
+
+define('ENVIRONMENT', 'development');
+
+/**
+ * Automatic Url + Content Dir/Url Detection for Wordpress
+ */
+$document_root = rtrim(str_replace(array('/', '\'), '/', $_SERVER['DOCUMENT_ROOT']), '/');
+
+$root_dir = str_replace(array('/', '\'), '/', __DIR__);
+$wp_dir = str_replace(array('/', '\'), '/', __DIR__ . '/wp');
+$wp_content_dir = str_replace(array('/', '\'), '/', __DIR__ . '/wp-content');
+
+$root_url = substr_replace($root_dir, '', stripos($root_dir, $document_root), strlen($document_root));
+$wp_url = substr_replace($wp_dir, '', stripos($wp_dir, $document_root), strlen($document_root));
+$wp_content_url = substr_replace($wp_content_dir, '', stripos($wp_content_dir, $document_root), strlen($document_root));
+
+$scheme = (isset($_SERVER['HTTPS']) AND $_SERVER['HTTPS'] != 'off' AND !$_SERVER['HTTPS']) ? 'https://' : 'http://';
+$host = rtrim($_SERVER['SERVER_NAME'], '/');
+$port = (isset($_SERVER['SERVER_PORT']) AND $_SERVER['SERVER_PORT'] != '80' AND $_SERVER['SERVER_PORT'] != '443') ? ':' . $_SERVER['SERVER_PORT'] : '';
+
+$root_url = $scheme . $host . $port . $root_url;
+$wp_url = $scheme . $host . $port . $wp_url;
+$wp_content_url = $scheme . $host . $port . $wp_content_url;
+
+define('WP_HOME', $root_url); //url to index.php
+define('WP_SITEURL', $wp_url); //url to wordpress installation
+define('WP_CONTENT_DIR', $wp_content_dir); //wp-content dir
+define('WP_CONTENT_URL', $wp_content_url); //wp-content url
+
+/**
+ * Secrets
+ */
+require_once('Secrets.php');
+Secrets::load();
+
+/**
+ * MySQL settings
+ */
+if(ENVIRONMENT == 'production'){
+
+	define('DB_NAME', $_ENV['secrets']['database_name']);
+	define('DB_USER', $_ENV['secrets']['database_user']);
+	define('DB_PASSWORD', $_ENV['secrets']['database_pass']);
+	define('DB_HOST', $_ENV['secrets']['database_host']);
+	define('DB_CHARSET', 'utf8');
+	define('DB_COLLATE', '');
+
+}else{
+
+	define('DB_NAME', 'autotimorleste');
+	define('DB_USER', 'root');
+	define('DB_PASSWORD', '');
+	define('DB_HOST', 'localhost');
+	define('DB_CHARSET', 'utf8');
+	define('DB_COLLATE', '');
+
+}
+
+/**#@+
+ * Authentication Unique Keys and Salts.
+ *
+ * Change these to different unique phrases!
+ * You can generate these using the {@link https://api.wordpress.org/secret-key/1.1/salt/ WordPress.org secret-key service}
+ * You can change these at any point in time to invalidate all existing cookies. This will force all users to have to log in again.
+ *
+ * @since 2.6.0
+ */
+define('AUTH_KEY',         $_ENV['secrets']['auth_key']);
+define('SECURE_AUTH_KEY',  $_ENV['secrets']['secure_auth_key']);
+define('LOGGED_IN_KEY',    $_ENV['secrets']['logged_in_key']);
+define('NONCE_KEY',        $_ENV['secrets']['nonce_key']);
+define('AUTH_SALT',        $_ENV['secrets']['auth_salt']);
+define('SECURE_AUTH_SALT', $_ENV['secrets']['secure_auth_salt']);
+define('LOGGED_IN_SALT',   $_ENV['secrets']['logged_in_salt']);
+define('NONCE_SALT',       $_ENV['secrets']['nonce_salt']);
+
+/**#@-*/
+
+/**
+ * WordPress Database Table prefix.
+ *
+ * You can have multiple installations in one database if you give each a unique
+ * prefix. Only numbers, letters, and underscores please!
+ */
+$table_prefix  = 'wp_';
+
+/**
+ * WordPress Localized Language, defaults to English.
+ *
+ * Change this to localize WordPress. A corresponding MO file for the chosen
+ * language must be installed to wp-content/languages. For example, install
+ * de_DE.mo to wp-content/languages and set WPLANG to 'de_DE' to enable German
+ * language support.
+ */
+define('WPLANG', '');
+
+/**
+ * For developers: WordPress debugging mode.
+ *
+ * Change this to true to enable the display of notices during development.
+ * It is strongly recommended that plugin and theme developers use WP_DEBUG
+ * in their development environments.
+ */
+define('WP_DEBUG', false);
+
+/* That's all, stop editing! Happy blogging. */
+
+/** Absolute path to the WordPress directory. */
+if ( !defined('ABSPATH') )
+	define('ABSPATH', __DIR__ . '/wp/');
+
+/** Sets up WordPress vars and included files. */
+require_once(ABSPATH . 'wp-settings.php');
+</code>
+</pre>
+
+<p>It probably looks quite different from yours. There's a quite a bit of important logic working here. Let's go through it. The first part defines the <code>ENVIRONMENT</code> constant. This will be useful for our branching off our database configuration. The next we do some magic URL detection. Remember the part in the General panel where you had to set the URL to the Wordpress installation and the site URL. It's probably along the lines of "http://localhost/pathtoyoursite". This will be a bit of a problem if you upload it to a remote server, and the URL will probably be your production URL having a real domain. We don't want to do so much configuration work, so I wrote some code to automatically detect the URL to the project root and other relevant areas such as:</p>
+
+<pre>
+<code>
+define('WP_HOME', $root_url); //url to index.php
+define('WP_SITEURL', $wp_url); //url to wordpress installation
+define('WP_CONTENT_DIR', $wp_content_dir); //wp-content dir
+define('WP_CONTENT_URL', $wp_content_url); //wp-content url
+</code>
+</pre>
+
+<p>This allows our Wordpress project to work with any URL on any server, whether it's your development server or production server. I saved this portion of the code as a gist:</p>
+
+<script src="https://gist.github.com/CMCDragonkai/7578784.js"></script>
+
+<p>The next portion loads the Secrets class and loads secrets. What are these secrets? Well they are the production database configuration and authentication keys. These are required since it is not a good practice to save production configuration keys to version control. I will get back to this and the database/auth configuration in a moment. At the bottom, we made sure that the require command required from the "wp" directory.</p>
+
+<pre>
+<code>
+/** Absolute path to the WordPress directory. */
+if ( !defined('ABSPATH') )
+	define('ABSPATH', __DIR__ . '/wp/');
+
+/** Sets up WordPress vars and included files. */
+require_once(ABSPATH . 'wp-settings.php');
+</code>
+</pre>
+
+<p>Let's get the Secrets working. First we need a secrets directory which will hold <code>keys.php</code>. Something like this:</p>
+
+<pre>
+<code>
+&lt;?php
+
+//encryption
+
+$secrets['auth_key'] = '';
+$secrets['secure_auth_key'] = '';
+$secrets['logged_in_key'] = '';
+$secrets['nonce_key'] = '';
+$secrets['auth_salt'] = '';
+$secrets['secure_auth_salt'] = '';
+$secrets['logged_in_salt'] = '';
+$secrets['nonce_salt'] = '';
+
+//production database details
+
+$secrets['database_host'] = '';
+$secrets['database_name'] = '';
+$secrets['database_user'] = '';
+$secrets['database_pass'] = '';
+</code>
+</pre>
+
+<p>The above will be inside "secrets/keys.php". This file will be ignored in version control. <a href="http://stackoverflow.com/questions/11575398/how-can-i-save-my-secret-keys-and-password-securely-in-my-version-control-system">This is a good practice.</a> Next we'll get the Secrets class which I wrote to facilitate the loading of secrets. It will include any php file inside the secrets folder, and pass all properties that is part of the <code>$secrets[]</code> array into the <code>$_ENV['secrets'][]</code> array. Here is a gist of the Secrets class:</p>
+
+<script src="https://gist.github.com/CMCDragonkai/7579059.js"></script> 
+
+<p>The Secrets.php should be committed to version control and should be at the project root. You project structure should look like:</p>
+
+<pre>
+<code>
+vendor
+secrets
+wp
+wp-content
+composer.json
+composer.lock
+index.php
+wp-config.php
+Secrets.php
+</code>
+</pre>
+
+<p>Now you can see how the secrets can be utilised in production settings. On the production side, you would write a deploy hook that downloads your keys.php into the secrets folder which would be kept in a separate location that is of course secret. You can use Dropbox, private git then curl.</p>
+
+<p>Now that we have separated the framework from our application code, which mostly kept in the wp-content directory, because that's where our themes and plugins go, we should go a step further and use Composer to manage any plugin dependencies. Now most Wordpress plugins are not Composer compatible. But the guys at <a href="http://wpackagist.org/">http://wpackagist.org/</a> as mirrored every single Wordpress plugin as a composer installable package. All of which use a custom installer to install into the "wp-content/plugins" directory. I installed the WP-Migrate-DB plugin via Composer. You can do this by adding their location as a repository location as seen in this snippet:</p>
+
+<pre>
+<code>
+	"repositories": [
+		{
+			"type": "composer",
+			"url": "http://wpackagist.org"
+		},
+		{
+			"type": "package",
+			"package": {
+				"name": "wordpress",
+				"type": "webroot",
+				"version": "3.7.1",
+				"dist": {
+					"type": "zip",
+					"url": "https://github.com/WordPress/WordPress/archive/3.7.1.zip"
+				},
+				"require": {
+					"fancyguy/webroot-installer": "1.0.0"
+				}
+			}
+		}
+	],
+</code>
+</pre>
+
+<p>Then you can install the plugins in the require position:</p>
+
+<pre>
+<code>
+	"require":{
+		"php": ">=5.3.0",
+		"wordpress": "3.7.1",
+		"wpackagist/wp-migrate-db": "0.5"
+	},
+</code>
+</pre>
+
+<p>Now how do we find out the exact name and version of the Wordpress plugin that we want? Well you need to go into the plugin SVN directory: <a href="http://plugins.svn.wordpress.org/">http://plugins.svn.wordpress.org/</a> and do a Ctrl+F to the plugin name, and that's the correct name to use. Click on the plugin, and you'll find the version you will want. Run <code>composer update</code> and this will install the plugin into "wp-content/plugins/pluginname/".</p>
+
+<p>Let's now commit this to Git version control. However before we do so, we need to add some directories to the <code>.gitignore</code>. These ones to be specific:</p>
+
+<pre>
+<code>
+#################
+## Custom
+#################
+
+vendor/*
+bin/*
+secrets/*
+!secrets/*.example
+!secrets/*.gitkeep
+wp/*
+wp-content/backup/*
+wp-content/cache/*
+wp-content/plugins/*
+wp-content/upgrade/*
+wp-content/uploads/*
+</code>
+</pre>
+
+<p>We have to ignore those files and folders because they don't belong in the version control. The secrets are self-explanatory. The wp folder is a dependency which can be brought in via Composer, there's no need to duplicate third party source code in our source control. The wp-content folders are ignored for the same reason. The uploads and backup and cache directory are actually meant to be managed outside the source control because they do not constitute the source code of the software application. Of course when you want to migrate to another server, creating a server snapshot or a database dump. For best case practices, your file uploads should go to a completely separate file sever such as Amazon S3, so the storage, backup and serving of the files can be abstracted from the logical component which is your software application source code.</p>
+
+<p>So this blog post was a bit longer than I thought it would take, and it is more catered to those who already understand bits of Wordpress and how Composer works. But I hope it helps you to make your Wordpress workflow better.</p>								</div>
+								<div class="meta_box">
+									<span class="author_meta">Posted by CMCDragonkai on 2013-11-22 16:13:40</span>
+																				<span class="tag_meta">Tags:
+																									<a href="tags/wordpress.html">wordpress</a>																									<a href="tags/composer.html">composer</a>																									<a href="tags/coding.html">coding</a>																									<a href="tags/workflow.html">workflow</a>																							</span>
+																		<span class="comment_meta">
+										<a href="id/148/modern_wordpress_workflow_with_composer.html#disqus_thread">Want to Comment?</a>									</span>
+																										</div>
+							</article>
+				<div class="pagination pagination-centered pagination-large"><ul><li class="active"><span>1</span></li><li><a href="5.html" data-ci-pagination-page="5" rel="start">2</a></li><li><a href="10.html" data-ci-pagination-page="10">3</a></li><li><a href="5.html" data-ci-pagination-page="5" rel="next">&rsaquo;</a></li><li><a href="20.html" data-ci-pagination-page="20">&raquo;</a></li></ul></div>			</div>
+		</div>		<footer>
+			<div class="container">
+				<article class="row footer_grid">
+					<section class="blog_panel span4">
+						<h3>
+							<a href="../blog.html">Blog</a>						</h3>
+						<p>
+																• <em class="footer_dates">(2015/03/04)</em> - <a href="id/152/a_new_direction.html">A New Direction</a><br /><br />
+																• <em class="footer_dates">(2014/03/30)</em> - <a href="id/151/the_problem_of_javascript_and_search_engines_and_introducing_snapsearch.html">The Problem of Javascript and Search Engines and introducing SnapSearch</a><br /><br />
+																• <em class="footer_dates">(2014/01/26)</em> - <a href="id/150/using_virtualbox_for_development.html">Using VirtualBox for Development</a><br /><br />
+																• <em class="footer_dates">(2013/11/28)</em> - <a href="id/149/transferring_code_for_australia.html">Transferring Code for Australia</a><br /><br />
+																• <em class="footer_dates">(2013/11/22)</em> - <a href="id/148/modern_wordpress_workflow_with_composer.html">Modern Wordpress Workflow with Composer</a><br /><br />
+													</p>
+					</section>
+					<section class="fbtwitter_panel span4">
+						<h3><a href="https://www.facebook.com/Polycademy">FB</a>.<a href="https://twitter.com/Polycademy">Twitter</a></h3>
+						<p>
+												</p>
+					</section>
+					<section class="notices_panel span4">
+						<h3>
+							<a href="tags/notices.html">Notices</a>						</h3>
+						<p>We're looking for companies, mentors and advisors. If you are interested in getting involved and checking out our students, check our partners page and contact us.
+						<br />
+						<br />
+						You can contact us at <a href='http://www.google.com/recaptcha/mailhide/d?k=01q-bJV3WQrMYWD2quLJ7VPA==&c=FsmnfqaQraWCMzZB6tsagBZd557LPBLlxh80gaenMSo='>@polycademy.com</a> or phone us at +61 (0)420 925 975</p>
+					</section>
+				</article>
+				<ul class="footer_links">
+					<li><a href="../terms_of_service.html">Terms of Service & Privacy Policy</a></li>
+					<li><a href="../refund_policy.html">Refund Policy</a></li>
+				</ul>
+				<p class="copyright">&copy; Polycademy & Code for Australia 2012</p>
+			</div>
+		</footer>
+		
+        <!--This passes any PHP/Codeigniter Variables to JS in case we need it-->
+		<script>
+			var ci_base_url = "http://polycademy.ap01.aws.af.cm/";
+			var ci_preview_path = "~/blog/preview";
+		</script>
+		
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="../js/jquery-1.8.2.min.js"><\/script>')</script>
+
+        <script src="../js/bootstrap.min.js"></script>
+		<script src="../js/jquery-ui-1.8.20.custom.min.js"></script>
+		<script src="../js/jquery.liquid-slider-1.0.min.js"></script>
+
+        <script src="../js/main.js"></script>
+		
+					<script>
+				var _gaq = _gaq || [];
+				_gaq.push(['_setAccount', 'UA-36175888-1']);
+				_gaq.push(['_trackPageview']);
+
+				(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+				})();
+			</script>
+		    </body>
+</html>

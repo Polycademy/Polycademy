@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Blog tag(s) - Polycademy is an academy for web application entrepreneurship</title>
+        <meta name="description" content="Polycademy is a school in Canberra that teaches web application development and entrepreneurship. It is catered to potential web application entrepreneurs or developer/designers who want to reskill. Students are placed in teams and are taught web tech by starting with envisioning their own project to coding and deployment. Students finish the course with an actual product. Our three philosophies are minimum viable product, agile methodology and flipped classroom. Students will gain mentors and industry contacts through our demo days.">
+		<meta name="google-site-verification" content="Mq6Yv8R9mGJK9SrUH5oZ8SNB8Z_WJHwkdkgp49ukHYE" />
+		<meta name="msvalidate.01" content="907A19AD04C8D5C2095C9DCE875FD165" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="shortcut icon" href="../../favicon.ico">
+		<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+		<link rel="stylesheet" href="../../css/main.css">
+        <script src="../../js/modernizr-2.6.1-respond-1.1.0.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+        <![endif]-->
+        <header class="navbar navbar-static-top">
+			<div class="container">
+				<div class="navbar-inner">
+					<a class="logo" href="../../index.html"><img src="../../img/logo.png" /></a>
+					<p class="slogan">an academy for web application entrepreneurship</p>
+					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</a>
+					<div class="nav-collapse collapse">
+						<ul class="nav">
+							<li><a href="../../index.html">home</a></li><li class="divider-vertical"></li><li><a href="../../courses.html">courses</a></li><li class="divider-vertical"></li><li><a href="../../partners.html">partners</a></li><li class="divider-vertical"></li><li><a href="http://codeforaustralia.com.au">code for australia</a></li><li class="divider-vertical"></li><li><a href="http://phpbounce.aws.af.cm/">php bounce</a></li><li class="divider-vertical"></li><li><a href="http://polycademy.eventbrite.com.au/">events</a></li><li class="divider-vertical"></li><li><a href="../../blog.html">blog</a></li>						</ul>
+					</div>
+				</div>
+			</div>
+        </header>		<div class="white_container">
+			<div class="container">
+										<h4>Showing articles with the tag(s): 'javascript'</h4>
+															<article class="white_text_container blog_article">
+								<h1 class="blog_title"><a href="../id/151/the_problem_of_javascript_and_search_engines_and_introducing_snapsearch.html">The Problem of Javascript and Search Engines and introducing SnapSearch</a></h1>
+								<div class="blog_content">
+									<p>Every single application I've been building since 2 years ago have been a single page application. The server side is a REST API, and the client side is rich and handles the view and web page generation. I've been doing it so much, that I sometimes forget how to build web applications in the old static way. It's my prediction that soon every single website/web application will be using some sort of javascript, and this even includes mostly static content websites, because the advancements in javascript makes possible all sorts of new user interfaces, and interactivity in producing and consuming content on the web.</p>
+
+<p>There is one big problem however. Search engines, social network robots, and friendly scrapers do not execute javascript. This means things like Google Search, Google Adverts, Bing, Facebook, Twitter, LinkedIn and more all don't work or don't work very well with javascript enhanced rich client side applications. The social networks also use bots for embedding content, such as when you share a link.</p>
+
+<p>This has resulted in developers having to choose between a rich interactive application that provides new and exciting user experience, or static reliable webpages. Most businesses end up compromising with static public facing pages, and then internally a rich control panel. Or if they are starting a whole new content based site, they stick with static server side web page generation.</p>
+
+<p>Now why don't the crawlers and robots support javascript execution? Well one thing is that it's difficult. You need a whole javascript runtime, and executing that is not cheap nor can it be done very fast. One of the main issues is that javascript is used to bring in asynchronous content. So the static content on a single page application is just a skeleton, the javascript is executed to fill it up with dynamic content. This means any robot/crawler has to stay on the page for a while waiting for asynchronous content to be loaded. A static HTTP request might be completed in 1 second, but waiting for asynchronous content can triple, or quadruple the time required. So it's a complex and expensive thing to do.</p>
+
+<p>I and Mustafa (a student in Polycademy) set out to solve this problem. After about 9 months of development, let me introduce you to <a href="https://snapsearch.io/">SnapSearch</a>.</p>
+
+<a href="https://snapsearch.io/"><img src="https://www.filepicker.io/api/file/yzChr7UhS5OfX6AcqItc" alt="SnapSearch logo" /></a>
+
+<p><a href="https://snapsearch.io/">SnapSearch</a> is Search Engine Optimisation (SEO) for Javascript, HTML 5 and Single Page Applications. It makes your javascript applications crawlable by search engines and scrapable by social network robots. It works by intercepting requests that is sent to your web application, detects if its coming from a search engine bot or social network bot, and in turn returns a response containing a cached snapshot version of your javascript web page which it acquired by rendering your webpage previously or on the fly with automated Firefox instances.</p>
+
+<p>SnapSearch provides a number of officially supported, professionally developed middleware that can be easily integrated into your current web application stack. It currently provides PHP, Node.js, Ruby and Python middlewares. They are very flexible, and allow you to specify which search engines you want to intercept for, and which you want to ignore.</p>
+
+<p>It's free to get started, there's a 1000 free usages per month cap. You get nice analytics that allows you to figure out which search engines are accessing your site. There's comprehensive documentation for both the <a href="https://snapsearch.io/documentation">API</a> and the <a href="https://github.com/SnapSearch/">middleware</a>. Note that if you're into web scraping and you're looking for a solution to process javascript, you can use SnapSearch for this purpose too, it's very fast, in fact most on the fly renderings happen under 4 seconds, whereas cached snapshots gets returned under 1 second. SnapSearch is load balanced, so we'll scale linearly.</p>
+
+<p><strong>For a limited time offer, use "SNAP" as the code when you sign up and you'll get 2000 free usages per month cap.</strong></p>
+
+<p>The project is under heavy development, and there's still lots more to do. But it's fully functional and production ready. I'm already using it for <a href="http://dreamitapp.com/">http://dreamitapp.com/</a> and <a href="https://snapsearch.io/">https://snapsearch.io/</a></p>
+
+<p>If you're looking for help setting it all up. Feel free to hit our web chat at <a href="http://www.hipchat.com/gz6yae0iP">Hipchat</a>. I'll be able to answer any questions and help with deployment.</p>
+
+<p>If you're writing a single page application, or web pages enhanced with javascript, you don't need to make any more compromises. Just build it, and know that SEO will always be available to you. Try the demo on your web page, and you can see the difference in the content being served to search engines.</p>
+
+<p>The tech savvy among you might realise this is similar to PhantomJS as a service. But it's not, because it doesn't use PhantomJS. Using real Firefox instances has the advantage of being able to take advantage of Mozilla's 6 week Firefox release cycles. This means we can support the latest in HTML5 technology quicker. The qtwebkit engine that PhantomJS relies on has a slower and sporadic release cycle. And it doesn't support plugins/extensions. SnapSearch has the possibility of adding in plugin/extensions such as Flash (this is under development).</p>
+
+<p>If you're looking to get into single page application development, and you haven't jumped on the bandwagon yet, look no further than AngularJS. It's the best! Also try out Facebook's React as it can easily integrate into AngularJS's directive concept (it can be faster).</p>
+
+<p>The land of client side development is changing very fast, and there is some serious engineering going on. I suggest you to also check out <a href="http://www.polymer-project.org/">Polymer</a> and <a href="http://mozilla.github.io/brick/">Brick</a>. Both of which AngularJS will be taking advantage of when they become more stable. Here's a <a href="http://techcrunch.com/2013/09/01/mozilla-gets-on-the-web-components-bandwagon-with-brick/">comparison</a>, you'll see that it's very similar to AngularJS directives.</p>								</div>
+								<div class="meta_box">
+									<span class="author_meta">Posted by CMCDragonkai on 2014-03-30 18:49:46</span>
+																				<span class="tag_meta">Tags:
+																									<a href="javascript.html">javascript</a>																									<a href="angularjs.html">angularjs</a>																									<a href="coding.html">coding</a>																									<a href="seo.html">seo</a>																									<a href="snapsearch.html">snapsearch</a>																							</span>
+																		<span class="comment_meta">
+										<a href="../id/151/the_problem_of_javascript_and_search_engines_and_introducing_snapsearch.html#disqus_thread">Want to Comment?</a>									</span>
+																										</div>
+							</article>
+											<article class="white_text_container blog_article">
+								<h1 class="blog_title"><a href="../id/147/preloading_page_content_like_youtube_using_angularjs.html">Preloading page content like Youtube using AngularJS</a></h1>
+								<div class="blog_content">
+									<p>I want to start blogging more about my technical journeys through Polycademy. While I was building Dream it App (<a href="http://dreamitapp.com">http://dreamitapp.com</a>), I noticed that there would FOUCs (flash of unstyled content) in between pages on the same application. Dream it App is a single page application, so state transitions are meant to be more fluid and closer to a desktop experience. In a traditional static page, you get FOUCs/FONCs (flash of no content) all the time between changing pages or changing sites, usually it's a white background. You'll notice this when you're on Google and you navigate to a particular new site you have been to before. But in way SPAs should be able to avoid this problem. Unfortunately for most cases, you trade the page transition white background FONC for a FOUC that has the template and styles loaded, but the data/content not loaded. This is happening because SPAs are asynchronously loading resources, so things don't come in one at a time. But then I saw Youtube's new loading mechanism.</p>
+
+<p>If you've been to Youtube recently, you may have noticed a loading mechanism. Go any Youtube video, and then click on one of the related videos without opening a new tab or window. You should see this:</p>
+
+<img src="https://www.filepicker.io/api/file/UoNnwORUKaTCyEVY24aw" alt="" />
+
+<p>It looks like a loading bar. But this is not what this post will be talking about. A loading bar is fairly easy to implement in AngularJS, see the <a href="http://victorbjelkholm.github.io/ngProgress/">ngProgress</a> module. What Youtube is doing is preloading all the data and content of the next video before it transitions the view state to that new video page.</p>
+
+<p>So I began thinking overnight on how to achieve this. This is a difficult thing to implement. When writing an AngularJS application, you have controllers that associate themselves to various view states. A basic example would be that every single page (delineated by the URL) has a controller. Then you put all the commands that load data asynchronously from the server, and all the modifications of data into the controller. You might even abstract the process and modularise but in the end it's all activated from the controller. In most use cases, only when the page has transitioned to the new page will the controller's code run and hence bring in all of the content for the new page. So there has to be some way to load data asynchronously before activating the controller. One couldn't just run the controller before changing page, because the controller may be relying on the DOM as a dependency to run other things.</p>
+
+<p>The first obvious solution would the preload resources upon the first load. In some sites, they preload images and cache them in the browser before you even load a page that needs those images. This could work as well for a small site that has fairly static content. However when you get to scaling up dynamic content it doesn't work. It does work well for templates. In fact Polycademy's current Angular architecture is to preload all templates and cache them upon the first page load. This is because templates are usually quite small when they are all combined. But this doesn't solve the problem since the content is still being loaded asynchronously and being added to the template. So when you transition state, you might see the template, but no data. What we need is a method to separate the activation of loading asynchronous content that is on demand and relevant to the specific page from the controller's code. So that upon running the controller's code (and transitioning the view), the data is there already. But this all needs to be done JIT (just in time) for the page, not for all pages.</p>
+
+<p>So I did some googling. And there is a method to do this. It's called the resolve property on the routes. It is possible to configure AngularJS's routes to each have a resolve property, which calls functions that return a promise, which all have to be resolved, before finally dependency injecting them into the controller.</p>
+
+<p>The methods are listed here: <a href="http://stackoverflow.com/questions/11972026/delaying-angularjs-route-change-until-model-loaded-to-prevent-flicker">Delaying AngularJS route change until model loaded to prevent flicker</a> and <a href="http://www.youtube.com/watch?v=P6KITGRQujQ&list=UUKW92i7iQFuNILqQOUOCrFw&index=4&feature=plcp&noredirect=1">AngularJS - Behave like Gmail using Routes with Resolve</a> and <a href="http://egghead.io/lessons/angularjs-route-life-cycle">AngularJS Video Tutorial: Route Life Cycle</a></p>
+
+<p>I haven't got around to testing those methods in production. But I hope it also works with the back button. Youtube does its preloading mechanism on the back button as well. At any case, this is a boon to user experience. One of the major factors of using SPAs to is to have a more responsive experience, and seeing FOUCs as you transition between views deteriorates that experience. You would never see a well designed desktop app with FOUCs in between transitions.</p>
+
+<p>I also use ui-router for a more sophisticated state machine routing. And ui-router also supports resolve. So I'll be implementing this in Polycademy's next AngularJS projects.</p>
+
+<p>Also for images to be resolved prior to the state change, you can use AngularJS to HTTP preload them. See this Stackoverflow post: <a href="http://stackoverflow.com/questions/18627609/angularjs-resolve-to-wait-until-external-images-have-loaded">http://stackoverflow.com/questions/18627609/angularjs-resolve-to-wait-until-external-images-have-loaded</a> This form of eager loading for each state change is required when the layout of the next page depends on the image's size which may not be determined until is loaded. This obviously refers to dynamic or user uploaded images, not image assets of your site, which you do know what the size is beforehand.</p>								</div>
+								<div class="meta_box">
+									<span class="author_meta">Posted by CMCDragonkai on 2013-11-02 15:10:07</span>
+																				<span class="tag_meta">Tags:
+																									<a href="angularjs.html">angularjs</a>																									<a href="youtube.html">youtube</a>																									<a href="javascript.html">javascript</a>																									<a href="fouc.html">fouc</a>																									<a href="coding.html">coding</a>																							</span>
+																		<span class="comment_meta">
+										<a href="../id/147/preloading_page_content_like_youtube_using_angularjs.html#disqus_thread">Want to Comment?</a>									</span>
+																										</div>
+							</article>
+							</div>
+		</div>		<footer>
+			<div class="container">
+				<article class="row footer_grid">
+					<section class="blog_panel span4">
+						<h3>
+							<a href="../../blog.html">Blog</a>						</h3>
+						<p>
+																• <em class="footer_dates">(2015/03/04)</em> - <a href="../id/152/a_new_direction.html">A New Direction</a><br /><br />
+																• <em class="footer_dates">(2014/03/30)</em> - <a href="../id/151/the_problem_of_javascript_and_search_engines_and_introducing_snapsearch.html">The Problem of Javascript and Search Engines and introducing SnapSearch</a><br /><br />
+																• <em class="footer_dates">(2014/01/26)</em> - <a href="../id/150/using_virtualbox_for_development.html">Using VirtualBox for Development</a><br /><br />
+																• <em class="footer_dates">(2013/11/28)</em> - <a href="../id/149/transferring_code_for_australia.html">Transferring Code for Australia</a><br /><br />
+																• <em class="footer_dates">(2013/11/22)</em> - <a href="../id/148/modern_wordpress_workflow_with_composer.html">Modern Wordpress Workflow with Composer</a><br /><br />
+													</p>
+					</section>
+					<section class="fbtwitter_panel span4">
+						<h3><a href="https://www.facebook.com/Polycademy">FB</a>.<a href="https://twitter.com/Polycademy">Twitter</a></h3>
+						<p>
+												</p>
+					</section>
+					<section class="notices_panel span4">
+						<h3>
+							<a href="notices.html">Notices</a>						</h3>
+						<p>We're looking for companies, mentors and advisors. If you are interested in getting involved and checking out our students, check our partners page and contact us.
+						<br />
+						<br />
+						You can contact us at <a href='http://www.google.com/recaptcha/mailhide/d?k=01q-bJV3WQrMYWD2quLJ7VPA==&c=FsmnfqaQraWCMzZB6tsagBZd557LPBLlxh80gaenMSo='>@polycademy.com</a> or phone us at +61 (0)420 925 975</p>
+					</section>
+				</article>
+				<ul class="footer_links">
+					<li><a href="../../terms_of_service.html">Terms of Service & Privacy Policy</a></li>
+					<li><a href="../../refund_policy.html">Refund Policy</a></li>
+				</ul>
+				<p class="copyright">&copy; Polycademy & Code for Australia 2012</p>
+			</div>
+		</footer>
+		
+        <!--This passes any PHP/Codeigniter Variables to JS in case we need it-->
+		<script>
+			var ci_base_url = "http://polycademy.ap01.aws.af.cm/";
+			var ci_preview_path = "~/blog/preview";
+		</script>
+		
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="../../js/jquery-1.8.2.min.js"><\/script>')</script>
+
+        <script src="../../js/bootstrap.min.js"></script>
+		<script src="../../js/jquery-ui-1.8.20.custom.min.js"></script>
+		<script src="../../js/jquery.liquid-slider-1.0.min.js"></script>
+
+        <script src="../../js/main.js"></script>
+		
+					<script>
+				var _gaq = _gaq || [];
+				_gaq.push(['_setAccount', 'UA-36175888-1']);
+				_gaq.push(['_trackPageview']);
+
+				(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+				})();
+			</script>
+		    </body>
+</html>
