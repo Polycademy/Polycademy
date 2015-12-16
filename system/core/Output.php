@@ -18,7 +18,7 @@
  *
  * @package		CodeIgniter
  * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2008 - 2012, EllisLab, Inc. (http://ellislab.com/)
+ * @copyright	Copyright (c) 2008 - 2013, EllisLab, Inc. (http://ellislab.com/)
  * @license		http://opensource.org/licenses/OSL-3.0 Open Software License (OSL 3.0)
  * @link		http://codeigniter.com
  * @since		Version 1.0
@@ -143,7 +143,7 @@ class CI_Output {
 	 * Sets the output string.
 	 *
 	 * @param	string	$output	Output data
-	 * @return	object	$this
+	 * @return	CI_Output
 	 */
 	public function set_output($output)
 	{
@@ -159,7 +159,7 @@ class CI_Output {
 	 * Appends data onto the output string.
 	 *
 	 * @param	string	$output	Data to append
-	 * @return	object	$this
+	 * @return	CI_Output
 	 */
 	public function append_output($output)
 	{
@@ -187,7 +187,7 @@ class CI_Output {
 	 *
 	 * @param	string	$header		Header
 	 * @param	bool	$replace	Whether to replace the old header value, if already set
-	 * @return	object	$this
+	 * @return	CI_Output
 	 */
 	public function set_header($header, $replace = TRUE)
 	{
@@ -211,7 +211,7 @@ class CI_Output {
 	 *
 	 * @param	string	$mime_type	Extension of the file we're outputting
 	 * @param	string	$charset	Character set (default: NULL)
-	 * @return	object	$this
+	 * @return	CI_Output
 	 */
 	public function set_content_type($mime_type, $charset = NULL)
 	{
@@ -239,7 +239,7 @@ class CI_Output {
 		}
 
 		$header = 'Content-Type: '.$mime_type
-			.(empty($charset) ? NULL : '; charset='.strtolower($charset));
+			.(empty($charset) ? NULL : '; charset='.$charset);
 
 		$this->headers[] = array($header, TRUE);
 		return $this;
@@ -256,13 +256,46 @@ class CI_Output {
 	{
 		for ($i = 0, $c = count($this->headers); $i < $c; $i++)
 		{
-			if (sscanf($this->headers[$i][0], 'Content-Type: %s', $content_type) === 1)
+			if (sscanf($this->headers[$i][0], 'Content-Type: %[^;]', $content_type) === 1)
 			{
 				return $content_type;
 			}
 		}
 
 		return 'text/html';
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Get Header
+	 *
+	 * @param	string	$header_name
+	 * @return	string
+	 */
+	public function get_header($header)
+	{
+		// Combine headers already sent with our batched headers
+		$headers = array_merge(
+			// We only need [x][0] from our multi-dimensional array
+			array_map('array_shift', $this->headers),
+			headers_list()
+		);
+
+		if (empty($headers) OR empty($header))
+		{
+			return NULL;
+		}
+
+		for ($i = 0, $c = count($headers); $i < $c; $i++)
+		{
+			if (strncasecmp($header, $headers[$i], $l = strlen($header)) === 0)
+			{
+				return trim(substr($headers[$i], $l+1));
+			}
+		}
+
+		return NULL;
 	}
 
 	// --------------------------------------------------------------------
@@ -275,7 +308,7 @@ class CI_Output {
 	 *
 	 * @param	int	$code	Status code (default: 200)
 	 * @param	string	$text	Optional message
-	 * @return	object	$this
+	 * @return	CI_Output
 	 */
 	public function set_status_header($code = 200, $text = '')
 	{
@@ -289,7 +322,7 @@ class CI_Output {
 	 * Enable/disable Profiler
 	 *
 	 * @param	bool	$val	TRUE to enable or FALSE to disable
-	 * @return	object	$this
+	 * @return	CI_Output
 	 */
 	public function enable_profiler($val = TRUE)
 	{
@@ -306,7 +339,7 @@ class CI_Output {
 	 * Profiler section display.
 	 *
 	 * @param	array	$sections	Profiler sections
-	 * @return	object	$this
+	 * @return	CI_Output
 	 */
 	public function set_profiler_sections($sections)
 	{
@@ -330,7 +363,7 @@ class CI_Output {
 	 * Set Cache
 	 *
 	 * @param	int	$time	Cache expiration time in seconds
-	 * @return	object	$this
+	 * @return	CI_Output
 	 */
 	public function cache($time)
 	{
@@ -362,7 +395,7 @@ class CI_Output {
 		global $BM, $CFG;
 
 		// Grab the super object if we can.
-		if (class_exists('CI_Controller'))
+		if (class_exists('CI_Controller', FALSE))
 		{
 			$CI =& get_instance();
 		}
@@ -511,9 +544,15 @@ class CI_Output {
 
 		$expire = time() + ($this->cache_expiration * 60);
 
+		// Put together our serialized info.
+		$cache_info = serialize(array(
+			'expire'	=> $expire,
+			'headers'	=> $this->headers
+		));
+
 		if (flock($fp, LOCK_EX))
 		{
-			fwrite($fp, $expire.'TS--->'.$output);
+			fwrite($fp, $cache_info.'ENDCI--->'.$output);
 			flock($fp, LOCK_UN);
 		}
 		else
@@ -562,14 +601,16 @@ class CI_Output {
 		flock($fp, LOCK_UN);
 		fclose($fp);
 
-		// Strip out the embedded timestamp
-		if ( ! preg_match('/^(\d+)TS--->/', $cache, $match))
+		// Look for embedded serialized file info.
+		if ( ! preg_match('/^(.*)ENDCI--->/', $cache, $match))
 		{
 			return FALSE;
 		}
 
+		$cache_info = unserialize($match[1]);
+		$expire = $cache_info['expire'];
+
 		$last_modified = filemtime($cache_path);
-		$expire = $match[1];
 
 		// Has the file expired?
 		if ($_SERVER['REQUEST_TIME'] >= $expire && is_really_writable($cache_path))
@@ -585,9 +626,54 @@ class CI_Output {
 			$this->set_cache_header($last_modified, $expire);
 		}
 
+		// Add headers from cache file.
+		foreach ($cache_info['headers'] as $header)
+		{
+			$this->set_header($header[0], $header[1]);
+		}
+
 		// Display the cache
 		$this->_display(substr($cache, strlen($match[0])));
 		log_message('debug', 'Cache file is current. Sending it to browser.');
+		return TRUE;
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Delete cache
+	 *
+	 * @param	string	$uri	URI string
+	 * @return	bool
+	 */
+	public function delete_cache($uri = '')
+	{
+		$CI =& get_instance();
+		$cache_path = $CI->config->item('cache_path');
+		if ($cache_path === '')
+		{
+			$cache_path = APPPATH.'cache/';
+		}
+
+		if ( ! is_dir($cache_path))
+		{
+			log_message('error', 'Unable to find cache path: '.$cache_path);
+			return FALSE;
+		}
+
+		if (empty($uri))
+		{
+			$uri = $CI->uri->uri_string();
+		}
+
+		$cache_path .= md5($CI->config->item('base_url').$CI->config->item('index_page').$uri);
+
+		if ( ! @unlink($cache_path))
+		{
+			log_message('error', 'Unable to delete cache file for '.$uri);
+			return FALSE;
+		}
+
 		return TRUE;
 	}
 
@@ -638,9 +724,7 @@ class CI_Output {
 		{
 			case 'text/html':
 
-				$size_before = strlen($output);
-
-				if ($size_before === 0)
+				if (($size_before = strlen($output)) === 0)
 				{
 					return '';
 				}
@@ -656,23 +740,23 @@ class CI_Output {
 				preg_match_all('{<style.+</style>}msU', $output, $style_clean);
 				foreach ($style_clean[0] as $s)
 				{
-					$output = str_replace($s, $this->minify($s, 'text/css'), $output);
+					$output = str_replace($s, $this->_minify_js_css($s, 'css', TRUE), $output);
 				}
 
 				// Minify the javascript in <script> tags.
 				foreach ($javascript_clean[0] as $s)
 				{
-					$javascript_mini[] = $this->minify($s, 'text/javascript');
+					$javascript_mini[] = $this->_minify_js_css($s, 'js', TRUE);
 				}
 
 				// Replace multiple spaces with a single space.
 				$output = preg_replace('!\s{2,}!', ' ', $output);
 
 				// Remove comments (non-MSIE conditionals)
-				$output = preg_replace('{\s*<!--[^\[].*-->\s*}msU', '', $output);
+				$output = preg_replace('{\s*<!--[^\[<>].*(?<!!)-->\s*}msU', '', $output);
 
 				// Remove spaces around block-level elements.
-				$output = preg_replace('/\s*(<\/?(html|head|title|meta|script|link|style|body|h[1-6]|div|p|br)[^>]*>)\s*/is', '$1', $output);
+				$output = preg_replace('/\s*(<\/?(html|head|title|meta|script|link|style|body|table|thead|tbody|tfoot|tr|th|td|h[1-6]|div|p|br)[^>]*>)\s*/is', '$1', $output);
 
 				// Replace mangled <pre> etc. tags with unprocessed ones.
 
@@ -688,7 +772,7 @@ class CI_Output {
 					$output = str_replace($codes_messed[0], $codes_clean[0], $output);
 				}
 
-				if ( ! empty($codes_clean))
+				if ( ! empty($textareas_clean))
 				{
 					preg_match_all('{<textarea.+</textarea>}msU', $output, $textareas_messed);
 					$output = str_replace($textareas_messed[0], $textareas_clean[0], $output);
@@ -709,24 +793,118 @@ class CI_Output {
 
 			case 'text/css':
 
-				//Remove CSS comments
-				$output = preg_replace('!/\*[^*]*\*+([^/][^*]*\*+)*/!', '', $output);
-
-				// Remove spaces around curly brackets, colons,
-				// semi-colons, parenthesis, commas
-				$output = preg_replace('!\s*(:|;|,|}|{|\(|\))\s*!', '$1', $output);
-
-			break;
+				return $this->_minify_js_css($output, 'css');
 
 			case 'text/javascript':
+			case 'application/javascript':
+			case 'application/x-javascript':
 
-				// Currently leaves JavaScript untouched.
-			break;
+				return $this->_minify_js_css($output, 'js');
 
 			default: break;
 		}
 
 		return $output;
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Minify JavaScript and CSS code
+	 *
+	 * Strips comments and excessive whitespace characters
+	 *
+	 * @param	string	$output
+	 * @param	string	$type	'js' or 'css'
+	 * @param	bool	$tags	Whether $output contains the 'script' or 'style' tag
+	 * @return	string
+	 */
+	protected function _minify_js_css($output, $type, $tags = FALSE)
+	{
+		if ($tags === TRUE)
+		{
+			$tags = array('close' => strrchr($output, '<'));
+
+			$open_length = strpos($output, '>') + 1;
+			$tags['open'] = substr($output, 0, $open_length);
+
+			$output = substr($output, $open_length, -strlen($tags['close']));
+
+			// Strip spaces from the tags
+			$tags = preg_replace('#\s{2,}#', ' ', $tags);
+		}
+
+		$output = trim($output);
+
+		if ($type === 'js')
+		{
+			// Catch all string literals and comment blocks
+			if (preg_match_all('#((?:((?<!\\\)\'|")|(/\*)|(//)).*(?(2)(?<!\\\)\2|(?(3)\*/|\n)))#msuUS', $output, $match, PREG_OFFSET_CAPTURE))
+			{
+				$js_literals = $js_code = array();
+				for ($match = $match[0], $c = count($match), $i = $pos = $offset = 0; $i < $c; $i++)
+				{
+					$js_code[$pos++] = trim(substr($output, $offset, $match[$i][1] - $offset));
+					$offset = $match[$i][1] + strlen($match[$i][0]);
+
+					// Save only if we haven't matched a comment block
+					if ($match[$i][0][0] !== '/')
+					{
+						$js_literals[$pos++] = array_shift($match[$i]);
+					}
+				}
+				$js_code[$pos] = substr($output, $offset);
+
+				// $match might be quite large, so free it up together with other vars that we no longer need
+				unset($match, $offset, $pos);
+			}
+			else
+			{
+				$js_code = array($output);
+				$js_literals = array();
+			}
+
+			$varname = 'js_code';
+		}
+		else
+		{
+			$varname = 'output';
+		}
+
+		// Standartize new lines
+		$$varname = str_replace(array("\r\n", "\r"), "\n", $$varname);
+
+		if ($type === 'js')
+		{
+			$patterns = array(
+				'#\s*([!\#%&()*+,\-./:;<=>?@\[\]^`{|}~])\s*#'	=> '$1',	// Remove spaces following and preceeding JS-wise non-special & non-word characters
+				'#\s{2,}#'					=> ' '		// Reduce the remaining multiple whitespace characters to a single space
+			);
+		}
+		else
+		{
+			$patterns = array(
+				'#/\*.*(?=\*/)\*/#s'	=> '',		// Remove /* block comments */
+				'#\n?//[^\n]*#'		=> '',		// Remove // line comments
+				'#\s*([^\w.\#%])\s*#U'	=> '$1',	// Remove spaces following and preceeding non-word characters, excluding dots, hashes and the percent sign
+				'#\s{2,}#'		=> ' '		// Reduce the remaining multiple space characters to a single space
+			);
+		}
+
+		$$varname = preg_replace(array_keys($patterns), array_values($patterns), $$varname);
+
+		// Glue back JS quoted strings
+		if ($type === 'js')
+		{
+			$js_code += $js_literals;
+			ksort($js_code);
+			$output = implode($js_code);
+			unset($js_code, $js_literals, $varname, $patterns);
+		}
+
+		return is_array($tags)
+			? $tags['open'].$output.$tags['close']
+			: $output;
 	}
 
 }

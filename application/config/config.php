@@ -211,7 +211,7 @@ $config['directory_trigger']	= 'd'; // experimental not currently in use
 | your log files will fill up very fast.
 |
 */
-$config['log_threshold'] = 0;
+$config['log_threshold'] = 2;
 
 /*
 |--------------------------------------------------------------------------
@@ -386,6 +386,7 @@ $config['minify_output'] = FALSE;
 |
 */
 $config['time_reference'] = 'Australia/ACT';
+date_default_timezone_set('Australia/ACT');
 
 
 /*
